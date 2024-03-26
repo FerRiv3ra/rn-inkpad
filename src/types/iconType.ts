@@ -1,8 +1,8 @@
-type Icon = `${IconName}${IconType}` | Brand;
+export type IconName = `${ValidName}${IconType}` | Brand;
 
 type IconType = '' | '-outline' | '-sharp';
 
-type IconName =
+type ValidName =
   | 'accessibility'
   | 'add'
   | 'add-circle'
