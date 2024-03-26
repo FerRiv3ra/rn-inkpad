@@ -1,6 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
-import {CardImage} from './src';
+import {ScrollView, View} from 'react-native';
+import {CardImage, FloatingActionButton} from './src';
 
 export const App = () => {
   return (
@@ -8,7 +8,7 @@ export const App = () => {
       style={{
         justifyContent: 'center',
         flex: 1,
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: '#EEEEEE',
         paddingHorizontal: 15,
       }}>
@@ -26,11 +26,33 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-      <CardImage
-        source={{
-          uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-        }}
-        text="Landscape"
+      <ScrollView>
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+        />
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+        />
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+        />
+      </ScrollView>
+      <FloatingActionButton
+        // padding={18}
+        actions={[
+          {icon: 'alert', onPress: () => console.log('Alert')},
+          {icon: 'warning', onPress: () => console.log('Warning')},
+          {icon: 'bag-add', onPress: () => console.log('Help')},
+        ]}
       />
     </View>
   );

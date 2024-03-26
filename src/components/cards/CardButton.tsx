@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Pressable, StyleProp, Text, ViewStyle} from 'react-native';
-import {colorToRgba} from '../helpers/colorToRgba';
-import {ButtonType, ValidColor} from '../types/commonTypes';
+import {colorToRgba} from '../../helpers/colorToRgba';
+import {ButtonType, ValidColor} from '../../types/commonTypes';
 
 type Props = {
   button: ButtonType;
@@ -9,7 +9,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export const Button = ({button, color, style}: Props) => {
+export const CardButton = ({button, color, style}: Props) => {
   const [isPressed, setIsPressed] = useState(false);
 
   let rgbaColor: string | undefined;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ImageSourcePropType, Text, View} from 'react-native';
-import {cardImageStyles, cardStyles} from '../theme';
-import {imageCardTheme} from '../types';
+import {cardImageStyles, cardStyles} from '../../theme';
+import {imageCardTheme} from '../../types';
 
 type Props = {
   source: ImageSourcePropType;

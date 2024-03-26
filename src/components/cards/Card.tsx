@@ -3,9 +3,9 @@ import {Text, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {cardStyles} from '../theme';
-import {ButtonType, cardTheme, IconName} from '../types';
-import {Button} from './Button';
+import {cardStyles} from '../../theme';
+import {ButtonType, cardTheme, IconName} from '../../types';
+import {CardButton} from './CardButton';
 
 type Props = {
   buttons: ButtonType[];
@@ -47,7 +47,7 @@ export const Card = ({buttons, description, icon, title, theme}: Props) => {
       </View>
       <View style={{...cardStyles.buttonsContainer}}>
         {buttons.map((button, idx) => (
-          <Button
+          <CardButton
             style={{...cardStyles.button}}
             color={themeColor}
             button={button}

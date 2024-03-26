@@ -1,2 +1,3 @@
-export {Card} from './Card';
-export {CardImage} from './CardImage';
+export {FloatingActionButton} from './buttons/FloatingActionButton';
+export {Card} from './cards/Card';
+export {CardImage} from './cards/CardImage';
