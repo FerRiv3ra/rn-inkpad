@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {buttonStyles} from '../../theme';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,39 +7,53 @@ import {IconName} from '../../types';
 
 type Props = {
   icon: IconName;
+  align?: 'left' | 'right';
   backgroundColor?: string;
-  bottom?: number;
   iconColor?: string;
   iconSize?: number;
-  left?: number;
-  padding?: number;
+  size?: number;
+  margin?: number;
+  text?: string;
   onPress?: () => void;
 };
 
 export const ActionButton = ({
-  onPress,
-  padding,
+  align,
   backgroundColor,
-  bottom,
   icon,
   iconColor,
-  iconSize,
-  left,
+  iconSize = 22,
+  onPress,
+  margin = 0,
+  size = 50,
+  text,
 }: Props) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.7}
+    <View
       style={[
-        buttonStyles.fab,
-        {
-          padding: padding ?? 15,
-          backgroundColor: backgroundColor ?? '#464EE5',
-          bottom,
-          left,
-        },
+        buttonStyles.btnContainer,
+        {flexDirection: align === 'left' ? 'row-reverse' : 'row'},
       ]}>
-      <Icon name={icon} color={iconColor ?? '#FFF'} size={iconSize ?? 22} />
-    </TouchableOpacity>
+      {!!text && (
+        <View style={buttonStyles.textContainer}>
+          <Text>{text}</Text>
+        </View>
+      )}
+      <TouchableOpacity
+        onPress={onPress}
+        activeOpacity={0.7}
+        style={[
+          buttonStyles.fab,
+          {
+            width: size,
+            marginTop: 5,
+            marginHorizontal: margin,
+            height: size,
+            backgroundColor: backgroundColor ?? '#464EE5',
+          },
+        ]}>
+        <Icon name={icon} color={iconColor ?? '#FFF'} size={iconSize} />
+      </TouchableOpacity>
+    </View>
   );
 };

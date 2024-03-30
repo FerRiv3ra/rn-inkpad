@@ -1,17 +1,26 @@
-import React from 'react';
-import {Image, ImageSourcePropType, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ImageBackground, ImageSourcePropType, Text, View} from 'react-native';
 import {cardImageStyles, cardStyles} from '../../theme';
 import {imageCardTheme} from '../../types';
 
 type Props = {
   source: ImageSourcePropType;
+  loadTime?: number;
   text?: string;
   theme?: imageCardTheme;
 };
 
-export const CardImage = ({source, text, theme}: Props) => {
+export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
   const {backgroundColor, fontColor, fontSize, fontWeight, shadow, radius} =
     theme || {};
+
+  const [blur, setBlur] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setBlur(false);
+    }, loadTime);
+  }, []);
 
   return (
     <View
@@ -22,11 +31,11 @@ export const CardImage = ({source, text, theme}: Props) => {
         },
         !!shadow && cardStyles.shadow,
       ]}>
-      <Image
-        style={[
-          cardImageStyles.container,
+      <ImageBackground
+        style={[cardImageStyles.container]}
+        imageStyle={[
           {
-            borderTopLeftRadius: radius ?? 15,
+            borderTopLeftRadius: 15,
             borderTopRightRadius: radius ?? 15,
           },
           !text && {
@@ -34,6 +43,7 @@ export const CardImage = ({source, text, theme}: Props) => {
             borderBottomRightRadius: radius ?? 15,
           },
         ]}
+        blurRadius={blur ? 10 : 0}
         source={source}
       />
       {!!text && (

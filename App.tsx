@@ -1,6 +1,7 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
-import {CardImage, FloatingActionButton} from './src';
+import {View} from 'react-native';
+import {CircleAvatar} from './src';
+import Avatar from './src/assets/James_hetfield.jpeg';
 
 export const App = () => {
   return (
@@ -8,7 +9,7 @@ export const App = () => {
       style={{
         justifyContent: 'center',
         flex: 1,
-        // alignItems: 'center',
+        alignItems: 'center',
         backgroundColor: '#EEEEEE',
         paddingHorizontal: 15,
       }}>
@@ -26,7 +27,7 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-      <ScrollView>
+      {/* <ScrollView>
         <CardImage
           source={{
             uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
@@ -46,14 +47,30 @@ export const App = () => {
           text="Landscape"
         />
       </ScrollView>
+
       <FloatingActionButton
-        // padding={18}
+        onPress={() => console.log('Hola mundo')}
         actions={[
-          {icon: 'alert', onPress: () => console.log('Alert')},
-          {icon: 'warning', onPress: () => console.log('Warning')},
-          {icon: 'bag-add', onPress: () => console.log('Help')},
+          {
+            icon: 'alert',
+            text: 'Alerta',
+            onPress: () => console.log('Alert'),
+          },
+          {
+            icon: 'warning',
+            text: 'Advertencia',
+            onPress: () => console.log('Warning'),
+          },
+          {
+            icon: 'bag-add',
+            text: 'Comprar',
+            onPress: () => console.log('Help'),
+          },
         ]}
-      />
+      /> */}
+      <CircleAvatar size={70} defaultText="JH" fontSize={28} />
+      <View style={{height: 30}} />
+      <CircleAvatar size={70} image={Avatar} />
     </View>
   );
 };
