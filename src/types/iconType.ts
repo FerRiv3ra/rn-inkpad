@@ -2,7 +2,7 @@ export type IconName = `${ValidName}${IconType}` | Brand;
 
 type IconType = '' | '-outline' | '-sharp';
 
-type ValidName =
+export type ValidName =
   | 'accessibility'
   | 'add'
   | 'add-circle'
