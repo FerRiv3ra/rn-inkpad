@@ -1,14 +1,16 @@
 import React from 'react';
 
+import {StyleProp, TextStyle} from 'react-native';
 import Ioicon from 'react-native-vector-icons/Ionicons';
 import {IconName} from '../../types';
 
 type Props = {
   name: IconName;
-  size?: number;
   color?: string;
+  size?: number;
+  style?: StyleProp<TextStyle>;
 };
 
 export const Icon = ({name, size, color}: Props) => {
-  return <Ioicon name={name} size={size} color={color} />;
+  return <Ioicon style={{}} name={name} size={size} color={color} />;
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Button} from './src';
+import {CheckBox} from './src';
 
 export const App = () => {
   return (
@@ -87,14 +87,28 @@ export const App = () => {
         textSize={35}
       />
       <Rating icon="heart" color="red" size={45} total={5} rating={1.5} /> */}
-      <Button
+      {/* <Button
         text="Press!"
         icon="save"
         rounded
         buttonType="outline"
         // buttonColor="red"
         // color="red"
-      />
+      /> */}
+      {/* <RadioButtons
+        // iconPosition="right"
+        // orientation="horizontal"
+        defaultChecked={0}
+        // fullWidth
+        // border
+        // disabled
+        onChange={value => console.log(value)}
+        values={[
+          {text: 'One', value: 1},
+          {text: 'Two', value: 'two'},
+        ]}
+      /> */}
+      <CheckBox />
     </View>
   );
 };

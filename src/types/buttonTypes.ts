@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {DimensionValue, StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {IconName} from './iconType';
 
 export type Action = {
@@ -37,4 +37,42 @@ export type ButtonProps = {
   text?: string;
   textStyle?: StyleProp<TextStyle>;
   onPress?: () => void;
+};
+
+type RadioValue = {
+  text?: string;
+  value: string | number;
+};
+
+export type RadioProps = {
+  values: RadioValue[];
+  border?: boolean;
+  borderColor?: string;
+  defaultChecked?: number;
+  disabled?: boolean;
+  fullWidth?: boolean;
+  gap?: number;
+  gapHorizontal?: number;
+  iconColor?: string;
+  iconPosition?: 'left' | 'bottom' | 'top' | 'right';
+  iconSize?: number;
+  marginVertical?: DimensionValue;
+  orientation?: 'horizontal' | 'vertical';
+  style?: StyleProp<ViewStyle>;
+  textColor?: string;
+  textStyle?: StyleProp<TextStyle>;
+  onChange?: (value: string | number) => void;
+};
+
+export type CheckBoxProps = {
+  checkedIcon?: IconName;
+  checked?: boolean;
+  iconColor?: string;
+  iconSize?: number;
+  style?: StyleProp<ViewStyle>;
+  textColor?: string;
+  textStyle?: StyleProp<TextStyle>;
+  title?: string;
+  unCheckedIcon?: IconName;
+  onChange?: (value: boolean) => void;
 };
