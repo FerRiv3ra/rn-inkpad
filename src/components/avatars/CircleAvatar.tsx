@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ImageSourcePropType, Text, View} from 'react-native';
+import {Image, ImageSourcePropType, Pressable, Text} from 'react-native';
 
 type Props = {
   backgroundColor?: string;
@@ -8,6 +8,7 @@ type Props = {
   image?: ImageSourcePropType;
   size?: number;
   textColor?: string;
+  onPress?: () => void;
 };
 
 export const CircleAvatar = ({
@@ -15,11 +16,13 @@ export const CircleAvatar = ({
   defaultText = 'AA',
   fontSize = 20,
   image,
+  onPress,
   size = 50,
   textColor = '#FFFFFF',
 }: Props) => {
   return (
-    <View
+    <Pressable
+      onPress={onPress}
       style={{
         height: size,
         width: size,
@@ -35,9 +38,9 @@ export const CircleAvatar = ({
         />
       ) : (
         <Text style={{color: textColor, fontSize, fontWeight: '600'}}>
-          {defaultText}
+          {defaultText.slice(0, 2)}
         </Text>
       )}
-    </View>
+    </Pressable>
   );
 };

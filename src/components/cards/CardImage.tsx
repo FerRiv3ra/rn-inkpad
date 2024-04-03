@@ -14,13 +14,21 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
   const {backgroundColor, fontColor, fontSize, fontWeight, shadow, radius} =
     theme || {};
 
-  const [blur, setBlur] = useState(true);
+  const [blur, setBlur] = useState(10);
 
   useEffect(() => {
-    setTimeout(() => {
-      setBlur(false);
-    }, loadTime);
-  }, []);
+    const interval = setInterval(() => {
+      setBlur(prevBlur => {
+        if (prevBlur === 0) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prevBlur - 1;
+      });
+    }, loadTime / 10);
+
+    return () => clearInterval(interval);
+  }, [loadTime]);
 
   return (
     <View
@@ -43,7 +51,7 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
             borderBottomRightRadius: radius ?? 15,
           },
         ]}
-        blurRadius={blur ? 10 : 0}
+        blurRadius={blur}
         source={source}
       />
       {!!text && (

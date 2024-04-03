@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {buttonStyles} from '../../theme';
-
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import {fabStyles} from '../../theme';
 import {IconName} from '../../types';
 
 type Props = {
@@ -31,11 +31,11 @@ export const ActionButton = ({
   return (
     <View
       style={[
-        buttonStyles.btnContainer,
+        fabStyles.btnContainer,
         {flexDirection: align === 'left' ? 'row-reverse' : 'row'},
       ]}>
       {!!text && (
-        <View style={buttonStyles.textContainer}>
+        <View style={fabStyles.textContainer}>
           <Text>{text}</Text>
         </View>
       )}
@@ -43,7 +43,7 @@ export const ActionButton = ({
         onPress={onPress}
         activeOpacity={0.7}
         style={[
-          buttonStyles.fab,
+          fabStyles.fab,
           {
             width: size,
             marginTop: 5,

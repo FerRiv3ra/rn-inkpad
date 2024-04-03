@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Pressable, StyleProp, Text, View, ViewStyle} from 'react-native';
 import {Icon} from '..';
-import {ValidName} from '../../types';
 
 type Props = {
   defaultRating?: number;
-  icon?: ValidName;
   iconColor?: string;
   justRating?: boolean;
   readOnly?: boolean;
@@ -14,12 +12,10 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   textColor?: string;
   textSize?: number;
-  total?: number;
 };
 
-export const RbnbRating = ({
+export const StarRating = ({
   defaultRating = 3,
-  icon = 'star',
   iconColor = '#F0D74B',
   justRating,
   readOnly,
@@ -28,7 +24,6 @@ export const RbnbRating = ({
   style,
   textColor = '#F0D74B',
   textSize = 30,
-  total = 5,
 }: Props) => {
   const [review, setReview] = useState<string>();
   const [rating, setRating] = useState<number>(0);
@@ -36,13 +31,10 @@ export const RbnbRating = ({
   let reviewsArray: string[] = [];
 
   if (reviews) {
-    total = reviews.length;
     reviewsArray = reviews;
   } else {
     reviewsArray = ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
   }
-
-  console.log(total);
 
   useEffect(() => {
     setRating(defaultRating - 1);
@@ -74,13 +66,13 @@ export const RbnbRating = ({
           justifyContent: 'space-between',
           width: '100%',
         }}>
-        {reviewsArray.slice(0, total).map((_, idx) => (
+        {reviewsArray.map((_, idx) => (
           <Pressable
             key={idx}
             disabled={readOnly}
             onPress={() => handleChange(idx)}>
             <Icon
-              name={rating >= idx ? icon : `${icon}-outline`}
+              name={rating >= idx ? 'star' : `star-outline`}
               size={size}
               color={iconColor}
             />

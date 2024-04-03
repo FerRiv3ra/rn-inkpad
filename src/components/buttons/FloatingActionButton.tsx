@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 
-import {FabProps} from '../../types/buttonTypes';
+import {FabProps} from '../../types';
 import {ActionButton} from './ActionButton';
 
 export const FloatingActionButton = ({

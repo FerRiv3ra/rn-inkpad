@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const buttonStyles = StyleSheet.create({
+export const fabStyles = StyleSheet.create({
   fab: {
     borderRadius: 50,
     justifyContent: 'center',
@@ -16,5 +16,18 @@ export const buttonStyles = StyleSheet.create({
     marginRight: 5,
     borderRadius: 10,
     backgroundColor: 'rgba(255,255,255,0.5)',
+  },
+});
+
+export const buttonStyles = StyleSheet.create({
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 5,
+  },
+  text: {
+    fontWeight: '600',
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Rating, RbnbRating} from './src';
+import {Button} from './src';
 
 export const App = () => {
   return (
@@ -25,6 +25,13 @@ export const App = () => {
         theme={{
           themeColor: 'rgb(79, 70, 229)',
         }}
+      /> */}
+      {/* <CardImage
+        source={{
+          uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+        }}
+        text="Landscape"
+        loadTime={1500}
       /> */}
       {/* <ScrollView>
         <CardImage
@@ -67,21 +74,27 @@ export const App = () => {
           },
         ]}
       /> */}
-      {/* <CircleAvatar size={70} defaultText="JH" fontSize={28} />
+      {/* <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
       <View style={{height: 30}} />
-      <CircleAvatar size={70} image={Avatar} /> */}
-      <RbnbRating
-        icon="heart"
-        iconColor="red"
+      <CircleAvatar size={80} image={Avatar} /> */}
+      {/* <StarRating
+        // iconColor="red"
         // justRating
-        // reviews={['Terrible', 'Mehh', 'OK', 'Good', 'Very']}
+        // reviews={['Terrible', 'Mehh', 'OK', 'Good', 'Very', 'Fabolous']}
         defaultRating={3}
         size={40}
-        textColor="red"
+        // textColor="red"
         textSize={35}
-        total={5}
       />
-      <Rating icon="heart" color="red" size={45} total={5} rating={1.5} />
+      <Rating icon="heart" color="red" size={45} total={5} rating={1.5} /> */}
+      <Button
+        text="Press!"
+        icon="save"
+        rounded
+        buttonType="outline"
+        // buttonColor="red"
+        // color="red"
+      />
     </View>
   );
 };
