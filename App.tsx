@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {CheckBox} from './src';
+import {Input} from './src';
 
 export const App = () => {
   return (
@@ -108,7 +108,15 @@ export const App = () => {
           {text: 'Two', value: 'two'},
         ]}
       /> */}
-      <CheckBox />
+      {/* <CheckBox /> */}
+      <Input
+        title="Search"
+        icon="airplane"
+        iconColor="red"
+        borderColor="green"
+        onPress={() => console.log('Press')}
+        onChangeText={value => console.log(value)}
+      />
     </View>
   );
 };

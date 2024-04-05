@@ -6,5 +6,6 @@ export {RadioButtons} from './buttons/RadioButtons';
 export {Card} from './cards/Card';
 export {CardImage} from './cards/CardImage';
 export {Icon} from './icon/Icon';
+export {Input} from './inputs/Input';
 export {Rating} from './ratings/Rating';
 export {StarRating} from './ratings/RbnbRating';
