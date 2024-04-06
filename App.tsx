@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Input} from './src';
+import {Switch} from './src';
 
 export const App = () => {
   return (
@@ -109,14 +109,21 @@ export const App = () => {
         ]}
       /> */}
       {/* <CheckBox /> */}
-      <Input
+      {/* <Input
         title="Search"
         icon="airplane"
         iconColor="red"
         borderColor="green"
         onPress={() => console.log('Press')}
         onChangeText={value => console.log(value)}
-      />
+      /> */}
+      {/* <ProgressBar
+        value={60}
+        progressColor="red"
+        textColor="white"
+        showPercent
+      /> */}
+      <Switch border />
     </View>
   );
 };

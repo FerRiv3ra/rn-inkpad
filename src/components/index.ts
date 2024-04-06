@@ -7,5 +7,7 @@ export {Card} from './cards/Card';
 export {CardImage} from './cards/CardImage';
 export {Icon} from './icon/Icon';
 export {Input} from './inputs/Input';
+export {ProgressBar} from './progressBar/ProgressBar';
 export {Rating} from './ratings/Rating';
 export {StarRating} from './ratings/RbnbRating';
+export {Switch} from './switch/Switch';
