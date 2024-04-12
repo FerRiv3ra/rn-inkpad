@@ -11,3 +11,4 @@ export {ProgressBar} from './progressBar/ProgressBar';
 export {Rating} from './ratings/Rating';
 export {StarRating} from './ratings/RbnbRating';
 export {Switch} from './switch/Switch';
+export {Toast} from './toast/Toast';

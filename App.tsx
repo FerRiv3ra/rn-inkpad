@@ -1,8 +1,10 @@
-import React from 'react';
-import {View} from 'react-native';
-import {Switch} from './src';
+import React, {useState} from 'react';
+import {Pressable, Text, View} from 'react-native';
+import {Toast} from './src';
 
 export const App = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <View
       style={{
@@ -55,7 +57,8 @@ export const App = () => {
       </ScrollView>
 
       <FloatingActionButton
-        onPress={() => console.log('Hola mundo')}
+        // onPress={() => console.log('Hola mundo')}
+        // align="top-right"
         actions={[
           {
             icon: 'alert',
@@ -86,7 +89,7 @@ export const App = () => {
         // textColor="red"
         textSize={35}
       />
-      <Rating icon="heart" color="red" size={45} total={5} rating={1.5} /> */}
+      <Rating icon="heart" color="red" size={45} total={5} rating={3.5} /> */}
       {/* <Button
         text="Press!"
         icon="save"
@@ -108,22 +111,44 @@ export const App = () => {
           {text: 'Two', value: 'two'},
         ]}
       /> */}
-      {/* <CheckBox /> */}
+      {/* <CheckBox title="Checkbox"  /> */}
       {/* <Input
         title="Search"
         icon="airplane"
-        iconColor="red"
+        type="outlined"
+        borderRadius={10}
+        // iconColor="red"
         borderColor="green"
         onPress={() => console.log('Press')}
         onChangeText={value => console.log(value)}
       /> */}
       {/* <ProgressBar
         value={60}
-        progressColor="red"
-        textColor="white"
+        rounded
+        // progressColor="red"
+        // textColor="white"
         showPercent
       /> */}
-      <Switch border />
+      {/* <Switch
+        text="Texto del Switch"
+        fullWidth
+        justifyContent="space-between"
+      /> */}
+      {/* <Text style={{fontSize: 20}}>
+        Information{' '}
+        <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">
+          <Icon name="information-circle" size={20} />
+        </Tooltip>
+      </Text> */}
+      <Toast
+        visible={isVisible}
+        text="Toast information"
+        icon="information-circle-outline"
+        onHide={setIsVisible}
+      />
+      <Pressable onPress={() => setIsVisible(true)}>
+        <Text>Show toast</Text>
+      </Pressable>
     </View>
   );
 };

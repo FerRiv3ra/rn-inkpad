@@ -1,21 +1,18 @@
 import React, {useState} from 'react';
-import {Platform, Switch as RNSwitch, View} from 'react-native';
-
-interface Props {
-  isOn?: boolean;
-  backgrounColor?: string;
-  border?: boolean;
-  borderColor?: string;
-  onChange?: (value: boolean) => void;
-}
+import {Platform, Switch as RNSwitch, Text, View} from 'react-native';
+import {SwitchProps} from '../../types';
 
 export const Switch = ({
-  isOn,
-  onChange,
   backgrounColor = '#1DFF56',
   border,
   borderColor,
-}: Props) => {
+  isOn,
+  fullWidth,
+  justifyContent,
+  onChange,
+  textStyle,
+  text,
+}: SwitchProps) => {
   const [isEnabled, setIsEnabled] = useState(isOn);
 
   const toggleSwitch = () => {
@@ -28,16 +25,27 @@ export const Switch = ({
   return (
     <View
       style={{
-        borderWidth: border ? 2 : 0,
-        borderColor,
-        borderRadius: 16,
+        width: fullWidth ? '100%' : 'auto',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 5,
+        justifyContent,
       }}>
-      <RNSwitch
-        trackColor={{false: '#D9D9DB', true: backgrounColor}}
-        thumbColor={Platform.OS === 'android' ? backgrounColor : ''}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
+      {text && <Text style={textStyle}>{text}</Text>}
+
+      <View
+        style={{
+          borderWidth: border ? 2 : 0,
+          borderColor,
+          borderRadius: 16,
+        }}>
+        <RNSwitch
+          trackColor={{false: '#D9D9DB', true: backgrounColor}}
+          thumbColor={Platform.OS === 'android' ? backgrounColor : ''}
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+      </View>
     </View>
   );
 };
