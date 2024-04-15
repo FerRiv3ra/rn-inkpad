@@ -2,6 +2,7 @@ export {CircleAvatar} from './avatars/CircleAvatar';
 export {Button} from './buttons/Button';
 export {CheckBox} from './buttons/CheckBox';
 export {FloatingActionButton} from './buttons/FloatingActionButton';
+export {LongPressButton} from './buttons/LongPressButton';
 export {RadioButtons} from './buttons/RadioButtons';
 export {Card} from './cards/Card';
 export {CardImage} from './cards/CardImage';

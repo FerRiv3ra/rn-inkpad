@@ -31,3 +31,19 @@ export const buttonStyles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export const longPressButtonStyles = StyleSheet.create({
+  button: {
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContent: {
+    alignItems: 'center',
+    gap: 5,
+  },
+  progress: {
+    position: 'absolute',
+    height: '100%',
+  },
+});

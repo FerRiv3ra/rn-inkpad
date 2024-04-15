@@ -76,3 +76,19 @@ export type CheckBoxProps = {
   unCheckedIcon?: IconName;
   onChange?: (value: boolean) => void;
 };
+
+export type LongPressButtonProps = {
+  behavior?: 'left-to-right' | 'right-to-left' | 'center-to-ends';
+  borderRadius?: number;
+  fontSize?: number;
+  fullWidth?: boolean;
+  height?: DimensionValue;
+  icon?: IconName;
+  iconPosition?: 'left' | 'right';
+  longPressTime?: number;
+  progressColor?: string;
+  text?: string;
+  textColor?: string;
+  width?: DimensionValue;
+  onFinish?: () => void;
+};

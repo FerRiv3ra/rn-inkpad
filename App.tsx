@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Pressable, Text, View} from 'react-native';
-import {Toast} from './src';
+import {View} from 'react-native';
+import {LongPressButton} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -94,10 +94,16 @@ export const App = () => {
         text="Press!"
         icon="save"
         rounded
-        buttonType="outline"
+        onPress={() => console.log('Press')}
+        // buttonType="outline"
         // buttonColor="red"
         // color="red"
       /> */}
+      <LongPressButton
+        text="Press and Hold"
+        icon="add-circle-outline"
+        onFinish={() => console.log('Press')}
+      />
       {/* <RadioButtons
         // iconPosition="right"
         // orientation="horizontal"
@@ -140,15 +146,16 @@ export const App = () => {
           <Icon name="information-circle" size={20} />
         </Tooltip>
       </Text> */}
-      <Toast
+      {/* <Toast
         visible={isVisible}
         text="Toast information"
+        // duration={5000}
         icon="information-circle-outline"
         onHide={setIsVisible}
       />
       <Pressable onPress={() => setIsVisible(true)}>
         <Text>Show toast</Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 };

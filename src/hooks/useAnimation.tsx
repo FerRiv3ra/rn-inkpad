@@ -5,6 +5,17 @@ export const useAnimation = () => {
   const opacity = useRef(new Animated.Value(0)).current;
   const position = useRef(new Animated.Value(0)).current;
   const pan = useRef(new Animated.ValueXY()).current;
+  const scaleValue = useRef(new Animated.Value(1)).current;
+
+  const scale = (from = 1, toValue = 0.9) => {
+    scaleValue.setValue(from);
+
+    Animated.timing(scaleValue, {
+      toValue,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -57,6 +68,8 @@ export const useAnimation = () => {
     position,
     fadeIn,
     fadeOut,
+    scale,
+    scaleValue,
     translatePosition,
     pan,
     panResponder,

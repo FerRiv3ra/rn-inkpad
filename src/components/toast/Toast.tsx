@@ -1,21 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {Animated, StyleSheet, Text} from 'react-native';
-import {IconName} from '../../types';
-import {Icon} from '../icon/Icon';
 
-type Props = {
-  backgroundColor?: string;
-  bottom?: number;
-  duration?: number;
-  fontSize?: number;
-  icon?: IconName;
-  position?: 'top' | 'bottom';
-  text?: string;
-  textColor?: string;
-  top?: number;
-  visible?: boolean;
-  onHide?: (visible: boolean) => void;
-};
+import {useToast} from '../../hooks';
+import {ToastProps} from '../../types';
+import {Icon} from '../icon/Icon';
 
 export const Toast = ({
   backgroundColor = 'rgba(0,0,0,0.7)',
@@ -29,36 +17,8 @@ export const Toast = ({
   text,
   textColor = '#FFF',
   visible,
-}: Props) => {
-  const [show, setShow] = useState(visible);
-  const translateY = useRef(
-    new Animated.Value(position === 'bottom' ? 100 : -100),
-  ).current;
-
-  useEffect(() => {
-    if (visible) {
-      setShow(true);
-      Animated.timing(translateY, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: true,
-      }).start();
-
-      const timer = setTimeout(() => {
-        if (!!onHide) {
-          onHide(false);
-        }
-      }, duration);
-
-      return () => clearTimeout(timer);
-    } else {
-      Animated.timing(translateY, {
-        toValue: position === 'bottom' ? 100 : -100,
-        duration: 500,
-        useNativeDriver: true,
-      }).start(() => setShow(false));
-    }
-  }, [visible, translateY, duration, onHide, position]);
+}: ToastProps) => {
+  const {show, translateY} = useToast(visible, duration, position, onHide);
 
   if (!show) return null;
 
