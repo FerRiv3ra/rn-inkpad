@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {LongPressButton} from './src';
+import {SlideAction} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -99,11 +99,11 @@ export const App = () => {
         // buttonColor="red"
         // color="red"
       /> */}
-      <LongPressButton
+      {/* <LongPressButton
         text="Press and Hold"
         icon="add-circle-outline"
         onFinish={() => console.log('Press')}
-      />
+      /> */}
       {/* <RadioButtons
         // iconPosition="right"
         // orientation="horizontal"
@@ -156,6 +156,12 @@ export const App = () => {
       <Pressable onPress={() => setIsVisible(true)}>
         <Text>Show toast</Text>
       </Pressable> */}
+      <SlideAction
+        icon="lock-open"
+        iconOnCompleted="lock-closed"
+        text="Slide to confirm"
+        textOnCompleted="Confirmed"
+      />
     </View>
   );
 };
