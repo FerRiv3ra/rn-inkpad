@@ -6,4 +6,5 @@ export {useInputStyles} from './useInputStyles';
 export {useLongPressButton} from './useLongPressButton';
 export {useProgressBar} from './useProgressBar';
 export {useSlideAction} from './useSlideAction';
+export {useSlider} from './useSlider';
 export {useToast} from './useToast';

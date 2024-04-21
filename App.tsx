@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {SlideAction} from './src';
+import {Text, View} from 'react-native';
+import {Slider} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [value, setValue] = useState(0);
 
   return (
     <View
@@ -156,12 +157,17 @@ export const App = () => {
       <Pressable onPress={() => setIsVisible(true)}>
         <Text>Show toast</Text>
       </Pressable> */}
-      <SlideAction
+      {/* <SlideAction
         icon="lock-open"
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
-      />
+      /> */}
+      <Slider value={value} onChange={setValue} />
+
+      <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
+        {value}
+      </Text>
     </View>
   );
 };

@@ -49,7 +49,6 @@ export const SlideAction = ({
           {completed ? textOnCompleted : text}
         </Text>
       )}
-      {/* <View style={[styles.track, {width: thumbLeft + 20}]} /> */}
       <View
         style={[
           slideStyles.thumb,
