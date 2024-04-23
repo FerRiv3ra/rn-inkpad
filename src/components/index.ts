@@ -1,3 +1,4 @@
+export {ActionSheet} from './actions/ActionSheet';
 export {CircleAvatar} from './avatars/CircleAvatar';
 export {Button} from './buttons/Button';
 export {CheckBox} from './buttons/CheckBox';

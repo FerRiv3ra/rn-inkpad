@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-import {Slider} from './src';
+import {View} from 'react-native';
+import {ActionSheet, Button} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [value, setValue] = useState(0);
+  // const [value, setValue] = useState(0);
 
   return (
     <View
@@ -163,11 +163,25 @@ export const App = () => {
         text="Slide to confirm"
         textOnCompleted="Confirmed"
       /> */}
-      <Slider value={value} onChange={setValue} />
+      {/* <Slider value={value} onChange={setValue} />
 
       <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
         {value}
-      </Text>
+      </Text> */}
+      <ActionSheet
+        dark
+        visible={isVisible}
+        setVisible={setIsVisible}
+        title="Select an action"
+        subTitle="Select any action below to proceed"
+        showCancelButton
+      />
+
+      <Button
+        text="Show"
+        style={{marginTop: 10}}
+        onPress={() => setIsVisible(!isVisible)}
+      />
     </View>
   );
 };
