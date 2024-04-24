@@ -1,27 +1,40 @@
 import React, {useEffect, useState} from 'react';
-import {Pressable, StyleProp, StyleSheet, Text, ViewStyle} from 'react-native';
-import {IconName} from '../../types';
+import {
+  Platform,
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import {ActionSheet} from '../../types/actionSheetTypes';
 import {Icon} from '../icon/Icon';
 
 type Props = {
+  action: ActionSheet;
   backgroundColor: string;
-  icon?: IconName;
   marginTop?: number;
-  radius?: 'all' | 'top' | 'bottom';
-  text: string;
+  radius?: 'all' | 'top' | 'bottom' | 'none';
+  showIconOnIos?: boolean;
+  style?: StyleProp<ViewStyle>;
   textColor?: string;
-  onPress?: () => void;
+  textStyle?: StyleProp<TextStyle>;
 };
 
 export const ActionButton = ({
+  action,
   backgroundColor,
-  icon,
   marginTop,
-  radius = 'all',
-  text,
-  onPress,
+  radius = 'none',
+  showIconOnIos,
+  style,
+  textColor,
 }: Props) => {
   const [edges, setEdges] = useState<StyleProp<ViewStyle>>({});
+  const isIos = Platform.OS === 'ios';
+
+  const {text, icon, iconColor, textStyle, onPress} = action;
 
   useEffect(() => {
     setEdges(border());
@@ -32,25 +45,44 @@ export const ActionButton = ({
       return {
         borderRadius: 10,
       };
-    } else if (radius === 'top') {
+    }
+
+    if (radius === 'top') {
       return {
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10,
       };
-    } else {
+    }
+
+    if (radius === 'bottom') {
       return {
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
       };
     }
+
+    return {};
   };
 
   return (
     <Pressable
       onPress={onPress}
-      style={[{...styles.buttonContainer, backgroundColor, marginTop}, edges]}>
-      {icon && <Icon name={icon} />}
-      <Text style={{color: '#FFFFFF', fontWeight: '500'}}>{text}</Text>
+      style={[
+        {...styles.buttonContainer, backgroundColor, marginTop},
+        edges,
+        style,
+      ]}>
+      {(!isIos || showIconOnIos) && icon && (
+        <Icon
+          name={icon}
+          size={18}
+          color={iconColor ?? textColor}
+          style={{position: 'absolute', alignSelf: 'center', left: 15}}
+        />
+      )}
+      <Text style={[{color: textColor, fontWeight: '500'}, textStyle]}>
+        {text}
+      </Text>
     </Pressable>
   );
 };

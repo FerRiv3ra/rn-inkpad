@@ -1,55 +1,110 @@
 import React from 'react';
-import {Modal, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Modal,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {useActionSheet} from '../../hooks';
+import {ActionSheetProps} from '../../types/actionSheetTypes';
+import {Icon} from '../icon/Icon';
 import {ActionButton} from './ActionButton';
 
-type Props = {
-  cancelText?: string;
-  dark?: boolean;
-  showCancelButton?: boolean;
-  subTitle?: string;
-  title?: string;
-  visible: boolean;
-  setVisible: (visible: boolean) => void;
-};
-
 export const ActionSheet = ({
+  actions,
   cancelText,
-  dark,
+  setVisible,
   showCancelButton,
+  showIconOnIos,
+  showCloseButton,
   subTitle,
+  theme: userTheme,
   title,
   visible,
-  setVisible,
-}: Props) => (
-  <Modal visible={visible} transparent>
-    <View style={styles.container}>
-      <View style={styles.controlsContainer}>
-        {title && (
-          <Text
-            style={{
-              ...styles.title,
-              color: '#FFFFFF',
-              marginBottom: !!subTitle ? 0 : 10,
-            }}>
-            {title}
-          </Text>
-        )}
-        {subTitle && (
-          <Text style={{...styles.subTitle, color: '#FFFFFF'}}>{subTitle}</Text>
-        )}
-        <SafeAreaView>
-          {showCancelButton && (
-            <ActionButton
-              text={cancelText ?? 'Cancel'}
-              onPress={() => setVisible(false)}
-              backgroundColor={dark ? '#242625' : '#FFFFFF'}
-            />
+}: ActionSheetProps) => {
+  const {
+    backgroundColor,
+    buttonColor,
+    closeBackgroundColor,
+    closeIconColor,
+    getBorder,
+    separatorColor,
+    textColor,
+  } = useActionSheet(actions?.length ?? 0, userTheme);
+
+  return (
+    <Modal visible={visible} transparent>
+      <View style={styles.container}>
+        <View style={{...styles.controlsContainer, backgroundColor}}>
+          {showCloseButton && (
+            <Pressable
+              style={{
+                ...styles.closeButton,
+                backgroundColor: closeBackgroundColor,
+              }}
+              onPress={() => setVisible(false)}>
+              <Icon name="close" color={closeIconColor} size={18} />
+            </Pressable>
           )}
-        </SafeAreaView>
+          {title && (
+            <Text
+              style={{
+                ...styles.title,
+                color: textColor!,
+                marginBottom: !!subTitle ? 0 : 10,
+              }}>
+              {title}
+            </Text>
+          )}
+          {subTitle && (
+            <Text style={{...styles.subTitle, color: textColor!}}>
+              {subTitle}
+            </Text>
+          )}
+          <SafeAreaView>
+            {actions &&
+              actions.map((action, idx) => (
+                <ActionButton
+                  action={action}
+                  backgroundColor={buttonColor!}
+                  radius={getBorder(idx)}
+                  showIconOnIos={showIconOnIos}
+                  textColor={textColor}
+                  textStyle={action.textStyle}
+                  style={
+                    idx !== 0
+                      ? {
+                          borderTopWidth: 1,
+                          borderTopColor: separatorColor,
+                        }
+                      : undefined
+                  }
+                  key={idx}
+                />
+              ))}
+            {showCancelButton && (
+              <ActionButton
+                action={{
+                  icon: 'close',
+                  iconColor: textColor,
+                  text: cancelText ?? 'Cancel',
+                  onPress: () => setVisible(false),
+                }}
+                backgroundColor={buttonColor!}
+                marginTop={10}
+                radius="all"
+                showIconOnIos={showIconOnIos}
+                textColor={textColor}
+              />
+            )}
+          </SafeAreaView>
+        </View>
       </View>
-    </View>
-  </Modal>
-);
+    </Modal>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -57,8 +112,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.2)',
     justifyContent: 'flex-end',
   },
+  closeButton: {
+    borderRadius: 50,
+    padding: 5,
+    position: 'absolute',
+    right: 15,
+    top: 15,
+    zIndex: 5,
+  },
   controlsContainer: {
-    backgroundColor: '#171717',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
     paddingHorizontal: '3%',

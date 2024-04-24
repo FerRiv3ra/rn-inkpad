@@ -11,6 +11,6 @@ type Props = {
   style?: StyleProp<TextStyle>;
 };
 
-export const Icon = ({name, size, color}: Props) => {
-  return <Ioicon style={{}} name={name} size={size} color={color} />;
+export const Icon = ({name, size, color, style}: Props) => {
+  return <Ioicon style={style} name={name} size={size} color={color} />;
 };

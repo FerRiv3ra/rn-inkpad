@@ -169,12 +169,31 @@ export const App = () => {
         {value}
       </Text> */}
       <ActionSheet
-        dark
-        visible={isVisible}
+        actions={[
+          {
+            text: 'Change profile picture',
+            icon: 'ear',
+            onPress: () => console.log('Change profile picture'),
+          },
+          {
+            text: 'View profile picture',
+            icon: 'eye',
+            onPress: () => console.log('View profile picture'),
+          },
+          {
+            text: 'View status',
+            icon: 'bandage',
+            onPress: () => console.log('View status'),
+          },
+        ]}
+        theme={{appearance: 'light'}}
+        showIconOnIos
         setVisible={setIsVisible}
-        title="Select an action"
-        subTitle="Select any action below to proceed"
         showCancelButton
+        showCloseButton
+        subTitle="Select any action below to proceed"
+        title="Select an action"
+        visible={isVisible}
       />
 
       <Button
