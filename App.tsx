@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {ActionSheet, Button} from './src';
+import {Alert, AlertContainer, Button} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -168,7 +168,7 @@ export const App = () => {
       <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
         {value}
       </Text> */}
-      <ActionSheet
+      {/* <ActionSheet
         actions={[
           {
             text: 'Change profile picture',
@@ -194,12 +194,19 @@ export const App = () => {
         subTitle="Select any action below to proceed"
         title="Select an action"
         visible={isVisible}
-      />
-
+      /> */}
+      <AlertContainer theme="android" />
       <Button
         text="Show"
         style={{marginTop: 10}}
-        onPress={() => setIsVisible(!isVisible)}
+        onPress={() =>
+          Alert.alert({
+            title: 'Error',
+            description: 'Error message!',
+            icon: 'airplane',
+            // showCancelButton: true,
+          })
+        }
       />
     </View>
   );
