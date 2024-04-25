@@ -56,3 +56,32 @@ export const cardImageStyles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+export const ratingCardStyles = StyleSheet.create({
+  container: {
+    padding: 10,
+    borderRadius: 10,
+    position: 'absolute',
+    maxWidth: '90%',
+    flexDirection: 'row',
+    zIndex: 50,
+  },
+  information: {
+    paddingHorizontal: 15,
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  decription: {
+    fontSize: 12,
+    fontWeight: '300',
+  },
+  rating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginTop: 2,
+  },
+});

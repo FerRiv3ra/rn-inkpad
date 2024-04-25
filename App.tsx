@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {Alert, AlertContainer, Button} from './src';
+import {ScrollView, View} from 'react-native';
+import {CardImage, RatingCard} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,7 +36,19 @@ export const App = () => {
         text="Landscape"
         loadTime={1500}
       /> */}
-      {/* <ScrollView>
+      <ScrollView>
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+        />
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+        />
         <CardImage
           source={{
             uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
@@ -57,7 +69,7 @@ export const App = () => {
         />
       </ScrollView>
 
-      <FloatingActionButton
+      {/* <FloatingActionButton
         // onPress={() => console.log('Hola mundo')}
         // align="top-right"
         actions={[
@@ -195,7 +207,7 @@ export const App = () => {
         title="Select an action"
         visible={isVisible}
       /> */}
-      <AlertContainer theme="android" />
+      {/* <AlertContainer theme="android" />
       <Button
         text="Show"
         style={{marginTop: 10}}
@@ -207,6 +219,17 @@ export const App = () => {
             // showCancelButton: true,
           })
         }
+      /> */}
+      <RatingCard
+        title="Maldivas hotel"
+        backgroundColor="#000000"
+        textColor="#FFF"
+        description="Lorem ipsum dolor"
+        image={{
+          uri: 'https://hips.hearstapps.com/hmg-prod/images/arrival-jetty-dusit-thani-maldives-royalty-free-image-1655669825.jpg?crop=0.668xw:1.00xh;0.0850xw,0&resize=980:*',
+        }}
+        rating={5}
+        onPress={() => console.log('Press')}
       />
     </View>
   );

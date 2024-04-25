@@ -9,6 +9,7 @@ export * from './buttons/LongPressButton';
 export * from './buttons/RadioButtons';
 export * from './cards/Card';
 export * from './cards/CardImage';
+export * from './cards/RatingCard';
 export * from './icon/Icon';
 export * from './inputs/Input';
 export * from './progressBar/ProgressBar';

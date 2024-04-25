@@ -1,3 +1,4 @@
+import {DimensionValue, ImageSourcePropType} from 'react-native';
 import {ValidColor} from './commonTypes';
 
 export type cardTheme = {
@@ -27,4 +28,16 @@ export type imageCardTheme = {
     | '900';
   shadow?: boolean;
   radius?: number;
+};
+
+export type RatingCardProps = {
+  backgroundColor?: ValidColor;
+  bottom?: number;
+  description?: string;
+  image?: ImageSourcePropType;
+  rating?: number;
+  textColor?: string;
+  title: string;
+  width?: DimensionValue;
+  onPress?: () => void;
 };

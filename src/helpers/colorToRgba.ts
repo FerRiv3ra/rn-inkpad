@@ -1,4 +1,4 @@
-export const colorToRgba = (color: string): string | undefined => {
+export const colorToRgba = (color: string, alpha = 0.2): string | undefined => {
   const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
   const rgbRegex = /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/;
 
@@ -25,8 +25,6 @@ export const colorToRgba = (color: string): string | undefined => {
 
   if (r !== undefined && g !== undefined && b !== undefined) {
     if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
-      const alpha = 0.2;
-
       return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     } else {
       return undefined;

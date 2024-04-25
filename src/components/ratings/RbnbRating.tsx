@@ -16,13 +16,13 @@ type Props = {
 
 export const StarRating = ({
   defaultRating = 3,
-  iconColor = '#F0D74B',
+  iconColor = '#FFD700',
   justRating,
   readOnly,
   reviews,
   size = 35,
   style,
-  textColor = '#F0D74B',
+  textColor = '#FFD700',
   textSize = 30,
 }: Props) => {
   const [review, setReview] = useState<string>();

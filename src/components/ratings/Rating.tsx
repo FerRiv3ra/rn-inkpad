@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const Rating = ({
-  color = '#F0D74B',
+  color = '#FFD700',
   icon = 'star',
   rating = 3,
   size = 35,
