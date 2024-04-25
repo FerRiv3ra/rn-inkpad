@@ -1,14 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Platform,
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
-import {ActionSheet} from '../../types/actionSheetTypes';
+import {Pressable, StyleProp, StyleSheet, Text, ViewStyle} from 'react-native';
+import {ActionSheet, ValidTheme} from '../../types/actionSheetTypes';
 import {Icon} from '../icon/Icon';
 
 type Props = {
@@ -19,7 +11,7 @@ type Props = {
   showIconOnIos?: boolean;
   style?: StyleProp<ViewStyle>;
   textColor?: string;
-  textStyle?: StyleProp<TextStyle>;
+  theme: ValidTheme;
 };
 
 export const ActionButton = ({
@@ -30,9 +22,10 @@ export const ActionButton = ({
   showIconOnIos,
   style,
   textColor,
+  theme,
 }: Props) => {
   const [edges, setEdges] = useState<StyleProp<ViewStyle>>({});
-  const isIos = Platform.OS === 'ios';
+  const isIos = theme === 'cupertino';
 
   const {text, icon, iconColor, textStyle, onPress} = action;
 
@@ -41,6 +34,10 @@ export const ActionButton = ({
   }, [radius]);
 
   const border = (): StyleProp<ViewStyle> => {
+    if (!isIos) {
+      return {};
+    }
+
     if (radius === 'all') {
       return {
         borderRadius: 10,
@@ -68,7 +65,12 @@ export const ActionButton = ({
     <Pressable
       onPress={onPress}
       style={[
-        {...styles.buttonContainer, backgroundColor, marginTop},
+        {
+          ...styles.buttonContainer,
+          justifyContent: theme === 'cupertino' ? 'center' : 'flex-start',
+          backgroundColor,
+          marginTop,
+        },
         edges,
         style,
       ]}>
@@ -76,8 +78,14 @@ export const ActionButton = ({
         <Icon
           name={icon}
           size={18}
-          color={iconColor ?? textColor}
-          style={{position: 'absolute', alignSelf: 'center', left: 15}}
+          color={
+            iconColor
+              ? iconColor
+              : theme === 'cupertino'
+              ? textColor
+              : '#757575'
+          }
+          style={isIos && styles.cupertinoIcon}
         />
       )}
       <Text style={[{color: textColor, fontWeight: '500'}, textStyle]}>
@@ -91,7 +99,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
     padding: 10,
     flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 5,
+    gap: 25,
+  },
+  cupertinoIcon: {
+    position: 'absolute',
+    alignSelf: 'center',
+    left: 15,
   },
 });

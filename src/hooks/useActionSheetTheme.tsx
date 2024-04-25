@@ -24,45 +24,47 @@ export const useActionSheetTheme = (actionSheetTheme?: ActionSheetTheme) => {
   const dark = appearance === 'dark';
   let platform = Platform.OS;
 
-  if (!!theme) {
-    if (theme === 'cupertino') {
-      platform = 'ios';
+  if (!theme) {
+    if (platform === 'ios') {
+      theme = 'cupertino';
     } else {
-      platform = 'android';
+      theme = 'material';
     }
   }
 
-  let styles: ActionSheetTheme;
-
-  if (platform === 'ios') {
-    styles = {
-      backgroundColor: !!backgroundColor
-        ? backgroundColor
-        : dark
-        ? '#171717'
-        : '#F4F4F4',
-      buttonColor: !!buttonColor ? buttonColor : dark ? '#242625' : '#FFFFFF',
-      closeBackgroundColor: !!closeBackgroundColor
-        ? closeBackgroundColor
-        : dark
-        ? '#1C1E1D'
-        : '#ECECEC',
-      closeIconColor: !!closeIconColor
-        ? closeIconColor
-        : dark
-        ? '#959394'
-        : '#767779',
-      separatorColor: !!separatorColor
-        ? separatorColor
-        : dark
-        ? '#343434'
-        : '#E4E4E4',
-      textColor: !!textColor ? textColor : dark ? '#FFFFFF' : '#0A0A0A',
-    };
-  } else {
-    platform = 'android';
-    styles = {};
-  }
+  const styles: ActionSheetTheme = {
+    backgroundColor: !!backgroundColor
+      ? backgroundColor
+      : dark
+      ? '#171717'
+      : theme === 'cupertino'
+      ? '#F4F4F4'
+      : '#FFFFFF',
+    buttonColor: !!buttonColor
+      ? buttonColor
+      : dark
+      ? theme === 'cupertino'
+        ? '#242625'
+        : '#171717'
+      : '#FFFFFF',
+    closeBackgroundColor: !!closeBackgroundColor
+      ? closeBackgroundColor
+      : dark
+      ? '#1C1E1D'
+      : '#ECECEC',
+    closeIconColor: !!closeIconColor
+      ? closeIconColor
+      : dark
+      ? '#959394'
+      : '#767779',
+    separatorColor: !!separatorColor
+      ? separatorColor
+      : dark
+      ? '#343434'
+      : '#E4E4E4',
+    textColor: !!textColor ? textColor : dark ? '#FFFFFF' : '#0A0A0A',
+    theme,
+  };
 
   return {
     styles,

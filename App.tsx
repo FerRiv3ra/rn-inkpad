@@ -186,7 +186,7 @@ export const App = () => {
             onPress: () => console.log('View status'),
           },
         ]}
-        theme={{appearance: 'light'}}
+        theme={{appearance: 'dark', theme: 'material'}}
         showIconOnIos
         setVisible={setIsVisible}
         showCancelButton

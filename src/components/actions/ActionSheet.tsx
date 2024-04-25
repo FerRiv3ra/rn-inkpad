@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  Modal,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Modal, Pressable, SafeAreaView, Text, View} from 'react-native';
 import {useActionSheet} from '../../hooks';
+import {actionSheetStyles} from '../../theme/actionSheetStyles';
 import {ActionSheetProps} from '../../types/actionSheetTypes';
 import {Icon} from '../icon/Icon';
 import {ActionButton} from './ActionButton';
@@ -32,16 +26,23 @@ export const ActionSheet = ({
     getBorder,
     separatorColor,
     textColor,
+    theme,
   } = useActionSheet(actions?.length ?? 0, userTheme);
 
   return (
     <Modal visible={visible} transparent>
-      <View style={styles.container}>
-        <View style={{...styles.controlsContainer, backgroundColor}}>
+      <View style={actionSheetStyles.container}>
+        <View
+          style={[
+            theme === 'cupertino'
+              ? actionSheetStyles.controlsCupertino
+              : actionSheetStyles.controlsMaterial,
+            {backgroundColor},
+          ]}>
           {showCloseButton && (
             <Pressable
               style={{
-                ...styles.closeButton,
+                ...actionSheetStyles.closeButton,
                 backgroundColor: closeBackgroundColor,
               }}
               onPress={() => setVisible(false)}>
@@ -50,16 +51,27 @@ export const ActionSheet = ({
           )}
           {title && (
             <Text
-              style={{
-                ...styles.title,
-                color: textColor!,
-                marginBottom: !!subTitle ? 0 : 10,
-              }}>
+              style={[
+                {
+                  ...actionSheetStyles.title,
+                  color: textColor!,
+                  marginBottom: !!subTitle ? 0 : 10,
+                },
+                theme === 'cupertino'
+                  ? actionSheetStyles.textCenter
+                  : actionSheetStyles.textLeft,
+              ]}>
               {title}
             </Text>
           )}
           {subTitle && (
-            <Text style={{...styles.subTitle, color: textColor!}}>
+            <Text
+              style={[
+                {...actionSheetStyles.subTitle, color: textColor!},
+                theme === 'cupertino'
+                  ? actionSheetStyles.textCenter
+                  : actionSheetStyles.textLeft,
+              ]}>
               {subTitle}
             </Text>
           )}
@@ -72,11 +84,11 @@ export const ActionSheet = ({
                   radius={getBorder(idx)}
                   showIconOnIos={showIconOnIos}
                   textColor={textColor}
-                  textStyle={action.textStyle}
+                  theme={theme!}
                   style={
                     idx !== 0
                       ? {
-                          borderTopWidth: 1,
+                          borderTopWidth: theme === 'cupertino' ? 1 : 0,
                           borderTopColor: separatorColor,
                         }
                       : undefined
@@ -88,15 +100,15 @@ export const ActionSheet = ({
               <ActionButton
                 action={{
                   icon: 'close',
-                  iconColor: textColor,
                   text: cancelText ?? 'Cancel',
                   onPress: () => setVisible(false),
                 }}
                 backgroundColor={buttonColor!}
-                marginTop={10}
+                marginTop={theme === 'cupertino' ? 10 : 0}
                 radius="all"
                 showIconOnIos={showIconOnIos}
                 textColor={textColor}
+                theme={theme!}
               />
             )}
           </SafeAreaView>
@@ -105,35 +117,3 @@ export const ActionSheet = ({
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-    justifyContent: 'flex-end',
-  },
-  closeButton: {
-    borderRadius: 50,
-    padding: 5,
-    position: 'absolute',
-    right: 15,
-    top: 15,
-    zIndex: 5,
-  },
-  controlsContainer: {
-    borderTopRightRadius: 15,
-    borderTopLeftRadius: 15,
-    paddingHorizontal: '3%',
-    paddingTop: 20,
-  },
-  title: {
-    fontWeight: '600',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  subTitle: {
-    textAlign: 'center',
-    marginBottom: 10,
-    fontSize: 13,
-  },
-});
