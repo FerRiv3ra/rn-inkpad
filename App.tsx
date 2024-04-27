@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, View} from 'react-native';
-import {CardImage, RatingCard} from './src';
+import {CardImage, FloatingActionCard} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -220,10 +220,9 @@ export const App = () => {
           })
         }
       /> */}
-      <RatingCard
+      <FloatingActionCard
         title="Maldivas hotel"
-        backgroundColor="#000000"
-        textColor="#FFF"
+        icon="star"
         description="Lorem ipsum dolor"
         image={{
           uri: 'https://hips.hearstapps.com/hmg-prod/images/arrival-jetty-dusit-thani-maldives-royalty-free-image-1655669825.jpg?crop=0.668xw:1.00xh;0.0850xw,0&resize=980:*',

@@ -9,7 +9,7 @@ export * from './buttons/LongPressButton';
 export * from './buttons/RadioButtons';
 export * from './cards/Card';
 export * from './cards/CardImage';
-export * from './cards/RatingCard';
+export * from './cards/FloatingActionCard';
 export * from './icon/Icon';
 export * from './inputs/Input';
 export * from './progressBar/ProgressBar';
@@ -19,3 +19,4 @@ export * from './slides/SlideAction';
 export * from './slides/Slider';
 export * from './switch/Switch';
 export * from './toast/Toast';
+

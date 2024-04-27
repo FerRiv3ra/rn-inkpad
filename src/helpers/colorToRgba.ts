@@ -5,6 +5,10 @@ export const colorToRgba = (color: string, alpha = 0.2): string | undefined => {
   let result;
   let r, g, b;
 
+  if (color.startsWith('rgba')) {
+    return color;
+  }
+
   if (hexRegex.test(color)) {
     result = hexRegex.exec(color);
     if (result) {

@@ -1,5 +1,6 @@
 import {DimensionValue, ImageSourcePropType} from 'react-native';
 import {ValidColor} from './commonTypes';
+import {IconName} from './iconType';
 
 export type cardTheme = {
   backgroundColor?: string;
@@ -34,6 +35,9 @@ export type RatingCardProps = {
   backgroundColor?: ValidColor;
   bottom?: number;
   description?: string;
+  decimals?: number;
+  icon?: IconName;
+  iconColor?: string;
   image?: ImageSourcePropType;
   rating?: number;
   textColor?: string;
