@@ -1,3 +1,5 @@
+export * from './SegmentedControl/SegmentedControl';
+export * from './TabControl/TabControl';
 export * from './actions/ActionSheet';
 export * from './alert/AlertContainer';
 export * from './alert/helpers/alert';
@@ -12,6 +14,8 @@ export * from './cards/CardImage';
 export * from './cards/FloatingActionCard';
 export * from './icon/Icon';
 export * from './inputs/Input';
+export * from './navigations/BottomTabNavigation';
+export * from './navigations/DrawerNavigation';
 export * from './progressBar/ProgressBar';
 export * from './ratings/Rating';
 export * from './ratings/RbnbRating';
@@ -19,4 +23,3 @@ export * from './slides/SlideAction';
 export * from './slides/Slider';
 export * from './switch/Switch';
 export * from './toast/Toast';
-

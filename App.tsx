@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
-import {ScrollView, View} from 'react-native';
-import {CardImage, FloatingActionCard} from './src';
+import {ScrollView, Text, View} from 'react-native';
+import {BottomTabNavigation, CardImage} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
   // const [value, setValue] = useState(0);
+
+  const Home = () => (
+    <View>
+      <Text>Home</Text>
+    </View>
+  );
 
   return (
     <View
@@ -13,9 +19,9 @@ export const App = () => {
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#EEEEEE',
-        paddingHorizontal: 15,
       }}>
-      {/* <Card
+      <View style={{paddingHorizontal: 15}}>
+        {/* <Card
         buttons={[
           {text: 'Cancel', onPress: () => {}},
           {text: 'Ok', onPress: () => {}},
@@ -29,47 +35,47 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-      {/* <CardImage
+        {/* <CardImage
         source={{
           uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
         }}
         text="Landscape"
         loadTime={1500}
       /> */}
-      <ScrollView>
-        <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-        />
-        <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-        />
-        <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-        />
-        <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-        />
-        <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-        />
-      </ScrollView>
+        <ScrollView>
+          <CardImage
+            source={{
+              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+            }}
+            text="Landscape"
+          />
+          <CardImage
+            source={{
+              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+            }}
+            text="Landscape"
+          />
+          <CardImage
+            source={{
+              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+            }}
+            text="Landscape"
+          />
+          <CardImage
+            source={{
+              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+            }}
+            text="Landscape"
+          />
+          <CardImage
+            source={{
+              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+            }}
+            text="Landscape"
+          />
+        </ScrollView>
 
-      {/* <FloatingActionButton
+        {/* <FloatingActionButton
         // onPress={() => console.log('Hola mundo')}
         // align="top-right"
         actions={[
@@ -90,10 +96,10 @@ export const App = () => {
           },
         ]}
       /> */}
-      {/* <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
+        {/* <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
       <View style={{height: 30}} />
       <CircleAvatar size={80} image={Avatar} /> */}
-      {/* <StarRating
+        {/* <StarRating
         // iconColor="red"
         // justRating
         // reviews={['Terrible', 'Mehh', 'OK', 'Good', 'Very', 'Fabolous']}
@@ -101,9 +107,9 @@ export const App = () => {
         size={40}
         // textColor="red"
         textSize={35}
-      />
+        />
       <Rating icon="heart" color="red" size={45} total={5} rating={3.5} /> */}
-      {/* <Button
+        {/* <Button
         text="Press!"
         icon="save"
         rounded
@@ -112,12 +118,12 @@ export const App = () => {
         // buttonColor="red"
         // color="red"
       /> */}
-      {/* <LongPressButton
+        {/* <LongPressButton
         text="Press and Hold"
         icon="add-circle-outline"
         onFinish={() => console.log('Press')}
       /> */}
-      {/* <RadioButtons
+        {/* <RadioButtons
         // iconPosition="right"
         // orientation="horizontal"
         defaultChecked={0}
@@ -130,8 +136,8 @@ export const App = () => {
           {text: 'Two', value: 'two'},
         ]}
       /> */}
-      {/* <CheckBox title="Checkbox"  /> */}
-      {/* <Input
+        {/* <CheckBox title="Checkbox"  /> */}
+        {/* <Input
         title="Search"
         icon="airplane"
         type="outlined"
@@ -141,46 +147,46 @@ export const App = () => {
         onPress={() => console.log('Press')}
         onChangeText={value => console.log(value)}
       /> */}
-      {/* <ProgressBar
+        {/* <ProgressBar
         value={60}
         rounded
         // progressColor="red"
         // textColor="white"
         showPercent
       /> */}
-      {/* <Switch
+        {/* <Switch
         text="Texto del Switch"
         fullWidth
         justifyContent="space-between"
       /> */}
-      {/* <Text style={{fontSize: 20}}>
+        {/* <Text style={{fontSize: 20}}>
         Information{' '}
         <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">
-          <Icon name="information-circle" size={20} />
+        <Icon name="information-circle" size={20} />
         </Tooltip>
       </Text> */}
-      {/* <Toast
+        {/* <Toast
         visible={isVisible}
         text="Toast information"
         // duration={5000}
         icon="information-circle-outline"
         onHide={setIsVisible}
-      />
-      <Pressable onPress={() => setIsVisible(true)}>
+        />
+        <Pressable onPress={() => setIsVisible(true)}>
         <Text>Show toast</Text>
       </Pressable> */}
-      {/* <SlideAction
+        {/* <SlideAction
         icon="lock-open"
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
       /> */}
-      {/* <Slider value={value} onChange={setValue} />
+        {/* <Slider value={value} onChange={setValue} />
 
-      <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
-        {value}
-      </Text> */}
-      {/* <ActionSheet
+<Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
+{value}
+</Text> */}
+        {/* <ActionSheet
         actions={[
           {
             text: 'Change profile picture',
@@ -207,20 +213,20 @@ export const App = () => {
         title="Select an action"
         visible={isVisible}
       /> */}
-      {/* <AlertContainer theme="android" />
+        {/* <AlertContainer theme="android" />
       <Button
-        text="Show"
-        style={{marginTop: 10}}
-        onPress={() =>
-          Alert.alert({
-            title: 'Error',
-            description: 'Error message!',
-            icon: 'airplane',
-            // showCancelButton: true,
-          })
-        }
-      /> */}
-      <FloatingActionCard
+      text="Show"
+      style={{marginTop: 10}}
+      onPress={() =>
+        Alert.alert({
+          title: 'Error',
+          description: 'Error message!',
+          icon: 'airplane',
+          // showCancelButton: true,
+        })
+      }
+    /> */}
+        {/* <FloatingActionCard
         title="Maldivas hotel"
         icon="star"
         description="Lorem ipsum dolor"
@@ -229,6 +235,35 @@ export const App = () => {
         }}
         rating={5}
         onPress={() => console.log('Press')}
+      /> */}
+      </View>
+      <BottomTabNavigation
+        selectedIndex={0}
+        highlightedIconColor="#FFF"
+        values={[
+          {icon: 'home', text: 'Home', onPress: () => console.log('Home')},
+          {
+            icon: 'search',
+            text: 'Search',
+            onPress: () => console.log('Search'),
+          },
+          {
+            icon: 'add',
+            text: 'Add',
+            highlighted: true,
+            onPress: () => console.log('Add'),
+          },
+          {
+            icon: 'notifications',
+            text: 'Alerts',
+            onPress: () => console.log('Alerts'),
+          },
+          {
+            icon: 'cog',
+            text: 'Settings',
+            onPress: () => console.log('Settings'),
+          },
+        ]}
       />
     </View>
   );

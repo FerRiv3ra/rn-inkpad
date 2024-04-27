@@ -3,6 +3,7 @@ export * from './cardTypes';
 export * from './commonTypes';
 export * from './iconType';
 export * from './inputTypes';
+export * from './navigationTypes';
 export * from './progressBarTypes';
 export * from './segmentedControlTypes';
 export * from './slidesTypes';
