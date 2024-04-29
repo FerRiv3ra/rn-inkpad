@@ -31,7 +31,7 @@ export type imageCardTheme = {
   radius?: number;
 };
 
-export type RatingCardProps = {
+export type FloatingActionCardProps = {
   backgroundColor?: ValidColor;
   bottom?: number;
   description?: string;

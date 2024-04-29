@@ -59,11 +59,12 @@ export const cardImageStyles = StyleSheet.create({
 
 export const ratingCardStyles = StyleSheet.create({
   container: {
-    padding: 10,
+    alignSelf: 'center',
     borderRadius: 10,
-    position: 'absolute',
-    maxWidth: '90%',
     flexDirection: 'row',
+    gap: 5,
+    overflow: 'hidden',
+    position: 'absolute',
     zIndex: 50,
   },
   information: {

@@ -74,5 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingBottom: 3,
+    paddingHorizontal: '3%',
+    gap: 8,
   },
 });

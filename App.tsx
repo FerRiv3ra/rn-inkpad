@@ -1,23 +1,17 @@
 import React, {useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
-import {BottomTabNavigation, CardImage} from './src';
+import {View} from 'react-native';
+import {CardImage, DrawerNavigation} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
   // const [value, setValue] = useState(0);
-
-  const Home = () => (
-    <View>
-      <Text>Home</Text>
-    </View>
-  );
 
   return (
     <View
       style={{
         justifyContent: 'center',
         flex: 1,
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: '#EEEEEE',
       }}>
       <View style={{paddingHorizontal: 15}}>
@@ -35,14 +29,14 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-        {/* <CardImage
-        source={{
-          uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-        }}
-        text="Landscape"
-        loadTime={1500}
-      /> */}
-        <ScrollView>
+        <CardImage
+          source={{
+            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+          }}
+          text="Landscape"
+          loadTime={1500}
+        />
+        {/* <ScrollView>
           <CardImage
             source={{
               uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
@@ -73,7 +67,7 @@ export const App = () => {
             }}
             text="Landscape"
           />
-        </ScrollView>
+        </ScrollView> */}
 
         {/* <FloatingActionButton
         // onPress={() => console.log('Hola mundo')}
@@ -226,7 +220,8 @@ export const App = () => {
         })
       }
     /> */}
-        {/* <FloatingActionCard
+      </View>
+      {/* <FloatingActionCard
         title="Maldivas hotel"
         icon="star"
         description="Lorem ipsum dolor"
@@ -236,8 +231,7 @@ export const App = () => {
         rating={5}
         onPress={() => console.log('Press')}
       /> */}
-      </View>
-      <BottomTabNavigation
+      {/* <BottomTabNavigation
         selectedIndex={0}
         highlightedIconColor="#FFF"
         values={[
@@ -264,7 +258,9 @@ export const App = () => {
             onPress: () => console.log('Settings'),
           },
         ]}
-      />
+      /> */}
+
+      <DrawerNavigation />
     </View>
   );
 };

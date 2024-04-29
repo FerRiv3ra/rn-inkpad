@@ -42,7 +42,11 @@ export const NavigationItem = ({
           />
         )}
         {!highlighted && (
-          <Text style={[{color: textColor ?? iconColor}, textStyle]}>
+          <Text
+            style={[
+              {color: textColor ?? iconColor, paddingHorizontal: 3},
+              textStyle,
+            ]}>
             {text}
           </Text>
         )}
@@ -55,6 +59,7 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
   },
   highlighted: {
     padding: 10,
