@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import {CardImage, DrawerNavigation} from './src';
 
+import Logo from './src/assets/rn-logo.png';
+
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
   // const [value, setValue] = useState(0);
@@ -260,7 +262,39 @@ export const App = () => {
         ]}
       /> */}
 
-      <DrawerNavigation />
+      <DrawerNavigation
+        backgroundColor="#BEF0F3"
+        image={Logo}
+        items={[
+          {icon: 'home', text: 'Home', onPress: () => console.log('Home')},
+          {
+            text: 'User',
+            icon: 'person',
+            items: [
+              {
+                icon: 'person',
+                text: 'Profile',
+                onPress: () => console.log('Profile'),
+              },
+              {
+                icon: 'time',
+                text: 'History',
+                onPress: () => console.log('History'),
+              },
+              {
+                icon: 'star',
+                text: 'Starred',
+                onPress: () => console.log('Starred'),
+              },
+            ],
+          },
+          {
+            icon: 'cog',
+            text: 'Settings',
+            onPress: () => console.log('Settings'),
+          },
+        ]}
+      />
     </View>
   );
 };

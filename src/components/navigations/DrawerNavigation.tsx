@@ -1,81 +1,91 @@
 import React from 'react';
 import {
+  Animated,
   Image,
   Pressable,
   SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
+  ScrollView,
 } from 'react-native';
-import {Icon} from '..';
-import Logo from '../../assets/rn-logo.png';
 
-export const DrawerNavigation = () => {
-  const {width, height} = useWindowDimensions();
+import {Icon} from '..';
+import {useDrawerNavigation} from '../../hooks';
+import {drawerStyles} from '../../theme';
+import {DrawerItemType, DrawerNavigationProps, GroupItem} from '../../types';
+import {DrawerGroup} from './DrawerGroup';
+import {DrawerItem} from './DrawerItem';
+
+export const DrawerNavigation = ({
+  backgroundColor = '#464EE5',
+  collapseIcon,
+  expandIcon,
+  fontSize = 18,
+  icon = 'menu',
+  iconColor,
+  iconSize = 35,
+  iconTop = 50,
+  image,
+  imageStyles,
+  itemIconSize = 19,
+  items,
+  textColor,
+  widthPercent = 65,
+}: DrawerNavigationProps) => {
+  const {height, translateX, width, handlePress} =
+    useDrawerNavigation(widthPercent);
 
   return (
-    <View style={{...styles.container, height}}>
-      <SafeAreaView style={styles.content}>
-        <View style={{...styles.drawer, width: width * 0.65}}>
-          <Image
-            source={Logo}
-            style={{width: 100, height: 100, alignSelf: 'center'}}
-          />
-          <Pressable style={styles.item}>
-            <Icon name="home" size={19} />
-            <Text style={styles.itemText}>Home</Text>
-          </Pressable>
-          <Pressable style={styles.item}>
-            <Icon name="person" size={19} />
-            <Text style={styles.itemText}>Profile</Text>
-          </Pressable>
-          <Pressable style={styles.item}>
-            <Icon name="star" size={19} />
-            <Text style={styles.itemText}>Starred</Text>
-          </Pressable>
-          <Pressable style={styles.item}>
-            <Icon name="time" size={19} />
-            <Text style={styles.itemText}>Recent</Text>
-          </Pressable>
-          <Pressable style={styles.item}>
-            <Icon name="cog" size={19} />
-            <Text style={styles.itemText}>Settings</Text>
-          </Pressable>
-        </View>
-        <Pressable style={{...styles.button, left: width * 0.65 + 15}}>
-          <Icon name="menu" size={35} />
+    <Animated.View
+      style={{...drawerStyles.container, height, transform: [{translateX}]}}>
+      <SafeAreaView style={{backgroundColor}}>
+        <ScrollView
+          style={{
+            ...drawerStyles.drawer,
+            width: width * (widthPercent / 100),
+          }}>
+          {image && (
+            <Image source={image} style={[drawerStyles.logo, imageStyles]} />
+          )}
+          {items?.map((item, idx) => {
+            if (!!(item as GroupItem).items) {
+              return (
+                <DrawerGroup
+                  collapseIcon={collapseIcon}
+                  expandIcon={expandIcon}
+                  fontSize={fontSize}
+                  handleDrawer={handlePress}
+                  iconSize={itemIconSize}
+                  item={item as GroupItem}
+                  key={idx}
+                  textColor={textColor}
+                />
+              );
+            } else {
+              item = item as DrawerItemType;
+              return (
+                <DrawerItem
+                  fontSize={fontSize}
+                  icon={item.icon}
+                  iconSize={itemIconSize}
+                  handleDrawer={handlePress}
+                  key={idx}
+                  onPress={item.onPress}
+                  text={item.text}
+                  textColor={textColor}
+                />
+              );
+            }
+          })}
+        </ScrollView>
+        <Pressable
+          onPress={handlePress}
+          style={{
+            ...drawerStyles.button,
+            top: iconTop,
+            left: width * (widthPercent / 100) + 15,
+          }}>
+          <Icon name={icon} color={iconColor} size={iconSize} />
         </Pressable>
       </SafeAreaView>
-    </View>
+    </Animated.View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    zIndex: 5,
-  },
-  content: {
-    backgroundColor: 'teal',
-  },
-  drawer: {
-    height: '100%',
-  },
-  button: {
-    position: 'absolute',
-    top: 50,
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 15,
-  },
-  itemText: {
-    fontSize: 18,
-    fontWeight: '500',
-  },
-});

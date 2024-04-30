@@ -3,6 +3,7 @@ export * from './useActionSheetTheme';
 export * from './useAnimation';
 export * from './useButtonType';
 export * from './useDirection';
+export * from './useDrawerNavigation';
 export * from './useInput';
 export * from './useInputStyles';
 export * from './useLongPressButton';

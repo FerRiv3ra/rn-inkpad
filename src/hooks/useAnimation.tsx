@@ -1,11 +1,38 @@
 import {useRef} from 'react';
 import {Animated, PanResponder} from 'react-native';
 
-export const useAnimation = () => {
+type Props = {
+  width?: number;
+};
+
+export const useAnimation = (props?: Props) => {
+  const {width = 0} = props ?? {};
+
   const opacity = useRef(new Animated.Value(0)).current;
-  const position = useRef(new Animated.Value(0)).current;
+  const position = useRef(new Animated.Value(width === 0 ? 0 : -1)).current;
   const pan = useRef(new Animated.ValueXY()).current;
   const scaleValue = useRef(new Animated.Value(1)).current;
+
+  const moveRight = (toValue = 0) => {
+    Animated.timing(position, {
+      toValue,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const moveLeft = (toValue = -1) => {
+    Animated.timing(position, {
+      toValue,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const translateX = position.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, width],
+  });
 
   const scale = (from = 1, toValue = 0.9) => {
     scaleValue.setValue(from);
@@ -64,14 +91,17 @@ export const useAnimation = () => {
   };
 
   return {
-    opacity,
-    position,
     fadeIn,
     fadeOut,
+    moveLeft,
+    moveRight,
+    opacity,
+    pan,
+    panResponder,
+    position,
     scale,
     scaleValue,
     translatePosition,
-    pan,
-    panResponder,
+    translateX,
   };
 };
