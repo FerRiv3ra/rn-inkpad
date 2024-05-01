@@ -20,9 +20,10 @@ export const useDrawerNavigation = (widthPercent: number) => {
   };
 
   return {
+    handlePress,
     height,
     translateX,
+    visible,
     width,
-    handlePress,
   };
 };

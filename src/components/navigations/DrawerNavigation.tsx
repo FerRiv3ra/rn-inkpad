@@ -17,6 +17,7 @@ import {DrawerItem} from './DrawerItem';
 export const DrawerNavigation = ({
   backgroundColor = '#464EE5',
   collapseIcon,
+  closeIcon = 'close',
   expandIcon,
   fontSize = 18,
   icon = 'menu',
@@ -30,7 +31,7 @@ export const DrawerNavigation = ({
   textColor,
   widthPercent = 65,
 }: DrawerNavigationProps) => {
-  const {height, translateX, width, handlePress} =
+  const {height, translateX, width, handlePress, visible} =
     useDrawerNavigation(widthPercent);
 
   return (
@@ -83,7 +84,11 @@ export const DrawerNavigation = ({
             top: iconTop,
             left: width * (widthPercent / 100) + 15,
           }}>
-          <Icon name={icon} color={iconColor} size={iconSize} />
+          <Icon
+            name={visible ? closeIcon : icon}
+            color={iconColor}
+            size={iconSize}
+          />
         </Pressable>
       </SafeAreaView>
     </Animated.View>
