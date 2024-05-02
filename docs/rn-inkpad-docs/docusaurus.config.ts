@@ -3,11 +3,12 @@ import type {Config} from '@docusaurus/types';
 import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
-  title: 'RN Inkpad',
+  title: 'React Native Inkpad',
   tagline: 'Fresh and updated UI Library',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
+  // TODO!
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
@@ -56,7 +57,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/inkpad-logo.png',
     navbar: {
       title: 'RN Inkpad',
       logo: {
@@ -110,10 +111,6 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/FerRiv3ra/rn-inkpad',

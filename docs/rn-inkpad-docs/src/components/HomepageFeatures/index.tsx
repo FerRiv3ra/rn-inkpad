@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import clsx from 'clsx';
 import styles from './styles.module.css';
 
 type FeatureItem = {
@@ -11,31 +11,33 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/easy_to_use.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Inkpad was developed with the idea of being easy to use, offering a
+        series of ready-to-use components to ensure a fluid experience for users
+        in designing and creating.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Multi platform',
+    Svg: require('@site/static/img/multi_platform.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Implement a standard design across all platforms to ensure a uniform
+        experience for users, regardless of the <code>platform</code> you are
+        developing for..
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Customizable',
+    Svg: require('@site/static/img/customizable.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        All components are fully customizable, allowing developers to easily
+        adapt them to the specific needs of their projects.
       </>
     ),
   },
