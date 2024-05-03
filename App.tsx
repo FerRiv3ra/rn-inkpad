@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {CardImage, DrawerNavigation} from './src';
-
-import Logo from './src/assets/rn-logo.png';
+import {ActionSheet, Button} from './src';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,13 +29,13 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-        <CardImage
+        {/* <CardImage
           source={{
             uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
           }}
           text="Landscape"
           loadTime={1500}
-        />
+        /> */}
         {/* <ScrollView>
           <CardImage
             source={{
@@ -182,46 +180,39 @@ export const App = () => {
 <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
 {value}
 </Text> */}
-        {/* <ActionSheet
-        actions={[
-          {
-            text: 'Change profile picture',
-            icon: 'ear',
-            onPress: () => console.log('Change profile picture'),
-          },
-          {
-            text: 'View profile picture',
-            icon: 'eye',
-            onPress: () => console.log('View profile picture'),
-          },
-          {
-            text: 'View status',
-            icon: 'bandage',
-            onPress: () => console.log('View status'),
-          },
-        ]}
-        theme={{appearance: 'dark', theme: 'material'}}
-        showIconOnIos
-        setVisible={setIsVisible}
-        showCancelButton
-        showCloseButton
-        subTitle="Select any action below to proceed"
-        title="Select an action"
-        visible={isVisible}
-      /> */}
-        {/* <AlertContainer theme="android" />
-      <Button
-      text="Show"
-      style={{marginTop: 10}}
-      onPress={() =>
-        Alert.alert({
-          title: 'Error',
-          description: 'Error message!',
-          icon: 'airplane',
-          // showCancelButton: true,
-        })
-      }
-    /> */}
+        <ActionSheet
+          actions={[
+            {
+              text: 'Change profile picture',
+              icon: 'ear',
+              onPress: () => console.log('Change profile picture'),
+            },
+            {
+              text: 'View profile picture',
+              icon: 'eye',
+              onPress: () => console.log('View profile picture'),
+            },
+            {
+              text: 'View status',
+              icon: 'bandage',
+              onPress: () => console.log('View status'),
+            },
+          ]}
+          theme={{theme: 'material'}}
+          showIconOnIos
+          setVisible={setIsVisible}
+          showCancelButton
+          showCloseButton
+          description="Select any action below to proceed"
+          title="Select an action"
+          visible={isVisible}
+        />
+        {/* <AlertContainer theme="android" /> */}
+        <Button
+          text="Show"
+          style={{marginTop: 10}}
+          onPress={() => setIsVisible(true)}
+        />
       </View>
       {/* <FloatingActionCard
         title="Maldivas hotel"
@@ -262,7 +253,7 @@ export const App = () => {
         ]}
       /> */}
 
-      <DrawerNavigation
+      {/* <DrawerNavigation
         backgroundColor="#BEF0F3"
         image={Logo}
         items={[
@@ -294,7 +285,7 @@ export const App = () => {
             onPress: () => console.log('Settings'),
           },
         ]}
-      />
+      /> */}
     </View>
   );
 };

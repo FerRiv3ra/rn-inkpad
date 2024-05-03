@@ -13,7 +13,7 @@ export const ActionSheet = ({
   showCancelButton,
   showIconOnIos,
   showCloseButton,
-  subTitle,
+  description,
   theme: userTheme,
   title,
   visible,
@@ -55,7 +55,7 @@ export const ActionSheet = ({
                 {
                   ...actionSheetStyles.title,
                   color: textColor!,
-                  marginBottom: !!subTitle ? 0 : 10,
+                  marginBottom: !!description ? 0 : 10,
                 },
                 theme === 'cupertino'
                   ? actionSheetStyles.textCenter
@@ -64,7 +64,7 @@ export const ActionSheet = ({
               {title}
             </Text>
           )}
-          {subTitle && (
+          {description && (
             <Text
               style={[
                 {...actionSheetStyles.subTitle, color: textColor!},
@@ -72,7 +72,7 @@ export const ActionSheet = ({
                   ? actionSheetStyles.textCenter
                   : actionSheetStyles.textLeft,
               ]}>
-              {subTitle}
+              {description}
             </Text>
           )}
           <SafeAreaView>
@@ -96,7 +96,7 @@ export const ActionSheet = ({
                   key={idx}
                 />
               ))}
-            {showCancelButton && (
+            {(!actions || showCancelButton) && (
               <ActionButton
                 action={{
                   icon: 'close',

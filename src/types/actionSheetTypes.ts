@@ -23,10 +23,10 @@ export type ActionSheetTheme = {
 export type ActionSheetProps = {
   actions?: ActionSheet[];
   cancelText?: string;
+  description?: string;
   showCancelButton?: boolean;
-  showIconOnIos?: boolean;
   showCloseButton?: boolean;
-  subTitle?: string;
+  showIconOnIos?: boolean;
   theme?: ActionSheetTheme;
   title?: string;
   visible: boolean;
