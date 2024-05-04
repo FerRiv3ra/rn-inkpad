@@ -5,6 +5,8 @@ title: Alert
 
 # Alert
 
+Is a versatile component in our library designed to enhance user interaction and communication within applications. **Alerts** provide immediate notifications about important events or updates, ensuring users stay informed. **Prompts** guide users through actions or decisions by presenting clear messages and options, facilitating smooth user journeys. With customizable styles and functionalities, our Alert and Prompt components offer a seamless user experience across various interfaces.
+
 ## Configuration and personalization
 
 1. Import and use AlertContainer
@@ -12,7 +14,7 @@ title: Alert
 We need to import the AlertContainer component. Normally you would do this in your input file, such as App.js or App.tsx.
 
 ```js title="App.tsx"
-import {AlertContainer} from 'rn-custom-alert-prompt';
+import {AlertContainer} from 'rn-inkpad';
 
 export const App = () => {
   return (
@@ -66,7 +68,7 @@ This is the typical system alert with the big difference that we can customize i
 
 ```js
 import {Text, TouchableOpacity, View} from  'react-native';
-import {Alert} from  'rn-custom-alert-prompt';
+import {Alert} from  'rn-inkpad';
 
 const  MyComponent  = () => {
 
@@ -99,7 +101,7 @@ const  MyComponent  = () => {
 
 ```js
 import {Text, TouchableOpacity, View} from  'react-native';
-import {Alert} from  'rn-custom-alert-prompt';
+import {Alert} from  'rn-inkpad';
 
 const  MyComponent  = () => {
 
@@ -175,7 +177,7 @@ This is the system prompt that we can use in iOS, with the big difference that w
 
 ```js
 import {Text, TouchableOpacity, View} from  'react-native';
-import {Alert} from  'rn-custom-alert-prompt';
+import {Alert} from  'rn-inkpad';
 
 const  MyComponent  = () => {
 
@@ -210,7 +212,7 @@ const  MyComponent  = () => {
 
 ```js
 import {Text, TouchableOpacity, View} from  'react-native';
-import {Alert} from  'rn-custom-alert-prompt';
+import {Alert} from  'rn-inkpad';
 
 const  MyComponent  = () => {
 

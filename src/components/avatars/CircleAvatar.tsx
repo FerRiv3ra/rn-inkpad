@@ -14,7 +14,7 @@ type Props = {
 export const CircleAvatar = ({
   backgroundColor = '#373099',
   defaultText = 'AA',
-  fontSize = 20,
+  fontSize = 26,
   image,
   onPress,
   size = 50,

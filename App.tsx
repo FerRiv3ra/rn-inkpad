@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {ActionSheet, Button} from './src';
+import {CircleAvatar, FloatingActionButton} from './src';
+
+import Avatar from './src/assets/James_hetfield.jpeg';
 
 export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,11 +13,11 @@ export const App = () => {
       style={{
         justifyContent: 'center',
         flex: 1,
-        // alignItems: 'center',
-        backgroundColor: '#EEEEEE',
+        alignItems: 'center',
+        backgroundColor: '#eef2ff',
       }}>
-      <View style={{paddingHorizontal: 15}}>
-        {/* <Card
+      {/* <View style={{paddingHorizontal: 15}}> */}
+      {/* <Card
         buttons={[
           {text: 'Cancel', onPress: () => {}},
           {text: 'Ok', onPress: () => {}},
@@ -29,14 +31,14 @@ export const App = () => {
           themeColor: 'rgb(79, 70, 229)',
         }}
       /> */}
-        {/* <CardImage
+      {/* <CardImage
           source={{
             uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
           }}
           text="Landscape"
           loadTime={1500}
         /> */}
-        {/* <ScrollView>
+      {/* <ScrollView>
           <CardImage
             source={{
               uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
@@ -69,31 +71,35 @@ export const App = () => {
           />
         </ScrollView> */}
 
-        {/* <FloatingActionButton
-        // onPress={() => console.log('Hola mundo')}
-        // align="top-right"
+      <FloatingActionButton
+        icon="apps"
+        backgroundColor="#DB504A"
+        onPress={() => console.log('Hola mundo')}
+      />
+      <FloatingActionButton
+        align="bottom-left"
+        backgroundColor="#21295C"
         actions={[
           {
             icon: 'alert',
-            text: 'Alerta',
+            text: 'Alert',
             onPress: () => console.log('Alert'),
           },
           {
             icon: 'warning',
-            text: 'Advertencia',
             onPress: () => console.log('Warning'),
           },
           {
             icon: 'bag-add',
-            text: 'Comprar',
-            onPress: () => console.log('Help'),
+            text: 'Shopping',
+            onPress: () => console.log('Shopping'),
           },
         ]}
-      /> */}
-        {/* <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
+      />
+      <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
       <View style={{height: 30}} />
-      <CircleAvatar size={80} image={Avatar} /> */}
-        {/* <StarRating
+      <CircleAvatar size={80} image={Avatar} />
+      {/* <StarRating
         // iconColor="red"
         // justRating
         // reviews={['Terrible', 'Mehh', 'OK', 'Good', 'Very', 'Fabolous']}
@@ -103,21 +109,56 @@ export const App = () => {
         textSize={35}
         />
       <Rating icon="heart" color="red" size={45} total={5} rating={3.5} /> */}
-        {/* <Button
-        text="Press!"
-        icon="save"
-        rounded
-        onPress={() => console.log('Press')}
-        // buttonType="outline"
-        // buttonColor="red"
-        // color="red"
-      /> */}
-        {/* <LongPressButton
+      {/* <Button
+          text="Green solid button"
+          icon="alert-circle"
+          color="#000"
+          onPress={() => console.log('Press')}
+          buttonColor="#7EE081"
+          style={{marginBottom: 10}}
+        />
+        <Button
+          text="Clear right icon button"
+          icon="save"
+          onPress={() => console.log('Press')}
+          buttonType="clear"
+          iconPosition="right"
+          color="#576DEC"
+          style={{marginBottom: 10}}
+        />
+        <Button
+          text="Purple "
+          icon="save"
+          loading
+          onPress={() => console.log('Press')}
+          // buttonType="outline"
+          buttonColor="#C3F3C0"
+          style={{marginBottom: 10}}
+          // color="red"
+        />
+        <Button
+          text="Blue outline rounded button"
+          icon="airplane"
+          onPress={() => console.log('Press')}
+          buttonType="outline"
+          buttonColor="#576DEC"
+          rounded
+          style={{marginBottom: 10}}
+        /> */}
+      {/* <Button
+          text="Clear right icon button"
+          icon="save"
+          full
+          onPress={() => console.log('Press')}
+          iconPosition="right"
+          style={{marginBottom: 10}}
+        /> */}
+      {/* <LongPressButton
         text="Press and Hold"
         icon="add-circle-outline"
         onFinish={() => console.log('Press')}
       /> */}
-        {/* <RadioButtons
+      {/* <RadioButtons
         // iconPosition="right"
         // orientation="horizontal"
         defaultChecked={0}
@@ -130,8 +171,8 @@ export const App = () => {
           {text: 'Two', value: 'two'},
         ]}
       /> */}
-        {/* <CheckBox title="Checkbox"  /> */}
-        {/* <Input
+      {/* <CheckBox title="Checkbox"  /> */}
+      {/* <Input
         title="Search"
         icon="airplane"
         type="outlined"
@@ -141,25 +182,25 @@ export const App = () => {
         onPress={() => console.log('Press')}
         onChangeText={value => console.log(value)}
       /> */}
-        {/* <ProgressBar
+      {/* <ProgressBar
         value={60}
         rounded
         // progressColor="red"
         // textColor="white"
         showPercent
       /> */}
-        {/* <Switch
+      {/* <Switch
         text="Texto del Switch"
         fullWidth
         justifyContent="space-between"
       /> */}
-        {/* <Text style={{fontSize: 20}}>
+      {/* <Text style={{fontSize: 20}}>
         Information{' '}
         <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">
         <Icon name="information-circle" size={20} />
         </Tooltip>
       </Text> */}
-        {/* <Toast
+      {/* <Toast
         visible={isVisible}
         text="Toast information"
         // duration={5000}
@@ -169,51 +210,47 @@ export const App = () => {
         <Pressable onPress={() => setIsVisible(true)}>
         <Text>Show toast</Text>
       </Pressable> */}
-        {/* <SlideAction
+      {/* <SlideAction
         icon="lock-open"
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
       /> */}
-        {/* <Slider value={value} onChange={setValue} />
+      {/* <Slider value={value} onChange={setValue} />
 
 <Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
 {value}
 </Text> */}
-        <ActionSheet
-          actions={[
-            {
-              text: 'Change profile picture',
-              icon: 'ear',
-              onPress: () => console.log('Change profile picture'),
-            },
-            {
-              text: 'View profile picture',
-              icon: 'eye',
-              onPress: () => console.log('View profile picture'),
-            },
-            {
-              text: 'View status',
-              icon: 'bandage',
-              onPress: () => console.log('View status'),
-            },
-          ]}
-          theme={{theme: 'material'}}
-          showIconOnIos
+      {/* <ActionSheet
+          // actions={[
+          //   {
+          //     text: 'Change profile picture',
+          //     icon: 'ear',
+          //     onPress: () => console.log('Change profile picture'),
+          //   },
+          //   {
+          //     text: 'View profile picture',
+          //     icon: 'eye',
+          //     onPress: () => console.log('View profile picture'),
+          //   },
+          //   {
+          //     text: 'View status',
+          //     icon: 'bandage',
+          //     onPress: () => console.log('View status'),
+          //   },
+          // ]}
+          // theme={{theme: 'material'}}
+          // showIconOnIos
           setVisible={setIsVisible}
-          showCancelButton
-          showCloseButton
-          description="Select any action below to proceed"
-          title="Select an action"
+          // showCancelButton
+          // showCloseButton
+          // description="Select any action below to proceed"
+          // title="Select an action"
           visible={isVisible}
-        />
-        {/* <AlertContainer theme="android" /> */}
-        <Button
-          text="Show"
-          style={{marginTop: 10}}
-          onPress={() => setIsVisible(true)}
-        />
-      </View>
+        /> */}
+      {/* <AlertContainer theme="android" /> */}
+      {/* <Button /> */}
+      {/* </View> */}
       {/* <FloatingActionCard
         title="Maldivas hotel"
         icon="star"

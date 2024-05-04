@@ -19,7 +19,7 @@ export const Button = ({
   rounded,
   spinnerSize,
   style,
-  text,
+  text = 'Button',
   textStyle,
   onPress,
 }: ButtonProps) => {
@@ -43,7 +43,7 @@ export const Button = ({
           borderWidth,
           borderRadius: rounded ? 100 : 0,
           flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse',
-          width: full ? '100%' : undefined,
+          width: full ? '100%' : 'auto',
         },
         style,
       ]}>
