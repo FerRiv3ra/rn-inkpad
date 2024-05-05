@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {CircleAvatar, FloatingActionButton} from './src';
-
-import Avatar from './src/assets/James_hetfield.jpeg';
+import {Icon} from './src';
 
 export const App = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [checked, setIsChecked] = useState(false);
   // const [value, setValue] = useState(0);
 
   return (
@@ -14,7 +12,9 @@ export const App = () => {
         justifyContent: 'center',
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#eef2ff',
+        backgroundColor: '#FEFEFE',
+        // paddingHorizontal: 15,
+        // backgroundColor: '#eef2ff',
       }}>
       {/* <View style={{paddingHorizontal: 15}}> */}
       {/* <Card
@@ -25,19 +25,32 @@ export const App = () => {
         description={
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.'
         }
-        icon={'key'}
+        icon={'book-sharp'}
         title={'Card'}
         theme={{
-          themeColor: 'rgb(79, 70, 229)',
+          backgroundColor: '#EEE',
+          iconSize: 30,
+          themeColor: '#DB504A',
+          titleColor: '#21295C',
+          titleSize: 18,
+          shadow: true,
         }}
       /> */}
       {/* <CardImage
-          source={{
-            uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-          }}
-          text="Landscape"
-          loadTime={1500}
-        /> */}
+        source={{
+          uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
+        }}
+        text="Landscape"
+        loadTime={1500}
+        theme={{
+          backgroundColor: '#EEEEEE',
+          fontSize: 16,
+          fontColor: '#DB504A',
+          fontWeight: '700',
+          shadow: true,
+          radius: 0,
+        }}
+      /> */}
       {/* <ScrollView>
           <CardImage
             source={{
@@ -71,7 +84,7 @@ export const App = () => {
           />
         </ScrollView> */}
 
-      <FloatingActionButton
+      {/* <FloatingActionButton
         icon="apps"
         backgroundColor="#DB504A"
         onPress={() => console.log('Hola mundo')}
@@ -98,7 +111,7 @@ export const App = () => {
       />
       <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
       <View style={{height: 30}} />
-      <CircleAvatar size={80} image={Avatar} />
+      <CircleAvatar size={80} image={Avatar} /> */}
       {/* <StarRating
         // iconColor="red"
         // justRating
@@ -154,24 +167,131 @@ export const App = () => {
           style={{marginBottom: 10}}
         /> */}
       {/* <LongPressButton
+        backgroundColor="#21295C"
         text="Press and Hold"
+        borderRadius={10}
+        progressColor="#60a5fa"
         icon="add-circle-outline"
-        onFinish={() => console.log('Press')}
-      /> */}
+        onFinish={() => {
+          setIsExecuted(true);
+          setTimeout(() => {
+            setIsExecuted(false);
+          }, 1500);
+        }}
+      />
+      <LongPressButton
+        backgroundColor="#DB504A"
+        text="Press and Hold"
+        progressColor="rgba(0,0,0,0.5)"
+        iconPosition="right"
+        behavior="center-to-ends"
+        icon="add-circle-outline"
+        style={{marginTop: 10}}
+        onFinish={() => {
+          setIsExecuted(true);
+          setTimeout(() => {
+            setIsExecuted(false);
+          }, 1500);
+        }}
+      />
+      <LongPressButton
+        backgroundColor="#7EE081"
+        text="Press and Hold"
+        progressColor="#C3F3C0"
+        iconPosition="right"
+        textColor="#000"
+        borderRadius={0}
+        behavior="right-to-left"
+        icon="add-circle-outline"
+        style={{marginTop: 10}}
+        onFinish={() => {
+          setIsExecuted(true);
+          setTimeout(() => {
+            setIsExecuted(false);
+          }, 1500);
+        }}
+      />
+
+      <Text style={{marginTop: 15}}>
+        {isExecuted ? 'Executed' : 'Long press to execute!'}
+      </Text> */}
       {/* <RadioButtons
         // iconPosition="right"
         // orientation="horizontal"
-        defaultChecked={0}
+        // defaultChecked={0}
         // fullWidth
-        // border
+        border
         // disabled
-        onChange={value => console.log(value)}
+        // onChange={value => console.log(value)}
         values={[
-          {text: 'One', value: 1},
-          {text: 'Two', value: 'two'},
+          {text: 'Option 1', value: 1},
+          {text: 'Option 2', value: 2},
+        ]}
+      />
+      <RadioButtons
+        iconPosition="bottom"
+        orientation="horizontal"
+        defaultChecked={1}
+        gapHorizontal={80}
+        iconColor="#DB504A"
+        // disabled
+        // onChange={value => console.log(value)}
+        values={[
+          {text: 'Option 1', value: 1},
+          {text: 'Option 2', value: 2},
+        ]}
+      />
+      <RadioButtons
+        iconPosition="right"
+        // orientation="horizontal"
+        defaultChecked={0}
+        fullWidth
+        iconColor="#7EE081"
+        borderColor="#7EE081"
+        border
+        // disabled
+        // onChange={value => console.log(value)}
+        values={[
+          {text: 'Option 1', value: 1},
+          {text: 'Option 2', value: 2},
+        ]}
+      />
+      <RadioButtons
+        iconPosition="top"
+        orientation="horizontal"
+        defaultChecked={0}
+        border
+        borderColor="#DB504A"
+        iconColor="#DB504A"
+        // disabled
+        // onChange={value => console.log(value)}
+        values={[
+          {text: 'Option 1', value: 1},
+          {text: 'Option 2', value: 2},
+        ]}
+      />
+      <RadioButtons
+        disabled
+        border
+        iconSize={30}
+        // onChange={value => console.log(value)}
+        values={[
+          {text: 'Option 1', value: 1},
+          {text: 'Option 2', value: 2},
         ]}
       /> */}
-      {/* <CheckBox title="Checkbox"  /> */}
+      {/* <CheckBox
+        checked={checked}
+        iconColor={'#DB504A'}
+        iconSize={25}
+        textStyle={{fontSize: 20}}
+        onChange={setIsChecked}
+        title={'Item 1'}
+      />
+
+      <Text style={{marginTop: 10, fontWeight: '700'}}>
+        {checked ? 'Checked' : 'Unchecked'}
+      </Text> */}
       {/* <Input
         title="Search"
         icon="airplane"
@@ -251,15 +371,23 @@ export const App = () => {
       {/* <AlertContainer theme="android" /> */}
       {/* <Button /> */}
       {/* </View> */}
-      {/* <FloatingActionCard
-        title="Maldivas hotel"
+      {/* <Image
+        source={{
+          uri: isExecuted
+            ? 'https://static.vecteezy.com/system/resources/previews/030/465/953/large_2x/idyllic-retreat-tropical-beach-palm-tree-crystal-sea-nature-s-paradise-on-an-island-vertical-mobile-wallpaper-ai-generated-free-photo.jpg'
+            : 'https://i.ebayimg.com/images/g/WzwAAOSwA39hFZ5W/s-l1200.webp',
+        }}
+        style={{width: '100%', height: '100%'}}
+      />
+      <FloatingActionCard
+        title="Maldives hotel"
         icon="star"
         description="Lorem ipsum dolor"
         image={{
-          uri: 'https://hips.hearstapps.com/hmg-prod/images/arrival-jetty-dusit-thani-maldives-royalty-free-image-1655669825.jpg?crop=0.668xw:1.00xh;0.0850xw,0&resize=980:*',
+          uri: 'https://st3.depositphotos.com/1875497/12876/i/950/depositphotos_128766962-stock-photo-beautiful-tropical-maldives-resort-hotel.jpg',
         }}
         rating={5}
-        onPress={() => console.log('Press')}
+        onPress={() => setIsExecuted(!isExecuted)}
       /> */}
       {/* <BottomTabNavigation
         selectedIndex={0}
@@ -323,6 +451,7 @@ export const App = () => {
           },
         ]}
       /> */}
+      <Icon name="airplane" size={28} />
     </View>
   );
 };

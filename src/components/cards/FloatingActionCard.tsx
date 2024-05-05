@@ -15,7 +15,7 @@ export const FloatingActionCard = ({
   iconColor = '#FFD700',
   image,
   onPress,
-  rating = 0,
+  rating,
   textColor = '#000000',
   title,
   width = '90%',
@@ -27,6 +27,7 @@ export const FloatingActionCard = ({
       onPress={onPress}
       style={{
         ...ratingCardStyles.container,
+        padding: !!image ? 0 : 10,
         bottom,
         width,
         backgroundColor,

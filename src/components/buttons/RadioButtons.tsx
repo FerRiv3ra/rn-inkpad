@@ -85,9 +85,7 @@ export const RadioButtons = ({
             size={iconSize}
             color={disabled ? '#AAA' : iconColor}
           />
-          {!!text && (
-            <Text style={[textStyle, {color: textColor}]}>{text}</Text>
-          )}
+          {<Text style={[textStyle, {color: textColor}]}>{text ?? value}</Text>}
         </Pressable>
       ))}
     </View>

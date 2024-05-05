@@ -78,6 +78,7 @@ export type CheckBoxProps = {
 };
 
 export type LongPressButtonProps = {
+  backgroundColor?: string;
   behavior?: 'left-to-right' | 'right-to-left' | 'center-to-ends';
   borderRadius?: number;
   fontSize?: number;
@@ -87,6 +88,7 @@ export type LongPressButtonProps = {
   iconPosition?: 'left' | 'right';
   longPressTime?: number;
   progressColor?: string;
+  style?: StyleProp<ViewStyle>;
   text?: string;
   textColor?: string;
   width?: DimensionValue;

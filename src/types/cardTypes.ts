@@ -13,8 +13,8 @@ export type cardTheme = {
 
 export type imageCardTheme = {
   backgroundColor?: string;
-  fontSize?: number;
   fontColor?: string;
+  fontSize?: number;
   fontWeight?:
     | 'normal'
     | 'bold'
@@ -27,8 +27,8 @@ export type imageCardTheme = {
     | '700'
     | '800'
     | '900';
-  shadow?: boolean;
   radius?: number;
+  shadow?: boolean;
 };
 
 export type FloatingActionCardProps = {

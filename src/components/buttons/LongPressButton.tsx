@@ -7,6 +7,7 @@ import {longPressButtonStyles} from '../../theme';
 import {LongPressButtonProps} from '../../types';
 
 export const LongPressButton = ({
+  backgroundColor = '#464EE5',
   behavior = 'left-to-right',
   borderRadius = 20,
   fontSize = 14,
@@ -17,7 +18,8 @@ export const LongPressButton = ({
   longPressTime,
   onFinish,
   progressColor = 'rgba(255, 255, 255, 0.3)',
-  text,
+  style,
+  text = 'Button',
   textColor = '#FFF',
   width = '50%',
 }: LongPressButtonProps) => {
@@ -26,11 +28,14 @@ export const LongPressButton = ({
 
   return (
     <Animated.View
-      style={{
-        width: '100%',
-        alignItems: 'center',
-        transform: [{scale: scaleValue}],
-      }}>
+      style={[
+        {
+          width: '100%',
+          alignItems: 'center',
+          transform: [{scale: scaleValue}],
+        },
+        style,
+      ]}>
       <TouchableWithoutFeedback
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}>
@@ -39,7 +44,7 @@ export const LongPressButton = ({
             ...longPressButtonStyles.button,
             width: fullWidth ? '100%' : width,
             height,
-            backgroundColor: '#464EE5',
+            backgroundColor,
             borderRadius,
           }}>
           <View

@@ -43,7 +43,7 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
         style={[cardImageStyles.container]}
         imageStyle={[
           {
-            borderTopLeftRadius: 15,
+            borderTopLeftRadius: radius ?? 15,
             borderTopRightRadius: radius ?? 15,
           },
           !text && {

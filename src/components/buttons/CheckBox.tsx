@@ -11,7 +11,7 @@ export const CheckBox = ({
   style,
   textColor,
   textStyle,
-  title,
+  title = 'Item',
   unCheckedIcon,
   onChange,
 }: CheckBoxProps) => {
