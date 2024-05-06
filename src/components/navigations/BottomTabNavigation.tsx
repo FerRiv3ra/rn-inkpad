@@ -10,11 +10,11 @@ export const BottomTabNavigation = ({
   iconColor,
   iconSize,
   labelStyle,
-  selectedColor = '#FF0000',
+  selectedColor = '#DB504A',
   selectedheight,
   selectedIndex,
   textColor,
-  values,
+  values = [{icon: 'home', text: 'Home'}],
 }: BottomTabNavigationProps) => {
   const [selected, setSelected] = useState<number>();
 

@@ -113,6 +113,8 @@ export type inputProps = {
   iconColor?: string;
   iconSize?: number;
   keyboardType?: KeyboardType;
+  label?: string;
+  labelColor?: string;
   password?: boolean;
   placeholder?: string;
   placeholderColor?: string;
@@ -122,10 +124,8 @@ export type inputProps = {
   search?: boolean;
   style?: StyleProp<ViewStyle>;
   textColor?: string;
-  textStyle?: StyleProp<TextStyle>;
   textContentType?: textContentType;
-  title?: string;
-  titleColor?: string;
+  textStyle?: StyleProp<TextStyle>;
   type?: 'filled' | 'bordered' | 'outlined';
   value?: string;
   onChangeText?: (text: string) => void;

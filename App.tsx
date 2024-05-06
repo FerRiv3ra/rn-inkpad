@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Icon} from './src';
+import {DrawerNavigation} from './src';
+
+import Logo from './src/assets/rn-logo.png';
 
 export const App = () => {
   const [checked, setIsChecked] = useState(false);
@@ -11,10 +13,11 @@ export const App = () => {
       style={{
         justifyContent: 'center',
         flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#FEFEFE',
+        // alignItems: 'center',
+        backgroundColor: '#EEE',
         // paddingHorizontal: 15,
         // backgroundColor: '#eef2ff',
+        // backgroundColor: '#C3F3C0',
       }}>
       {/* <View style={{paddingHorizontal: 15}}> */}
       {/* <Card
@@ -293,14 +296,41 @@ export const App = () => {
         {checked ? 'Checked' : 'Unchecked'}
       </Text> */}
       {/* <Input
-        title="Search"
+        borderColor="#DB504A"
+        search
+        label="Search"
         icon="airplane"
-        type="outlined"
+        // type="outlined"
+        // borderRadius={10}
+        iconColor="#DB504A"
+        // borderColor="green"
+        // onPress={() => console.log('Press')}
+        // onChangeText={value => console.log(value)}
+      />
+      <Input
+        borderColor="#21295C"
+        password
+        label="Password"
+        icon="key"
+        type="bordered"
         borderRadius={10}
-        // iconColor="red"
-        borderColor="green"
-        onPress={() => console.log('Press')}
-        onChangeText={value => console.log(value)}
+        iconColor="#21295C"
+        rightIconColor="#21295C"
+        // onPress={() => console.log('Press')}
+        // onChangeText={value => console.log(value)}
+        style={{marginTop: 20}}
+      />
+      <Input
+        borderColor="#576DEC"
+        label="Email"
+        icon="at"
+        type="outlined"
+        labelColor="#576DEC"
+        borderRadius={10}
+        iconColor="#576DEC"
+        // onPress={() => console.log('Press')}
+        // onChangeText={value => console.log(value)}
+        style={{marginTop: 20}}
       /> */}
       {/* <ProgressBar
         value={60}
@@ -418,7 +448,7 @@ export const App = () => {
         ]}
       /> */}
 
-      {/* <DrawerNavigation
+      <DrawerNavigation
         backgroundColor="#BEF0F3"
         image={Logo}
         items={[
@@ -450,8 +480,8 @@ export const App = () => {
             onPress: () => console.log('Settings'),
           },
         ]}
-      /> */}
-      <Icon name="airplane" size={28} />
+      />
+      {/* <Icon name="airplane" size={28} /> */}
     </View>
   );
 };

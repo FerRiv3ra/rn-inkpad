@@ -9,16 +9,16 @@ export const useInput = ({
   password,
   search,
   rightIcon,
-  title,
+  label,
   onPress,
 }: inputProps) => {
-  const [passwordVisible, setPasswordVisible] = useState(!!password);
+  const [passwordVisible, setPasswordVisible] = useState(!password);
   const [isFocused, setIsFocused] = useState(false);
 
   const {inputStyle, titleStyle} = useInputStyles(
     type,
     isFocused,
-    !!title,
+    !!label,
     borderColor,
     borderRadius,
   );

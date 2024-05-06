@@ -14,6 +14,8 @@ export const Input = (props: inputProps) => {
     iconColor,
     iconSize,
     keyboardType,
+    label,
+    labelColor,
     onChangeText,
     onEndEditing,
     password = false,
@@ -25,12 +27,10 @@ export const Input = (props: inputProps) => {
     search = false,
     style,
     textColor,
-    textStyle,
     textContentType,
-    title,
+    textStyle,
     type = 'filled',
     value,
-    titleColor,
   } = props;
 
   const {
@@ -45,7 +45,7 @@ export const Input = (props: inputProps) => {
 
   return (
     <View style={[{width: '100%'}, style]}>
-      {title && (
+      {label && (
         <View
           style={{
             flexDirection: 'row',
@@ -65,8 +65,8 @@ export const Input = (props: inputProps) => {
               }}
             />
           )}
-          <Text style={[{...inputStyles.label, color: titleColor}, titleStyle]}>
-            {title}
+          <Text style={[{...inputStyles.label, color: labelColor}, titleStyle]}>
+            {label}
           </Text>
           {type === 'outlined' && (
             <View
@@ -106,7 +106,7 @@ export const Input = (props: inputProps) => {
           onEndEditing={onEndEditing}
           onFocus={handleFocus}
           onSubmitEditing={() => Keyboard.dismiss()}
-          placeholder={placeholder ?? title}
+          placeholder={placeholder ?? label ?? 'Input'}
           placeholderTextColor={placeholderColor}
           secureTextEntry={password ? !passwordVisible : false}
           textContentType={password ? 'password' : textContentType}

@@ -56,8 +56,8 @@ type Items = DrawerItemType | GroupItem;
 
 export type DrawerNavigationProps = {
   backgroundColor?: string;
-  collapseIcon?: IconName;
   closeIcon?: IconName;
+  collapseIcon?: IconName;
   expandIcon?: IconName;
   fontSize?: number;
   icon?: IconName;

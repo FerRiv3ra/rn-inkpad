@@ -6,7 +6,7 @@ type Props = {
   color?: string;
 };
 
-export const SelectedTab = ({height = 5, color = '#FF0000'}: Props) => {
+export const SelectedTab = ({height = 5, color = '#DB504A'}: Props) => {
   return (
     <View
       style={{

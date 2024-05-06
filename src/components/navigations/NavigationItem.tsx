@@ -11,7 +11,7 @@ export const NavigationItem = ({
   iconColor,
   iconSize = 25,
   selected,
-  selectedColor = '#FF0000',
+  selectedColor = '#DB504A',
   selectedheight,
   textColor,
   textStyle,

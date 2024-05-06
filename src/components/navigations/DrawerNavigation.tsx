@@ -16,8 +16,8 @@ import {DrawerItem} from './DrawerItem';
 
 export const DrawerNavigation = ({
   backgroundColor = '#464EE5',
-  collapseIcon,
   closeIcon = 'close',
+  collapseIcon,
   expandIcon,
   fontSize = 18,
   icon = 'menu',
