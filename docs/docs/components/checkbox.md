@@ -40,7 +40,7 @@ const MyComponent = () => {
 |onChange| `(value: boolean) => void` | | Function that captures the current value of the checkbox. |
 </div>
 
-## Usage props
+## Usage with props
 
 ```jsx
 import React, {useState} from 'react';

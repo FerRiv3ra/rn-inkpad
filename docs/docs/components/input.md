@@ -53,7 +53,7 @@ const MyComponent = () => {
 | onPress | `() => void` | | Callback that is called when right icon is pressed. |
 </div>
 
-## Usage props
+## Usage with props
 
 ```jsx
 import {View} from 'react-native';

@@ -89,7 +89,7 @@ This navigation only provides the style for your navigation, however to navigate
 
 :::
 
-## Usage props
+## Usage with props
 
 ```jsx
 import {View} from 'react-native';

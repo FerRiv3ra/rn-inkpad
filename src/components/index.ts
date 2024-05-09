@@ -18,7 +18,7 @@ export * from './navigations/BottomTabNavigation';
 export * from './navigations/DrawerNavigation';
 export * from './progressBar/ProgressBar';
 export * from './ratings/Rating';
-export * from './ratings/RbnbRating';
+export * from './ratings/StarRating';
 export * from './slides/SlideAction';
 export * from './slides/Slider';
 export * from './switch/Switch';

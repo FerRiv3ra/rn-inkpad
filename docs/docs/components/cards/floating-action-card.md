@@ -59,7 +59,7 @@ All colors will be converted to RGBA with an opacity of 0.9
 
 :::
 
-## Usage props
+## Usage with props
 
 ```jsx
 import React, {useState} from 'react';

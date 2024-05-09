@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {DrawerNavigation} from './src';
-
-import Logo from './src/assets/rn-logo.png';
+import {Text, View} from 'react-native';
+import {Slider} from './src';
 
 export const App = () => {
-  const [checked, setIsChecked] = useState(false);
-  // const [value, setValue] = useState(0);
+  // const [confirmed, setConfirmed] = useState(false);
+  const [value, setValue] = useState(0);
 
   return (
     <View
@@ -14,8 +12,8 @@ export const App = () => {
         justifyContent: 'center',
         flex: 1,
         // alignItems: 'center',
-        backgroundColor: '#EEE',
-        // paddingHorizontal: 15,
+        backgroundColor: '#EFEFEF',
+        paddingHorizontal: 15,
         // backgroundColor: '#eef2ff',
         // backgroundColor: '#C3F3C0',
       }}>
@@ -116,15 +114,15 @@ export const App = () => {
       <View style={{height: 30}} />
       <CircleAvatar size={80} image={Avatar} /> */}
       {/* <StarRating
-        // iconColor="red"
-        // justRating
-        // reviews={['Terrible', 'Mehh', 'OK', 'Good', 'Very', 'Fabolous']}
         defaultRating={3}
+        iconColor={value <= 2 ? '#FF0000' : value <= 4 ? '#FFD700' : '#7EE081'}
+        onChange={setValue}
+        reviews={['Terrible', 'Poor', 'Fair', 'Good', 'Excellent', 'Fabulous']}
         size={40}
-        // textColor="red"
+        textColor={value <= 2 ? '#FF0000' : value <= 4 ? '#FFD700' : '#7EE081'}
         textSize={35}
-        />
-      <Rating icon="heart" color="red" size={45} total={5} rating={3.5} /> */}
+      /> */}
+      {/* <Rating color="#FF0000" icon="heart" rating={4.5} /> */}
       {/* <Button
           text="Green solid button"
           icon="alert-circle"
@@ -333,12 +331,24 @@ export const App = () => {
         style={{marginTop: 20}}
       /> */}
       {/* <ProgressBar
-        value={60}
+        value={value}
         rounded
-        // progressColor="red"
-        // textColor="white"
+        progressColor="#DB504A"
+        textColor="#21295C"
         showPercent
+      />
+      <Button
+        text={value === 100 ? 'Reset' : 'Add 25%'}
+        style={{marginTop: 20}}
+        rounded
+        buttonColor="#21295C"
+        onPress={() => {
+          if (value === 100) {
+            setValue(0);
+          } else setValue(value + 25);
+        }}
       /> */}
+      {/* <SegmentedControl values={[{key: ''}]} onChange={()=>{}} /> */}
       {/* <Switch
         text="Texto del Switch"
         fullWidth
@@ -362,15 +372,23 @@ export const App = () => {
       </Pressable> */}
       {/* <SlideAction
         icon="lock-open"
+        // textPosition=''
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
+        onCompleted={() => setConfirmed(true)}
       /> */}
-      {/* <Slider value={value} onChange={setValue} />
+      <Slider value={value} onChange={setValue} />
 
-<Text style={{marginTop: 20, fontSize: 18, fontWeight: '600'}}>
-{value}
-</Text> */}
+      <Text
+        style={{
+          textAlign: 'center',
+          marginTop: 20,
+          fontSize: 18,
+          fontWeight: '600',
+        }}>
+        {value}
+      </Text>
       {/* <ActionSheet
           // actions={[
           //   {
@@ -448,7 +466,7 @@ export const App = () => {
         ]}
       /> */}
 
-      <DrawerNavigation
+      {/* <DrawerNavigation
         backgroundColor="#BEF0F3"
         image={Logo}
         items={[
@@ -480,7 +498,7 @@ export const App = () => {
             onPress: () => console.log('Settings'),
           },
         ]}
-      />
+      /> */}
       {/* <Icon name="airplane" size={28} /> */}
     </View>
   );

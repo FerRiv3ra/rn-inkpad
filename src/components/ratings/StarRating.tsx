@@ -12,12 +12,14 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   textColor?: string;
   textSize?: number;
+  onChange?: (value: number) => void;
 };
 
 export const StarRating = ({
   defaultRating = 3,
   iconColor = '#FFD700',
   justRating,
+  onChange,
   readOnly,
   reviews,
   size = 35,
@@ -44,6 +46,10 @@ export const StarRating = ({
   const handleChange = (rating: number) => {
     setRating(rating);
     setReview(reviewsArray[rating]);
+
+    if (!!onChange) {
+      onChange(rating + 1);
+    }
   };
 
   return (

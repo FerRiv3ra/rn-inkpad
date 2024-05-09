@@ -59,7 +59,7 @@ If you don't want that effect, you can submit a load time of 0 milliseconds.
 | shadow | `boolean` |  | Turn shadow on or off. |
 </div>
 
-## Usage with personalized theme
+## Personalized theme usage
 
 ```jsx
 import React from 'react';
