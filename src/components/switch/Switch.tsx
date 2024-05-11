@@ -6,6 +6,7 @@ export const Switch = ({
   backgrounColor = '#1DFF56',
   border,
   borderColor,
+  borderWidth = 2,
   isOn,
   fullWidth,
   justifyContent,
@@ -35,7 +36,7 @@ export const Switch = ({
 
       <View
         style={{
-          borderWidth: border ? 2 : 0,
+          borderWidth: border ? borderWidth : 0,
           borderColor,
           borderRadius: 16,
         }}>

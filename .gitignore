@@ -4,6 +4,15 @@
 
 /src/assets/
 
+# Personal
+dist/
+/components/
+/lib-esm/
+/data/
+/package/
+*.tgz
+.npmignore
+
 # Xcode
 #
 build/

@@ -1,13 +1,21 @@
 {
-  "name": "rn-artikel",
-  "version": "0.0.1",
-  "private": true,
+  "name": "rn-inkpad",
+  "version": "1.0.0",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "src",
+    "dist/*",
+    "types/*"
+  ],
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf dist && tsc && tsc -m es6 --outDir lib-esm"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -30,8 +38,52 @@
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0",
+    "rn-inkpad": "^0.0.1",
     "typescript": "5.0.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FerRiv3ra/rn-inkpad"
+  },
+  "keywords": [
+    "react-native",
+    "ui library",
+    "alert",
+    "prompt",
+    "actionsheet",
+    "avatar",
+    "button",
+    "floating",
+    "checkbox",
+    "interactive",
+    "radiobuttons",
+    "card",
+    "floatingcard",
+    "images",
+    "icons",
+    "inputs",
+    "navigation",
+    "bottom navigation",
+    "tap navigation",
+    "progress",
+    "progressbar",
+    "rating",
+    "rbnb rating",
+    "slide",
+    "switch",
+    "tab control",
+    "toast",
+    "drawer",
+    "UI component",
+    "user interaction",
+    "lightweight"
+  ],
+  "author": "FerRivera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FerRiv3ra/rn-inkpad/issues"
+  },
+  "homepage": "https://github.com/FerRiv3ra/rn-inkpad#readme",
   "engines": {
     "node": ">=18"
   }

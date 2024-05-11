@@ -30,4 +30,4 @@ Once the library and the dependency are installed, we are ready to use each of t
 ## Extra
 
 - Link to [Ionicons](https://ionic.io/ionicons) in order to view and search for the name of the icon to use.
-- If you have problems installing react-native-vector-icons, here is a [template](https://ionic.io/ionicons) with the package already installed and configured on both platforms.
+- If you have problems installing react-native-vector-icons, here is a [template](https://github.com/FerRiv3ra/react-native-template) with the package already installed and configured on both platforms.

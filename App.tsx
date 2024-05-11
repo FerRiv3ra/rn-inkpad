@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-import {Slider} from './src';
+import {Image, View} from 'react-native';
+
+import {FloatingActionCard} from 'rn-inkpad';
 
 export const App = () => {
-  // const [confirmed, setConfirmed] = useState(false);
-  const [value, setValue] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [visibleTop, setVisibleTop] = useState(false);
+  const [visibleBottom, setVisibleBottom] = useState(false);
+  // const [value, setValue] = useState(0);
 
   return (
     <View
       style={{
         justifyContent: 'center',
         flex: 1,
-        // alignItems: 'center',
+        alignItems: 'center',
         backgroundColor: '#EFEFEF',
         paddingHorizontal: 15,
         // backgroundColor: '#eef2ff',
@@ -350,9 +353,15 @@ export const App = () => {
       /> */}
       {/* <SegmentedControl values={[{key: ''}]} onChange={()=>{}} /> */}
       {/* <Switch
-        text="Texto del Switch"
+        backgrounColor="#DB504A"
+        border
+        borderColor="#DB504A"
         fullWidth
+        isOn={confirmed}
         justifyContent="space-between"
+        onChange={setConfirmed}
+        text="Turn on notifications"
+        textStyle={{fontSize: 16, fontWeight: '600'}}
       /> */}
       {/* <Text style={{fontSize: 20}}>
         Information{' '}
@@ -361,15 +370,35 @@ export const App = () => {
         </Tooltip>
       </Text> */}
       {/* <Toast
-        visible={isVisible}
-        text="Toast information"
-        // duration={5000}
+        visible={visibleTop}
+        text="Toast top information"
+        backgroundColor="#DB504A"
+        fontSize={16}
         icon="information-circle-outline"
-        onHide={setIsVisible}
-        />
-        <Pressable onPress={() => setIsVisible(true)}>
-        <Text>Show toast</Text>
-      </Pressable> */}
+        setVisible={setVisibleTop}
+      />
+      <Toast
+        visible={visibleBottom}
+        text="Toast bottom information"
+        backgroundColor="#21295C"
+        fontSize={16}
+        position="bottom"
+        icon="cafe"
+        setVisible={setVisibleBottom}
+      />
+      <Button
+        rounded
+        full
+        text="Show toast top"
+        onPress={() => setVisibleTop(true)}
+      />
+      <Button
+        full
+        rounded
+        style={{marginTop: 20}}
+        text="Show toast bottom"
+        onPress={() => setVisibleBottom(true)}
+      /> */}
       {/* <SlideAction
         icon="lock-open"
         // textPosition=''
@@ -378,7 +407,19 @@ export const App = () => {
         textOnCompleted="Confirmed"
         onCompleted={() => setConfirmed(true)}
       /> */}
-      <Slider value={value} onChange={setValue} />
+      {/* <Slider
+        thumbStyles={{
+          icon: 'analytics',
+          iconColor: '#DB504A',
+        }}
+        trackStyles={{
+          height: 10,
+          borderRadius: 5,
+          trackCompletedColor: '#DB504A',
+        }}
+        value={value}
+        onChange={setValue}
+      />
 
       <Text
         style={{
@@ -388,40 +429,40 @@ export const App = () => {
           fontWeight: '600',
         }}>
         {value}
-      </Text>
+      </Text> */}
       {/* <ActionSheet
-          // actions={[
-          //   {
-          //     text: 'Change profile picture',
-          //     icon: 'ear',
-          //     onPress: () => console.log('Change profile picture'),
-          //   },
-          //   {
-          //     text: 'View profile picture',
-          //     icon: 'eye',
-          //     onPress: () => console.log('View profile picture'),
-          //   },
-          //   {
-          //     text: 'View status',
-          //     icon: 'bandage',
-          //     onPress: () => console.log('View status'),
-          //   },
-          // ]}
-          // theme={{theme: 'material'}}
-          // showIconOnIos
-          setVisible={setIsVisible}
-          // showCancelButton
-          // showCloseButton
-          // description="Select any action below to proceed"
-          // title="Select an action"
-          visible={isVisible}
-        /> */}
+        actions={[
+          {
+            text: 'Change profile picture',
+            icon: 'ear',
+            onPress: () => console.log('Change profile picture'),
+          },
+          {
+            text: 'View profile picture',
+            icon: 'eye',
+            onPress: () => console.log('View profile picture'),
+          },
+          {
+            text: 'View status',
+            icon: 'bandage',
+            onPress: () => console.log('View status'),
+          },
+        ]}
+        // theme={{theme: 'material'}}
+        showIconOnIos
+        setVisible={setVisible}
+        showCancelButton
+        showCloseButton
+        description="Select any action below to proceed"
+        title="Select an action"
+        visible={visible}
+      /> */}
       {/* <AlertContainer theme="android" /> */}
-      {/* <Button /> */}
+      {/* <Button text="Show" onPress={() => setVisible(true)} /> */}
       {/* </View> */}
-      {/* <Image
+      <Image
         source={{
-          uri: isExecuted
+          uri: visible
             ? 'https://static.vecteezy.com/system/resources/previews/030/465/953/large_2x/idyllic-retreat-tropical-beach-palm-tree-crystal-sea-nature-s-paradise-on-an-island-vertical-mobile-wallpaper-ai-generated-free-photo.jpg'
             : 'https://i.ebayimg.com/images/g/WzwAAOSwA39hFZ5W/s-l1200.webp',
         }}
@@ -435,8 +476,8 @@ export const App = () => {
           uri: 'https://st3.depositphotos.com/1875497/12876/i/950/depositphotos_128766962-stock-photo-beautiful-tropical-maldives-resort-hotel.jpg',
         }}
         rating={5}
-        onPress={() => setIsExecuted(!isExecuted)}
-      /> */}
+        onPress={() => setVisible(!visible)}
+      />
       {/* <BottomTabNavigation
         selectedIndex={0}
         highlightedIconColor="#FFF"

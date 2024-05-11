@@ -12,13 +12,13 @@ export const Toast = ({
   top = 50,
   fontSize = 14,
   icon,
-  onHide,
+  setVisible,
   position = 'top',
   text,
   textColor = '#FFF',
   visible,
 }: ToastProps) => {
-  const {show, translateY} = useToast(visible, duration, position, onHide);
+  const {show, translateY} = useToast(visible, duration, position, setVisible);
 
   if (!show) return null;
 

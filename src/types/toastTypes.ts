@@ -7,9 +7,9 @@ export type ToastProps = {
   fontSize?: number;
   icon?: IconName;
   position?: 'top' | 'bottom';
-  text?: string;
+  text: string;
   textColor?: string;
   top?: number;
-  visible?: boolean;
-  onHide?: (visible: boolean) => void;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
 };

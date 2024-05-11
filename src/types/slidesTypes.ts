@@ -47,19 +47,3 @@ export type SliderProps = {
   value?: number;
   onChange?: (value: number) => void;
 };
-
-export const thumbDefaultStyle: ThumbStyles = {
-  backgroundColor: '#FFFFFF',
-  borderRadius: 50,
-  height: 40,
-  iconColor: '#4D67FF',
-  iconSize: 20,
-  shadow: true,
-  width: 40,
-};
-
-export const trackDefaultStyle: TrackStyles = {
-  height: 5,
-  trackColor: '#CECECE',
-  trackCompletedColor: '#4D67FF',
-};

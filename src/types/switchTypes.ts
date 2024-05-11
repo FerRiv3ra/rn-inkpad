@@ -5,6 +5,7 @@ export type SwitchProps = {
   backgrounColor?: string;
   border?: boolean;
   borderColor?: string;
+  borderWidth?: number;
   fullWidth?: boolean;
   justifyContent?:
     | 'flex-start'
