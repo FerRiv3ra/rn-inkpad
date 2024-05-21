@@ -5,7 +5,9 @@ title: Avatar
 
 # Avatar
 
-The **Circle Avatar** component in our library is a visually appealing element used to represent users or entities within an application. It typically displays a circular image or icon, often depicting a person's profile picture or a symbolic representation of an entity. Circle Avatars add a personal touch to user interfaces, facilitating easy identification and enhancing the overall aesthetic appeal. With customizable size, border, and content options, our Circle Avatar component offers flexibility to suit various design preferences and application needs..
+The **Circle Avatar** component in our library is a visually appealing element used to represent users or entities within an application. It typically displays a circular image or icon, often depicting a person's profile picture or a symbolic representation of an entity. Circle Avatars add a personal touch to user interfaces, facilitating easy identification and enhancing the overall aesthetic appeal. With customizable size, border, and content options, our Circle Avatar component offers flexibility to suit various design preferences and application needs.
+
+## Usage
 
 ### Basic usage
 
@@ -18,7 +20,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/avatar/avatar-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/avatar/avatar-simple_atcnbs.png" />
 
 ## Props
 
@@ -65,4 +67,4 @@ const styles = StyleSheet.create({
 
 ### Example
 
-<img width="40%"  src="/img/avatar/avatar-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/avatar/avatar-props_sjnpmw.png" />

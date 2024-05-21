@@ -27,7 +27,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/icon/icon-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306849/packages/icon/icon-simple_drhciv.png" />
 
 ## Props
 

@@ -12,7 +12,7 @@ Please see the [installation](https://rn-inkpad.web.app/docs/intro) section of o
 
 ## Docs
 
-You can read the complete [documentation](https://rn-inkpad.web.app/docs/category/components) for detailed information on each of the components that make up this UI library.
+You can read the complete [documentation](https://rn-inkpad.web.app) for detailed information on each of the components that make up this UI library.
 
 ## License
 

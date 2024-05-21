@@ -8,7 +8,6 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  // TODO!
   url: 'https://rn-inkpad.web.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
@@ -26,18 +25,18 @@ const config: Config = {
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en', 'es'],
-  //   localeConfigs: {
-  //     en: {
-  //       htmlLang: 'en-GB',
-  //     },
-  //     fa: {
-  //       direction: 'rtl',
-  //     },
-  //   },
-  // },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-GB',
+      },
+      fa: {
+        direction: 'rtl',
+      },
+    },
+  },
 
   presets: [
     [
@@ -73,10 +72,10 @@ const config: Config = {
           label: 'Docs',
         },
         // {to: '/blog', label: 'Blog', position: 'left'},
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: 'https://github.com/FerRiv3ra/rn-inkpad',
           label: 'GitHub',

@@ -22,8 +22,8 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/action-sheet/actionsheet-ios-simple.png" />
-<img width="40%"  src="/img/action-sheet/actionsheet-android-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-ios-simple_ud13jc.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-android-simple_p0cuuw.png" />
 
 ## Props
 
@@ -112,10 +112,10 @@ const MyComponent = () => {
 
 ### iOS
 
-  <img width="40%"  src="/img/action-sheet/actionsheet-ios-light.png" /> 
-  <img width="40%"  src="/img/action-sheet/actionsheet-ios-dark.png" />
+  <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/action-sheet/actionsheet-ios-light_fceujq.png" /> 
+  <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/action-sheet/actionsheet-ios-dark_vedcrl.png" />
 
 ### Android
 
-  <img width="40%"  src="/img/action-sheet/actionsheet-android-light.png" /> 
-  <img width="40%" src="/img/action-sheet/actionsheet-android-dark.png" />
+  <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-android-light_n34v0f.png" /> 
+  <img width="40%" src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-android-dark_vere4h.png" />

@@ -25,7 +25,7 @@ npm install react-native-vector-icons
 
 This library has different installation and configuration instructions for each platform, follow its [installation guide](https://github.com/oblador/react-native-vector-icons#installation) to correctly install the library and avoid errors.
 
-Once the library and the dependency are installed, we are ready to use each of the components
+Once the library and the dependency are installed, we are ready to use each of the components.
 
 ## Extra
 

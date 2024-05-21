@@ -1,0 +1,46 @@
+{
+  "version.label": {
+    "message": "Siguiente",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Components": {
+    "message": "Componentes",
+    "description": "The label for category Components in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Components.link.generated-index.description": {
+    "message": "Lista de todos los componentes que puedes usar.",
+    "description": "The generated-index page description for category Components in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Buttons": {
+    "message": "Botones",
+    "description": "The label for category Buttons in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Buttons.link.generated-index.description": {
+    "message": "Todos los diferentes botones.",
+    "description": "The generated-index page description for category Buttons in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Cards": {
+    "message": "Tarjetas",
+    "description": "The label for category Cards in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Cards.link.generated-index.description": {
+    "message": "Todas las diferentes tarjetas.",
+    "description": "The generated-index page description for category Cards in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Navigations": {
+    "message": "Navegaciones",
+    "description": "The label for category Navigations in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Navigations.link.generated-index.description": {
+    "message": "Navegaciones que se adaptan bien a tu paquete de navegación preferido.",
+    "description": "The generated-index page description for category Navigations in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Ratings": {
+    "message": "Calificaciones",
+    "description": "The label for category Ratings in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Ratings.link.generated-index.description": {
+    "message": "Componentes de calificación.",
+    "description": "The generated-index page description for category Ratings in sidebar tutorialSidebar"
+  }
+}

@@ -21,7 +21,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/checkbox/checkbox-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/checkbox/checkbox-simple_xz2qb8.png" />
 
 ## Props
 
@@ -72,4 +72,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/checkbox/checkbox-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/checkbox/checkbox-props_gyb5q6.gif" />
