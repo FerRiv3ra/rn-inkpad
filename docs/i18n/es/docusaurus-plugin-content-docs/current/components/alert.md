@@ -5,7 +5,7 @@ title: Alert
 
 # Alert
 
-Es un componente versátil de nuestra biblioteca diseñado para mejorar la interacción y la comunicación del usuario dentro de las aplicaciones. Las alertas (**Alerts** )proporcionan notificaciones inmediatas sobre eventos o actualizaciones importantes, lo que garantiza que los usuarios se mantengan informados. Ingreso rápido (**Prompt**) guían a los usuarios a través de acciones o decisiones mediante la presentación de mensajes y opciones claras, lo que facilita la fluidez de los recorridos de los usuarios. Con estilos y funcionalidades personalizables, nuestros componentes Alert y Prompt ofrecen una experiencia de usuario perfecta en varias interfaces.
+Es un componente versátil de nuestra biblioteca diseñado para mejorar la interacción y la comunicación del usuario dentro de las aplicaciones. Las alertas (**Alerts**)proporcionan notificaciones inmediatas sobre eventos o actualizaciones importantes, lo que garantiza que los usuarios se mantengan informados. Ingreso rápido (**Prompt**) guían a los usuarios a través de acciones o decisiones mediante la presentación de mensajes y opciones claras, lo que facilita la fluidez de los recorridos de los usuarios. Con estilos y funcionalidades personalizables, nuestros componentes Alert y Prompt ofrecen una experiencia de usuario perfecta en varias interfaces.
 
 ## Configuración y personalización
 

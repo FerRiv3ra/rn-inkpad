@@ -5,7 +5,7 @@ title: SegmentedControl
 
 # SegmentedControl
 
-The **SegmentedControl** component in our library is a user interface element used to enable users to make selections from a predefined set of options. It typically appears as a horizontal row of segmented buttons, each representing a distinct choice. Users can toggle between segments to indicate their selection preference, with only one segment active at a time. SegmentedControls are commonly used in applications to provide users with a clear and intuitive way to switch between different views, filters, or categories.
+El componente **SegmentedControl** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para permitir a los usuarios realizar selecciones de un conjunto predefinido de opciones. Por lo general, aparece como una fila horizontal de botones segmentados, cada uno de los cuales representa una opción distinta. Los usuarios pueden alternar entre segmentos para indicar su preferencia de selección, con solo un segmento activo a la vez. Los SegmentedControls se usan habitualmente en las aplicaciones para proporcionar a los usuarios una forma clara e intuitiva de cambiar entre diferentes vistas, filtros o categorías.
 
 ## Usage
 
@@ -34,18 +34,18 @@ const App = () => {
 
 ### Props
 
-| Prop                    | Description                                                     | Type                             | Required | Default     |
-| ----------------------- | --------------------------------------------------------------- | -------------------------------- | -------- | ----------- |
-| **`values`**            | Key and value array to generate each tab.                       | `{key: string; value: string}[]` | **Yes**  | _None_      |
-| **`onChange`**          | Function that returns the selected value.                       | `(value: string) => void`        | **Yes**  | None\_      |
-| **`label`**             | The label with which you want to identify the segmentedControl. | `string`                         | No       | _None_      |
-| **`labelStyle`**        | Styles for label.                                               | `StyleProp<TextStyle>`           | No       | _None_      |
-| **`selectedIndex`**     | Selected initial value.                                         | `number`                         | No       | `0`         |
-| **`backgroundColor`**   | SegmentedControl background color.                              | `string`                         | No       | `'#CCCCCC'` |
-| **`tintColor`**         | Tint color for the selected tab.                                | `string`                         | No       | `'#FFFFFF'` |
-| **`textColor`**         | Text color in the segmentedControl.                             | `string`                         | No       | `'#000000'` |
-| **`selectedTextColor`** | Text color en the selected tab.                                 | `string`                         | No       | `'#000000'` |
-| **`style`**             | Styles for the component container.                             | `StyleProp<ViewStyle>`           | No       | _None_      |
+| Prop                    | Descripción                                                | Tipo                             | Requerido | Predeterminado |
+| ----------------------- | ---------------------------------------------------------- | -------------------------------- | --------- | -------------- |
+| **`values`**            | Arreglo de llave y valor para generar cada pestaña.        | `{key: string; value: string}[]` | **Yes**   | _None_         |
+| **`onChange`**          | Función que retorna el valor seleccionado.                 | `(value: string) => void`        | **Yes**   | None\_         |
+| **`label`**             | Etiqueta con la que desea identificar el segmentedControl. | `string`                         | No        | _None_         |
+| **`labelStyle`**        | Estilos personalizados para la etiqueta.                   | `StyleProp<TextStyle>`           | No        | _None_         |
+| **`selectedIndex`**     | Valor inicial seleccionado.                                | `number`                         | No        | `0`            |
+| **`backgroundColor`**   | Color de fondo del SegmentedControl.                       | `string`                         | No        | `'#CCCCCC'`    |
+| **`tintColor`**         | Color de la pestaña seleccionada.                          | `string`                         | No        | `'#FFFFFF'`    |
+| **`textColor`**         | Color de texto en segmentedControl.                        | `string`                         | No        | `'#000000'`    |
+| **`selectedTextColor`** | Color de texto en la pestaña seleccionada.                 | `string`                         | No        | `'#000000'`    |
+| **`style`**             | Estilos personalizados para el contenedor del componente.  | `StyleProp<ViewStyle>`           | No        | _None_         |
 
 ### Example
 

@@ -5,7 +5,7 @@ title: ProgressBar
 
 # ProgressBar
 
-The **ProgressBar** component in our library is a visual element used to indicate the progress of a task or process within an application. It typically appears as a horizontal bar that fills up gradually as the task progresses, providing users with a visual cue of completion status. ProgressBars are commonly used to represent tasks such as file uploads, downloads, form submissions, or loading screens.
+El componente **ProgressBar** de nuestra biblioteca es un elemento visual que se utiliza para indicar el progreso de una tarea o proceso dentro de una aplicación. Por lo general, aparece como una barra horizontal que se llena gradualmente a medida que avanza la tarea, lo que proporciona a los usuarios una indicación visual del estado de finalización. Las barras de progreso se utilizan normalmente para representar tareas como cargas de archivos, descargas, envíos de formularios o pantallas de carga.
 
 ## Usage
 
@@ -19,22 +19,22 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/progressbar/progress-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/progressbar/progress-simple_jqombo.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` | #FFFFFF | Bar background color. |
-| borderColor | `string` |  | Bar boder color. |
-| borderRadius | `number` | 0 | Round the corners. |
-| height | `number` | 20 | Bar height. |
-| progressColor | `string` | #00CC00 | Progress color. |
-| rounded | `boolean` | false | Round all corners. |
-| showPercent | `boolean` | false | Show or hide progress text. |
-| textColor | `string` | | Progress text color. |
-| value | `number` | 0 | Progress value. |
+| backgroundColor | `string` | #FFFFFF | Color de fondo de la barra. |
+| borderColor | `string` |  | Color del borde de la barra. |
+| borderRadius | `number` | 0 | Redondeado de esquinas. |
+| height | `number` | 20 | Altura de la barra. |
+| progressColor | `string` | #00CC00 | Color del progreso. |
+| rounded | `boolean` | false | Redondear todas las esquinas. |
+| showPercent | `boolean` | false | Mostrar u ocultar el texto del progreso. |
+| textColor | `string` | | Color del texto. |
+| value | `number` | 0 | Valor del progreso. |
 </div>
 
 ## Usage props
@@ -80,4 +80,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/progressbar/progress-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/progressbar/progress-props_vycrzf.gif" />
