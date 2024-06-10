@@ -7,9 +7,9 @@ title: SegmentedControl
 
 El componente **SegmentedControl** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para permitir a los usuarios realizar selecciones de un conjunto predefinido de opciones. Por lo general, aparece como una fila horizontal de botones segmentados, cada uno de los cuales representa una opción distinta. Los usuarios pueden alternar entre segmentos para indicar su preferencia de selección, con solo un segmento activo a la vez. Los SegmentedControls se usan habitualmente en las aplicaciones para proporcionar a los usuarios una forma clara e intuitiva de cambiar entre diferentes vistas, filtros o categorías.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```js
 import {SegmentedControl} from 'rn-inkpad';
@@ -47,7 +47,7 @@ const App = () => {
 | **`selectedTextColor`** | Color de texto en la pestaña seleccionada.                 | `string`                         | No        | `'#000000'`    |
 | **`style`**             | Estilos personalizados para el contenedor del componente.  | `StyleProp<ViewStyle>`           | No        | _None_         |
 
-### Example
+### Ejemplo
 
 <p align="center" width="100%">
     <img width="33%" src="https://res.cloudinary.com/fercloudinary/image/upload/v1709313673/GitHub/segmentedControl_dul8fq.gif" />

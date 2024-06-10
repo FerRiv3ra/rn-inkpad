@@ -5,11 +5,11 @@ title: Toast
 
 # Toast
 
-The **Toast** component in our library is a lightweight and non-intrusive user interface element used to display brief messages or notifications to users. It typically appears as a small rectangular pop-up that appears at the top or bottom of the screen for a short period before disappearing automatically. Toasts are commonly used to provide users with quick feedback, alerts, or confirmation messages after completing an action, such as saving a file, submitting a form, or successfully completing a task.
+El componente **Toast** de nuestra biblioteca es un elemento de interfaz de usuario ligero y no intrusivo que se utiliza para mostrar mensajes breves o notificaciones a los usuarios. Por lo general, aparece como una pequeña ventana emergente rectangular que aparece en la parte superior o inferior de la pantalla durante un breve período antes de desaparecer automáticamente. Las notificaciones del sistema se usan normalmente para proporcionar a los usuarios comentarios rápidos, alertas o mensajes de confirmación después de completar una acción, como guardar un archivo, enviar un formulario o completar correctamente una tarea.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import React, {useState} from 'react';
@@ -31,28 +31,28 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/toast/toast-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306861/packages/toast/toast-simple_hthryt.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Required | Default | Description |
+| Nombre | Tipo | Requerido | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- | -------- |----------------------------------------------------- |
-| text | `string` | **YES** | | Toast text. |
-| visible | `boolean` | **YES** | | Show or hide toast. |
-| backgroundColor | `string` | _NO_ | rgba(0,0,0,0.7) | Toast background color. |
-| bottom | `number` | _NO_ | 30 | Separation between the bottom and the component when the position of the component is bottom. |
-| duration | `number` | _NO_ | 3000 | Time in milliseconds in which the toast will appear. |
-| fontSize | `number` | _NO_ | | Toast text font size. |
-| icon | `string` | _NO_ | | Toast icon. |
-| position | `'bottom' \| 'top'` | _NO_ | top | Determines where the toast will appear from. |
-| textColor | `string` | _NO_ | #FFFFFF | Toast text color. |
-| textStyles | `StyleProp<TextStyle>` | _NO_ |  | Custom text styles. |
-| top | `number` | _NO_ | 50 | Separation between the top and the component when the position of the component is top. |
-| setVisible | `(visible: boolean) => void` | **YES** | | Function that controls the visibility of the toast. |
+| text | `string` | **SI** | | Texto de la notificación. |
+| visible | `boolean` | **SI** | | Mostrar u ocultar la notificación. |
+| backgroundColor | `string` | _NO_ | rgba(0,0,0,0.7) | Color de fondo de la notificación. |
+| bottom | `number` | _NO_ | 30 | Separación entre la parte inferior y el componente cuando la posición del componente es desde el inferior. |
+| duration | `number` | _NO_ | 3000 | Tiempo en milisegundos en el que aparecerá la notificación. |
+| fontSize | `number` | _NO_ | | Tamaño del texto de la notificación. |
+| icon | `string` | _NO_ | | Icono de la notificación. |
+| position | `'bottom' \| 'top'` | _NO_ | top | Determina la posición en la que aparecerá la notificación. |
+| textColor | `string` | _NO_ | #FFFFFF | Color del texto de la notificación. |
+| textStyles | `StyleProp<TextStyle>` | _NO_ |  | Estilos personalizados del texto. |
+| top | `number` | _NO_ | 50 | Separación entre la parte superior y el componente cuando la posición del componente es desde la parte superior. |
+| setVisible | `(visible: boolean) => void` | **SI** | | Función que controla la visibilidad de la notificación. |
 </div>
 
-## Usage props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -101,6 +101,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/toast/toast-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/toast/toast-props_yhsmwo.gif" />

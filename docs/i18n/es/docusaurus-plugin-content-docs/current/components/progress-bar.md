@@ -7,9 +7,9 @@ title: ProgressBar
 
 El componente **ProgressBar** de nuestra biblioteca es un elemento visual que se utiliza para indicar el progreso de una tarea o proceso dentro de una aplicación. Por lo general, aparece como una barra horizontal que se llena gradualmente a medida que avanza la tarea, lo que proporciona a los usuarios una indicación visual del estado de finalización. Las barras de progreso se utilizan normalmente para representar tareas como cargas de archivos, descargas, envíos de formularios o pantallas de carga.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {ProgressBar} from 'rn-inkpad';
@@ -37,7 +37,7 @@ const MyComponent = () => {
 | value | `number` | 0 | Valor del progreso. |
 </div>
 
-## Usage props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -78,6 +78,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with props
+### Ejemplo con props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/progressbar/progress-props_vycrzf.gif" />

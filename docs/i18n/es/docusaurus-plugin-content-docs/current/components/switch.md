@@ -5,11 +5,11 @@ title: Switch
 
 # Switch
 
-The **Switch** component in our library is a user interface element used to toggle between two states, typically representing an "on" and "off" state. It appears as a small sliding button that users can tap or drag to change its position, thereby toggling between the two states. Switches are commonly used in applications for settings such as enabling or disabling a feature, activating or deactivating notifications, or switching between light and dark modes.
+El componente **Switch** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para alternar entre dos estados, que normalmente representa un estado de "encendido" y "apagado". Aparece como un pequeño botón deslizante que los usuarios pueden tocar o arrastrar para cambiar su posición, alternando así entre los dos estados. Los interruptores se utilizan habitualmente en aplicaciones para ajustes como la activación o desactivación de una función, la activación o desactivación de notificaciones o el cambio entre los modos claro y oscuro.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {Switch} from 'rn-inkpad';
@@ -19,26 +19,26 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/switch/switch-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/switch/switch-simple_mexil0.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| isOn | `boolean` | false | Set on or off. |
-| backgrounColor | `string` | #1DFF56 | Activated background color. |
-| border | `boolean` | false | Turn the border on or off. |
-| borderColor | `string` | | Border color. |
-| borderWidth | `number` | 2 | Border width. |
-| fullWidth | `boolean` | false | Acctivate full width. |
-| justifyContent | `FlexStyle.justifyContent` | | Horizontal alignment. |
-| text | `string` | | Switch text. |
-| textStyle | `StyleProp<TextStyle>` | | Custom styles for your switch. |
-| onChange | `(value: boolean) => void` | | Function that returns the boolean value of the switch. |
+| isOn | `boolean` | false | Establecer encendido o apagado. |
+| backgrounColor | `string` | #1DFF56 | Color de fondo cuando esta activado. |
+| border | `boolean` | false | Activar o desactivar el borde. |
+| borderColor | `string` | | Color del borde. |
+| borderWidth | `number` | 2 | Ancho del borde. |
+| fullWidth | `boolean` | false | Activar el ancho completo. |
+| justifyContent | `FlexStyle.justifyContent` | | Alineación horizontal. |
+| text | `string` | | Texto del Switch. |
+| textStyle | `StyleProp<TextStyle>` | | Estilos personalizados para el switch. |
+| onChange | `(value: boolean) => void` | | Función que se ejecuta al cambiar el switch, retorna un valor booleano con el valor actual del switch. |
 </div>
 
-## Usage props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/switch/switch-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/switch/switch-props_whiq24.gif" />

@@ -5,11 +5,11 @@ title: SlideAction
 
 # SlideAction
 
-The **SlideAction** component in our library is an interactive element designed to trigger actions when users perform a sliding gesture.
+El componente **SlideAction** de nuestra biblioteca es un elemento interactivo diseñado para ejecutar acciones cuando los usuarios realizan un gesto de deslizamiento.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {ProgressBar} from 'rn-inkpad';
@@ -19,33 +19,33 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/sliders/slideaction-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/sliders/slideaction-simple_llomv3.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| height | `number` | 56 | Slider height. |
-| icon | `string` | | Thumb icon. |
-| iconColor | `string` | #F43F5D | Thumb icon color. |
-| iconCompletedColor | `string` | #4ADE80 | Thumb icon color when is completed. |
-| iconOnCompleted | `string` | | Thumb icon when is completed. |
-| iconSize | `number` | 20 | Icon size. |
-| padding | `number` | 8 | Padding between thumb and edges. |
-| text | `string` | | Slider text. |
-| textOnCompleted | `string` | | Slider text when is completed. |
-| textPosition | `'center' \| 'ends'` | center | Text position. |
-| textStyle | `StyleProp<TextStyle>` | | Custom styles for your slider. |
-| thumbColor | `string` | #FFFFFF | Thumb color. |
-| thumbCompletedColor | `string` | #FFFFFF | Thumb color when is completed. |
-| thumbWidth | `string` | 40 | Thumb width. |
-| tintColor | `string` | #F43F5D | Slider background color. |
-| tintCompletedColor | `string` | #4ADE80 | Slider background color when is completed. |
-| onCompleted | `() => void` | | Callback that is called when slide is completed. |
+| height | `number` | 56 | Altura del Slider. |
+| icon | `string` | | Icono del punto deslizante. |
+| iconColor | `string` | #F43F5D | Color del icono del punto deslizante. |
+| iconCompletedColor | `string` | #4ADE80 | Color del icono del punto deslizante cuando se ha completado la acción. |
+| iconOnCompleted | `string` | | Icono del punto deslizante cuando se completa la acción. |
+| iconSize | `number` | 20 | Tamaño del icono. |
+| padding | `number` | 8 | Padding entre el punto deslizante y las esquinas. |
+| text | `string` | | Texto del Slider. |
+| textOnCompleted | `string` | | Texto del Slider cuando se completa la acción. |
+| textPosition | `'center' \| 'ends'` | center | Posición del texto. |
+| textStyle | `StyleProp<TextStyle>` | | Estilos personalizados para el Slider. |
+| thumbColor | `string` | #FFFFFF | Color del punto deslizante. |
+| thumbCompletedColor | `string` | #FFFFFF | Color del punto deslizante cuando se completa la acción. |
+| thumbWidth | `string` | 40 | Ancho del punto deslizante. |
+| tintColor | `string` | #F43F5D | Color de fondo del Slider. |
+| tintCompletedColor | `string` | #4ADE80 | Color de fondo del Slider cuando se completa la acción. |
+| onCompleted | `() => void` | | Función que es llamada cuando se completa el deslizamiento. |
 </div>
 
-## Usage props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/sliders/slideaction-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/sliders/slideaction-props_bmt4m9.gif" />

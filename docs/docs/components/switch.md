@@ -19,7 +19,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/switch/switch-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/switch/switch-simple_mexil0.gif" />
 
 ## Props
 
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
 
 ### Example with props
 
-<img width="40%"  src="/img/switch/switch-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/switch/switch-props_whiq24.gif" />
