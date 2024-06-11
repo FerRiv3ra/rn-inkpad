@@ -5,11 +5,11 @@ title: DrawerNavigation
 
 # DrawerNavigation
 
-The **DrawerNavigation** component in our library is a versatile navigational element commonly used in mobile and web applications to provide users with access to various screens, features, or settings. It typically appears as a side panel that can be swiped in from the edge of the screen or toggled with a menu button. DrawerNavigation organizes app content and functionality into a hierarchical menu structure, allowing users to navigate between different sections or views efficiently. It offers a convenient way to access less frequently used features, settings, or navigation options without cluttering the main interface.
+El componente **DrawerNavigation** de nuestra biblioteca es un elemento de navegación versátil que se utiliza habitualmente en aplicaciones móviles y web para proporcionar a los usuarios acceso a varias pantallas, funciones o configuraciones. Por lo general, aparece como un panel lateral que se puede deslizar desde el borde de la pantalla o alternar con un botón de menú. DrawerNavigation organiza el contenido y la funcionalidad de la aplicación en una estructura de menú jerárquica, lo que permite a los usuarios navegar entre diferentes secciones o vistas de manera eficiente. Ofrece una forma conveniente de acceder a funciones, configuraciones u opciones de navegación de uso menos frecuente sin saturar la interfaz principal.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {View} from 'react-native';
@@ -25,71 +25,71 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/navigations/drawer-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/drawer-simple_cmdhyt.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` | #464EE5 | Drawer background color. |
-| closeIcon | `string` | close | Icon to close the drawer. |
-| collapseIcon | `string` | chevron-up | Icon to collapse drawer groups. |
-| expandIcon | `string` | chevron-down | Icon to expand drawer groups |
-| fontSize | `number` | 18 | Drawer item font size. |
-| icon | `string` | menu | Icon to open the drawer. |
-| iconColor | `string` | | Drawer icon color. |
-| iconSize | `number` | 35 | Drawer icon size. |
-| iconTop | `number` | 50 | Gap between top and drawer icon. |
-| image | `ImageSourcePropType` | | It is usually the app logo that goes at the top of the drawer. |
-| imageStyles | `StyleProp<ImageStyle>` | | Custom styles for your image. |
-| itemIconSize | `number` | 19 | Drawer item icon size. |
-| items | [Item[]](#item) | | Array of items or group of items in your drawer. |
-| textColor | `string` | | Drawer item text color. |
-| textStyles | `StyleProp<TextStyle>` | | Custom styles for your drawer item. |
-| widthPercent | `number` | 65 | Percentage of width that the drawer occupies on the screen. |
+| backgroundColor | `string` | #464EE5 | Color de fondo. |
+| closeIcon | `string` | close | Icono para cerrar el drawer. |
+| collapseIcon | `string` | chevron-up | Icono para contraer grupos del drawer. |
+| expandIcon | `string` | chevron-down | Icono para expandir grupos de drawer. |
+| fontSize | `number` | 18 | Tamaño de la fuente de cada elemento. |
+| icon | `string` | menu | Icono para abrir el drawer. |
+| iconColor | `string` | | Color del icono de control del drawer. |
+| iconSize | `number` | 35 | Tamaño del icono de control del drawer. |
+| iconTop | `number` | 50 | Separación entre la parte superior y el icono de control del drawer. |
+| image | `ImageSourcePropType` | | Por lo general, es el logotipo de la aplicación el que va en la parte superior del drawer. |
+| imageStyles | `StyleProp<ImageStyle>` | | Estilos personalizados para la imagen. |
+| itemIconSize | `number` | 19 | Tamaño del icono de cada elemento. |
+| items | [Item[]](#item) | | Arreglo de elementos o grupo de elementos en el drawer. |
+| textColor | `string` | | Color de texto de los elementos. |
+| textStyles | `StyleProp<TextStyle>` | | Estilos personalizados para el texto de los elementos. |
+| widthPercent | `number` | 65 | Porcentaje de ancho que el drawer ocupará en la pantalla. |
 </div>
 
 ### Item
 
-:::tip[Information]
+:::tip[Información]
 
-In the items array you can send elements of type [DrawerItem](#draweritem-props) or [DrawerGroup](#drawergroup-props).
+En el arreglo de elementos puedes enviar elementos del tipo [DrawerItem](#draweritem-props) o [DrawerGroup](#drawergroup-props).
 
 :::
-:::note[Note]
+:::note[Nota]
 
-If you send a [DrawerGroup](#drawergroup-props) it will be shown as a dropdown list in the DrawerNavigation.
+Si envías un [DrawerGroup](#drawergroup-props) se mostrará como una lista desplegable en el DrawerNavigation.
 
 :::
 
 ### DrawerGroup props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| icon | `string` | **YES** | Item Icon. |
-| items | [DrawerItem[]](#draweritem-props) | **YES** | Item dropdown list. |
-| text | `string` | **YES** | Item text. |
+| icon | `string` | **SI** | Icono del elemento. |
+| items | [DrawerItem[]](#draweritem-props) | **SI** | Lista de elementos desplegables. |
+| text | `string` | **SI** | Texto del elemento. |
 </div>
 
 ### DrawerItem props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| icon | `string` | **YES** | Item icon. |
-| text | `string` | **YES** | Item text. |
-| onPress | `() => void` | _NO_ | Callback that is called when item is pressed. |
+| icon | `string` | **SI** | Icono del elemento. |
+| text | `string` | **SI** | Texto del elemento. |
+| onPress | `() => void` | _NO_ | Función que es llamada al presionar el elemento. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-This navigation only provides the style for your navigation, however to navigate to different screens you must install a navigation package.
+Esta navegación solo proporciona el estilo para su navegación, sin embargo, para navegar a diferentes pantallas debe instalar un paquete de navegación.
 
 :::
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import {View} from 'react-native';
@@ -139,6 +139,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/navigations/drawer-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/drawer-props_idiebk.gif" />

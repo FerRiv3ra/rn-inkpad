@@ -5,11 +5,11 @@ title: CardImage
 
 # CardImage
 
-The **CardImage** component in our library is a specialized element within a card layout designed to prominently display an image as the focal point of the card. This component is ideal for showcasing visual content such as photographs, illustrations, or graphics within a structured card format.
+El componente **CardImage** de nuestra biblioteca es un elemento especializado dentro de un diseño de tarjeta diseñado para mostrar de forma destacada una imagen como punto focal de la tarjeta. Este componente es ideal para mostrar contenido visual como fotografías, ilustraciones o gráficos dentro de un formato de tarjeta estructurado.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import React from 'react';
@@ -22,44 +22,44 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/cardimage-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/cards/cardimage-simple_spu1he.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| source | ImageSourcePropType | **YES** | Image source.|
-| loadTime | `number` | _NO_ | Image loading time. |
-| text | `string` | _NO_ | Description text. |
-| theme | [Theme](#theme-props) | _NO_ | Personalize your card. |
+| source | ImageSourcePropType | **SI** | Fuente de la imagen.|
+| loadTime | `number` | _NO_ | Tiempo de carga de la imagen. |
+| text | `string` | _NO_ | Texto de descripción. |
+| theme | [Theme](#theme-props) | _NO_ | Personaliza la tarjeta. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-The image starts with a blur effect and decreases as the loading time progresses.
+La imagen comienza con un efecto de desenfoque y disminuye a medida que avanza el tiempo de carga.
 
 :::
-:::note[Note]
+:::note[Nota]
 
-If you don't want that effect, you can submit a load time of 0 milliseconds.
+Si no desea ese efecto, puede enviar un tiempo de carga de 0 milisegundos.
 
 :::
 
 ### Theme props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` |  | Card background color.|
-| fontSize | `number` |  | Text information font size. |
-| fontColor | `string` |  | Text information color. |
-| fontWeight | `string` |  | Font weight. |
-| radius | `number` | 15 | Border radius. |
-| shadow | `boolean` |  | Turn shadow on or off. |
+| backgroundColor | `string` |  | Color de fondo de la tarjeta.|
+| fontSize | `number` |  | Tamaño del texto de información. |
+| fontColor | `string` |  | Color del texto de información. |
+| fontWeight | `string` |  | Grosor de la fuente. |
+| radius | `number` | 15 | Bordes redondeados. |
+| shadow | `boolean` |  | Activar o desactivar la sombra en la tarjeta. |
 </div>
 
-## Personalized theme usage
+## Uso con tema personalizado
 
 ```jsx
 import React from 'react';
@@ -86,6 +86,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with personalized theme
+### Ejemplo con tema personalizado
 
-<img width="40%"  src="/img/cards/cardimage-themed.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306865/packages/cards/cardimage-themed_iy7ppc.png" />

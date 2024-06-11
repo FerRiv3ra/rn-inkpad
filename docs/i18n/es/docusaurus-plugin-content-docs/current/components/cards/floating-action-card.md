@@ -5,11 +5,11 @@ title: FloatingActionCard
 
 # FloatingActionCard
 
-The **FloatingActionCard** is an innovative component in our library, blending the functionality of a Floating Action Button (FAB) with the versatility of a Card. This component presents a visually engaging card that "floats" above the content, similar to a FAB, while also providing a structured layout for displaying information or actions. FloatingActionCards are ideal for highlighting important content or key actions within an application, combining accessibility with a sleek design aesthetic. With customizable styles and configurations, our FloatingActionCard component enhances user engagement and navigation efficiency in modern app interfaces.
+La **FloatingActionCard** es un componente innovador de nuestra biblioteca, que combina la funcionalidad de un botón de acción flotante (FAB) con la versatilidad de una tarjeta. Este componente presenta una tarjeta visualmente atractiva que "flota" sobre el contenido, similar a un FAB, al tiempo que proporciona un diseño estructurado para mostrar información o acciones. Las FloatingActionCards son ideales para resaltar contenido importante o acciones clave dentro de una aplicación, combinando la accesibilidad con una estética de diseño elegante. Con estilos y configuraciones personalizables, nuestro componente FloatingActionCard mejora la participación del usuario y la eficiencia de la navegación en las interfaces de aplicaciones modernas.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import React from 'react';
@@ -32,34 +32,34 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/floatingcard-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306872/packages/cards/floatingcard-simple_rsc1a8.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-|backgroundColor| `RGB \| RBGA \| HEX` | #FFFFFF | Card background color. |
-|bottom| `number` | 40 | Separation between bottom and component. |
-|description| `string` | | Extra information. |
-|decimals| `number` | 1 | Number of decimal places you want to display in the rating. |
-|icon| `string` | | Icon that appears next to the rating. |
-|iconColor| `string` | #FFD700 | Rating icon color. |
-|image| `ImageSourcePropType` | | Card image |
-|rating| `number` | | Rating. |
-|textColor| `string` | | Text color. |
-|title| `string` | | Card title. |
-|width| `DimensionValue` | 90% | Card width. |
-|onPress| `() => void` | | Function that is executed when the card is pressed. |
+|backgroundColor| `RGB \| RBGA \| HEX` | #FFFFFF | Color de fondo de la tarjeta. |
+|bottom| `number` | 40 | Separación entre la parte inferior y el componente. |
+|description| `string` | | Información extra. |
+|decimals| `number` | 1 | Número de decimales que desea mostrar en la clasificación. |
+|icon| `string` | | Icono que aparece junto a la clasificación. |
+|iconColor| `string` | #FFD700 | Color del icono de clasificación. |
+|image| `ImageSourcePropType` | | Imagen de la tarjeta |
+|rating| `number` | | Clasificación. |
+|textColor| `string` | | Color de texto. |
+|title| `string` | | Título de la tarjeta. |
+|width| `DimensionValue` | 90% | Ancho de la tarjeta. |
+|onPress| `() => void` | | Función que se ejecuta al presionar la tarjeta. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-All colors will be converted to RGBA with an opacity of 0.9
+Todos los colores serán convertidos a RGBA con una opacidad del 0.9
 
 :::
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -90,7 +90,7 @@ const MyComponent = () => {
         icon="star"
         description="Lorem ipsum dolor"
         image={{
-          uri: 'https://st3.depositphotos.com/1875497/12876/i/950/depositphotos_128766962-stock-photo-beautiful-tropical-maldives-resort-hotel.jpg',
+          uri: 'https://www.example.com/photo-beautiful-tropical-maldives-resort-hotel.jpg',
         }}
         rating={5}
         onPress={handleChangeImage}
@@ -102,4 +102,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/cards/floatingcard-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/cards/floatingcard-props_qmhrkj.gif" />

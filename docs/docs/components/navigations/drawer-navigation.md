@@ -25,7 +25,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/navigations/drawer-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/drawer-simple_cmdhyt.gif" />
 
 ## Props
 
@@ -46,7 +46,7 @@ const MyComponent = () => {
 | itemIconSize | `number` | 19 | Drawer item icon size. |
 | items | [Item[]](#item) | | Array of items or group of items in your drawer. |
 | textColor | `string` | | Drawer item text color. |
-| textStyles | `StyleProp<TextStyle>` | | Custom styles for your drawer item. |
+| textStyles | `StyleProp<TextStyle>` | | Custom styles for your drawer text item. |
 | widthPercent | `number` | 65 | Percentage of width that the drawer occupies on the screen. |
 </div>
 
@@ -141,4 +141,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/navigations/drawer-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/drawer-props_idiebk.gif" />

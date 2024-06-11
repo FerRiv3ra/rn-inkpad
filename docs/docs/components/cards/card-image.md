@@ -22,7 +22,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/cardimage-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/cards/cardimage-simple_spu1he.gif" />
 
 ## Props
 
@@ -88,4 +88,4 @@ const MyComponent = () => {
 
 ### Example with personalized theme
 
-<img width="40%"  src="/img/cards/cardimage-themed.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306865/packages/cards/cardimage-themed_iy7ppc.png" />

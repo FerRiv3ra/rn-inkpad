@@ -5,11 +5,11 @@ title: RadioButtons
 
 # RadioButtons
 
-**RadioButtons** are essential elements in our library, facilitating user input in selection scenarios where users can choose only one option from a list. When one RadioButton is selected, any previously selected RadioButton in the same group becomes deselected automatically, ensuring mutual exclusivity.
+Los **RadioButtons** son elementos esenciales en nuestra biblioteca, ya que facilitan la entrada del usuario en escenarios de selección en los que los usuarios pueden elegir solo una opción de una lista. Cuando se selecciona un RadioButton, cualquier RadioButton seleccionado previamente en el mismo grupo se anula automáticamente, lo que garantiza la exclusividad mutua.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {RadioButtons} from 'rn-inkpad';
@@ -26,48 +26,48 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/buttons/radio-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/radio-simple_ar3aew.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| values | [RadioValue[]](#radiovalue-props) |  | Radio buttons list.|
-| border | `boolean` |  | Add border. |
-| borderColor | `string` | #464EE5 | Border color. |
-| defaultChecked | `number` |  | Default selected value index. |
-| disabled | `boolean` | | Turn pressable on or off. |
-| fullWidth | `boolean` |  | Active full width. |
-| gap | `number` | | Gap between text and icon when vertical orientation is selected. |
-| gapHorizontal | `number` | 10 | Gap between text and icon when horizontal orientation is selected. |
-| iconColor | `string` | #464EE5 | Icon color. |
-| iconPosition | `'left' \| 'bottom' \| 'top' \| 'right'` |  | Icon position. |
-| iconSize | `number` | 20 | Radio icon size. |
-| marginVertical | `DimensionValue` | 8 | Margin between radio buttons and other components. |
-| orientation | `'horizontal' \| 'vertical'` | vertical | Radio buttons orientation. |
-| style | `StyleProp<ViewStyle>` |  | Personalized styles for your radio buttons component. |
-| textColor | `string` |  | Text color. |
-| textStyle | `StyleProp<TextStyle>` |  | Personalized styles for your text button. |
-| onChange | `(value: string \| number) => void` | | Function that change selected value. |
+| values | [RadioValue[]](#radiovalue-props) |  | Listado de opciones para los Radio buttons.|
+| border | `boolean` |  | Agrega borde. |
+| borderColor | `string` | #464EE5 | Color del borde. |
+| defaultChecked | `number` |  | Índice del valor seleccionado por defecto. |
+| disabled | `boolean` | | Activar o desactivar que se pueda presionar. |
+| fullWidth | `boolean` |  | Activa ancho completo. |
+| gap | `number` | | Separación entre el texto y el icono cuando la orientación vertical esta seleccionada. |
+| gapHorizontal | `number` | 10 | Separación entre el texto y el icono cuando la orientación horizontal esta seleccionada. |
+| iconColor | `string` | #464EE5 | Color del icono. |
+| iconPosition | `'left' \| 'bottom' \| 'top' \| 'right'` |  | Posición del icono. |
+| iconSize | `number` | 20 | Tamaño del icono. |
+| marginVertical | `DimensionValue` | 8 | Margen entre los radio buttons y los demás componentes. |
+| orientation | `'horizontal' \| 'vertical'` | vertical | Orientación de los radio buttons. |
+| style | `StyleProp<ViewStyle>` |  | Estilos personalizados para el componente. |
+| textColor | `string` |  | Color del texto. |
+| textStyle | `StyleProp<TextStyle>` |  | Estilos personalizados para el texto. |
+| onChange | `(value: string \| number) => void` | | Función que retorna el valor seleccionado. |
 </div>
 
 ### RadioValue props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| text | `string` | _NO_ | Information text |
-| value | `string` | **YES** | Option value. |
+| text | `string` | _NO_ | Texto de información |
+| value | `string` | **SI** | Valor de la opción. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-If you do not send text, value will appear as default text.
+Si no se envía un texto, 'value' aparecerá como texto por defecto.
 
 :::
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import React from 'react';
@@ -146,6 +146,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/buttons/radio-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/buttons/radio-props_pmrlcx.png" />

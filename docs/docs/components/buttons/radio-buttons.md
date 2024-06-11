@@ -26,7 +26,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/buttons/radio-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/radio-simple_ar3aew.png" />
 
 ## Props
 
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
 
 ### Example with props
 
-<img width="40%"  src="/img/buttons/radio-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/buttons/radio-props_pmrlcx.png" />

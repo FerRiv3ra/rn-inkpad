@@ -25,7 +25,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/navigations/bottomtab-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/bottomtab-simple_f3aedl.png" />
 
 ## Props
 
@@ -107,4 +107,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/navigations/bottomtab-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306849/packages/navigations/bottomtab-props_gwwgsg.png" />

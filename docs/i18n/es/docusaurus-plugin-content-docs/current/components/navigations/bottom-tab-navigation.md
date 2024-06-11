@@ -5,11 +5,11 @@ title: BottomTabNavigation
 
 # BottomTabNavigation
 
-The **BottomTabNavigation** component in our library is a navigational element typically placed at the bottom of the screen in mobile applications. It provides users with quick access to different sections or views of the app, enhancing navigation efficiency. Each tab represents a specific category or feature, and users can switch between tabs to access different parts of the application seamlessly. BottomTabNavigation promotes intuitive exploration of app content and functionality, offering a consistent and familiar navigation pattern across screens.
+El componente **BottomTabNavigation** de nuestra biblioteca es un elemento de navegación que normalmente se coloca en la parte inferior de la pantalla en las aplicaciones móviles. Proporciona a los usuarios un acceso rápido a diferentes secciones o vistas de la aplicación, lo que mejora la eficiencia de la navegación. Cada pestaña representa una categoría o característica específica, y los usuarios pueden cambiar entre pestañas para acceder a diferentes partes de la aplicación sin problemas. BottomTabNavigation promueve la exploración intuitiva del contenido y la funcionalidad de la aplicación, ofreciendo un patrón de navegación coherente y familiar en todas las pantallas.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {View} from 'react-native';
@@ -25,44 +25,44 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/navigations/bottomtab-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/navigations/bottomtab-simple_f3aedl.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` | #FFFFFF | Background color. |
-| highlightedBgColor | `string` | #DB504A | Background color of a highlighted element. |
-| highlightedIconColor | `string` | | Icon color of a highlighted element. |
-| iconColor | `string` | | Tab icon color. |
-| iconSize | `number` | 25 | Tab icon size. |
-| labelStyle | `StyleProp<TextStyle>` | | Custom styles for labels. |
-| selectedColor | `string` | #DB504A | Color of the indicator of a selected tab. |
-| selectedheight | `number` | 5 | Height of the indicator of a selected tab. |
-| selectedIndex | `number` | | Selected index. |
-| textColor | `string` | | Label color. |
-| values | [NavigationItem[]](#navigationitem-props) | `[{icon: 'home', text: 'Home'}]` | Array of each of the tabs. |
+| backgroundColor | `string` | #FFFFFF | Color de fondo. |
+| highlightedBgColor | `string` | #DB504A | Color de fondo del elemento resaltado. |
+| highlightedIconColor | `string` | | Color del icono del elemento resaltado. |
+| iconColor | `string` | | Color del icono de las pestañas. |
+| iconSize | `number` | 25 | Tamaño del icono de las pestañas. |
+| labelStyle | `StyleProp<TextStyle>` | | Estilo personalizado para las etiquetas. |
+| selectedColor | `string` | #DB504A | Color del indicador de la pestaña seleccionada. |
+| selectedheight | `number` | 5 | Alto del inidicador de la pestaña seleccionada. |
+| selectedIndex | `number` | | Índice seleccionado. |
+| textColor | `string` | | Color de la etiqueta. |
+| values | [NavigationItem[]](#navigationitem-props) | `[{icon: 'home', text: 'Home'}]` | Arreglo de cada una de las pestañas. |
 </div>
 
 ### NavigationItem props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| highlighted | `boolean` | _NO_ | Activate element highlighting. |
-| icon | `string` | _NO_ | Tab icon. |
-| text | `string` | _NO_ | Tab label. |
-| onPress | `() => void` | _NO_ | Callback that is called when tab is pressed. |
+| highlighted | `boolean` | _NO_ | Activa el resaltado del elemento. |
+| icon | `string` | _NO_ | Icono de la pestaña. |
+| text | `string` | _NO_ | Etiqueta de la pestaña. |
+| onPress | `() => void` | _NO_ | Función que es llamada al presionar en la pestaña. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-This navigation only provides the style for your navigation, however to navigate to different screens you must install a navigation package.
+Esta navegación solo proporciona el estilo para su navegación, sin embargo, para navegar a diferentes pantallas debe instalar un paquete de navegación.
 
 :::
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import {View} from 'react-native';
@@ -105,6 +105,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/navigations/bottomtab-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306849/packages/navigations/bottomtab-props_gwwgsg.png" />

@@ -19,7 +19,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/buttons/longpress-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/longpress-simple_px3yco.gif" />
 
 ## Props
 
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
 
 ### Example with props
 
-<img width="40%"  src="/img/buttons/longpress-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306865/packages/buttons/longpress-props_aipljn.gif" />

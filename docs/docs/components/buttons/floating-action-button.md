@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-<img width="40%"  src="/img/buttons/fab-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/fab-simple_siubjx.png" />
 
 ## Props
 
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
 
 ### Example with props
 
-<img width="40%"  src="/img/buttons/fab-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/buttons/fab-props_nco2eu.png" />

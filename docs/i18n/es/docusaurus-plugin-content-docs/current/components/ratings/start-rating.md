@@ -5,11 +5,11 @@ title: StarRating
 
 # StarRating
 
-The **StarRating** component in our library is a user-friendly interface element used to collect ratings from users. It typically presents a series of stars that users can click or tap to indicate their rating preference, ranging from one star (lowest) to five stars (highest). Star ratings are commonly used in various applications and websites to gather feedback on products, services, or content.
+El componente **StarRating** de nuestra biblioteca es un elemento de interfaz fácil de usar que se utiliza para recopilar las calificaciones de los usuarios. Por lo general, presenta una serie de estrellas en las que los usuarios pueden hacer clic o tocar para indicar su preferencia de calificación, que van desde una estrella (la más baja) hasta cinco estrellas (la más alta). Las clasificaciones por estrellas se utilizan comúnmente en varias aplicaciones y sitios web para recopilar comentarios sobre productos, servicios o contenido.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {StarRating} from 'rn-inkpad';
@@ -19,32 +19,32 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/ratings/star-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-simple_yfdwgl.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| defaultRating | `number` | 3 | Default selected rating. |
-| iconColor | `string` | #FFD700 | Rating icon color. |
-| justRating | `boolean` | false | Hide review. |
-| readOnly | `boolean` | false | Turn on read-only. |
-| reviews | `string[]` | ['Terrible', 'Bad', 'Okay', 'Good', 'Great'] | Array of reviews. |
-| size | `number` | 35 | Icon size. |
-| style | `StyleProp<ViewStyle>` | | Custom styles for your rating component. |
-| textColor | `string` | #FFD700 | Review text color. |
-| textSize | `number` | 30 | Review text size. |
-| onChange | `(value: number) => void` |  | Function that returns the new rating value. |
+| defaultRating | `number` | 3 | Clasificación seleccionada por defecto. |
+| iconColor | `string` | #FFD700 | Color del icono de clasificación. |
+| justRating | `boolean` | false | Esconder reseña. |
+| readOnly | `boolean` | false | Activar solo lectura. |
+| reviews | `string[]` | ['Terrible', 'Bad', 'Okay', 'Good', 'Great'] | Arreglo de reseñas. |
+| size | `number` | 35 | Tamaño del icono. |
+| style | `StyleProp<ViewStyle>` | | Estilos personalizados para el componente. |
+| textColor | `string` | #FFD700 | Color del texto de clasificación. |
+| textSize | `number` | 30 | Tamaño del texto de clasificación. |
+| onChange | `(value: number) => void` |  | Función que retorna el valor de la clasificación seleccionada. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-The number of reviews submitted in the array will define the number of stars that will appear.
+El número de reseñas enviadas en el arreglo definirá el número de estrellas que aparecerán.
 
 :::
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -68,6 +68,6 @@ const MyComponent = () => {
 };
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/ratings/star-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-props_cnv5d5.gif" />

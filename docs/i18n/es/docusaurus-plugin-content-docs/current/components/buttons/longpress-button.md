@@ -5,11 +5,11 @@ title: LongPressButton
 
 # LongPressButton
 
-The **LongPressButton** is an interactive component in our library that triggers actions when pressed and held for a certain duration, typically longer than a standard button press.
+El **LongPressButton** es un componente interactivo de nuestra biblioteca que desencadena acciones cuando se mantiene pulsado durante un tiempo determinado, normalmente más largo que la pulsación de un botón estándar.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import {LongPressButton} from 'rn-inkpad';
@@ -19,31 +19,31 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/buttons/longpress-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/longpress-simple_px3yco.gif" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` | #464EE5 | Button background color.|
-| behavior | `'left-to-right' \| 'right-to-left' \| 'center-to-ends'` | left-to-right | Direction of movement of the bar.|
-| borderRadius | `number` | 20 | Border radius. |
-| fontSize | `number` |  | Font size. |
-| fullWidth | `boolean` |  | Active full width. |
-| height | `DimensionValue` | 40 | Button height. |
-| icon | `string` |  | Button icon. |
-| iconPosition | `'left' \| 'right'` | left | Icon position. |
-| longPressTime | `number` | 2000 | Time in ms of long press to execute the function. |
-| progressColor | `string` | rgba(255, 255, 255, 0.3) | Indicator bar color. |
-| style | `StyleProp<ViewStyle>` |  | Personalized styles for your button. |
-| text | `string` | Button  | Button text. |
-| textColor | `string` | #FFFFFF | Text color. |
-| width | `DimensionValue` | 50% | Button width. |
-| onFinish | `() => void` | | Function that is executed at the end of the long press. |
+| backgroundColor | `string` | #464EE5 | Color de fondo del botón.|
+| behavior | `'left-to-right' \| 'right-to-left' \| 'center-to-ends'` | left-to-right | Dirección de movimiento de la barra.|
+| borderRadius | `number` | 20 | Borde redondeado. |
+| fontSize | `number` |  | Tamaño de la fuente. |
+| fullWidth | `boolean` |  | Activa ancho completo. |
+| height | `DimensionValue` | 40 | Altura del botón. |
+| icon | `string` |  | Icono del botón. |
+| iconPosition | `'left' \| 'right'` | left | Posición del icono. |
+| longPressTime | `number` | 2000 | Tiempo en ms requerido para ejecutar la función. |
+| progressColor | `string` | rgba(255, 255, 255, 0.3) | Color del indicador. |
+| style | `StyleProp<ViewStyle>` |  | Estilos personalizados para el botón. |
+| text | `string` | Button  | Texto del botón. |
+| textColor | `string` | #FFFFFF | Color del texto. |
+| width | `DimensionValue` | 50% | Ancho del botón. |
+| onFinish | `() => void` | | Función que se ejecuta al finalizar la pulsación larga. |
 </div>
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import React, {useState} from 'react';
@@ -110,6 +110,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/buttons/longpress-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306865/packages/buttons/longpress-props_aipljn.gif" />

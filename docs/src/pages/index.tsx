@@ -5,6 +5,7 @@ import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 
+import Translate from '@docusaurus/Translate';
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -13,14 +14,16 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          <Translate>{siteConfig.title}</Translate>
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          <Translate>Fresh and updated UI Library</Translate>
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Read docs
+            <Translate>Get Started</Translate>
           </Link>
         </div>
       </div>

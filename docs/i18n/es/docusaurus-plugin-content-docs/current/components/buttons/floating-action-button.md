@@ -5,11 +5,11 @@ title: FloatingActionButton
 
 # FloatingActionButton
 
-The **FloatingActionButton** is a prominent and dynamic component within our library, designed to draw attention to a primary action within an application. It typically appears as a circular button that "floats" above the content, providing easy access to important functionalities or frequently used actions.
+El **FloatingActionButton** es un componente prominente y dinámico dentro de nuestra biblioteca, diseñado para llamar la atención sobre una acción principal dentro de una aplicación. Por lo general, aparece como un botón circular que "flota" sobre el contenido, lo que proporciona un fácil acceso a funcionalidades importantes o acciones de uso frecuente.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import React from 'react';
@@ -39,42 +39,42 @@ const styles = StyleSheet.create({
 });
 ```
 
-<img width="40%"  src="/img/buttons/fab-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/buttons/fab-simple_siubjx.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| actions | [Action[]](#action-props) |  | Action buttons that appear when you press the FAB.|
-| align | `'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'` | bottom-right | Button position on the screen. |
-| backgroundColor | `string` | #464EE5 | FAB background color. |
-| marginHorizontal | `number` | 20 | Separation from horizontal edge to button. |
-| marginVertical | `number` | 30 | Separation from vertical edge to button. |
-| icon | `string` | add | Button icon. |
-| iconColor | `string` | #FFFFFF | Icon color. |
-| iconSize | `number` | 22 | Icon size. |
-| size | `number` | 50 | Button size |
-| onPress | `() => void` | | Function that is executed when the button is pressed. |
+| actions | [Action[]](#action-props) |  | Botones de acción que aparecerán al presionar el FAB.|
+| align | `'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'` | bottom-right | Posición del botón en la pantalla. |
+| backgroundColor | `string` | #464EE5 | Color de fondo del FAB. |
+| marginHorizontal | `number` | 20 | Separación horizontal entre los bordes y el botón. |
+| marginVertical | `number` | 30 | Separación vertical entre el botón y las esquinas superior o inferior. |
+| icon | `string` | add | Icono del botón. |
+| iconColor | `string` | #FFFFFF | Color del icono. |
+| iconSize | `number` | 22 | Tamaño del icono. |
+| size | `number` | 50 | Tamaño del botón. |
+| onPress | `() => void` | | Función que se ejecuta al presionar el botón. |
 </div>
 
-:::tip[Information]
+:::tip[Información]
 
-If you send onPress and actions, onPress has higher importance, consequently, only the onPress function will be executed.
+Si envía onPress y acciones, onPress tiene mayor importancia, por lo tanto, solo se ejecutará la función onPress.
 
 :::
 
 ### Action props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| icon | `string` | **YES** | Action button icon. |
-| text | `string` | _NO_ | Information text |
-| onPress | `() => void` | **YES** | Function that is executed when the button is pressed. |
+| icon | `string` | **SI** | Icono del botón de acción. |
+| text | `string` | _NO_ | Texto de información |
+| onPress | `() => void` | **SI** | Función que se ejecuta al presionar el botón. |
 </div>
 
-## Usage with props
+## Uso con props
 
 ```jsx
 import React from 'react';
@@ -128,6 +128,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-### Example with props
+### Ejemplo con props
 
-<img width="40%"  src="/img/buttons/fab-props.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/buttons/fab-props_nco2eu.png" />

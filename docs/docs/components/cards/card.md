@@ -35,7 +35,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/card-basic.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/cards/card-basic_d4m7d1.png" />
 
 ## Props
 
@@ -63,7 +63,7 @@ const MyComponent = () => {
 <div class="table-responsive">
 | Name | Type | Default | Description |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` |  | Button text.|
+| backgroundColor | `string` |  | Background color.|
 | iconSize | `number` | 25 | Card icon size. |
 | themeColor | `string` |  | Icon and buttons color. |
 | titleColor | `string` |  | Title color. |
@@ -105,4 +105,4 @@ const MyComponent = () => {
 
 ### Personalized theme example
 
-<img width="40%"  src="/img/cards/card-themed.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/cards/card-themed_ncp8hh.png" />

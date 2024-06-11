@@ -32,7 +32,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/floatingcard-simple.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306872/packages/cards/floatingcard-simple_rsc1a8.png" />
 
 ## Props
 
@@ -90,7 +90,7 @@ const MyComponent = () => {
         icon="star"
         description="Lorem ipsum dolor"
         image={{
-          uri: 'https://st3.depositphotos.com/1875497/12876/i/950/depositphotos_128766962-stock-photo-beautiful-tropical-maldives-resort-hotel.jpg',
+          uri: 'https://www.example.com/photo-beautiful-tropical-maldives-resort-hotel.jpg',
         }}
         rating={5}
         onPress={handleChangeImage}
@@ -102,4 +102,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/cards/floatingcard-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/cards/floatingcard-props_qmhrkj.gif" />

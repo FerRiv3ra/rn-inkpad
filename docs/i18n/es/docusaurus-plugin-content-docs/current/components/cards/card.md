@@ -5,11 +5,11 @@ title: Card
 
 # Card
 
-The **Card** component in our library is a versatile container designed to present content in a visually appealing and structured manner. Cards typically feature a combination of text, icon, and buttons.
+El componente **Tarjeta** de nuestra biblioteca es un contenedor versátil diseñado para presentar el contenido de una manera visualmente atractiva y estructurada. Las tarjetas suelen presentar una combinación de texto, icono y botones.
 
-## Usage
+## Uso
 
-### Basic usage
+### Uso básico
 
 ```jsx
 import React from 'react';
@@ -35,43 +35,43 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/cards/card-basic.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306847/packages/cards/card-basic_d4m7d1.png" />
 
 ## Props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| buttons | [Button[]](#button-props) | **YES** | Buttons that appear at the bottom of the card.|
-| description | `string` | **YES** | Description text. |
-| icon | `string` | **YES** | Card icon. |
-| title | `string` | **YES** | Title text. |
-| theme | [Theme](#theme-props) | _NO_ | Personalize your card. |
+| buttons | [Button[]](#button-props) | **SI** | Botones que aparecen en la parte inferior de la tarjeta.|
+| description | `string` | **SI** | Texto de descripción. |
+| icon | `string` | **SI** | Icono de la tarjeta. |
+| title | `string` | **SI** | Texto del título. |
+| theme | [Theme](#theme-props) | _NO_ | Personaliza la tarjeta. |
 </div>
 
 ### Button props
 
 <div class="table-responsive">
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| text | `string` | **YES** | Button text.|
-| onPress | `() => void` | _NO_ | Function that is executed when the button is pressed. |
+| text | `string` | **SI** | Texto del botón.|
+| onPress | `() => void` | _NO_ | Función que se ejecuta al presionar el botón. |
 </div>
 
 ### Theme props
 
 <div class="table-responsive">
-| Name | Type | Default | Description |
+| Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| backgroundColor | `string` |  | Button text.|
-| iconSize | `number` | 25 | Card icon size. |
-| themeColor | `string` |  | Icon and buttons color. |
-| titleColor | `string` |  | Title color. |
-| titleSize | `number` | 16 | Title font size. |
-| shadow | `boolean` | false | Turn shadow on or off. |
+| backgroundColor | `string` |  | Color de fondo de la tarjeta.|
+| iconSize | `number` | 25 | Tamaño del icono. |
+| themeColor | `string` |  | Color del icono y de los botones. |
+| titleColor | `string` |  | Color del título. |
+| titleSize | `number` | 16 | Tamaño del título. |
+| shadow | `boolean` | false | Activa o desactiva la sombra en la tarjeta. |
 </div>
 
-## Personalized theme usage
+## Uso de temas personalizados
 
 ```jsx
 import React from 'react';
@@ -103,6 +103,6 @@ const MyComponent = () => {
 };
 ```
 
-### Personalized theme example
+### Ejemplo de tema personalizado
 
-<img width="40%"  src="/img/cards/card-themed.png" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306848/packages/cards/card-themed_ncp8hh.png" />

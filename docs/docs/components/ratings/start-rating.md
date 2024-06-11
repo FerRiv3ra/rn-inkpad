@@ -19,7 +19,7 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="/img/ratings/star-simple.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-simple_yfdwgl.gif" />
 
 ## Props
 
@@ -70,4 +70,4 @@ const MyComponent = () => {
 
 ### Example with props
 
-<img width="40%"  src="/img/ratings/star-props.gif" />
+<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-props_cnv5d5.gif" />

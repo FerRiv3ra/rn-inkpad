@@ -1,4 +1,28 @@
 {
+  "Fresh and updated UI Library": {
+    "message": "Librería UI nueva y actualizada"
+  },
+  "Get Started": {
+    "message": "Comenzar"
+  },
+  "Easy to Use": {
+    "message": "Fácil de usar"
+  },
+  "Inkpad was developed with the idea of being easy to use, offering a series of ready-to-use components to ensure a fluid experience for users in designing and creating.": {
+    "message": "Inkpad fue desarrollado con la idea de ser fácil de usar, ofreciendo una serie de componentes listos para usar para garantizar una experiencia fluida para los usuarios en el diseño y la creación."
+  },
+  "Multi platform": {
+    "message": "Multiplataforma"
+  },
+  "Implement a standard design across all platforms to ensure a uniform experience for users, regardless of the platform you are developing for.": {
+    "message": "Implementa un diseño estándar en todas las plataformas para garantizar una experiencia uniforme para los usuarios, independientemente de la plataforma para la que esté desarrollando."
+  },
+  "Customizable": {
+    "message": "Personalizable"
+  },
+  "All components are fully customizable, allowing developers to easily adapt them to the specific needs of their projects.": {
+    "message": "Todos los componentes son totalmente personalizables, lo que permite a los desarrolladores adaptarlos fácilmente a las necesidades específicas de sus proyectos."
+  },
   "theme.ErrorPageContent.title": {
     "message": "Esta página ha fallado.",
     "description": "The title of the fallback page when the page crashed"
