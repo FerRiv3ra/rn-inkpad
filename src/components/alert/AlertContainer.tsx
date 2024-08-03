@@ -49,7 +49,7 @@ export function AlertContainer({
 
   return (
     <Modal
-      style={{zIndex: 100}}
+      style={{zIndex: 9999}}
       visible={!!prompt}
       transparent
       animationType={animationType}>

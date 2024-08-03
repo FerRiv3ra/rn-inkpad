@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {
   LayoutChangeEvent,
   PanResponder,
@@ -8,12 +8,27 @@ import {
 export const useSlideAction = (
   padding: number,
   thumbWidth: number,
+  isCompleted = false,
   onCompleted?: () => void,
 ) => {
   const [thumbLeft, setThumbLeft] = useState(padding);
   const [completed, setCompleted] = useState(false);
   const [showText, setShowText] = useState(true);
   const containerWidth = useRef(0);
+
+  useEffect(() => {
+    setCompleted(isCompleted);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (isCompleted) {
+      if (containerWidth.current > 0) {
+        setThumbLeft(containerWidth.current - (thumbWidth + padding));
+      }
+    } else {
+      setThumbLeft(padding);
+    }
+  }, [isCompleted, containerWidth.current]);
 
   const handlePanResponderMove = (
     _: any,

@@ -19,30 +19,37 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/sliders/slideaction-simple_llomv3.gif" />
+<img  width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/sliders/slideaction-simple_llomv3.gif" />
 
 ## Props
 
-<div class="table-responsive">
-| Name | Type | Default | Description |
-| --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| height | `number` | 56 | Slider height. |
-| icon | `string` | | Thumb icon. |
-| iconColor | `string` | #F43F5D | Thumb icon color. |
-| iconCompletedColor | `string` | #4ADE80 | Thumb icon color when is completed. |
-| iconOnCompleted | `string` | | Thumb icon when is completed. |
-| iconSize | `number` | 20 | Icon size. |
-| padding | `number` | 8 | Padding between thumb and edges. |
-| text | `string` | | Slider text. |
-| textOnCompleted | `string` | | Slider text when is completed. |
-| textPosition | `'center' \| 'ends'` | center | Text position. |
-| textStyle | `StyleProp<TextStyle>` | | Custom styles for your slider. |
-| thumbColor | `string` | #FFFFFF | Thumb color. |
-| thumbCompletedColor | `string` | #FFFFFF | Thumb color when is completed. |
-| thumbWidth | `string` | 40 | Thumb width. |
-| tintColor | `string` | #F43F5D | Slider background color. |
-| tintCompletedColor | `string` | #4ADE80 | Slider background color when is completed. |
-| onCompleted | `() => void` | | Callback that is called when slide is completed. |
+<div  class="table-responsive">
+
+| Name                | Type                   | Default | Description                                      |
+| ------------------- | ---------------------- | ------- | ------------------------------------------------ |
+| height              | `number`               | 56      | Slider height.                                   |
+| icon                | `string`               |         | Thumb icon.                                      |
+| iconColor           | `string`               | #F43F5D | Thumb icon color.                                |
+| iconCompletedColor  | `string`               | #4ADE80 | Thumb icon color when is completed.              |
+| iconOnCompleted     | `string`               |         | Thumb icon when is completed.                    |
+| iconSize            | `number`               | 20      | Icon size.                                       |
+| isCompleted         | `boolean`              | false   | Indicates whether the slider is complete or not. |
+| padding             | `number`               | 8       | Padding between thumb and edges.                 |
+| readonly            | `boolean`              | false   | Indicates whether the slider is read-only.       |
+| style               | `StyleProp<ViewStyle>` |         | Custom styles for your slider container.         |
+| text                | `string`               |         | Slider text.                                     |
+| textOnCompleted     | `string`               |         | Slider text when is completed.                   |
+| textPosition        | `'center' \| 'ends'`   | center  | Text position.                                   |
+| textStyle           | `StyleProp<TextStyle>` |         | Custom styles for your slider.                   |
+| thumbBorderColor    | `string`               |         | Thumb border color.                              |
+| thumbBorderWidth    | `number`               |         | Thumb border width.                              |
+| thumbColor          | `string`               | #FFFFFF | Thumb color.                                     |
+| thumbCompletedColor | `string`               | #FFFFFF | Thumb color when is completed.                   |
+| thumbWidth          | `string`               | 40      | Thumb width.                                     |
+| tintColor           | `string`               | #F43F5D | Slider background color.                         |
+| tintCompletedColor  | `string`               | #4ADE80 | Slider background color when is completed.       |
+| onCompleted         | `() => void`           |         | Callback that is called when slide is completed. |
+
 </div>
 
 ## Usage props
@@ -65,6 +72,7 @@ const MyComponent = () => {
         textOnCompleted="Confirmed"
         onCompleted={() => setConfirmed(true)}
       />
+
       <Text style={styles.text}>
         {confirmed ? 'Confirmed' : 'Not confirmed'}
       </Text>
@@ -84,4 +92,4 @@ const styles = StyleSheet.create({
 
 ### Example with props
 
-<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/sliders/slideaction-props_bmt4m9.gif" />
+<img  width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/sliders/slideaction-props_bmt4m9.gif" />

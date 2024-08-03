@@ -13,36 +13,46 @@ export const SlideAction = ({
   iconCompletedColor = '#4ADE80',
   iconOnCompleted,
   iconSize = 20,
+  isCompleted,
+  onCompleted,
   padding = 8,
+  readonly,
+  style,
   text,
   textOnCompleted,
   textPosition = 'center',
   textStyle,
+  thumbBorderColor,
+  thumbBorderWidth,
   thumbColor = '#FFFFFF',
   thumbCompletedColor = '#FFFFFF',
   thumbWidth = 40,
   tintColor = '#F43F5D',
   tintCompletedColor = '#4ADE80',
-  onCompleted,
 }: SlideActionProps) => {
   const {completed, handleLayout, panResponder, showText, thumbLeft} =
-    useSlideAction(padding, thumbWidth, onCompleted);
+    useSlideAction(padding, thumbWidth, isCompleted, onCompleted);
+
+  const responders = readonly ? {} : {...panResponder.panHandlers};
 
   return (
     <View
-      style={{
-        ...slideStyles.container,
-        height,
-        padding,
-        backgroundColor: completed ? tintCompletedColor : tintColor,
-        alignItems:
-          textPosition === 'center'
-            ? 'center'
-            : completed
-            ? 'flex-start'
-            : 'flex-end',
-      }}
-      {...panResponder.panHandlers}
+      style={[
+        {
+          ...slideStyles.container,
+          height,
+          padding,
+          backgroundColor: completed ? tintCompletedColor : tintColor,
+          alignItems:
+            textPosition === 'center'
+              ? 'center'
+              : completed
+              ? 'flex-start'
+              : 'flex-end',
+        },
+        style,
+      ]}
+      {...responders}
       onLayout={handleLayout}>
       {showText && (
         <Text style={[slideStyles.text, {color: thumbColor}, textStyle]}>
@@ -54,6 +64,8 @@ export const SlideAction = ({
           slideStyles.thumb,
           {
             backgroundColor: completed ? thumbCompletedColor : thumbColor,
+            borderWidth: thumbBorderWidth,
+            borderColor: thumbBorderColor,
             width: thumbWidth,
           },
           {left: thumbLeft},

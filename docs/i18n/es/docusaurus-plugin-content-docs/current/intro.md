@@ -24,7 +24,7 @@ npm install react-native-vector-icons
 ```
 
 :::tip[Information]
-Si usas **EXPO**, no tienes que hacer más instalaciones ya que el framework ya tiene esta librería preinstalada.
+Si usas **EXPO**, no tienes que hacer más instalaciones ya que el framework ya tiene esta librería preinstalada, sin embargo asegurate de tener instalada la libreria @expo/vector-icons en tu package.json
 :::
 
 Esta librería tiene diferentes instruciones de instalación y configuración para cada plataforma, sigue los pasos de su [guía de instalación](https://github.com/oblador/react-native-vector-icons#installation) para instalarla de forma correcta y así evitar errores.

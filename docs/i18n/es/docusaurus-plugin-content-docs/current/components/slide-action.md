@@ -19,30 +19,37 @@ const MyComponent = () => {
 };
 ```
 
-<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/sliders/slideaction-simple_llomv3.gif" />
+<img  width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306859/packages/sliders/slideaction-simple_llomv3.gif" />
 
 ## Props
 
-<div class="table-responsive">
-| Nombre | Tipo | Predeterminado | Descripción |
-| --------------- | ---------------------- | -------- |----------------------------------------------------- |
-| height | `number` | 56 | Altura del Slider. |
-| icon | `string` | | Icono del punto deslizante. |
-| iconColor | `string` | #F43F5D | Color del icono del punto deslizante. |
-| iconCompletedColor | `string` | #4ADE80 | Color del icono del punto deslizante cuando se ha completado la acción. |
-| iconOnCompleted | `string` | | Icono del punto deslizante cuando se completa la acción. |
-| iconSize | `number` | 20 | Tamaño del icono. |
-| padding | `number` | 8 | Padding entre el punto deslizante y las esquinas. |
-| text | `string` | | Texto del Slider. |
-| textOnCompleted | `string` | | Texto del Slider cuando se completa la acción. |
-| textPosition | `'center' \| 'ends'` | center | Posición del texto. |
-| textStyle | `StyleProp<TextStyle>` | | Estilos personalizados para el Slider. |
-| thumbColor | `string` | #FFFFFF | Color del punto deslizante. |
-| thumbCompletedColor | `string` | #FFFFFF | Color del punto deslizante cuando se completa la acción. |
-| thumbWidth | `string` | 40 | Ancho del punto deslizante. |
-| tintColor | `string` | #F43F5D | Color de fondo del Slider. |
-| tintCompletedColor | `string` | #4ADE80 | Color de fondo del Slider cuando se completa la acción. |
-| onCompleted | `() => void` | | Función que es llamada cuando se completa el deslizamiento. |
+<div  class="table-responsive">
+
+| Nombre              | Tipo                   | Predeterminado | Descripción                                                             |
+| ------------------- | ---------------------- | -------------- | ----------------------------------------------------------------------- |
+| height              | `number`               | 56             | Altura del Slider.                                                      |
+| icon                | `string`               |                | Icono del punto deslizante.                                             |
+| iconColor           | `string`               | #F43F5D        | Color del icono del punto deslizante.                                   |
+| iconCompletedColor  | `string`               | #4ADE80        | Color del icono del punto deslizante cuando se ha completado la acción. |
+| iconOnCompleted     | `string`               |                | Icono del punto deslizante cuando se completa la acción.                |
+| iconSize            | `number`               | 20             | Tamaño del icono.                                                       |
+| isCompleted         | `boolean`              | false          | Indica si el control esta completo o no.                                |
+| padding             | `number`               | 8              | Padding entre el punto deslizante y las esquinas.                       |
+| readonly            | `boolean`              | false          | Indica si el control es solo de lectura.                                |
+| style               | `StyleProp<ViewStyle>` |                | Estilos personalizados para el contenedor del componente.               |
+| text                | `string`               |                | Texto del Slider.                                                       |
+| textOnCompleted     | `string`               |                | Texto del Slider cuando se completa la acción.                          |
+| textPosition        | `'center' \| 'ends'`   | center         | Posición del texto.                                                     |
+| textStyle           | `StyleProp<TextStyle>` |                | Estilos personalizados para el Slider.                                  |
+| thumbBorderColor    | `string`               |                | Color del borde del punto deslizante.                                   |
+| thumbBorderWidth    | `number`               |                | Ancho del borde del control deslizante.                                 |
+| thumbColor          | `string`               | #FFFFFF        | Color del punto deslizante.                                             |
+| thumbCompletedColor | `string`               | #FFFFFF        | Color del punto deslizante cuando se completa la acción.                |
+| thumbWidth          | `string`               | 40             | Ancho del punto deslizante.                                             |
+| tintColor           | `string`               | #F43F5D        | Color de fondo del Slider.                                              |
+| tintCompletedColor  | `string`               | #4ADE80        | Color de fondo del Slider cuando se completa la acción.                 |
+| onCompleted         | `() => void`           |                | Función que es llamada cuando se completa el deslizamiento.             |
+
 </div>
 
 ## Uso con props
@@ -65,6 +72,7 @@ const MyComponent = () => {
         textOnCompleted="Confirmed"
         onCompleted={() => setConfirmed(true)}
       />
+
       <Text style={styles.text}>
         {confirmed ? 'Confirmed' : 'Not confirmed'}
       </Text>
@@ -84,4 +92,4 @@ const styles = StyleSheet.create({
 
 ### Ejemplo con props
 
-<img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/sliders/slideaction-props_bmt4m9.gif" />
+<img  width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306866/packages/sliders/slideaction-props_bmt4m9.gif" />

@@ -38,7 +38,7 @@
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0",
-    "rn-inkpad": "^0.0.1",
+    "rn-inkpad": "^1.0.1",
     "typescript": "5.0.4"
   },
   "repository": {

@@ -8,6 +8,7 @@ type Props = {
 export const useAnimation = (props?: Props) => {
   const {width = 0} = props ?? {};
 
+  const translateY = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const position = useRef(new Animated.Value(width === 0 ? 0 : -1)).current;
   const pan = useRef(new Animated.ValueXY()).current;
@@ -23,6 +24,22 @@ export const useAnimation = (props?: Props) => {
 
   const moveLeft = (toValue = -1) => {
     Animated.timing(position, {
+      toValue,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const moveUp = () => {
+    Animated.timing(translateY, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const moveDown = (toValue = -100) => {
+    Animated.timing(translateY, {
       toValue,
       duration: 300,
       useNativeDriver: true,
@@ -93,8 +110,10 @@ export const useAnimation = (props?: Props) => {
   return {
     fadeIn,
     fadeOut,
+    moveDown,
     moveLeft,
     moveRight,
+    moveUp,
     opacity,
     pan,
     panResponder,
@@ -103,5 +122,6 @@ export const useAnimation = (props?: Props) => {
     scaleValue,
     translatePosition,
     translateX,
+    translateY,
   };
 };

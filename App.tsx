@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 
-import {FloatingActionCard} from 'rn-inkpad';
+import {SlideAction} from 'rn-inkpad';
+// import {SlideAction} from './src/components/slides/SlideAction';
 
 export const App = () => {
-  const [visible, setVisible] = useState(false);
+  const [consirmed, setConfirmed] = useState(false);
   const [visibleTop, setVisibleTop] = useState(false);
   const [visibleBottom, setVisibleBottom] = useState(false);
   // const [value, setValue] = useState(0);
@@ -399,14 +400,14 @@ export const App = () => {
         text="Show toast bottom"
         onPress={() => setVisibleBottom(true)}
       /> */}
-      {/* <SlideAction
+      <SlideAction
         icon="lock-open"
         // textPosition=''
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
         onCompleted={() => setConfirmed(true)}
-      /> */}
+      />
       {/* <Slider
         thumbStyles={{
           icon: 'analytics',
@@ -460,7 +461,7 @@ export const App = () => {
       {/* <AlertContainer theme="android" /> */}
       {/* <Button text="Show" onPress={() => setVisible(true)} /> */}
       {/* </View> */}
-      <Image
+      {/* <Image
         source={{
           uri: visible
             ? 'https://static.vecteezy.com/system/resources/previews/030/465/953/large_2x/idyllic-retreat-tropical-beach-palm-tree-crystal-sea-nature-s-paradise-on-an-island-vertical-mobile-wallpaper-ai-generated-free-photo.jpg'
@@ -477,7 +478,7 @@ export const App = () => {
         }}
         rating={5}
         onPress={() => setVisible(!visible)}
-      />
+      /> */}
       {/* <BottomTabNavigation
         selectedIndex={0}
         highlightedIconColor="#FFF"

@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle} from 'react-native';
+import {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {IconName} from '.';
 
 export type SlideActionProps = {
@@ -8,11 +8,16 @@ export type SlideActionProps = {
   iconCompletedColor?: string;
   iconOnCompleted?: IconName;
   iconSize?: number;
+  isCompleted?: boolean;
   padding?: number;
+  readonly?: boolean;
+  style?: StyleProp<ViewStyle>;
   text?: string;
   textOnCompleted?: string;
   textPosition?: 'center' | 'ends';
   textStyle?: StyleProp<TextStyle>;
+  thumbBorderColor?: string;
+  thumbBorderWidth?: number;
   thumbColor?: string;
   thumbCompletedColor?: string;
   thumbWidth?: number;
