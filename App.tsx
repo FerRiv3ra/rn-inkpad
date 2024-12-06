@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 
-import {SlideAction} from 'rn-inkpad';
-// import {SlideAction} from './src/components/slides/SlideAction';
+// import {SlideAction} from 'rn-inkpad';
+import {SlideAction} from './src/components/slides/SlideAction';
 
 export const App = () => {
   const [consirmed, setConfirmed] = useState(false);
