@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Platform, Switch as RNSwitch, Text, View} from 'react-native';
+import {
+  Platform,
+  Switch as RNSwitch,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {SwitchProps} from '../../types';
 
 export const Switch = ({
@@ -15,6 +22,7 @@ export const Switch = ({
   text,
 }: SwitchProps) => {
   const [isEnabled, setIsEnabled] = useState(isOn);
+  const isWeb = Platform.OS === 'web';
 
   const toggleSwitch = () => {
     setIsEnabled(!isEnabled);
@@ -34,19 +42,52 @@ export const Switch = ({
       }}>
       {text && <Text style={textStyle}>{text}</Text>}
 
-      <View
-        style={{
-          borderWidth: border ? borderWidth : 0,
-          borderColor,
-          borderRadius: 16,
-        }}>
-        <RNSwitch
-          trackColor={{false: '#D9D9DB', true: backgrounColor}}
-          thumbColor={Platform.OS === 'android' ? backgrounColor : ''}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-      </View>
+      {isWeb ? (
+        <TouchableOpacity
+          onPress={toggleSwitch}
+          style={[
+            styles.switchContainer,
+            {borderWidth: border ? borderWidth : 0, borderColor},
+            {backgroundColor: isOn ? backgrounColor : '#D9D9DB'},
+          ]}>
+          <View
+            style={[
+              styles.thumb,
+              {alignSelf: isOn ? 'flex-end' : 'flex-start'},
+            ]}
+          />
+        </TouchableOpacity>
+      ) : (
+        <View
+          style={{
+            borderWidth: border ? borderWidth : 0,
+            borderColor,
+            borderRadius: 16,
+          }}>
+          <RNSwitch
+            trackColor={{false: '#D9D9DB', true: backgrounColor}}
+            thumbColor={Platform.OS === 'android' ? backgrounColor : ''}
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+        </View>
+      )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  switchContainer: {
+    width: 50,
+    height: 30,
+    borderRadius: 15,
+    justifyContent: 'center',
+    padding: 5,
+  },
+  thumb: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#FFF',
+  },
+});

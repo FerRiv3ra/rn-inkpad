@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 
 // import {SlideAction} from 'rn-inkpad';
-import {SlideAction} from './src/components/slides/SlideAction';
+import {Switch} from './src/components';
 
 export const App = () => {
-  const [consirmed, setConfirmed] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
   const [visibleTop, setVisibleTop] = useState(false);
   const [visibleBottom, setVisibleBottom] = useState(false);
   // const [value, setValue] = useState(0);
@@ -353,7 +353,7 @@ export const App = () => {
         }}
       /> */}
       {/* <SegmentedControl values={[{key: ''}]} onChange={()=>{}} /> */}
-      {/* <Switch
+      <Switch
         backgrounColor="#DB504A"
         border
         borderColor="#DB504A"
@@ -363,7 +363,7 @@ export const App = () => {
         onChange={setConfirmed}
         text="Turn on notifications"
         textStyle={{fontSize: 16, fontWeight: '600'}}
-      /> */}
+      />
       {/* <Text style={{fontSize: 20}}>
         Information{' '}
         <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">
@@ -400,14 +400,14 @@ export const App = () => {
         text="Show toast bottom"
         onPress={() => setVisibleBottom(true)}
       /> */}
-      <SlideAction
+      {/* <SlideAction
         icon="lock-open"
         // textPosition=''
         iconOnCompleted="lock-closed"
         text="Slide to confirm"
         textOnCompleted="Confirmed"
         onCompleted={() => setConfirmed(true)}
-      />
+      /> */}
       {/* <Slider
         thumbStyles={{
           icon: 'analytics',
