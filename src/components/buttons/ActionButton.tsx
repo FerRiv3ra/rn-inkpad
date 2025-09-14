@@ -1,9 +1,9 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import {fabStyles} from '../../theme';
 import {IconName} from '../../types';
+import {Icon} from '../icon/Icon';
 
 type Props = {
   icon: IconName;
