@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
 import {View} from 'react-native';
 
 // import {SlideAction} from 'rn-inkpad';
-import {Switch} from './src/components';
+import {DotsLoading} from './src/components';
 
 export const App = () => {
-  const [confirmed, setConfirmed] = useState(false);
-  const [visibleTop, setVisibleTop] = useState(false);
-  const [visibleBottom, setVisibleBottom] = useState(false);
+  // const [confirmed, setConfirmed] = useState(false);
+  // const [visibleTop, setVisibleTop] = useState(false);
+  // const [visibleBottom, setVisibleBottom] = useState(false);
   // const [value, setValue] = useState(0);
 
   return (
@@ -353,7 +352,7 @@ export const App = () => {
         }}
       /> */}
       {/* <SegmentedControl values={[{key: ''}]} onChange={()=>{}} /> */}
-      <Switch
+      {/* <Switch
         backgrounColor="#DB504A"
         border
         borderColor="#DB504A"
@@ -363,7 +362,8 @@ export const App = () => {
         onChange={setConfirmed}
         text="Turn on notifications"
         textStyle={{fontSize: 16, fontWeight: '600'}}
-      />
+      /> */}
+      <DotsLoading />
       {/* <Text style={{fontSize: 20}}>
         Information{' '}
         <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">

@@ -1,5 +1,3 @@
-export * from './SegmentedControl/SegmentedControl';
-export * from './TabControl/TabControl';
 export * from './actions/ActionSheet';
 export * from './alert/AlertContainer';
 export * from './alert/helpers/alert';
@@ -19,7 +17,10 @@ export * from './navigations/DrawerNavigation';
 export * from './progressBar/ProgressBar';
 export * from './ratings/Rating';
 export * from './ratings/StarRating';
+export * from './SegmentedControl/SegmentedControl';
 export * from './slides/SlideAction';
 export * from './slides/Slider';
+export * from './spinners/DotsLoading';
 export * from './switch/Switch';
+export * from './TabControl/TabControl';
 export * from './toast/Toast';
