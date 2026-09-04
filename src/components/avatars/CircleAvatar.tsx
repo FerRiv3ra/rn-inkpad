@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import type {A11yProps} from '../../types';
 import type {ImageSourcePropType} from 'react-native';
 import {Image, Pressable, Text} from 'react-native';
@@ -12,18 +13,20 @@ type Props = A11yProps & {
   onPress?: () => void;
 };
 
-export const CircleAvatar = ({
-  accessibilityHint,
-  accessibilityLabel,
-  backgroundColor = '#373099',
-  defaultText = 'AA',
-  fontSize = 26,
-  image,
-  onPress,
-  size = 50,
-  testID,
-  textColor = '#FFFFFF',
-}: Props) => {
+export const CircleAvatar = (props: Props) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityHint,
+    accessibilityLabel,
+    backgroundColor = colors.primary,
+    defaultText = 'AA',
+    fontSize = 26,
+    image,
+    onPress,
+    size = 50,
+    testID,
+    textColor = '#FFFFFF',
+  } = props;
   return (
     <Pressable
       accessibilityRole={onPress ? 'button' : 'image'}

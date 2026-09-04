@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {
   Animated,
   Image,
@@ -6,8 +7,9 @@ import {
   ScrollView,
 } from 'react-native';
 
-import {Icon} from '..';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useDrawerNavigation} from '../../hooks';
+import {CloseGlyph, MenuGlyph} from '../glyphs/Glyphs';
 import {drawerStyles} from '../../theme';
 import type {
   DrawerItemType,
@@ -20,25 +22,27 @@ import {DrawerItem} from './DrawerItem';
 const isGroup = (item: DrawerItemType | GroupItem): item is GroupItem =>
   Array.isArray((item as GroupItem).items);
 
-export const DrawerNavigation = ({
-  accessibilityLabel = 'Navigation menu',
-  backgroundColor = '#464EE5',
-  closeIcon = 'close',
-  collapseIcon,
-  expandIcon,
-  fontSize = 18,
-  icon = 'menu',
-  iconColor,
-  iconSize = 35,
-  iconTop = 50,
-  image,
-  imageStyles,
-  itemIconSize = 19,
-  items,
-  testID,
-  textColor,
-  widthPercent = 65,
-}: DrawerNavigationProps) => {
+export const DrawerNavigation = (props: DrawerNavigationProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel = 'Navigation menu',
+    backgroundColor = colors.primary,
+    closeIcon = CloseGlyph,
+    collapseIcon,
+    expandIcon,
+    fontSize = 18,
+    icon = MenuGlyph,
+    iconColor,
+    iconSize = 35,
+    iconTop = 50,
+    image,
+    imageStyles,
+    itemIconSize = 19,
+    items,
+    testID,
+    textColor,
+    widthPercent = 65,
+  } = props;
   const {height, translateX, width, handlePress, visible} =
     useDrawerNavigation(widthPercent);
   const drawerWidth = width * (widthPercent / 100);
@@ -87,11 +91,10 @@ export const DrawerNavigation = ({
           testID={testID ? `${testID}-toggle` : undefined}
           onPress={handlePress}
           style={[drawerStyles.button, {top: iconTop, left: drawerWidth + 15}]}>
-          <Icon
-            name={visible ? closeIcon : icon}
-            color={iconColor}
-            size={iconSize}
-          />
+          {renderIcon(visible ? closeIcon : icon, {
+            size: iconSize,
+            color: iconColor,
+          })}
         </Pressable>
       </SafeAreaView>
     </Animated.View>

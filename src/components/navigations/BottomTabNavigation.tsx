@@ -1,25 +1,28 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import type {BottomTabNavigationProps, NavigationItemType} from '../../types';
 import {NavigationItem} from './NavigationItem';
 
-const DEFAULT_VALUES: NavigationItemType[] = [{icon: 'home', text: 'Home'}];
+const DEFAULT_VALUES: NavigationItemType[] = [{text: 'Home'}];
 
-export const BottomTabNavigation = ({
-  accessibilityLabel,
-  backgroundColor = '#FFFFFF',
-  highlightedBgColor,
-  highlightedIconColor,
-  iconColor,
-  iconSize,
-  labelStyle,
-  selectedColor = '#DB504A',
-  selectedheight,
-  selectedIndex,
-  testID,
-  textColor,
-  values = DEFAULT_VALUES,
-}: BottomTabNavigationProps) => {
+export const BottomTabNavigation = (props: BottomTabNavigationProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel,
+    backgroundColor = colors.background,
+    highlightedBgColor,
+    highlightedIconColor,
+    iconColor,
+    iconSize,
+    labelStyle,
+    selectedColor = colors.primary,
+    selectedheight,
+    selectedIndex,
+    testID,
+    textColor,
+    values = DEFAULT_VALUES,
+  } = props;
   const [selected, setSelected] = useState<number | undefined>(selectedIndex);
 
   useEffect(() => {
@@ -50,7 +53,7 @@ export const BottomTabNavigation = ({
             <NavigationItem
               item={item}
               index={idx}
-              key={item.text ?? item.icon ?? idx}
+              key={item.text ?? idx}
               testID={testID ? `${testID}-item-${idx}` : undefined}
               highlightedBgColor={highlightedBgColor}
               iconColor={item.highlighted ? highlightedIconColor : iconColor}

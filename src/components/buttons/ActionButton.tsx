@@ -1,11 +1,12 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {Text, TouchableOpacity, View} from 'react-native';
 
 import {fabStyles} from '../../theme';
-import type {IconName} from '../../types';
-import {Icon} from '../icon/Icon';
+import {renderIcon} from '../../helpers/renderIcon';
+import type {IconProp} from '../../types';
 
 type Props = {
-  icon: IconName;
+  icon: IconProp;
   accessibilityLabel?: string;
   accessibilityHint?: string;
   accessibilityState?: {expanded?: boolean};
@@ -20,21 +21,23 @@ type Props = {
   onPress?: () => void;
 };
 
-export const ActionButton = ({
-  accessibilityHint,
-  accessibilityLabel,
-  accessibilityState,
-  align,
-  backgroundColor,
-  icon,
-  iconColor,
-  iconSize = 22,
-  onPress,
-  margin = 0,
-  size = 50,
-  testID,
-  text,
-}: Props) => {
+export const ActionButton = (props: Props) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityHint,
+    accessibilityLabel,
+    accessibilityState,
+    align,
+    backgroundColor,
+    icon,
+    iconColor,
+    iconSize = 22,
+    onPress,
+    margin = 0,
+    size = 50,
+    testID,
+    text,
+  } = props;
   return (
     <View
       style={[
@@ -48,7 +51,7 @@ export const ActionButton = ({
       )}
       <TouchableOpacity
         accessibilityRole="button"
-        accessibilityLabel={accessibilityLabel ?? text ?? icon}
+        accessibilityLabel={accessibilityLabel ?? text}
         accessibilityHint={accessibilityHint}
         accessibilityState={accessibilityState}
         testID={testID}
@@ -61,10 +64,10 @@ export const ActionButton = ({
             marginTop: 5,
             marginHorizontal: margin,
             height: size,
-            backgroundColor: backgroundColor ?? '#464EE5',
+            backgroundColor: backgroundColor ?? colors.primary,
           },
         ]}>
-        <Icon name={icon} color={iconColor ?? '#FFF'} size={iconSize} />
+        {renderIcon(icon, {size: iconSize, color: iconColor ?? '#FFF'})}
       </TouchableOpacity>
     </View>
   );

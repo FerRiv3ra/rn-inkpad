@@ -1,30 +1,33 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {Animated, Pressable, Text, View} from 'react-native';
 
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useLongPressButton} from '../../hooks';
 import {longPressButtonStyles} from '../../theme';
 import type {LongPressButtonProps} from '../../types';
 
-export const LongPressButton = ({
-  accessibilityHint = 'Press and hold to confirm',
-  accessibilityLabel,
-  backgroundColor = '#464EE5',
-  behavior = 'left-to-right',
-  borderRadius = 20,
-  fontSize = 14,
-  fullWidth,
-  height = 40,
-  icon,
-  iconPosition = 'left',
-  longPressTime,
-  onFinish,
-  progressColor = 'rgba(255, 255, 255, 0.3)',
-  style,
-  testID,
-  text = 'Button',
-  textColor = '#FFF',
-  width = '50%',
-}: LongPressButtonProps) => {
+export const LongPressButton = (props: LongPressButtonProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityHint = 'Press and hold to confirm',
+    accessibilityLabel,
+    backgroundColor = colors.primary,
+    behavior = 'left-to-right',
+    borderRadius = 20,
+    fontSize = 14,
+    fullWidth,
+    height = 40,
+    icon,
+    iconPosition = 'left',
+    longPressTime,
+    onFinish,
+    progressColor = 'rgba(255, 255, 255, 0.3)',
+    style,
+    testID,
+    text = 'Button',
+    textColor = '#FFF',
+    width = '50%',
+  } = props;
   const {alignSelf, handlePressIn, handlePressOut, progressWidth, scaleValue} =
     useLongPressButton(longPressTime, onFinish);
 
@@ -69,9 +72,7 @@ export const LongPressButton = ({
               longPressButtonStyles.buttonContent,
               {flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse'},
             ]}>
-            {!!icon && (
-              <Icon name={icon} color={textColor} size={fontSize + 1} />
-            )}
+            {renderIcon(icon, {size: fontSize + 2, color: textColor})}
             <Text style={{color: textColor, fontSize}}>{text}</Text>
           </View>
         </View>

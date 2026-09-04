@@ -1,7 +1,7 @@
 import {Image, Pressable, Text, View} from 'react-native';
 
-import {Icon} from '../';
 import {colorToRgba} from '../../helpers/colorToRgba';
+import {renderIcon} from '../../helpers/renderIcon';
 import {ratingCardStyles} from '../../theme';
 import type {FloatingActionCardProps} from '../../types';
 
@@ -47,7 +47,7 @@ export const FloatingActionCard = ({
           </Text>
         )}
         <View style={ratingCardStyles.rating}>
-          {icon && <Icon name={icon} color={iconColor} size={16} />}
+          {renderIcon(icon, {size: 16, color: iconColor})}
           {rating !== undefined && (
             <Text style={{color: textColor}}>
               {Number(rating).toFixed(decimals)}

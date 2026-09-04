@@ -1,6 +1,7 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {Animated, StyleSheet, View} from 'react-native';
 
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useSlider} from '../../hooks';
 import {sliderStyles} from '../../theme';
 import type {SliderProps} from '../../types';
@@ -19,10 +20,11 @@ export const Slider = (props: SliderProps) => {
     value,
   } = props;
 
+  const {colors} = useTheme();
   const {
     borderRadius: trackRadius = 0,
-    trackColor = '#CECECE',
-    trackCompletedColor = '#4D67FF',
+    trackColor = colors.border,
+    trackCompletedColor = colors.primary,
     height: trackHeight = 5,
   } = trackStyles ?? {};
   const {
@@ -30,7 +32,7 @@ export const Slider = (props: SliderProps) => {
     borderRadius = 50,
     height = 40,
     icon,
-    iconColor = '#4D67FF',
+    iconColor = colors.primary,
     iconSize = 20,
     shadow = true,
     width = 40,
@@ -95,7 +97,7 @@ export const Slider = (props: SliderProps) => {
           },
           shadow && sliderStyles.shadow,
         ]}>
-        {icon && <Icon name={icon} color={iconColor} size={iconSize} />}
+        {renderIcon(icon, {size: iconSize, color: iconColor})}
       </Animated.View>
     </View>
   );

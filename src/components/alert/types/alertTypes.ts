@@ -1,5 +1,5 @@
 import type {StyleProp, TextStyle} from 'react-native';
-import type {IconName} from '../../../types';
+import type {IconProp} from '../../../types';
 
 export type Icon = 'error' | 'info' | 'success' | 'question';
 
@@ -22,7 +22,7 @@ export type PromptData = {
 
 export interface AlertData extends PromptData {
   buttons?: Button[];
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   showCancelButton?: boolean;
 }

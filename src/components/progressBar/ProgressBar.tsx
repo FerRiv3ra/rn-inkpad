@@ -1,22 +1,25 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {Animated, Text, View} from 'react-native';
 
 import {useProgressBar} from '../../hooks';
 import {progressBarStyles} from '../../theme';
 import type {ProgressBarProps} from '../../types';
 
-export const ProgressBar = ({
-  accessibilityLabel,
-  backgroundColor = '#FFF',
-  borderColor,
-  borderRadius = 0,
-  height = 20,
-  progressColor = '#00cc00',
-  rounded,
-  showPercent,
-  testID,
-  textColor,
-  value = 0,
-}: ProgressBarProps) => {
+export const ProgressBar = (props: ProgressBarProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel,
+    backgroundColor = colors.surface,
+    borderColor,
+    borderRadius = 0,
+    height = 20,
+    progressColor = colors.primary,
+    rounded,
+    showPercent,
+    testID,
+    textColor,
+    value = 0,
+  } = props;
   const {percent, width} = useProgressBar(value, !!showPercent);
   const now = Math.min(Math.max(Math.round(value), 0), 100);
 

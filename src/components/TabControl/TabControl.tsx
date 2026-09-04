@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {memo, useCallback, useEffect, useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import type {TabControlProps} from '../../types';
@@ -53,20 +54,22 @@ const Tab = memo(
   ),
 );
 
-export const TabControl = ({
-  accessibilityLabel,
-  values,
-  selectedIndex = 0,
-  label,
-  labelStyle,
-  backgroundTabColor = '#CCCCCC',
-  tabTintColor = '#FFFFFF',
-  textColor = '#000000',
-  selectedTextColor = '#000000',
-  containerStyle,
-  style,
-  testID,
-}: TabControlProps) => {
+export const TabControl = (props: TabControlProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel,
+    values,
+    selectedIndex = 0,
+    label,
+    labelStyle,
+    backgroundTabColor = colors.surface,
+    tabTintColor = colors.background,
+    textColor = colors.text,
+    selectedTextColor = colors.text,
+    containerStyle,
+    style,
+    testID,
+  } = props;
   const [selected, setSelected] = useState(selectedIndex);
 
   // Keep in sync when `selectedIndex` changes after mount.

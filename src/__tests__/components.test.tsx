@@ -23,9 +23,18 @@ describe('rn-inkpad smoke tests', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  it('renders Icon with the given name', async () => {
-    await render(<Icon name="home" />);
-    expect(screen.getByText('home')).toBeTruthy();
+  it('renders Icon from an element or a component', async () => {
+    const Custom = ({size, color}: {size?: number; color?: string}) => (
+      <Text testID="custom">{`${size}-${color}`}</Text>
+    );
+    await render(
+      <>
+        <Icon icon={<Text>element</Text>} />
+        <Icon icon={Custom} size={12} color="red" />
+      </>,
+    );
+    expect(screen.getByText('element')).toBeTruthy();
+    expect(screen.getByTestId('custom').props.children).toBe('12-red');
   });
 
   it('renders Input with a label', async () => {

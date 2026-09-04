@@ -1,5 +1,6 @@
 import {StyleSheet, Text} from 'react-native';
-import {Icon, Tooltip} from 'rn-inkpad';
+import {Info} from 'lucide-react-native';
+import {Tooltip} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
 import {palette} from '../ui/theme';
@@ -9,7 +10,7 @@ export const TooltipDemo = () => (
     <Text style={styles.text}>
       Information{' '}
       <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget.">
-        <Icon name="information-circle" size={20} color={palette.blue} />
+        <Info size={20} color={palette.blue} />
       </Tooltip>
     </Text>
   </Section>

@@ -1,7 +1,56 @@
 import type {ComponentType} from 'react';
-import type {IconName} from 'rn-inkpad';
+import type {LucideIcon} from 'lucide-react-native';
+import {
+  ArrowLeftRight,
+  CircleDot,
+  CircleHelp,
+  CircleUser,
+  Ellipsis,
+  FileText,
+  Gauge,
+  Image,
+  LayoutGrid,
+  List,
+  Menu,
+  MessageSquare,
+  Pencil,
+  Plus,
+  Shapes,
+  SlidersHorizontal,
+  SquareCheck,
+  Star,
+  StarHalf,
+  Timer,
+  ToggleLeft,
+  TriangleAlert,
+  LayoutPanelTop,
+  GalleryVertical,
+  BadgeCheck,
+  Tag,
+  Minus,
+  LayoutTemplate,
+  MoreHorizontal,
+  ListOrdered,
+  ChevronsDownUp,
+  PanelBottom,
+  MessageSquareWarning,
+  KeyRound,
+  Palette,
+} from 'lucide-react-native';
 
+import {AccordionDemo} from './AccordionDemo';
 import {ActionSheetDemo} from './ActionSheetDemo';
+import {BadgeDemo} from './BadgeDemo';
+import {BottomSheetDemo} from './BottomSheetDemo';
+import {ChipDemo} from './ChipDemo';
+import {DialogDemo} from './DialogDemo';
+import {DividerDemo} from './DividerDemo';
+import {PaginationDotsDemo} from './PaginationDotsDemo';
+import {PinInputDemo} from './PinInputDemo';
+import {SkeletonDemo} from './SkeletonDemo';
+import {SnackbarDemo} from './SnackbarDemo';
+import {StepperDemo} from './StepperDemo';
+import {ThemeDemo} from './ThemeDemo';
 import {AlertDemo} from './AlertDemo';
 import {BottomTabNavigationDemo} from './BottomTabNavigationDemo';
 import {ButtonDemo} from './ButtonDemo';
@@ -32,7 +81,7 @@ export type Demo = {
   key: string;
   title: string;
   description: string;
-  icon: IconName;
+  icon: LucideIcon;
   Component: ComponentType;
 };
 
@@ -47,34 +96,123 @@ export type DemoSection = {
  */
 export const demoSections: DemoSection[] = [
   {
+    title: 'New in 2.0',
+    data: [
+      {
+        key: 'theme',
+        title: 'ThemeProvider',
+        description: 'Design tokens for every component',
+        icon: Palette,
+        Component: ThemeDemo,
+      },
+      {
+        key: 'badge',
+        title: 'Badge',
+        description: 'Counters and dots attached to anything',
+        icon: BadgeCheck,
+        Component: BadgeDemo,
+      },
+      {
+        key: 'chip',
+        title: 'Chip',
+        description: 'Selectable, removable tags',
+        icon: Tag,
+        Component: ChipDemo,
+      },
+      {
+        key: 'divider',
+        title: 'Divider',
+        description: 'Lines with optional label',
+        icon: Minus,
+        Component: DividerDemo,
+      },
+      {
+        key: 'skeleton',
+        title: 'Skeleton',
+        description: 'Pulsing loading placeholders',
+        icon: LayoutTemplate,
+        Component: SkeletonDemo,
+      },
+      {
+        key: 'pagination',
+        title: 'PaginationDots',
+        description: 'Carousel page indicator',
+        icon: MoreHorizontal,
+        Component: PaginationDotsDemo,
+      },
+      {
+        key: 'stepper',
+        title: 'Stepper',
+        description: 'Multi-step progress',
+        icon: ListOrdered,
+        Component: StepperDemo,
+      },
+      {
+        key: 'accordion',
+        title: 'Accordion',
+        description: 'Collapsible sections',
+        icon: ChevronsDownUp,
+        Component: AccordionDemo,
+      },
+      {
+        key: 'bottom-sheet',
+        title: 'BottomSheet',
+        description: 'Draggable sheet from the bottom',
+        icon: PanelBottom,
+        Component: BottomSheetDemo,
+      },
+      {
+        key: 'dialog',
+        title: 'Dialog',
+        description: 'Centered modal with buttons',
+        icon: MessageSquareWarning,
+        Component: DialogDemo,
+      },
+      {
+        key: 'pin-input',
+        title: 'PinInput',
+        description: 'OTP / verification code cells',
+        icon: KeyRound,
+        Component: PinInputDemo,
+      },
+      {
+        key: 'snackbar',
+        title: 'Snackbar',
+        description: 'Queued messages with actions',
+        icon: MessageSquare,
+        Component: SnackbarDemo,
+      },
+    ],
+  },
+  {
     title: 'Buttons',
     data: [
       {
         key: 'button',
         title: 'Button',
         description: 'Solid, outline and clear variants',
-        icon: 'radio-button-on',
+        icon: CircleDot,
         Component: ButtonDemo,
       },
       {
         key: 'fab',
         title: 'FloatingActionButton',
         description: 'Single action or expandable menu',
-        icon: 'add-circle',
+        icon: Plus,
         Component: FloatingActionButtonDemo,
       },
       {
         key: 'long-press',
         title: 'LongPressButton',
         description: 'Hold to confirm with progress fill',
-        icon: 'hourglass',
+        icon: Timer,
         Component: LongPressButtonDemo,
       },
       {
         key: 'slide-action',
         title: 'SlideAction',
         description: 'Slide to confirm',
-        icon: 'swap-horizontal',
+        icon: ArrowLeftRight,
         Component: SlideActionDemo,
       },
     ],
@@ -86,49 +224,49 @@ export const demoSections: DemoSection[] = [
         key: 'input',
         title: 'Input',
         description: 'Filled, bordered and outlined text inputs',
-        icon: 'create',
+        icon: Pencil,
         Component: InputDemo,
       },
       {
         key: 'checkbox',
         title: 'CheckBox',
         description: 'Checkbox with custom icons',
-        icon: 'checkbox',
+        icon: SquareCheck,
         Component: CheckBoxDemo,
       },
       {
         key: 'radio',
         title: 'RadioButtons',
         description: 'Radio group, vertical or horizontal',
-        icon: 'radio-button-off',
+        icon: CircleDot,
         Component: RadioButtonsDemo,
       },
       {
         key: 'switch',
         title: 'Switch',
         description: 'Toggle with optional label',
-        icon: 'toggle',
+        icon: ToggleLeft,
         Component: SwitchDemo,
       },
       {
         key: 'segmented',
         title: 'SegmentedControl',
         description: 'iOS-style segmented selector',
-        icon: 'options',
+        icon: SlidersHorizontal,
         Component: SegmentedControlDemo,
       },
       {
         key: 'slider',
         title: 'Slider',
         description: 'Draggable value slider',
-        icon: 'git-commit',
+        icon: SlidersHorizontal,
         Component: SliderDemo,
       },
       {
         key: 'star-rating',
         title: 'StarRating',
         description: 'Interactive rating with review labels',
-        icon: 'star-half',
+        icon: StarHalf,
         Component: StarRatingDemo,
       },
     ],
@@ -140,42 +278,42 @@ export const demoSections: DemoSection[] = [
         key: 'card',
         title: 'Card',
         description: 'Icon, title, description and buttons',
-        icon: 'document-text',
+        icon: FileText,
         Component: CardDemo,
       },
       {
         key: 'card-image',
         title: 'CardImage',
         description: 'Image card with progressive blur',
-        icon: 'image',
+        icon: Image,
         Component: CardImageDemo,
       },
       {
         key: 'floating-card',
         title: 'FloatingActionCard',
         description: 'Floating card with image and rating',
-        icon: 'albums',
+        icon: GalleryVertical,
         Component: FloatingActionCardDemo,
       },
       {
         key: 'avatar',
         title: 'CircleAvatar',
         description: 'Avatar with image or initials',
-        icon: 'person-circle',
+        icon: CircleUser,
         Component: CircleAvatarDemo,
       },
       {
         key: 'icon',
-        title: 'Icon',
-        description: 'Typed Ionicons wrapper',
-        icon: 'shapes',
+        title: 'Icons',
+        description: 'Bring your own icons: lucide, SVG or any component',
+        icon: Shapes,
         Component: IconDemo,
       },
       {
         key: 'rating',
         title: 'Rating',
         description: 'Read-only stars or hearts',
-        icon: 'star',
+        icon: Star,
         Component: RatingDemo,
       },
     ],
@@ -187,42 +325,42 @@ export const demoSections: DemoSection[] = [
         key: 'alert',
         title: 'Alert',
         description: 'Imperative alert and prompt dialogs',
-        icon: 'alert-circle',
+        icon: TriangleAlert,
         Component: AlertDemo,
       },
       {
         key: 'action-sheet',
         title: 'ActionSheet',
         description: 'Bottom sheet with actions',
-        icon: 'list',
+        icon: List,
         Component: ActionSheetDemo,
       },
       {
         key: 'toast',
         title: 'Toast',
         description: 'Auto-hiding message, top or bottom',
-        icon: 'chatbox',
+        icon: MessageSquare,
         Component: ToastDemo,
       },
       {
         key: 'tooltip',
         title: 'Tooltip',
         description: 'Contextual help bubble',
-        icon: 'help-circle',
+        icon: CircleHelp,
         Component: TooltipDemo,
       },
       {
         key: 'progress',
         title: 'ProgressBar',
         description: 'Animated progress with percent',
-        icon: 'speedometer',
+        icon: Gauge,
         Component: ProgressBarDemo,
       },
       {
         key: 'dots',
         title: 'DotsLoading',
         description: 'Bouncing dots spinner',
-        icon: 'ellipsis-horizontal',
+        icon: Ellipsis,
         Component: DotsLoadingDemo,
       },
     ],
@@ -234,21 +372,21 @@ export const demoSections: DemoSection[] = [
         key: 'bottom-tabs',
         title: 'BottomTabNavigation',
         description: 'Bottom bar with highlighted tab',
-        icon: 'apps',
+        icon: LayoutGrid,
         Component: BottomTabNavigationDemo,
       },
       {
         key: 'drawer',
         title: 'DrawerNavigation',
         description: 'Side drawer with collapsible groups',
-        icon: 'menu',
+        icon: Menu,
         Component: DrawerNavigationDemo,
       },
       {
         key: 'tab-control',
         title: 'TabControl',
         description: 'Tabs rendering their own content',
-        icon: 'browsers',
+        icon: LayoutPanelTop,
         Component: TabControlDemo,
       },
     ],

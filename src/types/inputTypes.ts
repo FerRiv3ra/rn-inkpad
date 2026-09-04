@@ -5,7 +5,7 @@ import type {
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 type autoComplete =
   | 'additional-name'
@@ -115,7 +115,7 @@ export type inputProps = A11yProps & {
   autoComplete?: autoComplete;
   borderColor?: string;
   borderRadius?: number;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   iconSize?: number;
   keyboardType?: KeyboardTypeOptions;
@@ -124,7 +124,11 @@ export type inputProps = A11yProps & {
   password?: boolean;
   placeholder?: string;
   placeholderColor?: string;
-  rightIcon?: IconName;
+  rightIcon?: IconProp;
+  /** Icon of the toggle while the password is hidden. Defaults to an eye. */
+  showPasswordIcon?: IconProp;
+  /** Icon of the toggle while the password is visible. Defaults to a crossed eye. */
+  hidePasswordIcon?: IconProp;
   rightIconColor?: string;
   rightIconSize?: number;
   search?: boolean;

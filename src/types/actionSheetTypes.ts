@@ -1,10 +1,10 @@
 import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle} from 'react-native';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 export type ActionSheet = {
   text: string;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   textStyle?: StyleProp<TextStyle>;
   onPress: () => void;
@@ -23,7 +23,11 @@ export type ActionSheetTheme = {
 
 export type ActionSheetProps = A11yProps & {
   actions?: ActionSheet[];
+  /** Icon of the cancel button. Defaults to a built-in cross. */
+  cancelIcon?: IconProp;
   cancelText?: string;
+  /** Icon of the top close button. Defaults to a built-in cross. */
+  closeIcon?: IconProp;
   description?: string;
   showCancelButton?: boolean;
   showCloseButton?: boolean;

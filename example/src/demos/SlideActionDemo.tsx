@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {ArrowRight, Check, Lock, LockOpen} from 'lucide-react-native';
 import {SlideAction} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -11,8 +12,8 @@ export const SlideActionDemo = () => {
     <>
       <Section title="Slide to confirm">
         <SlideAction
-          icon="lock-open"
-          iconOnCompleted="lock-closed"
+          icon={LockOpen}
+          iconOnCompleted={Lock}
           text="Slide to confirm"
           textOnCompleted="Confirmed"
           onCompleted={() => setConfirmed(true)}
@@ -21,8 +22,8 @@ export const SlideActionDemo = () => {
       </Section>
       <Section title="Custom colors, text at the ends">
         <SlideAction
-          icon="arrow-forward"
-          iconOnCompleted="checkmark"
+          icon={ArrowRight}
+          iconOnCompleted={Check}
           text="Slide"
           textOnCompleted="Done"
           textPosition="ends"

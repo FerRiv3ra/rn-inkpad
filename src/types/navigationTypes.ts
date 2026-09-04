@@ -5,11 +5,11 @@ import type {
   StyleProp,
   TextStyle,
 } from 'react-native';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 export type NavigationItemType = {
   highlighted?: boolean;
-  icon?: IconName;
+  icon?: IconProp;
   text?: string;
   onPress?: () => void;
 };
@@ -45,13 +45,13 @@ export type BottomTabNavigationProps = A11yProps & {
 
 export type DrawerItemType = {
   text: string;
-  icon: IconName;
+  icon: IconProp;
   onPress?: () => void;
 };
 
 export type GroupItem = {
   text: string;
-  icon: IconName;
+  icon: IconProp;
   items: DrawerItemType[];
 };
 
@@ -59,11 +59,11 @@ type Items = DrawerItemType | GroupItem;
 
 export type DrawerNavigationProps = A11yProps & {
   backgroundColor?: string;
-  closeIcon?: IconName;
-  collapseIcon?: IconName;
-  expandIcon?: IconName;
+  closeIcon?: IconProp;
+  collapseIcon?: IconProp;
+  expandIcon?: IconProp;
   fontSize?: number;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   iconSize?: number;
   iconTop?: number;
@@ -77,8 +77,8 @@ export type DrawerNavigationProps = A11yProps & {
 };
 
 export type DrawerGroupProps = {
-  collapseIcon?: IconName;
-  expandIcon?: IconName;
+  collapseIcon?: IconProp;
+  expandIcon?: IconProp;
   fontSize: number;
   iconSize: number;
   item: GroupItem;
@@ -87,7 +87,7 @@ export type DrawerGroupProps = {
 };
 
 export type DrawerItemProps = {
-  icon: IconName;
+  icon: IconProp;
   textColor?: string;
   iconSize?: number;
   text?: string;

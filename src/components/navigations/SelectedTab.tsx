@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {View} from 'react-native';
 
 type Props = {
@@ -5,11 +6,13 @@ type Props = {
   color?: string;
 };
 
-export const SelectedTab = ({height = 5, color = '#DB504A'}: Props) => {
+export const SelectedTab = ({height = 5, color}: Props) => {
+  const {colors} = useTheme();
+  const tint = color ?? colors.primary;
   return (
     <View
       style={{
-        borderTopColor: color,
+        borderTopColor: tint,
         borderTopWidth: height,
         position: 'absolute',
         zIndex: 10,

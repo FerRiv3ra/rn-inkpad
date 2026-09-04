@@ -2,14 +2,14 @@ import type {A11yProps} from '../../types';
 import {Text, View} from 'react-native';
 
 import {cardStyles} from '../../theme';
-import type {ButtonType, cardTheme, IconName} from '../../types';
-import {Icon} from '../icon/Icon';
+import {renderIcon} from '../../helpers/renderIcon';
+import type {ButtonType, cardTheme, IconProp} from '../../types';
 import {CardButton} from './CardButton';
 
 type Props = A11yProps & {
   buttons: ButtonType[];
   description: string;
-  icon: IconName;
+  icon?: IconProp;
   title: string;
   theme?: cardTheme;
 };
@@ -36,12 +36,14 @@ export const Card = ({
         !!shadow && cardStyles.shadow,
       ]}>
       <View style={cardStyles.cardContent}>
-        <Icon
-          name={icon}
-          color={themeColor ?? '#000000'}
-          style={cardStyles.icon}
-          size={iconSize ?? 25}
-        />
+        {!!icon && (
+          <View style={cardStyles.icon}>
+            {renderIcon(icon, {
+              size: iconSize ?? 25,
+              color: themeColor ?? '#000000',
+            })}
+          </View>
+        )}
         <View>
           <Text
             style={[

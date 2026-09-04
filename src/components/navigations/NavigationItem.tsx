@@ -1,24 +1,27 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {memo} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import type {NavigationItemProps} from '../../types';
 import {SelectedTab} from './SelectedTab';
 
-const NavigationItemComponent = ({
-  item,
-  index,
-  highlightedBgColor,
-  iconColor,
-  iconSize = 25,
-  selected,
-  selectedColor = '#DB504A',
-  selectedheight,
-  testID,
-  textColor,
-  textStyle,
-  onPress,
-}: NavigationItemProps) => {
+const NavigationItemComponent = (props: NavigationItemProps) => {
+  const {colors} = useTheme();
+  const {
+    item,
+    index,
+    highlightedBgColor,
+    iconColor,
+    iconSize = 25,
+    selected,
+    selectedColor = colors.primary,
+    selectedheight,
+    testID,
+    textColor,
+    textStyle,
+    onPress,
+  } = props;
   const {highlighted, icon, text} = item;
 
   return (
@@ -44,13 +47,10 @@ const NavigationItemComponent = ({
         {!highlighted && selected && (
           <SelectedTab height={selectedheight} color={selectedColor} />
         )}
-        {icon && (
-          <Icon
-            name={icon}
-            size={highlighted ? iconSize + 5 : iconSize}
-            color={iconColor}
-          />
-        )}
+        {renderIcon(icon, {
+          size: highlighted ? iconSize + 5 : iconSize,
+          color: iconColor,
+        })}
         {!highlighted && (
           <Text
             style={[styles.text, {color: textColor ?? iconColor}, textStyle]}>

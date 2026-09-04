@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import type {A11yProps} from '../../types';
 import {useEffect, useMemo} from 'react';
 import type {ViewStyle} from 'react-native';
@@ -11,15 +12,17 @@ type Props = A11yProps & {
   style?: ViewStyle;
 };
 
-export const DotsLoading = ({
-  accessibilityLabel = 'Loading',
-  size = 10,
-  color = '#17B9D1',
-  dotCount = 3,
-  speed = 600,
-  style,
-  testID,
-}: Props) => {
+export const DotsLoading = (props: Props) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel = 'Loading',
+    size = 10,
+    color = colors.primary,
+    dotCount = 3,
+    speed = 600,
+    style,
+    testID,
+  } = props;
   // One Animated.Value per dot, recreated only when dotCount changes.
   const animatedValues = useMemo(
     () => Array.from({length: dotCount}, () => new Animated.Value(0)),

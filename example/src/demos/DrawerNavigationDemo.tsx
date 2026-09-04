@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {History, House, Settings, Star, User} from 'lucide-react-native';
 import {DrawerNavigation} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
@@ -18,30 +19,30 @@ export const DrawerNavigationDemo = () => {
           backgroundColor="#BEF0F3"
           image={require('../../assets/icon.png')}
           items={[
-            {icon: 'home', text: 'Home', onPress: () => setScreen('Home')},
+            {icon: House, text: 'Home', onPress: () => setScreen('Home')},
             {
               text: 'User',
-              icon: 'person',
+              icon: User,
               items: [
                 {
-                  icon: 'person',
+                  icon: User,
                   text: 'Profile',
                   onPress: () => setScreen('Profile'),
                 },
                 {
-                  icon: 'time',
+                  icon: History,
                   text: 'History',
                   onPress: () => setScreen('History'),
                 },
                 {
-                  icon: 'star',
+                  icon: Star,
                   text: 'Starred',
                   onPress: () => setScreen('Starred'),
                 },
               ],
             },
             {
-              icon: 'cog',
+              icon: Settings,
               text: 'Settings',
               onPress: () => setScreen('Settings'),
             },

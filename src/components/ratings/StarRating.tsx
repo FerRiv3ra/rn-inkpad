@@ -2,11 +2,15 @@ import type {A11yProps} from '../../types';
 import {useEffect, useState} from 'react';
 import type {StyleProp, ViewStyle} from 'react-native';
 import {Pressable, Text, View} from 'react-native';
-import {Icon} from '..';
+import {renderIcon} from '../../helpers/renderIcon';
+import type {IconProp} from '../../types';
+import {RatingGlyph} from '../glyphs/Glyphs';
 
 type Props = A11yProps & {
   defaultRating?: number;
   iconColor?: string;
+  /** Custom icons for selected and unselected steps. Defaults to built-in stars. */
+  icons?: {full: IconProp; empty: IconProp};
   justRating?: boolean;
   readOnly?: boolean;
   reviews?: string[];
@@ -23,6 +27,7 @@ export const StarRating = ({
   accessibilityLabel,
   defaultRating = 3,
   iconColor = '#FFD700',
+  icons,
   justRating,
   onChange,
   readOnly,
@@ -81,11 +86,18 @@ export const StarRating = ({
             testID={testID ? `${testID}-star-${idx}` : undefined}
             disabled={readOnly}
             onPress={() => handleChange(idx)}>
-            <Icon
-              name={rating >= idx ? 'star' : `star-outline`}
-              size={size}
-              color={iconColor}
-            />
+            {icons ? (
+              renderIcon(rating >= idx ? icons.full : icons.empty, {
+                size,
+                color: iconColor,
+              })
+            ) : (
+              <RatingGlyph
+                variant={rating >= idx ? 'full' : 'empty'}
+                size={size}
+                color={iconColor}
+              />
+            )}
           </Pressable>
         ))}
       </View>

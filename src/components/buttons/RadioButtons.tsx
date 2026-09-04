@@ -1,12 +1,16 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {memo, useCallback, useEffect, useState} from 'react';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useDirection} from '../../hooks';
-import type {RadioProps} from '../../types';
+import type {IconProp, RadioProps} from '../../types';
+import {RadioGlyph} from '../glyphs/Glyphs';
 
 type OptionProps = {
   value: string | number;
+  checkedIcon?: IconProp;
+  unCheckedIcon?: IconProp;
   text?: string;
   checked: boolean;
   disabled?: boolean;
@@ -29,6 +33,8 @@ const Option = memo(
     value,
     text,
     checked,
+    checkedIcon,
+    unCheckedIcon,
     disabled,
     border,
     borderColor,
@@ -63,37 +69,49 @@ const Option = memo(
           {borderColor: disabled ? '#AAA' : borderColor},
         ],
       ]}>
-      <Icon
-        name={checked ? 'radio-button-on' : 'radio-button-off'}
-        size={iconSize}
-        color={disabled ? '#AAA' : iconColor}
-      />
+      {(checked ? checkedIcon : unCheckedIcon) ? (
+        renderIcon(checked ? checkedIcon : unCheckedIcon, {
+          size: iconSize,
+          color: disabled ? '#AAA' : iconColor,
+        })
+      ) : (
+        <RadioGlyph
+          checked={checked}
+          size={iconSize}
+          color={disabled ? '#AAA' : iconColor}
+          testID={testID ? `${testID}-icon` : undefined}
+        />
+      )}
       <Text style={[textStyle, {color: textColor}]}>{text ?? value}</Text>
     </Pressable>
   ),
 );
 
-export const RadioButtons = ({
-  accessibilityLabel,
-  border,
-  borderColor = '#464EE5',
-  defaultChecked,
-  disabled,
-  fullWidth,
-  gap,
-  gapHorizontal = 10,
-  iconColor = '#464EE5',
-  iconPosition,
-  iconSize = 20,
-  marginVertical = 8,
-  onChange,
-  orientation = 'vertical',
-  style,
-  testID,
-  textColor,
-  textStyle,
-  values,
-}: RadioProps) => {
+export const RadioButtons = (props: RadioProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel,
+    border,
+    borderColor = colors.primary,
+    checkedIcon,
+    unCheckedIcon,
+    defaultChecked,
+    disabled,
+    fullWidth,
+    gap,
+    gapHorizontal = 10,
+    iconColor = colors.primary,
+    iconPosition,
+    iconSize = 20,
+    marginVertical = 8,
+    onChange,
+    orientation = 'vertical',
+    style,
+    testID,
+    textColor,
+    textStyle,
+    values,
+  } = props;
   const [checked, setChecked] = useState<string | number>();
 
   const {flexDirection, spacing} = useDirection(
@@ -134,6 +152,8 @@ export const RadioButtons = ({
           value={value}
           text={text}
           checked={checked === value}
+          checkedIcon={checkedIcon}
+          unCheckedIcon={unCheckedIcon}
           disabled={disabled}
           border={border}
           borderColor={borderColor}

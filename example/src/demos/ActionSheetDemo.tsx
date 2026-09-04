@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Bandage, Camera, Eye} from 'lucide-react-native';
 import {ActionSheet, Button} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -32,17 +33,17 @@ export const ActionSheetDemo = () => {
         actions={[
           {
             text: 'Change profile picture',
-            icon: 'camera',
+            icon: Camera,
             onPress: () => setLast('Change profile picture'),
           },
           {
             text: 'View profile picture',
-            icon: 'eye',
+            icon: Eye,
             onPress: () => setLast('View profile picture'),
           },
           {
             text: 'View status',
-            icon: 'bandage',
+            icon: Bandage,
             onPress: () => setLast('View status'),
           },
         ]}

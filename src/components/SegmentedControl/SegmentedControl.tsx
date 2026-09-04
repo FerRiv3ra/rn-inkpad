@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {memo, useCallback, useEffect, useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import type {SegmentedControlProps} from '../../types';
@@ -53,20 +54,22 @@ const Segment = memo(
   ),
 );
 
-export const SegmentedControl = ({
-  accessibilityLabel,
-  values,
-  onChange,
-  selectedIndex,
-  label,
-  labelStyle,
-  backgroundColor = '#CCCCCC',
-  tintColor = '#FFFFFF',
-  textColor = '#000000',
-  selectedTextColor = '#000000',
-  style,
-  testID,
-}: SegmentedControlProps) => {
+export const SegmentedControl = (props: SegmentedControlProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityLabel,
+    values,
+    onChange,
+    selectedIndex,
+    label,
+    labelStyle,
+    backgroundColor = colors.surface,
+    tintColor = colors.background,
+    textColor = colors.text,
+    selectedTextColor = colors.text,
+    style,
+    testID,
+  } = props;
   const [selected, setSelected] = useState(selectedIndex ?? 0);
 
   // Keep in sync when `selectedIndex` changes after mount.

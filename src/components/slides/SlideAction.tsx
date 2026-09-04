@@ -1,39 +1,42 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {Animated, Text, View} from 'react-native';
 
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useSlideAction} from '../../hooks';
 import {slideStyles} from '../../theme';
 import type {SlideActionProps} from '../../types';
 
 const ACCESSIBILITY_ACTIONS = [{name: 'activate'}];
 
-export const SlideAction = ({
-  accessibilityHint = 'Slide the thumb to the end to confirm',
-  accessibilityLabel,
-  height = 56,
-  icon,
-  iconColor = '#F43F5D',
-  iconCompletedColor = '#4ADE80',
-  iconOnCompleted,
-  iconSize = 20,
-  isCompleted,
-  onCompleted,
-  padding = 8,
-  readonly,
-  style,
-  testID,
-  text,
-  textOnCompleted,
-  textPosition = 'center',
-  textStyle,
-  thumbBorderColor,
-  thumbBorderWidth,
-  thumbColor = '#FFFFFF',
-  thumbCompletedColor = '#FFFFFF',
-  thumbWidth = 40,
-  tintColor = '#F43F5D',
-  tintCompletedColor = '#4ADE80',
-}: SlideActionProps) => {
+export const SlideAction = (props: SlideActionProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityHint = 'Slide the thumb to the end to confirm',
+    accessibilityLabel,
+    height = 56,
+    icon,
+    iconColor = colors.secondary,
+    iconCompletedColor = colors.success,
+    iconOnCompleted,
+    iconSize = 20,
+    isCompleted,
+    onCompleted,
+    padding = 8,
+    readonly,
+    style,
+    testID,
+    text,
+    textOnCompleted,
+    textPosition = 'center',
+    textStyle,
+    thumbBorderColor,
+    thumbBorderWidth,
+    thumbColor = '#FFFFFF',
+    thumbCompletedColor = '#FFFFFF',
+    thumbWidth = 40,
+    tintColor = colors.secondary,
+    tintCompletedColor = colors.success,
+  } = props;
   const {
     completed,
     handleAccessibilityAction,
@@ -90,13 +93,10 @@ export const SlideAction = ({
             transform: [{translateX: thumbLeft}],
           },
         ]}>
-        {icon && (
-          <Icon
-            name={completed ? (iconOnCompleted ?? icon) : icon}
-            color={completed ? iconCompletedColor : iconColor}
-            size={iconSize}
-          />
-        )}
+        {renderIcon(completed ? (iconOnCompleted ?? icon) : icon, {
+          size: iconSize,
+          color: completed ? iconCompletedColor : iconColor,
+        })}
       </Animated.View>
     </View>
   );

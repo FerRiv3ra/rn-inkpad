@@ -2,8 +2,10 @@ import {fireEvent, render, screen} from '@testing-library/react-native';
 import {Text} from 'react-native';
 
 import {
+  ActionSheet,
   BottomTabNavigation,
   Button,
+  FloatingActionButton,
   CheckBox,
   Input,
   RadioButtons,
@@ -87,10 +89,7 @@ describe('accessibility and testID', () => {
     await render(
       <BottomTabNavigation
         testID="nav"
-        values={[
-          {icon: 'home', text: 'Home'},
-          {icon: 'cog', text: 'Settings'},
-        ]}
+        values={[{text: 'Home'}, {text: 'Settings'}]}
       />,
     );
     await fireEvent.press(screen.getByRole('tab', {name: 'Settings'}));
@@ -174,5 +173,60 @@ describe('accessibility and testID', () => {
     const toast = screen.getByTestId('toast');
     expect(toast.props.accessibilityRole).toBe('alert');
     expect(toast.props.accessibilityLiveRegion).toBe('polite');
+  });
+});
+
+describe('custom icons replace the built-in glyphs', () => {
+  it('RadioButtons use checkedIcon / unCheckedIcon', async () => {
+    const On = () => <Text>ON</Text>;
+    const Off = () => <Text>OFF</Text>;
+    await render(
+      <RadioButtons
+        checkedIcon={On}
+        unCheckedIcon={Off}
+        defaultChecked={0}
+        values={[
+          {text: 'One', value: 1},
+          {text: 'Two', value: 2},
+        ]}
+      />,
+    );
+    expect(screen.getAllByText('ON')).toHaveLength(1);
+    expect(screen.getAllByText('OFF')).toHaveLength(1);
+  });
+
+  it('ActionSheet uses closeIcon and cancelIcon', async () => {
+    const X = () => <Text>X</Text>;
+    const C = () => <Text>C</Text>;
+    await render(
+      <ActionSheet
+        visible
+        setVisible={jest.fn()}
+        showCloseButton
+        showCancelButton
+        closeIcon={X}
+        cancelIcon={C}
+        theme={{theme: 'material'}}
+        actions={[{text: 'One', onPress: jest.fn()}]}
+      />,
+    );
+    expect(screen.getByText('X')).toBeTruthy();
+    expect(screen.getByText('C')).toBeTruthy();
+  });
+
+  it('FloatingActionButton switches between openIcon and closeIcon', async () => {
+    const Open = () => <Text>OPEN</Text>;
+    const Close = () => <Text>CLOSE</Text>;
+    await render(
+      <FloatingActionButton
+        testID="fab"
+        openIcon={Open}
+        closeIcon={Close}
+        actions={[{icon: Open, onPress: jest.fn()}]}
+      />,
+    );
+    expect(screen.getByText('OPEN')).toBeTruthy();
+    await fireEvent.press(screen.getByTestId('fab'));
+    expect(screen.getByText('CLOSE')).toBeTruthy();
   });
 });

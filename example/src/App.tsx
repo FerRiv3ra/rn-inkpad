@@ -12,7 +12,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import {Icon} from 'rn-inkpad';
+import {ChevronLeft, ChevronRight} from 'lucide-react-native';
 
 import type {Demo} from './demos/registry';
 import {demoCount, demoSections} from './demos/registry';
@@ -68,13 +68,13 @@ const DemoList = ({onSelect}: ListProps) => (
         onPress={() => onSelect(item)}
         style={({pressed}) => [styles.item, pressed && styles.itemPressed]}>
         <View style={styles.itemIcon}>
-          <Icon name={item.icon} size={22} color={palette.navy} />
+          <item.icon size={22} color={palette.navy} />
         </View>
         <View style={styles.itemText}>
           <Text style={styles.itemTitle}>{item.title}</Text>
           <Text style={styles.itemDescription}>{item.description}</Text>
         </View>
-        <Icon name="chevron-forward" size={18} color={palette.muted} />
+        <ChevronRight size={18} color={palette.muted} />
       </Pressable>
     )}
   />
@@ -90,7 +90,7 @@ const DemoScreen = ({demo, onBack}: ScreenProps) => {
     <View style={styles.root}>
       <View style={styles.header}>
         <Pressable onPress={onBack} hitSlop={12} style={styles.back}>
-          <Icon name="chevron-back" size={24} color={palette.navy} />
+          <ChevronLeft size={24} color={palette.navy} />
           <Text style={styles.backText}>Components</Text>
         </Pressable>
         <Text style={styles.headerTitle} numberOfLines={1}>

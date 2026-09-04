@@ -5,10 +5,10 @@ import type {
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 export type Action = {
-  icon: IconName;
+  icon: IconProp;
   text?: string;
   onPress: () => void;
 };
@@ -19,7 +19,12 @@ export type FabProps = A11yProps & {
   backgroundColor?: string;
   marginHorizontal?: number;
   marginVertical?: number;
-  icon?: IconName;
+  /** Icon of the main button. Used for both states unless `openIcon` / `closeIcon` are given. */
+  icon?: IconProp;
+  /** Icon while the actions menu is closed. Defaults to `icon` or a built-in plus. */
+  openIcon?: IconProp;
+  /** Icon while the actions menu is open. Defaults to `icon` or a built-in cross. */
+  closeIcon?: IconProp;
   iconColor?: string;
   iconSize?: number;
   size?: number;
@@ -33,7 +38,7 @@ export type ButtonProps = A11yProps & {
   color?: string;
   disabled?: boolean;
   full?: boolean;
-  icon?: IconName;
+  icon?: IconProp;
   iconPosition?: 'left' | 'right';
   iconSize?: number;
   loading?: boolean;
@@ -59,6 +64,10 @@ export type RadioProps = A11yProps & {
   fullWidth?: boolean;
   gap?: number;
   gapHorizontal?: number;
+  /** Icon of the selected option. Defaults to a built-in filled circle. */
+  checkedIcon?: IconProp;
+  /** Icon of the unselected options. Defaults to a built-in empty circle. */
+  unCheckedIcon?: IconProp;
   iconColor?: string;
   iconPosition?: 'left' | 'bottom' | 'top' | 'right';
   iconSize?: number;
@@ -71,7 +80,7 @@ export type RadioProps = A11yProps & {
 };
 
 export type CheckBoxProps = A11yProps & {
-  checkedIcon?: IconName;
+  checkedIcon?: IconProp;
   checked?: boolean;
   iconColor?: string;
   iconSize?: number;
@@ -79,7 +88,7 @@ export type CheckBoxProps = A11yProps & {
   textColor?: string;
   textStyle?: StyleProp<TextStyle>;
   title?: string;
-  unCheckedIcon?: IconName;
+  unCheckedIcon?: IconProp;
   onChange?: (value: boolean) => void;
 };
 
@@ -90,7 +99,7 @@ export type LongPressButtonProps = A11yProps & {
   fontSize?: number;
   fullWidth?: boolean;
   height?: DimensionValue;
-  icon?: IconName;
+  icon?: IconProp;
   iconPosition?: 'left' | 'right';
   longPressTime?: number;
   progressColor?: string;

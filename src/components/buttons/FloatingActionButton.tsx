@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {View} from 'react-native';
 
 import type {FabProps} from '../../types';
+import {CloseGlyph, PlusGlyph} from '../glyphs/Glyphs';
 import {ActionButton} from './ActionButton';
 
 export const FloatingActionButton = ({
@@ -12,6 +13,8 @@ export const FloatingActionButton = ({
   marginHorizontal = 20,
   marginVertical = 30,
   icon,
+  openIcon,
+  closeIcon,
   iconColor,
   iconSize,
   onPress,
@@ -57,7 +60,7 @@ export const FloatingActionButton = ({
             onPress={action.onPress}
             size={size - 10}
             text={action.text}
-            key={action.text ?? action.icon}
+            key={action.text ?? index}
             testID={testID ? `${testID}-action-${index}` : undefined}
           />
         ))}
@@ -70,7 +73,11 @@ export const FloatingActionButton = ({
         testID={testID}
         onPress={handlePress}
         backgroundColor={backgroundColor}
-        icon={icon ? icon : showActions ? 'close' : 'add'}
+        icon={
+          showActions
+            ? (closeIcon ?? icon ?? CloseGlyph)
+            : (openIcon ?? icon ?? PlusGlyph)
+        }
         iconColor={iconColor}
         size={size}
         iconSize={iconSize}

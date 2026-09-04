@@ -1,7 +1,7 @@
 import type {StyleProp, ViewStyle} from 'react-native';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import type {ActionSheet, ValidTheme} from '../../types/actionSheetTypes';
-import {Icon} from '../icon/Icon';
+import {renderIcon} from '../../helpers/renderIcon';
 
 type Props = {
   action: ActionSheet;
@@ -77,19 +77,13 @@ export const ActionSheetButton = ({
         edges,
         style,
       ]}>
-      {(!isIos || showIconOnIos) && icon && (
-        <Icon
-          name={icon}
-          size={18}
-          color={
-            iconColor
-              ? iconColor
-              : theme === 'cupertino'
-                ? textColor
-                : '#757575'
-          }
-          style={isIos && styles.cupertinoIcon}
-        />
+      {(!isIos || showIconOnIos) && !!icon && (
+        <View style={isIos && styles.cupertinoIcon}>
+          {renderIcon(icon, {
+            size: 18,
+            color: iconColor ?? (theme === 'cupertino' ? textColor : '#757575'),
+          })}
+        </View>
       )}
       <Text style={[{color: textColor, fontWeight: '500'}, textStyle]}>
         {text}

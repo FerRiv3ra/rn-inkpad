@@ -4,7 +4,25 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project follows
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [Unreleased] (2.0.0)
+
+### BREAKING: bring your own icons
+
+- `react-native-vector-icons` is no longer a dependency. rn-inkpad now has **zero dependencies**.
+- Every icon prop (`icon`, `rightIcon`, `checkedIcon`, `unCheckedIcon`, `iconOnCompleted`,
+  `closeIcon`, `collapseIcon`, `expandIcon`, action and navigation item `icon`s, alert `icon`,
+  `thumbStyles.icon`) accepts an `IconProp`: a React element rendered as is, or a component that
+  the library renders with the size and color matching its state. Works with lucide, @expo/vector-icons,
+  react-native-svg and SVGR components.
+- `Icon` now takes `icon` (an `IconProp`) instead of `name`. `IconName` and `ValidName` are gone.
+  `renderIcon` and the `IconProps` / `IconProp` types are exported.
+- Defaults that used Ionicons (checkbox, radio, star/heart ratings, password eye, search, chevrons,
+  close, plus, menu) are now tiny built-in glyphs drawn with views and text. All replaceable.
+- `Rating` accepts `icons={{full, half, empty}}`; `StarRating` accepts `icons={{full, empty}}`;
+  `Input` accepts `showPasswordIcon` / `hidePasswordIcon`; `RadioButtons` accepts `checkedIcon` /
+  `unCheckedIcon`; `ActionSheet` accepts `closeIcon` / `cancelIcon`; `FloatingActionButton` accepts
+  `openIcon` / `closeIcon`. `Card.icon` is now optional.
+- Migration: replace `icon="home"` with `icon={House}` (component) or `icon={<House size={18} />}` (element).
 
 ### Fixed
 
@@ -40,6 +58,19 @@ All notable changes to this project are documented here. The format is based on
 - **Alert / ActionSheet**: the Android back button closes the modal (`onRequestClose`);
   tapping the ActionSheet backdrop closes it.
 - **colorToRgba**: accepts 3-digit hex (`#fff`) and `rgb()` with spaces or decimals.
+
+### Added
+
+- **ThemeProvider** with design tokens (`colors`, `radius`, `spacing`, `typography`), `useTheme`,
+  `createTheme`, `defaultTheme` and `darkTheme`. Optional: without a provider components use the
+  defaults. Nested providers extend the parent theme.
+- Existing components take their default colors from the theme (`primary`, `secondary`, `success`,
+  `surface`, `background`, `border`, `text`). Defaults changed slightly: one unified primary
+  (`#464EE5`) instead of several close blues and reds; Switch on-color is the theme `success`.
+- New components: **Badge**, **Chip**, **Divider**, **Skeleton**, **PaginationDots**, **Stepper**,
+  **Accordion**, **BottomSheet** (drag to close), **Dialog**, **PinInput** (OTP), and
+  **SnackbarProvider** + `useSnackbar` (queued messages with actions). All accept `IconProp`s,
+  `testID` and accessibility props.
 
 ### Performance
 

@@ -1,14 +1,22 @@
 import {memo, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 
-import {Icon} from '../';
+import {renderIcon} from '../../helpers/renderIcon';
 import {drawerStyles} from '../../theme';
-import type {DrawerGroupProps} from '../../types';
+import type {DrawerGroupProps, IconProps} from '../../types';
+import {ChevronGlyph} from '../glyphs/Glyphs';
 import {DrawerItem} from './DrawerItem';
 
+const CollapseGlyph = (props: IconProps) => (
+  <ChevronGlyph {...props} direction="up" />
+);
+const ExpandGlyph = (props: IconProps) => (
+  <ChevronGlyph {...props} direction="down" />
+);
+
 const DrawerGroupComponent = ({
-  collapseIcon = 'chevron-up',
-  expandIcon = 'chevron-down',
+  collapseIcon = CollapseGlyph,
+  expandIcon = ExpandGlyph,
   fontSize,
   handleDrawer,
   iconSize,
@@ -26,16 +34,15 @@ const DrawerGroupComponent = ({
         style={drawerStyles.groupItem}
         onPress={() => setVisible(!visible)}>
         <View style={drawerStyles.group}>
-          <Icon name={item.icon} size={iconSize} color={textColor} />
+          {renderIcon(item.icon, {size: iconSize, color: textColor})}
           <Text style={[drawerStyles.itemText, {color: textColor, fontSize}]}>
             {item.text}
           </Text>
         </View>
-        <Icon
-          name={visible ? collapseIcon : expandIcon}
-          size={iconSize}
-          color={textColor}
-        />
+        {renderIcon(visible ? collapseIcon : expandIcon, {
+          size: iconSize,
+          color: textColor,
+        })}
       </Pressable>
       <View style={{marginLeft: iconSize + 10}}>
         {visible &&

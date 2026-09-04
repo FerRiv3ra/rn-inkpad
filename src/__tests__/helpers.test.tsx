@@ -1,4 +1,5 @@
 import {render, screen} from '@testing-library/react-native';
+import {Text} from 'react-native';
 
 import {colorToRgba} from '../helpers/colorToRgba';
 import {Rating} from '../index';
@@ -27,31 +28,39 @@ describe('colorToRgba', () => {
 });
 
 describe('Rating', () => {
-  const names = () =>
-    screen.getAllByText(/star/).map(node => node.props.children);
+  const variants = (testID: string, total: number) =>
+    Array.from({length: total}, (_, i) =>
+      screen
+        .getByTestId(new RegExp(`^${testID}-${i}-`))
+        .props.testID.split('-')
+        .pop(),
+    );
 
   it('renders a half icon for fractional ratings', async () => {
-    await render(<Rating rating={3.5} />);
-    expect(names()).toEqual([
-      'star',
-      'star',
-      'star',
-      'star-half',
-      'star-outline',
-    ]);
+    await render(<Rating rating={3.5} testID="r" />);
+    expect(variants('r', 5)).toEqual(['full', 'full', 'full', 'half', 'empty']);
+    expect(screen.getByTestId('r').props.accessibilityLabel).toBe('3.5 of 5');
   });
 
   it('clamps out-of-range ratings', async () => {
-    await render(<Rating rating={7.5} />);
-    expect(names()).toEqual(['star', 'star', 'star', 'star', 'star']);
+    await render(<Rating rating={7.5} testID="r" />);
+    expect(variants('r', 5)).toEqual(['full', 'full', 'full', 'full', 'full']);
   });
 
-  it('supports the heart icon and total', async () => {
-    await render(<Rating icon="heart" rating={1} total={3} />);
-    expect(screen.getAllByText(/heart/).map(n => n.props.children)).toEqual([
-      'heart',
-      'heart-outline',
-      'heart-outline',
-    ]);
+  it('supports the heart shape and total', async () => {
+    await render(<Rating icon="heart" rating={1} total={3} testID="r" />);
+    expect(variants('r', 3)).toEqual(['full', 'empty', 'empty']);
+    expect(screen.getAllByText('♥\uFE0E')).toHaveLength(1);
+    expect(screen.getAllByText('♡\uFE0E')).toHaveLength(2);
+  });
+
+  it('renders custom icons per step', async () => {
+    const Full = () => <Text>F</Text>;
+    const Empty = () => <Text>E</Text>;
+    await render(
+      <Rating rating={2} total={3} icons={{full: Full, empty: Empty}} />,
+    );
+    expect(screen.getAllByText('F')).toHaveLength(2);
+    expect(screen.getAllByText('E')).toHaveLength(1);
   });
 });

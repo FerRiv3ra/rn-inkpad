@@ -1,3 +1,4 @@
+import {BookMarked} from 'lucide-react-native';
 import {Card} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
@@ -11,7 +12,7 @@ export const CardDemo = () => (
     <Section title="Basic">
       <Card
         title="Card"
-        icon="book-sharp"
+        icon={BookMarked}
         description={lorem}
         buttons={[
           {text: 'Cancel', onPress: () => {}},
@@ -22,7 +23,7 @@ export const CardDemo = () => (
     <Section title="Themed with shadow">
       <Card
         title="Themed card"
-        icon="book-sharp"
+        icon={BookMarked}
         description={lorem}
         buttons={[
           {text: 'Cancel', onPress: () => {}},

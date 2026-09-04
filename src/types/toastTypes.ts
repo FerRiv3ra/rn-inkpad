@@ -1,12 +1,12 @@
 import type {A11yProps} from './commonTypes';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 export type ToastProps = A11yProps & {
   backgroundColor?: string;
   bottom?: number;
   duration?: number;
   fontSize?: number;
-  icon?: IconName;
+  icon?: IconProp;
   position?: 'top' | 'bottom';
   text: string;
   textColor?: string;

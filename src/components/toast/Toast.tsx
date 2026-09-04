@@ -1,8 +1,8 @@
 import {Animated, StyleSheet, Text} from 'react-native';
 
+import {renderIcon} from '../../helpers/renderIcon';
 import {useToast} from '../../hooks';
 import type {ToastProps} from '../../types';
-import {Icon} from '../icon/Icon';
 
 export const Toast = ({
   accessibilityLabel,
@@ -35,7 +35,7 @@ export const Toast = ({
         {transform: [{translateY: translateY}]},
         position === 'top' ? {top} : {bottom},
       ]}>
-      {!!icon && <Icon name={icon} color={textColor} size={fontSize + 2} />}
+      {renderIcon(icon, {size: fontSize + 4, color: textColor})}
       {!!text && <Text style={{color: textColor, fontSize}}>{text}</Text>}
     </Animated.View>
   );

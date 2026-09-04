@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Trash2} from 'lucide-react-native';
 import {Alert, AlertContainer, Button} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -29,7 +30,7 @@ export const AlertDemo = () => {
             const ok = await Alert.alert({
               title: 'Delete item?',
               description: 'This action cannot be undone.',
-              icon: 'trash',
+              icon: Trash2,
               iconColor: palette.red,
               showCancelButton: true,
               confirmText: 'Delete',

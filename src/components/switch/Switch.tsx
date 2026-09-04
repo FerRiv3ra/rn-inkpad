@@ -1,3 +1,4 @@
+import {useTheme} from '../../theme/ThemeProvider';
 import {useEffect, useState} from 'react';
 import {
   Platform,
@@ -10,22 +11,24 @@ import {
 import {warnDeprecated} from '../../helpers/deprecate';
 import type {SwitchProps} from '../../types';
 
-export const Switch = ({
-  accessibilityHint,
-  accessibilityLabel,
-  backgroundColor,
-  backgrounColor,
-  border,
-  borderColor,
-  borderWidth = 2,
-  isOn = false,
-  fullWidth,
-  justifyContent,
-  onChange,
-  testID,
-  textStyle,
-  text,
-}: SwitchProps) => {
+export const Switch = (props: SwitchProps) => {
+  const {colors} = useTheme();
+  const {
+    accessibilityHint,
+    accessibilityLabel,
+    backgroundColor,
+    backgrounColor,
+    border,
+    borderColor,
+    borderWidth = 2,
+    isOn = false,
+    fullWidth,
+    justifyContent,
+    onChange,
+    testID,
+    textStyle,
+    text,
+  } = props;
   const [isEnabled, setIsEnabled] = useState(isOn);
   const isWeb = Platform.OS === 'web';
 
@@ -34,7 +37,7 @@ export const Switch = ({
       'Switch: `backgrounColor` is deprecated, use `backgroundColor` instead.',
     );
   }
-  const onColor = backgroundColor ?? backgrounColor ?? '#1DFF56';
+  const onColor = backgroundColor ?? backgrounColor ?? colors.success;
 
   // Keep the internal state in sync when used as a controlled component.
   useEffect(() => {

@@ -1,19 +1,15 @@
-import React from 'react';
-import type {StyleProp, TextStyle} from 'react-native';
-import type {IconProps} from 'react-native-vector-icons/Icon';
-import IoiconImport from 'react-native-vector-icons/Ionicons';
-import type {IconName} from '../../types';
+import {renderIcon} from '../../helpers/renderIcon';
+import type {IconProp, IconProps} from '../../types';
 
-type Props = {
-  name: IconName;
-  color?: string;
-  size?: number;
-  style?: StyleProp<TextStyle>;
+type Props = Pick<IconProps, 'size' | 'color'> & {
+  /** Element (rendered as is) or component (rendered with `size`/`color`). */
+  icon: IconProp;
 };
 
-// Type assertion to ensure correct typing
-const Ioicon = IoiconImport as unknown as React.ComponentType<IconProps>;
-
-export const Icon: React.FC<Props> = ({name, size, color, style}) => {
-  return <Ioicon style={style} name={name} size={size} color={color} />;
-};
+/**
+ * Convenience wrapper around `renderIcon`. Handy when you want the library to
+ * size and color an icon component the same way its other components do.
+ */
+export const Icon = ({icon, size, color}: Props) => (
+  <>{renderIcon(icon, {size, color})}</>
+);

@@ -1,6 +1,14 @@
 import {useEffect, useState} from 'react';
 import {useInputStyles} from '.';
-import type {IconName, inputProps} from '../types';
+import {ChevronGlyph, EyeGlyph, SearchGlyph} from '../components/glyphs/Glyphs';
+import {useTheme} from '../theme/ThemeProvider';
+import type {IconProp, IconProps, inputProps} from '../types';
+
+const HiddenPasswordGlyph = (props: IconProps) => <EyeGlyph {...props} />;
+const VisiblePasswordGlyph = (props: IconProps) => <EyeGlyph {...props} off />;
+const ForwardGlyph = (props: IconProps) => (
+  <ChevronGlyph {...props} direction="right" />
+);
 
 export const useInput = ({
   borderRadius,
@@ -9,9 +17,12 @@ export const useInput = ({
   password,
   search,
   rightIcon,
+  showPasswordIcon = HiddenPasswordGlyph,
+  hidePasswordIcon = VisiblePasswordGlyph,
   label,
   onPress,
 }: inputProps) => {
+  const {colors} = useTheme();
   const [passwordVisible, setPasswordVisible] = useState(!password);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -23,28 +34,20 @@ export const useInput = ({
     type,
     isFocused,
     !!label,
-    borderColor,
+    borderColor ?? colors.border,
     borderRadius,
   );
 
-  const getRightIcon = (): IconName => {
+  const getRightIcon = (): IconProp => {
     if (password) {
-      if (passwordVisible) {
-        return 'eye-off';
-      } else {
-        return 'eye';
-      }
+      return passwordVisible ? hidePasswordIcon : showPasswordIcon;
     }
 
     if (search) {
-      return 'search';
+      return SearchGlyph;
     }
 
-    if (rightIcon) {
-      return rightIcon;
-    }
-
-    return 'chevron-forward';
+    return rightIcon ?? ForwardGlyph;
   };
 
   const handleFocus = () => {
@@ -58,9 +61,7 @@ export const useInput = ({
     if (password) {
       setPasswordVisible(!passwordVisible);
     } else {
-      if (onPress) {
-        onPress();
-      }
+      onPress?.();
     }
   };
 

@@ -39,11 +39,17 @@ describe('controlled props stay in sync after mount', () => {
   });
 
   it('CheckBox follows checked', async () => {
-    const view = await render(<CheckBox checked={false} title="Terms" />);
-    expect(screen.getByText('square-outline')).toBeTruthy();
+    const view = await render(
+      <CheckBox checked={false} title="Terms" testID="cb" />,
+    );
+    expect(screen.getByTestId('cb').props.accessibilityState.checked).toBe(
+      false,
+    );
 
-    await view.rerender(<CheckBox checked title="Terms" />);
-    expect(screen.getByText('checkbox-outline')).toBeTruthy();
+    await view.rerender(<CheckBox checked title="Terms" testID="cb" />);
+    expect(screen.getByTestId('cb').props.accessibilityState.checked).toBe(
+      true,
+    );
   });
 
   it('SegmentedControl follows selectedIndex', async () => {
@@ -98,14 +104,18 @@ describe('controlled props stay in sync after mount', () => {
         ]}
       />,
     );
-    expect(screen.getAllByText('radio-button-off')).toHaveLength(2);
+    screen
+      .getAllByRole('radio')
+      .forEach(radio =>
+        expect(radio.props.accessibilityState.checked).toBe(false),
+      );
   });
 
   it('StarRating keeps the selection when the parent re-renders', async () => {
     const view = await render(
       <StarRating defaultRating={2} reviews={['a', 'b', 'c', 'd', 'e']} />,
     );
-    await fireEvent.press(screen.getAllByText(/star/)[4]!);
+    await fireEvent.press(screen.getAllByRole('radio')[4]!);
     expect(screen.getByText('e')).toBeTruthy();
 
     // Inline array: a new reference every render must not reset the rating.

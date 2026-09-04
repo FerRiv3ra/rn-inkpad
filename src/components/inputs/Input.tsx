@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {Icon} from '..';
+import {renderIcon} from '../../helpers/renderIcon';
 import {useInput} from '../../hooks';
 import {inputStyles} from '../../theme/inputStyles';
 import type {inputProps} from '../../types';
@@ -93,7 +93,11 @@ export const Input = (props: inputProps) => {
       )}
 
       <View style={[inputStyles.input, inputStyle, styles.row]}>
-        {icon && <Icon name={icon} color={iconColor} size={iconSize ?? 15} />}
+        {!!icon && (
+          <View style={inputStyles.icon}>
+            {renderIcon(icon, {size: iconSize ?? 16, color: iconColor})}
+          </View>
+        )}
         <TextInput
           accessibilityLabel={accessibilityLabel ?? label ?? placeholder}
           accessibilityHint={accessibilityHint}
@@ -134,12 +138,10 @@ export const Input = (props: inputProps) => {
             testID={testID ? `${testID}-right-button` : undefined}
             style={inputStyles.btnViewPass}
             onPress={handlePress}>
-            <Icon
-              style={inputStyles.icon}
-              color={rightIconColor}
-              size={rightIconSize ?? 18}
-              name={getRightIcon()}
-            />
+            {renderIcon(getRightIcon(), {
+              size: rightIconSize ?? 18,
+              color: rightIconColor,
+            })}
           </Pressable>
         )}
       </View>

@@ -1,3 +1,4 @@
+import {ArrowRight, Plane, Save, TriangleAlert} from 'lucide-react-native';
 import {Button} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
@@ -10,7 +11,7 @@ export const ButtonDemo = () => (
     <Section title="Solid" description="Default type, icon on the left.">
       <Button
         text="Green solid button"
-        icon="alert-circle"
+        icon={TriangleAlert}
         color="#000"
         buttonColor={palette.green}
         onPress={noop}
@@ -19,17 +20,19 @@ export const ButtonDemo = () => (
     <Section title="Outline & rounded">
       <Button
         text="Blue outline rounded button"
-        icon="airplane"
+        icon={Plane}
         buttonType="outline"
         buttonColor={palette.blue}
         rounded
         onPress={noop}
       />
     </Section>
-    <Section title="Clear, icon on the right">
+    <Section
+      title="Clear, icon on the right"
+      description="This one passes a pre-styled element instead of a component.">
       <Button
         text="Clear right icon button"
-        icon="save"
+        icon={<Save size={18} color={palette.blue} />}
         buttonType="clear"
         iconPosition="right"
         color={palette.blue}
@@ -39,7 +42,7 @@ export const ButtonDemo = () => (
     <Section title="Loading & full width">
       <Button
         text="Saving"
-        icon="save"
+        icon={Save}
         loading
         buttonColor={palette.mint}
         color="#000"
@@ -47,7 +50,7 @@ export const ButtonDemo = () => (
       />
       <Button
         text="Full width"
-        icon="arrow-forward"
+        icon={ArrowRight}
         full
         iconPosition="right"
         buttonColor={palette.navy}

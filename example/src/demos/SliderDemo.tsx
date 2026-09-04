@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {ChartLine} from 'lucide-react-native';
 import {Slider} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -15,7 +16,7 @@ export const SliderDemo = () => {
       </Section>
       <Section title="Custom thumb and track">
         <Slider
-          thumbStyles={{icon: 'analytics', iconColor: palette.red}}
+          thumbStyles={{icon: ChartLine, iconColor: palette.red}}
           trackStyles={{
             height: 10,
             borderRadius: 5,

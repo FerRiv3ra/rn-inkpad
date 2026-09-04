@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {CirclePlus} from 'lucide-react-native';
 import {LongPressButton} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -20,7 +21,7 @@ export const LongPressButtonDemo = () => {
           text="Press and hold"
           borderRadius={10}
           progressColor="#60a5fa"
-          icon="add-circle-outline"
+          icon={CirclePlus}
           onFinish={onFinish}
         />
       </Section>
@@ -31,7 +32,7 @@ export const LongPressButtonDemo = () => {
           progressColor="rgba(0,0,0,0.5)"
           iconPosition="right"
           behavior="center-to-ends"
-          icon="add-circle-outline"
+          icon={CirclePlus}
           onFinish={onFinish}
         />
       </Section>
@@ -44,7 +45,7 @@ export const LongPressButtonDemo = () => {
           textColor="#000"
           borderRadius={0}
           behavior="right-to-left"
-          icon="add-circle-outline"
+          icon={CirclePlus}
           onFinish={onFinish}
         />
         <Result label={executed ? 'Executed!' : 'Long press to execute'} />

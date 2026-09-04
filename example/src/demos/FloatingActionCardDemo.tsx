@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import {Star} from 'lucide-react-native';
 import {FloatingActionCard} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -20,7 +21,7 @@ export const FloatingActionCardDemo = () => {
         />
         <FloatingActionCard
           title="Maldives hotel"
-          icon="star"
+          icon={<Star size={16} color="#FFD700" fill="#FFD700" />}
           description="Lorem ipsum dolor"
           image={{
             uri: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400',

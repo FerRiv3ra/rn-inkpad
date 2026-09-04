@@ -1,7 +1,7 @@
 import type {A11yProps} from './commonTypes';
 import type {DimensionValue, ImageSourcePropType} from 'react-native';
 import type {ValidColor} from './commonTypes';
-import type {IconName} from './iconType';
+import type {IconProp} from './iconTypes';
 
 export type cardTheme = {
   backgroundColor?: string;
@@ -37,7 +37,7 @@ export type FloatingActionCardProps = A11yProps & {
   bottom?: number;
   description?: string;
   decimals?: number;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   image?: ImageSourcePropType;
   rating?: number;

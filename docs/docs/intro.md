@@ -17,21 +17,8 @@ RN Inkpad was developed with the goal of making it easier to create user interfa
 npm install rn-inkpad
 ```
 
-- This library has [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) as unique dependency, however only one font is used, specifically `Ionicons`.
-
-```bash npm2yarn
-npm install react-native-vector-icons
-```
-
-:::tip[Information]
-If you use **EXPO**, you do not have to do more installations since the framework already has this library pre-installed, however, make sure you have the @expo/vector-icons library installed in your package.json
-:::
-
-This library has different installation and configuration instructions for each platform, follow its [installation guide](https://github.com/oblador/react-native-vector-icons#installation) to correctly install the library and avoid errors.
-
-Once the library and the dependency are installed, we are ready to use each of the components.
+- That is it: **rn-inkpad has zero dependencies**. Icons are provided by you (lucide, @expo/vector-icons, your own SVGs…), see the [Icons](./components/icon) page.
 
 ## Extra
 
-- Link to [Ionicons](https://ionic.io/ionicons) in order to view and search for the name of the icon to use.
-- If you have problems installing react-native-vector-icons, here is a [template](https://github.com/FerRiv3ra/react-native-template) with the package already installed and configured on both platforms.
+- Example app with every component: [example/](https://github.com/FerRiv3ra/rn-inkpad/tree/main/example).

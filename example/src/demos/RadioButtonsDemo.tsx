@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Circle, CircleCheck} from 'lucide-react-native';
 import {RadioButtons} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -37,6 +38,15 @@ export const RadioButtonsDemo = () => {
           iconColor={palette.green}
           borderColor={palette.green}
           border
+          values={values}
+        />
+      </Section>
+      <Section title="Custom icons (lucide)">
+        <RadioButtons
+          checkedIcon={CircleCheck}
+          unCheckedIcon={Circle}
+          iconColor={palette.blue}
+          defaultChecked={0}
           values={values}
         />
       </Section>

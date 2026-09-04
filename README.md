@@ -4,7 +4,7 @@
 
 Welcome to the rn-inkpad, your comprehensive toolkit for crafting intuitive and visually appealing user interfaces in React Native applications.
 
-From essential elements like buttons, inputs, and sliders to advanced components like BottomTabNavigation, DrawerNavigation, and SlideAction, rn-inkpad offers a diverse range of UI components to suit every need. Whether you're building a simple to-do list app or a complex e-commerce platform, our library provides the building blocks to create polished interfaces with ease.
+Zero dependencies: bring your own icons (lucide, SVG, any component). From essential elements like buttons, inputs, and sliders to advanced components like BottomTabNavigation, DrawerNavigation, and SlideAction, rn-inkpad offers a diverse range of UI components to suit every need. Whether you're building a simple to-do list app or a complex e-commerce platform, our library provides the building blocks to create polished interfaces with ease.
 
 ## Installation
 

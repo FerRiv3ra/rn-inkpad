@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {AtSign, KeyRound, Plane} from 'lucide-react-native';
 import {Input} from 'rn-inkpad';
 
 import {Result, Section} from '../ui/Section';
@@ -14,7 +15,7 @@ export const InputDemo = () => {
           borderColor={palette.red}
           search
           label="Search"
-          icon="airplane"
+          icon={Plane}
           iconColor={palette.red}
           onChangeText={setText}
         />
@@ -25,7 +26,7 @@ export const InputDemo = () => {
           borderColor={palette.navy}
           password
           label="Password"
-          icon="key"
+          icon={KeyRound}
           type="bordered"
           borderRadius={10}
           iconColor={palette.navy}
@@ -36,7 +37,7 @@ export const InputDemo = () => {
         <Input
           borderColor={palette.blue}
           label="Email"
-          icon="at"
+          icon={AtSign}
           type="outlined"
           labelColor={palette.blue}
           borderRadius={10}

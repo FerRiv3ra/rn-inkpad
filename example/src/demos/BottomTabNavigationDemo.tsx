@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {Bell, House, Plus, Search, Settings} from 'lucide-react-native';
 import {BottomTabNavigation} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
@@ -20,16 +21,16 @@ export const BottomTabNavigationDemo = () => {
           selectedIndex={0}
           highlightedIconColor="#FFF"
           values={[
-            {icon: 'home', text: 'Home', onPress: () => setTab(0)},
-            {icon: 'search', text: 'Search', onPress: () => setTab(1)},
+            {icon: House, text: 'Home', onPress: () => setTab(0)},
+            {icon: Search, text: 'Search', onPress: () => setTab(1)},
             {
-              icon: 'add',
+              icon: Plus,
               text: 'Add',
               highlighted: true,
               onPress: () => setTab(2),
             },
-            {icon: 'notifications', text: 'Alerts', onPress: () => setTab(3)},
-            {icon: 'cog', text: 'Settings', onPress: () => setTab(4)},
+            {icon: Bell, text: 'Alerts', onPress: () => setTab(3)},
+            {icon: Settings, text: 'Settings', onPress: () => setTab(4)},
           ]}
         />
       </View>

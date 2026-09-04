@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Coffee, Info} from 'lucide-react-native';
 import {Button, Toast} from 'rn-inkpad';
 
 import {Section} from '../ui/Section';
@@ -15,7 +16,7 @@ export const ToastDemo = () => {
         text="Toast top information"
         backgroundColor={palette.red}
         fontSize={16}
-        icon="information-circle-outline"
+        icon={Info}
         setVisible={setTop}
       />
       <Toast
@@ -24,7 +25,7 @@ export const ToastDemo = () => {
         backgroundColor={palette.navy}
         fontSize={16}
         position="bottom"
-        icon="cafe"
+        icon={Coffee}
         setVisible={setBottom}
       />
       <Button rounded full text="Show toast top" onPress={() => setTop(true)} />

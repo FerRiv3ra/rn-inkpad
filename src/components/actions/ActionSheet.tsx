@@ -2,13 +2,16 @@ import {Modal, Pressable, SafeAreaView, Text} from 'react-native';
 import {useActionSheet} from '../../hooks';
 import {actionSheetStyles} from '../../theme/actionSheetStyles';
 import type {ActionSheetProps} from '../../types/actionSheetTypes';
-import {Icon} from '../icon/Icon';
+import {renderIcon} from '../../helpers/renderIcon';
+import {CloseGlyph} from '../glyphs/Glyphs';
 import {ActionSheetButton} from './ActionSheetButton';
 
 export const ActionSheet = ({
   accessibilityLabel,
   actions,
+  cancelIcon = CloseGlyph,
   cancelText,
+  closeIcon = CloseGlyph,
   setVisible,
   showCancelButton,
   showIconOnIos,
@@ -60,7 +63,7 @@ export const ActionSheet = ({
                 {backgroundColor: closeBackgroundColor},
               ]}
               onPress={() => setVisible(false)}>
-              <Icon name="close" color={closeIconColor} size={18} />
+              {renderIcon(closeIcon, {size: 18, color: closeIconColor})}
             </Pressable>
           )}
           {title && (
@@ -112,7 +115,7 @@ export const ActionSheet = ({
             {(!actions || showCancelButton) && (
               <ActionSheetButton
                 action={{
-                  icon: 'close',
+                  icon: cancelIcon,
                   text: cancelText ?? 'Cancel',
                   onPress: () => setVisible(false),
                 }}

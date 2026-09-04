@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import {Pressable, Text} from 'react-native';
 
-import {Icon} from '..';
+import {renderIcon} from '../../helpers/renderIcon';
 import {drawerStyles} from '../../theme';
 import type {DrawerItemProps} from '../../types';
 
@@ -25,7 +25,7 @@ const DrawerItemComponent = ({
       accessibilityLabel={text}
       style={drawerStyles.item}
       onPress={handlePress}>
-      <Icon name={icon} color={textColor} size={iconSize} />
+      {renderIcon(icon, {size: iconSize, color: textColor})}
       <Text style={[drawerStyles.itemText, {color: textColor, fontSize}]}>
         {text}
       </Text>

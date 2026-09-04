@@ -1,13 +1,13 @@
 import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
-import type {IconName} from '.';
+import type {IconProp} from './iconTypes';
 
 export type SlideActionProps = A11yProps & {
   height?: number;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   iconCompletedColor?: string;
-  iconOnCompleted?: IconName;
+  iconOnCompleted?: IconProp;
   iconSize?: number;
   isCompleted?: boolean;
   padding?: number;
@@ -38,7 +38,7 @@ type ThumbStyles = {
   backgroundColor?: string;
   borderRadius?: number;
   height?: number;
-  icon?: IconName;
+  icon?: IconProp;
   iconColor?: string;
   iconSize?: number;
   shadow?: boolean;
