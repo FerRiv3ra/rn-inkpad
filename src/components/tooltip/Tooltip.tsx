@@ -1,8 +1,9 @@
-import React, {useRef, useState} from 'react';
+import type {ComponentRef, ReactElement} from 'react';
+import {useRef, useState} from 'react';
+import type {LayoutChangeEvent} from 'react-native';
 import {
   Animated,
   Dimensions,
-  LayoutChangeEvent,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -13,7 +14,7 @@ import {Triangle} from './Triangle';
 
 type Props = {
   text?: string;
-  children: JSX.Element;
+  children: ReactElement;
 };
 
 export const Tooltip = ({text, children}: Props) => {
@@ -27,16 +28,16 @@ export const Tooltip = ({text, children}: Props) => {
     right?: number;
   }>({});
 
-  const viewRef = useRef<View>(null);
+  const viewRef = useRef<ComponentRef<typeof View>>(null);
 
   const {opacity, fadeIn, fadeOut} = useAnimation();
 
-  const {width, height} = Dimensions.get('screen');
+  const {width} = Dimensions.get('screen');
 
   const handleLayout = (event: LayoutChangeEvent) => {
     const {width, height} = event.nativeEvent.layout;
 
-    if (!!viewRef.current) {
+    if (viewRef.current) {
       viewRef.current.measureInWindow((x, y) => {
         setLayout({x, y, width, height});
       });
@@ -45,10 +46,6 @@ export const Tooltip = ({text, children}: Props) => {
 
   const tooltipLayout = (event: LayoutChangeEvent) => {
     const lay = event.nativeEvent.layout;
-
-    console.log('Coords:', layout);
-    console.log('Width: ', width);
-    console.log('C Width', lay);
 
     if (layout.y - lay.height < 30) {
       setPosition({

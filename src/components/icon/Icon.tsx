@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleProp, TextStyle} from 'react-native';
-import {IconProps} from 'react-native-vector-icons/Icon';
+import type {StyleProp, TextStyle} from 'react-native';
+import type {IconProps} from 'react-native-vector-icons/Icon';
 import IoiconImport from 'react-native-vector-icons/Ionicons';
-import {IconName} from '../../types';
+import type {IconName} from '../../types';
 
 type Props = {
   name: IconName;

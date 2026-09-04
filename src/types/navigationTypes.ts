@@ -1,10 +1,10 @@
-import {
+import type {
   ImageSourcePropType,
   ImageStyle,
   StyleProp,
   TextStyle,
 } from 'react-native';
-import {IconName} from './iconType';
+import type {IconName} from './iconType';
 
 export type NavigationItemType = {
   highlighted?: boolean;

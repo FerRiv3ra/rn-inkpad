@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {SegmentedControlProps} from '../../types';
+import type {SegmentedControlProps} from '../../types';
 
 export const SegmentedControl = ({
   values,

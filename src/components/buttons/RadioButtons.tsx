@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {Icon} from '../';
 import {useDirection} from '../../hooks';
-import {RadioProps} from '../../types';
+import type {RadioProps} from '../../types';
 
 export const RadioButtons = ({
   border,
@@ -39,7 +39,7 @@ export const RadioButtons = ({
 
   const handlePress = (value: string | number) => {
     setChecked(value);
-    if (!!onChange) {
+    if (onChange) {
       onChange(value);
     }
   };
@@ -67,7 +67,7 @@ export const RadioButtons = ({
             {
               alignItems: 'center',
               flexDirection,
-              gap: !!gap ? gap : spacing,
+              gap: gap ? gap : spacing,
               justifyContent:
                 iconPosition === 'right' ? 'space-between' : 'center',
               marginVertical,

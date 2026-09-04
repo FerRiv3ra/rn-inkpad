@@ -1,10 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
-import {
-  LayoutChangeEvent,
-  PanResponder,
-  PanResponderGestureState,
-} from 'react-native';
-import {SliderProps} from '../types';
+import type {LayoutChangeEvent, PanResponderGestureState} from 'react-native';
+import {PanResponder} from 'react-native';
+import type {SliderProps} from '../types';
 
 export const useSlider = (props: SliderProps, width: number) => {
   const {onChange, value, minValue = 0, maxValue = 100} = props;
@@ -30,7 +27,7 @@ export const useSlider = (props: SliderProps, width: number) => {
     const currentValue =
       (boundedValue / (containerWidth.current - width!)) *
       (maxValue - minValue);
-    if (!!onChange) {
+    if (onChange) {
       onChange(Math.round(currentValue) + minValue);
     }
     setThumbLeft(boundedValue);

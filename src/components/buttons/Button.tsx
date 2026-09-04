@@ -1,8 +1,7 @@
-import React from 'react';
 import {ActivityIndicator, Text, TouchableOpacity} from 'react-native';
 import {useButtonType} from '../../hooks';
 import {buttonStyles} from '../../theme';
-import {ButtonProps} from '../../types';
+import type {ButtonProps} from '../../types';
 import {Icon} from '../icon/Icon';
 
 export const Button = ({

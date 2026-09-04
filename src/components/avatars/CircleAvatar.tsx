@@ -1,5 +1,5 @@
-import React from 'react';
-import {Image, ImageSourcePropType, Pressable, Text} from 'react-native';
+import type {ImageSourcePropType} from 'react-native';
+import {Image, Pressable, Text} from 'react-native';
 
 type Props = {
   backgroundColor?: string;
@@ -31,7 +31,7 @@ export const CircleAvatar = ({
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {!!image ? (
+      {image ? (
         <Image
           style={{height: size, width: size, borderRadius: size}}
           source={image}

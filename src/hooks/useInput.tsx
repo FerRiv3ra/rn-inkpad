@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {useInputStyles} from '.';
-import {IconName, inputProps} from '../types';
+import type {IconName, inputProps} from '../types';
 
 export const useInput = ({
   borderRadius,
@@ -24,7 +24,7 @@ export const useInput = ({
   );
 
   const getRightIcon = (): IconName => {
-    if (!!password) {
+    if (password) {
       if (passwordVisible) {
         return 'eye-off';
       } else {
@@ -32,11 +32,11 @@ export const useInput = ({
       }
     }
 
-    if (!!search) {
+    if (search) {
       return 'search';
     }
 
-    if (!!rightIcon) {
+    if (rightIcon) {
       return rightIcon;
     }
 
@@ -51,10 +51,10 @@ export const useInput = ({
   };
 
   const handlePress = () => {
-    if (!!password) {
+    if (password) {
       setPasswordVisible(!passwordVisible);
     } else {
-      if (!!onPress) {
+      if (onPress) {
         onPress();
       }
     }

@@ -1,9 +1,8 @@
-import React from 'react';
 import {Keyboard, Pressable, Text, TextInput, View} from 'react-native';
 import {Icon} from '..';
 import {useInput} from '../../hooks';
 import {inputStyles} from '../../theme/inputStyles';
-import {inputProps} from '../../types';
+import type {inputProps} from '../../types';
 
 export const Input = (props: inputProps) => {
   const {

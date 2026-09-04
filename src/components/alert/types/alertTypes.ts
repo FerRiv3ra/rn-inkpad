@@ -1,5 +1,5 @@
-import {StyleProp, TextStyle} from 'react-native';
-import {IconName} from '../../../types';
+import type {StyleProp, TextStyle} from 'react-native';
+import type {IconName} from '../../../types';
 
 export type Icon = 'error' | 'info' | 'success' | 'question';
 

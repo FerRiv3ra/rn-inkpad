@@ -1,9 +1,8 @@
-import React from 'react';
 import {Pressable, Text} from 'react-native';
 
 import {Icon} from '..';
 import {drawerStyles} from '../../theme';
-import {DrawerItemProps} from '../../types';
+import type {DrawerItemProps} from '../../types';
 
 export const DrawerItem = ({
   icon,
@@ -15,7 +14,7 @@ export const DrawerItem = ({
   onPress,
 }: DrawerItemProps) => {
   const handlePress = () => {
-    if (!!onPress) {
+    if (onPress) {
       onPress();
     }
 

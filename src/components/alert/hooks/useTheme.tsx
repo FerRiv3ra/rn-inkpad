@@ -1,6 +1,10 @@
 import {Appearance, Platform} from 'react-native';
 import {getStyles} from '../theme';
-import {Appearances, PersonalTheme, ValidPlatforms} from '../types/alertTypes';
+import type {
+  Appearances,
+  PersonalTheme,
+  ValidPlatforms,
+} from '../types/alertTypes';
 
 type Props = {
   theme?: ValidPlatforms;
@@ -22,7 +26,7 @@ export const useTheme = ({
   }
 
   const dark = appearance === 'dark';
-  const personalTextButtonColor = !!personalTheme
+  const personalTextButtonColor = personalTheme
     ? personalTheme.textButtonColor
     : undefined;
 
@@ -30,7 +34,7 @@ export const useTheme = ({
   let textButtonColor = personalTextButtonColor ?? '#4F87FF';
   let cancelWeight: '500' | '700' = '500';
 
-  if (!!theme) {
+  if (theme) {
     if (theme === 'ios') {
       platform = 'ios';
     } else {

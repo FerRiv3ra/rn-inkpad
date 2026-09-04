@@ -22,7 +22,7 @@ export const useToast = (
       }).start();
 
       const timer = setTimeout(() => {
-        if (!!onHide) {
+        if (onHide) {
           onHide(false);
         }
       }, duration);
@@ -35,6 +35,7 @@ export const useToast = (
         useNativeDriver: true,
       }).start(() => setShow(false));
     }
+    return undefined;
   }, [visible, translateY, duration, onHide, position]);
 
   return {

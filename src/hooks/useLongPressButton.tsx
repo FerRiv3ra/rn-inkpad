@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {FlexAlignType} from 'react-native';
+import type {ViewStyle} from 'react-native';
 import {useAnimation} from './useAnimation';
 
 export const useLongPressButton = (
@@ -7,11 +7,13 @@ export const useLongPressButton = (
   onFinish?: () => void,
 ) => {
   const [number, setNumber] = useState<number>(0);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  const [intervalId, setIntervalId] = useState<ReturnType<
+    typeof setInterval
+  > | null>(null);
 
   const {scale, scaleValue} = useAnimation();
 
-  const alignSelf: {[key: string]: FlexAlignType} = {
+  const alignSelf: {[key: string]: ViewStyle['alignSelf']} = {
     'left-to-right': 'flex-start',
     'right-to-left': 'flex-end',
     'center-to-ends': 'center',
@@ -41,7 +43,7 @@ export const useLongPressButton = (
           clearInterval(id);
           scale(0.9, 1);
           setNumber(0);
-          if (!!onFinish) {
+          if (onFinish) {
             onFinish();
           }
           return prevNumber;

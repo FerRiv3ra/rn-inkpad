@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Pressable, StyleProp, Text, View, ViewStyle} from 'react-native';
+import {useEffect, useState} from 'react';
+import type {StyleProp, ViewStyle} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import {Icon} from '..';
 
 type Props = {
@@ -47,7 +48,7 @@ export const StarRating = ({
     setRating(rating);
     setReview(reviewsArray[rating]);
 
-    if (!!onChange) {
+    if (onChange) {
       onChange(rating + 1);
     }
   };

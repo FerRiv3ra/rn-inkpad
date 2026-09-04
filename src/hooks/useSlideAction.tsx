@@ -1,9 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
-import {
-  LayoutChangeEvent,
-  PanResponder,
-  PanResponderGestureState,
-} from 'react-native';
+import type {LayoutChangeEvent, PanResponderGestureState} from 'react-native';
+import {PanResponder} from 'react-native';
 
 export const useSlideAction = (
   padding: number,
@@ -49,7 +46,7 @@ export const useSlideAction = (
       setCompleted(false);
     } else {
       setCompleted(true);
-      if (!!onCompleted) {
+      if (onCompleted) {
         onCompleted();
       }
     }

@@ -1,17 +1,18 @@
 import {useEffect, useRef, useState} from 'react';
-import {TextInput} from 'react-native';
+import type {ComponentRef} from 'react';
+import type {TextInput} from 'react-native';
 import {
   notifySubscribers,
   subscribeToModalChange,
 } from '../helpers/subscribers';
-import {AlertData, PromptData} from '../types/alertTypes';
+import type {AlertData, PromptData} from '../types/alertTypes';
 
 export const useAlertContainer = () => {
   const [prompt, setPrompt] = useState<AlertData | PromptData>();
   const [isAlert, setIsAlert] = useState(false);
   const [textInput, setTextInput] = useState('');
 
-  const inputRef = useRef<TextInput>(null);
+  const inputRef = useRef<ComponentRef<typeof TextInput>>(null);
 
   useEffect(() => {
     subscribeToModalChange((data, alert) => {
@@ -37,7 +38,7 @@ export const useAlertContainer = () => {
             },
       );
     } else {
-      if (!!callback) {
+      if (callback) {
         callback();
         notifySubscribers(undefined);
       } else {

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
-import {BottomTabNavigationProps} from '../../types';
+import type {BottomTabNavigationProps} from '../../types';
 import {NavigationItem} from './NavigationItem';
 
 export const BottomTabNavigation = ({
@@ -25,7 +25,7 @@ export const BottomTabNavigation = ({
   const handlePress = (idx: number, isHighlighted = false) => {
     const item = values ? values[idx] : undefined;
 
-    if (!!item?.onPress) {
+    if (item?.onPress) {
       item.onPress();
     }
 

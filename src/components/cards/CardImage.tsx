@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {ImageBackground, ImageSourcePropType, Text, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import type {ImageSourcePropType} from 'react-native';
+import {ImageBackground, Text, View} from 'react-native';
 import {cardImageStyles, cardStyles} from '../../theme';
-import {imageCardTheme} from '../../types';
+import type {imageCardTheme} from '../../types';
 
 type Props = {
   source: ImageSourcePropType;

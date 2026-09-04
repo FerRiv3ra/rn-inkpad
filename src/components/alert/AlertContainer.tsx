@@ -1,10 +1,9 @@
-import React from 'react';
 import {Modal, Text, TextInput, View} from 'react-native';
 
 import {Button, Icon} from './components';
 import {useAlertContainer} from './hooks/useAlertContainer';
 import {useTheme} from './hooks/useTheme';
-import {AlertData, PersonalTheme} from './types/alertTypes';
+import type {AlertData, PersonalTheme} from './types/alertTypes';
 
 type Props = {
   animationType?: 'none' | 'fade' | 'slide';
@@ -56,7 +55,7 @@ export function AlertContainer({
       <View
         style={{
           ...styles.modalContainer,
-          backgroundColor: !!backgroundColor
+          backgroundColor: backgroundColor
             ? backgroundColor
             : 'rgba(0,0,0,0.4)',
         }}>
@@ -84,11 +83,11 @@ export function AlertContainer({
               placeholder={placeholder ?? prompt.title}
               onChangeText={setTextInput}
               placeholderTextColor={
-                !!placeholderColor
+                placeholderColor
                   ? placeholderColor
                   : appearance === 'dark'
-                  ? '#666'
-                  : '#C3C3C3'
+                    ? '#666'
+                    : '#C3C3C3'
               }
               ref={inputRef}
               style={{...styles.textInput}}
@@ -96,7 +95,7 @@ export function AlertContainer({
           )}
 
           <View style={{...styles.buttonsContainer}}>
-            {!!buttons ? (
+            {buttons ? (
               buttons.map((button, index) => (
                 <Button
                   button={button}

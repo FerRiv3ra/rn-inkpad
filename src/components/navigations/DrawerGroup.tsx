@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 
 import {Icon} from '../';
 import {drawerStyles} from '../../theme';
-import {DrawerGroupProps} from '../../types';
+import type {DrawerGroupProps} from '../../types';
 import {DrawerItem} from './DrawerItem';
 
 export const DrawerGroup = ({

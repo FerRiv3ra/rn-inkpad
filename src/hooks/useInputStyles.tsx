@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 
 export const useInputStyles = (
   type: 'filled' | 'bordered' | 'outlined',
@@ -8,7 +8,7 @@ export const useInputStyles = (
   borderRadius?: number,
 ) => {
   let inputStyle: StyleProp<ViewStyle>;
-  let titleStyle: StyleProp<TextStyle>;
+  let titleStyle: StyleProp<TextStyle> = {};
 
   switch (type) {
     case 'bordered':

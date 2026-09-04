@@ -1,10 +1,9 @@
-import React from 'react';
 import {Animated, Text, TouchableWithoutFeedback, View} from 'react-native';
 
 import {Icon} from '../';
 import {useLongPressButton} from '../../hooks';
 import {longPressButtonStyles} from '../../theme';
-import {LongPressButtonProps} from '../../types';
+import type {LongPressButtonProps} from '../../types';
 
 export const LongPressButton = ({
   backgroundColor = '#464EE5',
@@ -56,7 +55,8 @@ export const LongPressButton = ({
                 backgroundColor: progressColor,
                 alignSelf: alignSelf[behavior],
               },
-            ]}></View>
+            ]}
+          />
           <View
             style={{
               ...longPressButtonStyles.buttonContent,

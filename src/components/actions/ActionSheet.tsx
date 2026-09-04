@@ -1,10 +1,9 @@
-import React from 'react';
 import {Modal, Pressable, SafeAreaView, Text, View} from 'react-native';
 import {useActionSheet} from '../../hooks';
 import {actionSheetStyles} from '../../theme/actionSheetStyles';
-import {ActionSheetProps} from '../../types/actionSheetTypes';
+import type {ActionSheetProps} from '../../types/actionSheetTypes';
 import {Icon} from '../icon/Icon';
-import {ActionButton} from './ActionButton';
+import {ActionSheetButton} from './ActionSheetButton';
 
 export const ActionSheet = ({
   actions,
@@ -55,7 +54,7 @@ export const ActionSheet = ({
                 {
                   ...actionSheetStyles.title,
                   color: textColor!,
-                  marginBottom: !!description ? 0 : 10,
+                  marginBottom: description ? 0 : 10,
                 },
                 theme === 'cupertino'
                   ? actionSheetStyles.textCenter
@@ -78,7 +77,7 @@ export const ActionSheet = ({
           <SafeAreaView>
             {actions &&
               actions.map((action, idx) => (
-                <ActionButton
+                <ActionSheetButton
                   action={action}
                   backgroundColor={buttonColor!}
                   radius={getBorder(idx)}
@@ -97,7 +96,7 @@ export const ActionSheet = ({
                 />
               ))}
             {(!actions || showCancelButton) && (
-              <ActionButton
+              <ActionSheetButton
                 action={{
                   icon: 'close',
                   text: cancelText ?? 'Cancel',

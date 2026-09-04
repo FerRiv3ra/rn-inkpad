@@ -2,7 +2,7 @@ import {Text, View} from 'react-native';
 
 import {useProgressBar} from '../../hooks';
 import {progressBarStyles} from '../../theme';
-import {ProgressBarProps} from '../../types';
+import type {ProgressBarProps} from '../../types';
 
 export const ProgressBar = ({
   backgroundColor = '#FFF',
@@ -25,7 +25,7 @@ export const ProgressBar = ({
         height,
         borderRadius: rounded ? 50 : borderRadius,
         borderColor,
-        borderWidth: !!borderColor ? 1 : 0,
+        borderWidth: borderColor ? 1 : 0,
       }}>
       <View
         style={[

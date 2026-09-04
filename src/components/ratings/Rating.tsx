@@ -1,7 +1,7 @@
-import React from 'react';
-import {StyleProp, View, ViewStyle} from 'react-native';
+import type {StyleProp, ViewStyle} from 'react-native';
+import {View} from 'react-native';
 import {Icon} from '..';
-import {IconName} from '../../types';
+import type {IconName} from '../../types';
 
 type Props = {
   color?: string;

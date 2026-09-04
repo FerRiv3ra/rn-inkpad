@@ -1,10 +1,9 @@
-import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 
 import {Icon} from '../';
 import {colorToRgba} from '../../helpers/colorToRgba';
 import {ratingCardStyles} from '../../theme';
-import {FloatingActionCardProps} from '../../types';
+import type {FloatingActionCardProps} from '../../types';
 
 export const FloatingActionCard = ({
   backgroundColor: bgColor,
@@ -27,7 +26,7 @@ export const FloatingActionCard = ({
       onPress={onPress}
       style={{
         ...ratingCardStyles.container,
-        padding: !!image ? 0 : 10,
+        padding: image ? 0 : 10,
         bottom,
         width,
         backgroundColor,

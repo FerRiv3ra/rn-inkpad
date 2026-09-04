@@ -1,5 +1,10 @@
-import {KeyboardType, StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {IconName} from './iconType';
+import type {
+  KeyboardTypeOptions,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import type {IconName} from './iconType';
 
 type autoComplete =
   | 'additional-name'
@@ -112,7 +117,7 @@ export type inputProps = {
   icon?: IconName;
   iconColor?: string;
   iconSize?: number;
-  keyboardType?: KeyboardType;
+  keyboardType?: KeyboardTypeOptions;
   label?: string;
   labelColor?: string;
   password?: boolean;

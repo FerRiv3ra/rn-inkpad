@@ -1,8 +1,7 @@
-import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 
 import {fabStyles} from '../../theme';
-import {IconName} from '../../types';
+import type {IconName} from '../../types';
 import {Icon} from '../icon/Icon';
 
 type Props = {

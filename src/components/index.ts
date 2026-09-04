@@ -24,3 +24,4 @@ export * from './spinners/DotsLoading';
 export * from './switch/Switch';
 export * from './TabControl/TabControl';
 export * from './toast/Toast';
+export * from './tooltip/Tooltip';

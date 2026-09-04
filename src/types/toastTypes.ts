@@ -1,4 +1,4 @@
-import {IconName} from './iconType';
+import type {IconName} from './iconType';
 
 export type ToastProps = {
   backgroundColor?: string;

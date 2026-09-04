@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Animated,
   Image,
@@ -10,7 +9,11 @@ import {
 import {Icon} from '..';
 import {useDrawerNavigation} from '../../hooks';
 import {drawerStyles} from '../../theme';
-import {DrawerItemType, DrawerNavigationProps, GroupItem} from '../../types';
+import type {
+  DrawerItemType,
+  DrawerNavigationProps,
+  GroupItem,
+} from '../../types';
 import {DrawerGroup} from './DrawerGroup';
 import {DrawerItem} from './DrawerItem';
 
@@ -47,7 +50,7 @@ export const DrawerNavigation = ({
             <Image source={image} style={[drawerStyles.logo, imageStyles]} />
           )}
           {items?.map((item, idx) => {
-            if (!!(item as GroupItem).items) {
+            if ((item as GroupItem).items) {
               return (
                 <DrawerGroup
                   collapseIcon={collapseIcon}

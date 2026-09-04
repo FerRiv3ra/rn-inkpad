@@ -1,6 +1,6 @@
-import {DimensionValue, ImageSourcePropType} from 'react-native';
-import {ValidColor} from './commonTypes';
-import {IconName} from './iconType';
+import type {DimensionValue, ImageSourcePropType} from 'react-native';
+import type {ValidColor} from './commonTypes';
+import type {IconName} from './iconType';
 
 export type cardTheme = {
   backgroundColor?: string;

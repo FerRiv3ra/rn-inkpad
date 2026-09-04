@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import {Pressable, StyleProp, Text, ViewStyle} from 'react-native';
+import {useState} from 'react';
+import type {StyleProp, ViewStyle} from 'react-native';
+import {Pressable, Text} from 'react-native';
 import {colorToRgba} from '../../helpers/colorToRgba';
-import {ButtonType, ValidColor} from '../../types/commonTypes';
+import type {ButtonType, ValidColor} from '../../types/commonTypes';
 
 type Props = {
   button: ButtonType;
@@ -14,7 +15,7 @@ export const CardButton = ({button, color, style}: Props) => {
 
   let rgbaColor: string | undefined;
 
-  if (!!color) {
+  if (color) {
     rgbaColor = colorToRgba(color);
   }
 
@@ -25,7 +26,7 @@ export const CardButton = ({button, color, style}: Props) => {
   const handlePressOut = () => {
     setIsPressed(false);
 
-    if (!!button.onPress) {
+    if (button.onPress) {
       button.onPress();
     }
   };

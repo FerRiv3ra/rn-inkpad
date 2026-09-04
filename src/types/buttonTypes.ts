@@ -1,5 +1,10 @@
-import {DimensionValue, StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {IconName} from './iconType';
+import type {
+  DimensionValue,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
+import type {IconName} from './iconType';
 
 export type Action = {
   icon: IconName;

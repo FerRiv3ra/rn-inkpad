@@ -1,10 +1,9 @@
-import React from 'react';
 import {Text, View} from 'react-native';
 
 import {Icon} from '../';
 import {useSlideAction} from '../../hooks';
 import {slideStyles} from '../../theme';
-import {SlideActionProps} from '../../types';
+import type {SlideActionProps} from '../../types';
 
 export const SlideAction = ({
   height = 56,
@@ -47,8 +46,8 @@ export const SlideAction = ({
             textPosition === 'center'
               ? 'center'
               : completed
-              ? 'flex-start'
-              : 'flex-end',
+                ? 'flex-start'
+                : 'flex-end',
         },
         style,
       ]}
@@ -72,7 +71,7 @@ export const SlideAction = ({
         ]}>
         {icon && (
           <Icon
-            name={completed ? iconOnCompleted ?? icon : icon}
+            name={completed ? (iconOnCompleted ?? icon) : icon}
             color={completed ? iconCompletedColor : iconColor}
             size={iconSize}
           />

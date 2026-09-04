@@ -1,8 +1,7 @@
-import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
 import {Icon} from '../';
-import {NavigationItemProps} from '../../types';
+import type {NavigationItemProps} from '../../types';
 import {SelectedTab} from './SelectedTab';
 
 export const NavigationItem = ({

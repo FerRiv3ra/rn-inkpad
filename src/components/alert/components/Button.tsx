@@ -1,7 +1,6 @@
-import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../hooks/useTheme';
-import {Button as ButtonType, ValidPlatforms} from '../types/alertTypes';
+import type {Button as ButtonType, ValidPlatforms} from '../types/alertTypes';
 
 type Props = {
   button: ButtonType;
@@ -31,7 +30,7 @@ export const Button = ({
         ios && buttons <= 2 ? styles.flex : null,
       ]}
       activeOpacity={0.6}
-      onPress={!!customPress ? customPress : onPress}>
+      onPress={customPress ? customPress : onPress}>
       <Text style={[{textAlign: ios ? 'center' : 'right'}, textStyle]}>
         {text}
       </Text>

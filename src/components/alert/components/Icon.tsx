@@ -1,7 +1,6 @@
-import React from 'react';
 import {View} from 'react-native';
 import {Icon as CustomIcon} from '../../';
-import {IconName} from '../../../types';
+import type {IconName} from '../../../types';
 
 type Props = {
   icon: IconName;

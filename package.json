@@ -1,59 +1,98 @@
 {
   "name": "rn-inkpad",
   "version": "1.1.0",
-  "private": false,
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "description": "Lightweight, themeable UI components for React Native (iOS, Android and Web)",
+  "main": "./lib/commonjs/index.js",
+  "module": "./lib/module/index.js",
+  "types": "./lib/typescript/commonjs/src/index.d.ts",
+  "react-native": "./src/index.ts",
+  "source": "./src/index.ts",
+  "exports": {
+    ".": {
+      "rn-inkpad-source": "./src/index.ts",
+      "import": {
+        "types": "./lib/typescript/module/src/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/src/index.d.ts",
+        "default": "./lib/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
     "src",
-    "dist/*",
-    "types/*"
+    "lib",
+    "!src/assets",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
   ],
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
-    "start": "react-native start",
+    "example": "yarn workspace rn-inkpad-example",
+    "clean": "del-cli lib",
+    "build": "bob build",
+    "prepare": "bob build && husky",
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "test": "jest",
-    "build": "rm -rf dist && tsc && tsc -m es6 --outDir lib-esm",
-    "prepare": "husky"
+    "test:watch": "jest --watch",
+    "prepack": "bob build",
+    "release": "release-it"
   },
   "dependencies": {
-    "react-native-vector-icons": "^10.0.3"
+    "react-native-vector-icons": "^10.3.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0",
-    "react-native": ">=0.73.11"
+    "react-native": ">=0.73.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.73.21",
-    "@react-native/eslint-config": "0.73.2",
-    "@react-native/metro-config": "0.73.5",
-    "@react-native/typescript-config": "0.73.1",
-    "@types/react": "^18.2.6",
+    "@eslint/compat": "^2.1.0",
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^9.39.0",
+    "@react-native/babel-preset": "0.83.10",
+    "@react-native/eslint-config": "0.83.10",
+    "@testing-library/react-native": "^14.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/react": "^19.2.0",
     "@types/react-native-vector-icons": "^6.4.18",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
-    "eslint": "^8.19.0",
+    "del-cli": "^7.0.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-ft-flow": "^3.0.11",
+    "eslint-plugin-prettier": "^5.5.6",
     "husky": "^9.1.7",
-    "jest": "^29.6.3",
+    "jest": "^29.7.0",
     "lint-staged": "^16.1.6",
-    "prettier": "2.8.8",
-    "react": "18.2.0",
-    "react-native": "^0.73.11",
-    "react-test-renderer": "18.2.0",
-    "typescript": "5.0.4"
+    "prettier": "^3.8.3",
+    "react": "19.2.0",
+    "react-native": "0.83.10",
+    "react-native-builder-bob": "^0.43.0",
+    "release-it": "^19.0.0",
+    "test-renderer": "^1.0.0",
+    "typescript": "^6.0.3"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "yarn@4.11.0",
+  "engines": {
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FerRiv3ra/rn-inkpad"
+    "url": "git+https://github.com/FerRiv3ra/rn-inkpad.git"
   },
   "keywords": [
     "react-native",
+    "react-native-web",
     "ui library",
+    "ui components",
     "alert",
     "prompt",
     "actionsheet",
@@ -61,45 +100,96 @@
     "button",
     "floating",
     "checkbox",
-    "interactive",
     "radiobuttons",
     "card",
     "floatingcard",
-    "images",
     "icons",
     "inputs",
     "navigation",
     "bottom navigation",
-    "tap navigation",
+    "tab navigation",
     "progress",
     "progressbar",
     "rating",
-    "rbnb rating",
     "slide",
     "switch",
     "tab control",
     "toast",
+    "tooltip",
     "drawer",
-    "UI component",
-    "user interaction",
     "lightweight"
   ],
-  "author": "FerRivera",
+  "author": "FerRivera <fernando@softvize-premier.com> (https://feriv3ra.netlify.app)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/FerRiv3ra/rn-inkpad/issues"
   },
-  "homepage": "https://github.com/FerRiv3ra/rn-inkpad#readme",
-  "engines": {
-    "node": ">=18"
+  "homepage": "https://rn-inkpad.web.app",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
     "*.{json,md}": [
       "prettier --write"
+    ],
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": true,
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/",
+      "<rootDir>/docs/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    }
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   }
 }

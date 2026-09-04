@@ -1,8 +1,7 @@
-import React from 'react';
 import {Animated, StyleSheet, Text} from 'react-native';
 
 import {useToast} from '../../hooks';
-import {ToastProps} from '../../types';
+import type {ToastProps} from '../../types';
 import {Icon} from '../icon/Icon';
 
 export const Toast = ({

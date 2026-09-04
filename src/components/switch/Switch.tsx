@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {
   Platform,
   Switch as RNSwitch,
@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {SwitchProps} from '../../types';
+import type {SwitchProps} from '../../types';
 
 export const Switch = ({
   backgrounColor = '#1DFF56',
@@ -26,7 +26,7 @@ export const Switch = ({
 
   const toggleSwitch = () => {
     setIsEnabled(!isEnabled);
-    if (!!onChange) {
+    if (onChange) {
       onChange(!isEnabled);
     }
   };

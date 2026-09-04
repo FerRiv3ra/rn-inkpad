@@ -1,5 +1,5 @@
-import {StyleProp, TextStyle} from 'react-native';
-import {IconName} from './iconType';
+import type {StyleProp, TextStyle} from 'react-native';
+import type {IconName} from './iconType';
 
 export type ActionSheet = {
   text: string;

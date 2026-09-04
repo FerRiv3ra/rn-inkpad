@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {TabControlProps} from '../../types';
+import type {TabControlProps} from '../../types';
 
 export const TabControl = ({
   values,

@@ -1,4 +1,4 @@
-import {PromptData} from '../types/alertTypes';
+import type {PromptData} from '../types/alertTypes';
 import {
   notifySubscribers,
   subscribeToModalChange,

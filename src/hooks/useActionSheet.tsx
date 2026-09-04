@@ -1,4 +1,4 @@
-import {ActionSheetTheme} from '../types/actionSheetTypes';
+import type {ActionSheetTheme} from '../types/actionSheetTypes';
 import {useActionSheetTheme} from './useActionSheetTheme';
 
 export const useActionSheet = (

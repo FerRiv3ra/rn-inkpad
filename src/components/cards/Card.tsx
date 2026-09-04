@@ -1,8 +1,7 @@
-import React from 'react';
 import {Text, View} from 'react-native';
 
 import {cardStyles} from '../../theme';
-import {ButtonType, cardTheme, IconName} from '../../types';
+import type {ButtonType, cardTheme, IconName} from '../../types';
 import {Icon} from '../icon/Icon';
 import {CardButton} from './CardButton';
 

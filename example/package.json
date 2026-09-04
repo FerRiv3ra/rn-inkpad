@@ -1,0 +1,28 @@
+{
+  "name": "rn-inkpad-example",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "build:web": "expo export --platform web"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~55.0.12",
+    "@expo/vector-icons": "^15.0.0",
+    "expo": "~55.0.31",
+    "expo-font": "~55.0.0",
+    "expo-status-bar": "~55.0.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.10",
+    "react-native-web": "~0.21.0"
+  },
+  "devDependencies": {
+    "react-native-builder-bob": "^0.43.0",
+    "react-native-monorepo-config": "^0.4.0"
+  }
+}

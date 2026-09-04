@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Pressable, Text} from 'react-native';
 import {Icon} from '../';
-import {CheckBoxProps} from '../../types';
+import type {CheckBoxProps} from '../../types';
 
 export const CheckBox = ({
   checked = false,
@@ -18,7 +18,7 @@ export const CheckBox = ({
   const [isChecked, setIsChecked] = useState(checked);
 
   const toggleCheck = () => {
-    if (!!onChange) {
+    if (onChange) {
       onChange(!isChecked);
     }
 
@@ -32,8 +32,8 @@ export const CheckBox = ({
       <Icon
         name={
           isChecked
-            ? checkedIcon ?? 'checkbox-outline'
-            : unCheckedIcon ?? 'square-outline'
+            ? (checkedIcon ?? 'checkbox-outline')
+            : (unCheckedIcon ?? 'square-outline')
         }
         size={iconSize}
         color={iconColor}

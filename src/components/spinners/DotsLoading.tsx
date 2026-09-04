@@ -1,5 +1,6 @@
-import React, {useEffect, useRef} from 'react';
-import {Animated, StyleSheet, View, ViewStyle} from 'react-native';
+import {useEffect, useRef} from 'react';
+import type {ViewStyle} from 'react-native';
+import {Animated, StyleSheet, View} from 'react-native';
 
 type Props = {
   size?: number; // Dots size in pixels

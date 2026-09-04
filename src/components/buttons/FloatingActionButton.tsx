@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {View} from 'react-native';
 
-import {FabProps} from '../../types';
+import type {FabProps} from '../../types';
 import {ActionButton} from './ActionButton';
 
 export const FloatingActionButton = ({
@@ -29,7 +29,7 @@ export const FloatingActionButton = ({
     if (!!actions && !onPress) {
       setShowActions(!showActions);
     } else {
-      if (!!onPress) {
+      if (onPress) {
         onPress();
       }
     }

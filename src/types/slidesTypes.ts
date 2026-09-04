@@ -1,5 +1,5 @@
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {IconName} from '.';
+import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import type {IconName} from '.';
 
 export type SlideActionProps = {
   height?: number;

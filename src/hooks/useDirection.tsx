@@ -1,13 +1,9 @@
 export const useDirection = (
   iconPosition: 'left' | 'bottom' | 'top' | 'right' = 'left',
-  gap?: number,
+  _gap?: number,
 ) => {
   let flexDirection:
-    | 'row'
-    | 'column'
-    | 'row-reverse'
-    | 'column-reverse'
-    | undefined;
+    'row' | 'column' | 'row-reverse' | 'column-reverse' | undefined;
   let spacing: number = 0;
 
   switch (iconPosition) {

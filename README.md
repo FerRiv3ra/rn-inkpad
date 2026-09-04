@@ -14,6 +14,16 @@ Please see the [installation](https://rn-inkpad.web.app/docs/intro) section of o
 
 You can read the complete [documentation](https://rn-inkpad.web.app) for detailed information on each of the components that make up this UI library.
 
+## Development
+
+```sh
+yarn && yarn prepare   # install and build
+yarn example ios       # run the Expo demo app (android / web also available)
+yarn test              # unit tests
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow.
+
 ## License
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).

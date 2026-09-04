@@ -4,8 +4,7 @@ export type ButtonType = {
 };
 
 type RGBColor =
-  | `rgb(${number}, ${number}, ${number})`
-  | `rgb(${number},${number},${number})`;
+  `rgb(${number}, ${number}, ${number})` | `rgb(${number},${number},${number})`;
 type RGBAColor =
   | `rgba(${number}, ${number}, ${number}, ${number})`
   | `rgba(${number},${number},${number},${number})`;

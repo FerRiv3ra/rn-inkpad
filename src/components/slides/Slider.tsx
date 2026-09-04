@@ -1,10 +1,9 @@
-import React from 'react';
 import {View} from 'react-native';
 
 import {Icon} from '../';
 import {useSlider} from '../../hooks';
 import {sliderStyles} from '../../theme';
-import {SliderProps} from '../../types';
+import type {SliderProps} from '../../types';
 
 export const Slider = (props: SliderProps) => {
   const {trackStyles, thumbStyles} = props;
