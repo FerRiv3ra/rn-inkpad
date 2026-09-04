@@ -27,8 +27,8 @@ type Props = {
 };
 
 const EMBED_SRC = 'https://snack.expo.dev/embed.js';
-const DEFAULT_DEPENDENCIES =
-  'rn-inkpad@^2.0.0,lucide-react-native,react-native-svg';
+// Pinned so every embed resolves the same, known-good icon set.
+const EXTRA_DEPENDENCIES = 'lucide-react-native@1.41.0,react-native-svg';
 
 let loader: Promise<void> | undefined;
 
@@ -67,7 +67,8 @@ const SnackFrame = ({
   const {siteConfig} = useDocusaurusContext();
   // Pin the library to the documented version (root package.json).
   const libraryVersion = siteConfig.customFields?.libraryVersion as string;
-  const resolvedDependencies = dependencies ?? `rn-inkpad,`;
+  const resolvedDependencies =
+    dependencies ?? `rn-inkpad@${libraryVersion},${EXTRA_DEPENDENCIES}`;
 
   useEffect(() => {
     const element = ref.current;
