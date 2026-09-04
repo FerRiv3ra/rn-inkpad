@@ -43,7 +43,8 @@
     "release": "release-it",
     "docs": "npm --prefix docs start",
     "docs:build": "npm --prefix docs run build",
-    "release:beta": "release-it --preRelease=beta --npm.tag=next"
+    "release:beta": "release-it --preRelease=beta --npm.tag=next",
+    "docs:deploy": "npm --prefix docs run build && npm --prefix docs run deploy:firebase"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

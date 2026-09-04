@@ -78,5 +78,5 @@ Alternatively push the tag and let `.github/workflows/release.yml` publish (requ
 After publishing, rebuild and deploy the docs so the Snacks pin the new version:
 
 ```sh
-yarn docs:build && cd docs && firebase deploy
+yarn docs:deploy   # build + firebase deploy (firebase-tools is a docs devDependency, no global install needed)
 ```

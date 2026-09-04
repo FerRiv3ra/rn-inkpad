@@ -70,3 +70,6 @@ coverage/
 .npmignore
 .npmrc
 .claude/
+
+# Firebase deploy cache
+.firebase/
