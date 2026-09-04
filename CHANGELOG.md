@@ -4,7 +4,9 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project follows
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased] (2.0.0)
+## [2.0.0] - Unreleased
+
+Published as `2.0.0-beta.1` under the `next` tag for testing. Run `yarn release` to cut 2.0.0.
 
 ### BREAKING: bring your own icons
 
@@ -105,6 +107,11 @@ All notable changes to this project are documented here. The format is based on
 - **Alert.prompt** resolves `string | undefined` (undefined when cancelled), matching
   the runtime behaviour it always had.
 - Exported `Tooltip`, all public prop types and `useAnimation` from the package root.
+
+### Fixed (release candidates)
+
+- Removed the `react-native` package.json field pointing at TypeScript sources: bundlers that honour it
+  (Expo Snack, some web setups) could not compile the library. Apps now always get the built `lib/`.
 
 ### Docs
 

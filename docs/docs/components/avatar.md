@@ -7,6 +7,20 @@ title: Avatar
 
 The **Circle Avatar** component in our library is a visually appealing element used to represent users or entities within an application. It typically displays a circular image or icon, often depicting a person's profile picture or a symbolic representation of an entity. Circle Avatars add a personal touch to user interfaces, facilitating easy identification and enhancing the overall aesthetic appeal. With customizable size, border, and content options, our Circle Avatar component offers flexibility to suit various design preferences and application needs.
 
+<Snack name="CircleAvatar" code={`import React from 'react';
+import {View} from 'react-native';
+import {CircleAvatar} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', gap: 16}}>
+<CircleAvatar size={80} defaultText="JHF" fontSize={28} />
+<CircleAvatar size={60} defaultText="FR" backgroundColor="#DB504A" />
+<CircleAvatar size={60} image={{uri: 'https://i.pravatar.cc/120'}} onPress={() => {}} />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

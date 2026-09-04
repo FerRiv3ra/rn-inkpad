@@ -7,6 +7,29 @@ title: FloatingActionCard
 
 The **FloatingActionCard** is an innovative component in our library, blending the functionality of a Floating Action Button (FAB) with the versatility of a Card. This component presents a visually engaging card that "floats" above the content, similar to a FAB, while also providing a structured layout for displaying information or actions. FloatingActionCards are ideal for highlighting important content or key actions within an application, combining accessibility with a sleek design aesthetic. With customizable styles and configurations, our FloatingActionCard component enhances user engagement and navigation efficiency in modern app interfaces.
 
+<Snack name="FloatingActionCard" code={`import React, {useState} from 'react';
+import {View, Image, Text} from 'react-native';
+import {Star} from 'lucide-react-native';
+import {FloatingActionCard} from 'rn-inkpad';
+
+export default function App() {
+const [presses, setPresses] = useState(0);
+return (
+<View style={{flex: 1, alignItems: 'center'}}>
+<Image source={{uri: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800'}} style={{width: '100%', height: '100%'}} />
+<Text style={{position: 'absolute', top: 60, color: '#FFF', fontWeight: '700'}}>Pressed {presses} times</Text>
+<FloatingActionCard
+title="Maldives hotel"
+description="Lorem ipsum dolor"
+icon={<Star size={16} color="#FFD700" fill="#FFD700" />}
+image={{uri: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400'}}
+rating={4.5}
+onPress={() => setPresses(p => p + 1)}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

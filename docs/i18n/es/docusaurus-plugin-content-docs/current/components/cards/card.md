@@ -7,6 +7,31 @@ title: Card
 
 El componente **Tarjeta** de nuestra biblioteca es un contenedor versátil diseñado para presentar el contenido de una manera visualmente atractiva y estructurada. Las tarjetas suelen presentar una combinación de texto, icono y botones.
 
+<Snack name="Card" code={`import React from 'react';
+import {View} from 'react-native';
+import {BookMarked} from 'lucide-react-native';
+import {Card} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Card
+title="Card"
+icon={BookMarked}
+description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+buttons={[{text: 'Cancel', onPress: () => {}}, {text: 'Ok', onPress: () => {}}]}
+/>
+<Card
+title="Themed card"
+icon={BookMarked}
+description="With a theme: colors, sizes and shadow."
+buttons={[{text: 'Ok', onPress: () => {}}]}
+theme={{backgroundColor: '#EEE', themeColor: '#DB504A', titleColor: '#21295C', titleSize: 18, shadow: true}}
+/>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

@@ -7,6 +7,23 @@ title: Checkbox
 
 El componente **Checkbox** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para permitir a los usuarios seleccionar o anular la selección de opciones. Por lo general, aparece como una pequeña casilla que se puede marcar o desmarcar, lo que indica el estado de la opción. Las casillas de verificación se utilizan habitualmente en formularios, configuraciones o elementos de lista en los que los usuarios necesitan realizar varias selecciones de una lista de opciones.
 
+<Snack name="CheckBox" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {SquareCheckBig, Square} from 'lucide-react-native';
+import {CheckBox} from 'rn-inkpad';
+
+export default function App() {
+const [checked, setChecked] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<CheckBox title="Default glyph" />
+<CheckBox title="Accept terms" checked={checked} onChange={setChecked} iconColor="#DB504A" iconSize={24} />
+<Text>{checked ? 'Checked' : 'Unchecked'}</Text>
+<CheckBox title="Custom lucide icons" checkedIcon={SquareCheckBig} unCheckedIcon={Square} iconColor="#22C55E" />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

@@ -1,6 +1,7 @@
 import type * as Preset from '@docusaurus/preset-classic';
 import type {Config} from '@docusaurus/types';
 import {themes as prismThemes} from 'prism-react-renderer';
+import {version as libraryVersion} from '../package.json';
 
 const config: Config = {
   title: 'React Native Inkpad',
@@ -19,6 +20,9 @@ const config: Config = {
   projectName: 'rn-inkpad', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+
+  // Exposed to <Snack /> so embeds always install the version being documented.
+  customFields: {libraryVersion},
   // deploymentBranch: 'gh-pages',
 
   // Even if you don't use internationalization, you can use this field to set

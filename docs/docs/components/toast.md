@@ -7,6 +7,24 @@ title: Toast
 
 The **Toast** component in our library is a lightweight and non-intrusive user interface element used to display brief messages or notifications to users. It typically appears as a small rectangular pop-up that appears at the top or bottom of the screen for a short period before disappearing automatically. Toasts are commonly used to provide users with quick feedback, alerts, or confirmation messages after completing an action, such as saving a file, submitting a form, or successfully completing a task.
 
+<Snack name="Toast" code={`import React, {useState} from 'react';
+import {View} from 'react-native';
+import {Coffee, Info} from 'lucide-react-native';
+import {Button, Toast} from 'rn-inkpad';
+
+export default function App() {
+const [top, setTop] = useState(false);
+const [bottom, setBottom] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Toast visible={top} setVisible={setTop} text="Toast top information" icon={Info} backgroundColor="#DB504A" fontSize={16} />
+<Toast visible={bottom} setVisible={setBottom} text="Toast bottom information" icon={Coffee} backgroundColor="#21295C" position="bottom" fontSize={16} />
+<Button text="Show toast top" rounded onPress={() => setTop(true)} />
+<Button text="Show toast bottom" rounded buttonColor="#21295C" onPress={() => setBottom(true)} />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

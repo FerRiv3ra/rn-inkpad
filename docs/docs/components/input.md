@@ -7,6 +7,23 @@ title: Input
 
 The **Input** component in our library is a fundamental element used for capturing user input within forms or interactive interfaces. It allows users to enter and submit various types of data, such as text or numbers.
 
+<Snack name="Input" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {AtSign, KeyRound, Plane} from 'lucide-react-native';
+import {Input} from 'rn-inkpad';
+
+export default function App() {
+const [text, setText] = useState('');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Input label="Search" search icon={Plane} iconColor="#DB504A" borderColor="#DB504A" onChangeText={setText} />
+<Text>{text ? 'Typed: ' + text : 'Type something'}</Text>
+<Input label="Password" password icon={KeyRound} type="bordered" borderRadius={10} borderColor="#21295C" iconColor="#21295C" rightIconColor="#21295C" />
+<Input label="Email" icon={AtSign} type="outlined" borderRadius={10} borderColor="#576DEC" labelColor="#576DEC" iconColor="#576DEC" keyboardType="email-address" />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

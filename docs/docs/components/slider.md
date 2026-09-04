@@ -7,6 +7,28 @@ title: Slider
 
 The **Slider** component in our library is a user interface element used to enable users to select a value from a continuous range. It typically appears as a horizontal bar with a draggable thumb that users can slide along the bar to adjust the value. Sliders are commonly used in applications for settings such as volume control, brightness adjustment, or selecting a price range.
 
+<Snack name="Slider" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {ChartLine} from 'lucide-react-native';
+import {Slider} from 'rn-inkpad';
+
+export default function App() {
+const [value, setValue] = useState(30);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 32}}>
+<Slider value={value} onChange={setValue} />
+<Text style={{textAlign: 'center', fontSize: 18}}>{value}</Text>
+<Slider
+minValue={0}
+maxValue={10}
+value={5}
+thumbStyles={{icon: ChartLine, iconColor: '#DB504A'}}
+trackStyles={{height: 10, borderRadius: 5, trackCompletedColor: '#DB504A'}}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

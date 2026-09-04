@@ -7,6 +7,31 @@ title: Switch
 
 El componente **Switch** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para alternar entre dos estados, que normalmente representa un estado de "encendido" y "apagado". Aparece como un pequeño botón deslizante que los usuarios pueden tocar o arrastrar para cambiar su posición, alternando así entre los dos estados. Los interruptores se utilizan habitualmente en aplicaciones para ajustes como la activación o desactivación de una función, la activación o desactivación de notificaciones o el cambio entre los modos claro y oscuro.
 
+<Snack name="Switch" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Switch} from 'rn-inkpad';
+
+export default function App() {
+const [on, setOn] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 24}}>
+<Switch />
+<Switch
+fullWidth
+border
+borderColor="#DB504A"
+backgroundColor="#DB504A"
+isOn={on}
+onChange={setOn}
+justifyContent="space-between"
+text="Turn on notifications"
+textStyle={{fontSize: 16, fontWeight: '600'}}
+/>
+<Text style={{textAlign: 'center'}}>{on ? 'On' : 'Off'}</Text>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

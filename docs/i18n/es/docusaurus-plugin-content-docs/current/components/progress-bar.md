@@ -7,6 +7,21 @@ title: ProgressBar
 
 El componente **ProgressBar** de nuestra biblioteca es un elemento visual que se utiliza para indicar el progreso de una tarea o proceso dentro de una aplicación. Por lo general, aparece como una barra horizontal que se llena gradualmente a medida que avanza la tarea, lo que proporciona a los usuarios una indicación visual del estado de finalización. Las barras de progreso se utilizan normalmente para representar tareas como cargas de archivos, descargas, envíos de formularios o pantallas de carga.
 
+<Snack name="ProgressBar" code={`import React, {useState} from 'react';
+import {View} from 'react-native';
+import {Button, ProgressBar} from 'rn-inkpad';
+
+export default function App() {
+const [value, setValue] = useState(25);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<ProgressBar value={value} rounded showPercent progressColor="#DB504A" textColor="#21295C" />
+<Button text={value === 100 ? 'Reset' : 'Add 25%'} rounded onPress={() => setValue(value === 100 ? 0 : value + 25)} />
+<ProgressBar value={60} height={18} borderColor="#576DEC" progressColor="#576DEC" backgroundColor="#FFF" borderRadius={4} />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

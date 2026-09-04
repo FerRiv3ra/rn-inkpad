@@ -7,6 +7,35 @@ title: BottomTabNavigation
 
 The **BottomTabNavigation** component in our library is a navigational element typically placed at the bottom of the screen in mobile applications. It provides users with quick access to different sections or views of the app, enhancing navigation efficiency. Each tab represents a specific category or feature, and users can switch between tabs to access different parts of the application seamlessly. BottomTabNavigation promotes intuitive exploration of app content and functionality, offering a consistent and familiar navigation pattern across screens.
 
+<Snack name="BottomTabNavigation" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Bell, House, Plus, Search, Settings} from 'lucide-react-native';
+import {BottomTabNavigation} from 'rn-inkpad';
+
+const tabs = ['Home', 'Search', 'Add', 'Alerts', 'Settings'];
+
+export default function App() {
+const [tab, setTab] = useState(0);
+return (
+<View style={{flex: 1, backgroundColor: '#F4F5F7'}}>
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+<Text style={{fontSize: 24, fontWeight: '700'}}>{tabs[tab]}</Text>
+</View>
+<BottomTabNavigation
+selectedIndex={0}
+highlightedIconColor="#FFF"
+values={[
+{icon: House, text: 'Home', onPress: () => setTab(0)},
+{icon: Search, text: 'Search', onPress: () => setTab(1)},
+{icon: Plus, text: 'Add', highlighted: true, onPress: () => setTab(2)},
+{icon: Bell, text: 'Alerts', onPress: () => setTab(3)},
+{icon: Settings, text: 'Settings', onPress: () => setTab(4)},
+]}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

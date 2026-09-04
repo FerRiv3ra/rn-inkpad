@@ -7,6 +7,31 @@ title: Switch
 
 The **Switch** component in our library is a user interface element used to toggle between two states, typically representing an "on" and "off" state. It appears as a small sliding button that users can tap or drag to change its position, thereby toggling between the two states. Switches are commonly used in applications for settings such as enabling or disabling a feature, activating or deactivating notifications, or switching between light and dark modes.
 
+<Snack name="Switch" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Switch} from 'rn-inkpad';
+
+export default function App() {
+const [on, setOn] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 24}}>
+<Switch />
+<Switch
+fullWidth
+border
+borderColor="#DB504A"
+backgroundColor="#DB504A"
+isOn={on}
+onChange={setOn}
+justifyContent="space-between"
+text="Turn on notifications"
+textStyle={{fontSize: 16, fontWeight: '600'}}
+/>
+<Text style={{textAlign: 'center'}}>{on ? 'On' : 'Off'}</Text>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

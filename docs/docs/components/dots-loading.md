@@ -7,6 +7,20 @@ title: DotsLoading
 
 Lightweight loading indicator made of bouncing dots.
 
+<Snack name="DotsLoading" code={`import React from 'react';
+import {View} from 'react-native';
+import {DotsLoading} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center', gap: 32}}>
+<DotsLoading />
+<DotsLoading size={6} color="#DB504A" dotCount={5} speed={400} />
+<DotsLoading size={14} color="#21295C" speed={900} />
+</View>
+);
+}`} />
+
 ## Usage
 
 ```jsx

@@ -7,6 +7,29 @@ title: FloatingActionButton
 
 The **FloatingActionButton** is a prominent and dynamic component within our library, designed to draw attention to a primary action within an application. It typically appears as a circular button that "floats" above the content, providing easy access to important functionalities or frequently used actions.
 
+<Snack name="FloatingActionButton" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {LayoutGrid, ShoppingBag, TriangleAlert} from 'lucide-react-native';
+import {FloatingActionButton} from 'rn-inkpad';
+
+export default function App() {
+const [last, setLast] = useState('Tap a button');
+return (
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+<Text>{last}</Text>
+<FloatingActionButton icon={LayoutGrid} backgroundColor="#DB504A" onPress={() => setLast('Single pressed')} />
+<FloatingActionButton
+align="bottom-left"
+backgroundColor="#21295C"
+actions={[
+{icon: TriangleAlert, text: 'Alert', onPress: () => setLast('Alert')},
+{icon: ShoppingBag, text: 'Shopping', onPress: () => setLast('Shopping')},
+]}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

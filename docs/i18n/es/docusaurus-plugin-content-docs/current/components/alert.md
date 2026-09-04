@@ -56,6 +56,30 @@ Puede enviar algunas propiedades opcionales para personalizar sus alertas.
 | **`titleColor`**           | Color del título de la alerta.                               | `string`     | **NO**   | `Claro: '#000000' \| Oscuro: '#FFFFFF'` | `Claro: '#000000' \| Oscuro: '#FFFFFF'`         |
 </div>
 
+<Snack name="Alert" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Trash2} from 'lucide-react-native';
+import {Alert, AlertContainer, Button} from 'rn-inkpad';
+
+export default function App() {
+const [result, setResult] = useState('');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<AlertContainer />
+<Button text="Simple alert" onPress={async () => setResult('Closed: ' + (await Alert.alert('Hello', 'This is an alert')))} />
+<Button
+text="Confirm"
+onPress={async () => {
+const ok = await Alert.alert({title: 'Delete item?', description: 'Cannot be undone', icon: Trash2, iconColor: '#EF4444', showCancelButton: true, confirmText: 'Delete'});
+setResult(ok ? 'Deleted' : 'Kept');
+}}
+/>
+<Button text="Prompt" onPress={async () => setResult('Name: ' + (await Alert.prompt('Your name', 'Type it below')))} />
+<Text style={{textAlign: 'center'}}>{result}</Text>
+</View>
+);
+}`} />
+
 ## Uso
 
 3. Uso de componente

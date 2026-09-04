@@ -7,6 +7,24 @@ title: LongPressButton
 
 El **LongPressButton** es un componente interactivo de nuestra biblioteca que desencadena acciones cuando se mantiene pulsado durante un tiempo determinado, normalmente más largo que la pulsación de un botón estándar.
 
+<Snack name="LongPressButton" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {CirclePlus} from 'lucide-react-native';
+import {LongPressButton} from 'rn-inkpad';
+
+export default function App() {
+const [done, setDone] = useState(false);
+const onFinish = () => { setDone(true); setTimeout(() => setDone(false), 1500); };
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<LongPressButton text="Press and hold" icon={CirclePlus} onFinish={onFinish} />
+<LongPressButton text="Center to ends" behavior="center-to-ends" backgroundColor="#DB504A" onFinish={onFinish} />
+<LongPressButton text="Right to left" behavior="right-to-left" backgroundColor="#22C55E" textColor="#000" borderRadius={0} longPressTime={1000} onFinish={onFinish} />
+<Text style={{textAlign: 'center'}}>{done ? 'Executed!' : 'Hold a button'}</Text>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

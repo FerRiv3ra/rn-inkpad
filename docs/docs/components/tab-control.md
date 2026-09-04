@@ -7,6 +7,28 @@ title: TabControl
 
 The **TabControl** component in our library is a versatile navigational element used to organize and present multiple views or sections within an application. It typically appears as a set of tabs arranged horizontally or vertically, with each tab representing a distinct content area or feature. Users can switch between tabs to access different parts of the application quickly and intuitively. TabControls are commonly used in applications with complex navigation structures, such as settings screens, multi-step processes, or content-rich interfaces.
 
+<Snack name="TabControl" code={`import React from 'react';
+import {View, Text} from 'react-native';
+import {TabControl} from 'rn-inkpad';
+
+const Tab = ({label}) => (
+<View style={{height: 120, alignItems: 'center', justifyContent: 'center'}}>
+<Text style={{fontWeight: '600'}}>{label}</Text>
+</View>
+);
+const First = () => <Tab label="First tab content" />;
+const Second = () => <Tab label="Second tab content" />;
+const Third = () => <Tab label="Third tab content" />;
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<TabControl values={[{key: 'First', renderItem: First}, {key: 'Second', renderItem: Second}, {key: 'Third', renderItem: Third}]} />
+<TabControl label="Custom colors" selectedIndex={1} backgroundTabColor="#C3F3C0" tabTintColor="#21295C" selectedTextColor="#FFF" values={[{key: 'First', renderItem: First}, {key: 'Second', renderItem: Second}]} />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

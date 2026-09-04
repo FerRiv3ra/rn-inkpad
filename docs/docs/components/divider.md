@@ -7,6 +7,28 @@ title: Divider
 
 Thin separator, horizontal or vertical, with an optional centered label.
 
+<Snack name="Divider" code={`import React from 'react';
+import {View, Text} from 'react-native';
+import {Divider} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Text>Above</Text>
+<Divider />
+<Text>Between</Text>
+<Divider text="OR" />
+<Text>Below</Text>
+<Divider color="#DB504A" thickness={3} />
+<View style={{flexDirection: 'row', alignItems: 'center', height: 32}}>
+<Text>Left</Text>
+<Divider orientation="vertical" spacing={16} />
+<Text>Right</Text>
+</View>
+</View>
+);
+}`} />
+
 ## Usage
 
 ```jsx

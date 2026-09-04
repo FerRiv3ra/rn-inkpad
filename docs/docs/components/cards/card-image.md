@@ -7,6 +7,21 @@ title: CardImage
 
 The **CardImage** component in our library is a specialized element within a card layout designed to prominently display an image as the focal point of the card. This component is ideal for showcasing visual content such as photographs, illustrations, or graphics within a structured card format.
 
+<Snack name="CardImage" code={`import React from 'react';
+import {ScrollView} from 'react-native';
+import {CardImage} from 'rn-inkpad';
+
+const source = {uri: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800'};
+
+export default function App() {
+return (
+<ScrollView contentContainerStyle={{padding: 24, gap: 16}}>
+<CardImage source={source} text="Landscape" />
+<CardImage source={source} text="Themed" loadTime={2500} theme={{fontColor: '#DB504A', fontWeight: '700', shadow: true, radius: 0}} />
+</ScrollView>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

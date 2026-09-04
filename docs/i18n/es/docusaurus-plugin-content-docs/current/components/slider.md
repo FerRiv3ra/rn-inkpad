@@ -7,6 +7,28 @@ title: Slider
 
 El componente **Slider** de nuestra biblioteca es un elemento de la interfaz de usuario que se utiliza para permitir a los usuarios seleccionar un valor de un rango continuo. Por lo general, aparece como una barra horizontal con un pulgar arrastrable que los usuarios pueden deslizar a lo largo de la barra para ajustar el valor. Los controles deslizantes se usan comúnmente en aplicaciones para configuraciones como el control de volumen, el ajuste de brillo o la selección de un rango de precios.
 
+<Snack name="Slider" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {ChartLine} from 'lucide-react-native';
+import {Slider} from 'rn-inkpad';
+
+export default function App() {
+const [value, setValue] = useState(30);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 32}}>
+<Slider value={value} onChange={setValue} />
+<Text style={{textAlign: 'center', fontSize: 18}}>{value}</Text>
+<Slider
+minValue={0}
+maxValue={10}
+value={5}
+thumbStyles={{icon: ChartLine, iconColor: '#DB504A'}}
+trackStyles={{height: 10, borderRadius: 5, trackCompletedColor: '#DB504A'}}
+/>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

@@ -7,6 +7,35 @@ title: ActionSheet
 
 An **ActionSheet** is a dynamic component in our library that offers users a menu of options or actions within an application. It typically appears as a modal or popover, presenting a list of choices relevant to the current context or user interaction. ActionSheets enable users to make decisions or initiate specific actions conveniently, enhancing usability and efficiency. With customizable styling and flexible configurations, our ActionSheet component seamlessly integrates into diverse interfaces, empowering users with intuitive navigation and interaction.
 
+<Snack name="ActionSheet" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Camera, Eye, Trash2} from 'lucide-react-native';
+import {ActionSheet, Button} from 'rn-inkpad';
+
+export default function App() {
+const [visible, setVisible] = useState(false);
+const [last, setLast] = useState('');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Button text="Open action sheet" onPress={() => setVisible(true)} />
+<Text style={{textAlign: 'center'}}>{last}</Text>
+<ActionSheet
+visible={visible}
+setVisible={setVisible}
+title="Profile picture"
+description="Choose an action"
+showCancelButton
+showIconOnIos
+actions={[
+{text: 'Take photo', icon: Camera, onPress: () => setLast('Take photo')},
+{text: 'View photo', icon: Eye, onPress: () => setLast('View photo')},
+{text: 'Remove', icon: Trash2, onPress: () => setLast('Remove')},
+]}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

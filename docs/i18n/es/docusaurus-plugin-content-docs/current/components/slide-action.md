@@ -7,6 +7,22 @@ title: SlideAction
 
 El componente **SlideAction** de nuestra biblioteca es un elemento interactivo diseñado para ejecutar acciones cuando los usuarios realizan un gesto de deslizamiento.
 
+<Snack name="SlideAction" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {ArrowRight, Check, Lock, LockOpen} from 'lucide-react-native';
+import {SlideAction} from 'rn-inkpad';
+
+export default function App() {
+const [confirmed, setConfirmed] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 24}}>
+<SlideAction icon={LockOpen} iconOnCompleted={Lock} text="Slide to confirm" textOnCompleted="Confirmed" onCompleted={() => setConfirmed(true)} />
+<Text style={{textAlign: 'center'}}>{confirmed ? 'Confirmed' : 'Not confirmed'}</Text>
+<SlideAction icon={ArrowRight} iconOnCompleted={Check} text="Slide" textOnCompleted="Done" textPosition="ends" tintColor="#C3F3C0" tintCompletedColor="#22C55E" thumbColor="#21295C" thumbCompletedColor="#21295C" iconColor="#FFF" iconCompletedColor="#FFF" />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

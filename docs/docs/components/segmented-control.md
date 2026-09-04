@@ -7,6 +7,27 @@ title: SegmentedControl
 
 The **SegmentedControl** component in our library is a user interface element used to enable users to make selections from a predefined set of options. It typically appears as a horizontal row of segmented buttons, each representing a distinct choice. Users can toggle between segments to indicate their selection preference, with only one segment active at a time. SegmentedControls are commonly used in applications to provide users with a clear and intuitive way to switch between different views, filters, or categories.
 
+<Snack name="SegmentedControl" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {SegmentedControl} from 'rn-inkpad';
+
+const values = [
+{key: 'Day', value: 'day'},
+{key: 'Week', value: 'week'},
+{key: 'Month', value: 'month'},
+];
+
+export default function App() {
+const [value, setValue] = useState('day');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<SegmentedControl values={values} onChange={setValue} />
+<Text style={{textAlign: 'center'}}>Value: {value}</Text>
+<SegmentedControl label="Period" values={values} selectedIndex={1} backgroundColor="#C3F3C0" tintColor="#21295C" selectedTextColor="#FFF" onChange={() => {}} />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

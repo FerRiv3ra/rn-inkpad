@@ -60,3 +60,23 @@ npm run build      # validates both locales
 
 Pages live in `docs/docs`; Spanish copies in `docs/i18n/es/docusaurus-plugin-content-docs/current`.
 `<Snack code={`...`} />` embeds a live Expo Snack (registered globally in `src/theme/MDXComponents.tsx`).
+
+## Releasing
+
+Releases are cut with [release-it](https://github.com/release-it/release-it) from a clean `main`:
+
+```sh
+yarn release            # stable: bumps, tags vX.Y.Z, publishes to npm (latest), GitHub release
+yarn release:beta       # prerelease: X.Y.Z-beta.N published under the `next` tag
+```
+
+`before:init` runs typecheck, lint and tests; `after:bump` builds `lib/`. You need `npm login`
+(or an `NPM_TOKEN`) and a `GITHUB_TOKEN` with repo scope for the GitHub release.
+Alternatively push the tag and let `.github/workflows/release.yml` publish (requires the
+`NPM_TOKEN` repository secret).
+
+After publishing, rebuild and deploy the docs so the Snacks pin the new version:
+
+```sh
+yarn docs:build && cd docs && firebase deploy
+```

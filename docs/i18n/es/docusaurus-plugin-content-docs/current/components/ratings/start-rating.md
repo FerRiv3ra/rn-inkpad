@@ -7,6 +7,29 @@ title: StarRating
 
 El componente **StarRating** de nuestra biblioteca es un elemento de interfaz fácil de usar que se utiliza para recopilar las calificaciones de los usuarios. Por lo general, presenta una serie de estrellas en las que los usuarios pueden hacer clic o tocar para indicar su preferencia de calificación, que van desde una estrella (la más baja) hasta cinco estrellas (la más alta). Las clasificaciones por estrellas se utilizan comúnmente en varias aplicaciones y sitios web para recopilar comentarios sobre productos, servicios o contenido.
 
+<Snack name="StarRating" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {StarRating} from 'rn-inkpad';
+
+export default function App() {
+const [value, setValue] = useState(3);
+const color = value <= 2 ? '#EF4444' : value <= 4 ? '#FFD700' : '#22C55E';
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 24}}>
+<StarRating
+defaultRating={3}
+iconColor={color}
+textColor={color}
+onChange={setValue}
+reviews={['Terrible', 'Poor', 'Fair', 'Good', 'Excellent']}
+size={40}
+/>
+<Text style={{textAlign: 'center'}}>Rating: {value}</Text>
+<StarRating defaultRating={4} justRating readOnly size={28} />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

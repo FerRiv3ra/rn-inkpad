@@ -13,6 +13,22 @@ Este es un componente de solo lectura, con el propósito de mostrar la clasifica
 
 :::
 
+<Snack name="Rating" code={`import React from 'react';
+import {View} from 'react-native';
+import {Heart, HeartCrack} from 'lucide-react-native';
+import {Rating} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 24}}>
+<Rating rating={3.5} />
+<Rating icon="heart" rating={4.5} color="#DB504A" size={32} />
+<Rating rating={7} total={10} size={18} color="#576DEC" />
+<Rating rating={2.5} icons={{full: Heart, empty: HeartCrack}} color="#DB504A" />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {useColorMode} from '@docusaurus/theme-common';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 declare global {
   interface Window {
@@ -51,7 +52,7 @@ const loadEmbedScript = () => {
 
 const SnackFrame = ({
   code,
-  dependencies = DEFAULT_DEPENDENCIES,
+  dependencies,
   description,
   files,
   height = 560,
@@ -63,6 +64,10 @@ const SnackFrame = ({
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const {colorMode} = useColorMode();
+  const {siteConfig} = useDocusaurusContext();
+  // Pin the library to the documented version (root package.json).
+  const libraryVersion = siteConfig.customFields?.libraryVersion as string;
+  const resolvedDependencies = dependencies ?? `rn-inkpad,`;
 
   useEffect(() => {
     const element = ref.current;
@@ -95,7 +100,7 @@ const SnackFrame = ({
           ? encodeURIComponent(JSON.stringify(snackFiles))
           : undefined
       }
-      data-snack-dependencies={!id ? dependencies : undefined}
+      data-snack-dependencies={!id ? resolvedDependencies : undefined}
       data-snack-sdkversion={sdkVersion}
       data-snack-name={name}
       data-snack-description={description}

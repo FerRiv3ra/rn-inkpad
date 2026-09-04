@@ -7,6 +7,28 @@ title: TabControl
 
 El componente **TabControl** de nuestra biblioteca es un elemento de navegación versátil que se utiliza para organizar y presentar varias vistas o secciones dentro de una aplicación. Por lo general, aparece como un conjunto de pestañas dispuestas horizontal o verticalmente, y cada pestaña representa un área de contenido o entidad distinta. Los usuarios pueden cambiar entre pestañas para acceder a diferentes partes de la aplicación de forma rápida e intuitiva. Los TabControls se usan normalmente en aplicaciones con estructuras de navegación complejas, como pantallas de configuración, procesos de varios pasos o interfaces ricas en contenido.
 
+<Snack name="TabControl" code={`import React from 'react';
+import {View, Text} from 'react-native';
+import {TabControl} from 'rn-inkpad';
+
+const Tab = ({label}) => (
+<View style={{height: 120, alignItems: 'center', justifyContent: 'center'}}>
+<Text style={{fontWeight: '600'}}>{label}</Text>
+</View>
+);
+const First = () => <Tab label="First tab content" />;
+const Second = () => <Tab label="Second tab content" />;
+const Third = () => <Tab label="Third tab content" />;
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<TabControl values={[{key: 'First', renderItem: First}, {key: 'Second', renderItem: Second}, {key: 'Third', renderItem: Third}]} />
+<TabControl label="Custom colors" selectedIndex={1} backgroundTabColor="#C3F3C0" tabTintColor="#21295C" selectedTextColor="#FFF" values={[{key: 'First', renderItem: First}, {key: 'Second', renderItem: Second}]} />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

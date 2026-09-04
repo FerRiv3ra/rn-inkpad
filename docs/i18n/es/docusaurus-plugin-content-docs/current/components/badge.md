@@ -7,6 +7,23 @@ title: Badge
 
 Contador o punto pequeño, en línea o pegado a una esquina de otro elemento.
 
+<Snack name="Badge" code={`import React from 'react';
+import {View} from 'react-native';
+import {Bell, Mail} from 'lucide-react-native';
+import {Badge, Button} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', gap: 24}}>
+<Badge value={3}><Bell size={28} /></Badge>
+<Badge value={150} max={99} color="#576DEC"><Mail size={28} /></Badge>
+<Badge dot color="#22C55E"><Bell size={28} /></Badge>
+<Badge value="NEW" position="top-left"><Button text="Updates" /></Badge>
+<Badge value={7} />
+</View>
+);
+}`} />
+
 ## Uso
 
 ```jsx

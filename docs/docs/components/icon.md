@@ -108,3 +108,30 @@ const Home = props => <Ionicons name="home" {...props} />;
 
 <Button text="Home" icon={Home} />;
 ```
+
+<Snack name="Icons" code={`import React from 'react';
+import {View} from 'react-native';
+import Svg, {Circle, Path} from 'react-native-svg';
+import {Heart, House, Star} from 'lucide-react-native';
+import {Button, CheckBox, Icon, Rating} from 'rn-inkpad';
+
+// Any component accepting size/color works, including your own SVGs.
+const Logo = ({size = 24, color = '#000'}) => (
+<Svg width={size} height={size} viewBox="0 0 24 24">
+<Circle cx="12" cy="12" r="10" stroke={color} strokeWidth="2" fill="none" />
+<Path d="M8 12l3 3 5-6" stroke={color} strokeWidth="2" fill="none" />
+</Svg>
+);
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Button text="Component: colored by the button" icon={House} />
+<Button text="Element: rendered as is" icon={<Heart size={18} color="#DB504A" fill="#DB504A" />} buttonColor="#C3F3C0" color="#000" />
+<Button text="Outline follows the state" icon={Star} buttonType="outline" />
+<CheckBox title="Custom SVG as checked icon" checked checkedIcon={<Logo size={22} color="#22C55E" />} />
+<Rating rating={3.5} icons={{full: Logo, empty: Star}} color="#21295C" size={26} />
+<Icon icon={Logo} size={40} color="#576DEC" />
+</View>
+);
+}`} />

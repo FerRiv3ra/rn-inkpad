@@ -7,6 +7,23 @@ title: Checkbox
 
 The **Checkbox** component in our library is a user interface element used to enable users to select or deselect options. It typically appears as a small box that can be checked or unchecked, indicating the state of the option. Checkboxes are commonly used in forms, settings, or list items where users need to make multiple selections from a list of options.
 
+<Snack name="CheckBox" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {SquareCheckBig, Square} from 'lucide-react-native';
+import {CheckBox} from 'rn-inkpad';
+
+export default function App() {
+const [checked, setChecked] = useState(false);
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<CheckBox title="Default glyph" />
+<CheckBox title="Accept terms" checked={checked} onChange={setChecked} iconColor="#DB504A" iconSize={24} />
+<Text>{checked ? 'Checked' : 'Unchecked'}</Text>
+<CheckBox title="Custom lucide icons" checkedIcon={SquareCheckBig} unCheckedIcon={Square} iconColor="#22C55E" />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

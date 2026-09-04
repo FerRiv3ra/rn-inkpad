@@ -7,6 +7,34 @@ title: DrawerNavigation
 
 El componente **DrawerNavigation** de nuestra biblioteca es un elemento de navegación versátil que se utiliza habitualmente en aplicaciones móviles y web para proporcionar a los usuarios acceso a varias pantallas, funciones o configuraciones. Por lo general, aparece como un panel lateral que se puede deslizar desde el borde de la pantalla o alternar con un botón de menú. DrawerNavigation organiza el contenido y la funcionalidad de la aplicación en una estructura de menú jerárquica, lo que permite a los usuarios navegar entre diferentes secciones o vistas de manera eficiente. Ofrece una forma conveniente de acceder a funciones, configuraciones u opciones de navegación de uso menos frecuente sin saturar la interfaz principal.
 
+<Snack name="DrawerNavigation" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {History, House, Settings, Star, User} from 'lucide-react-native';
+import {DrawerNavigation} from 'rn-inkpad';
+
+export default function App() {
+const [screen, setScreen] = useState('Home');
+return (
+<View style={{flex: 1, backgroundColor: '#F4F5F7'}}>
+<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+<Text style={{fontSize: 24, fontWeight: '700'}}>{screen}</Text>
+</View>
+<DrawerNavigation
+backgroundColor="#BEF0F3"
+items={[
+{icon: House, text: 'Home', onPress: () => setScreen('Home')},
+{icon: User, text: 'User', items: [
+{icon: User, text: 'Profile', onPress: () => setScreen('Profile')},
+{icon: History, text: 'History', onPress: () => setScreen('History')},
+{icon: Star, text: 'Starred', onPress: () => setScreen('Starred')},
+]},
+{icon: Settings, text: 'Settings', onPress: () => setScreen('Settings')},
+]}
+/>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

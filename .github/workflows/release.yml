@@ -1,0 +1,32 @@
+name: Release
+# Publishes to npm when a version tag is pushed (e.g. by `yarn release`).
+# Needs an NPM_TOKEN repository secret (automation token).
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup
+      - name: Verify
+        run: |
+          yarn typecheck
+          yarn lint
+          yarn test --ci
+      - name: Build
+        run: yarn build
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          TAG=latest
+          case "${GITHUB_REF_NAME}" in *-*) TAG=next;; esac
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          npm publish --provenance --access public --tag "$TAG"

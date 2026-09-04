@@ -7,6 +7,31 @@ title: Card
 
 The **Card** component in our library is a versatile container designed to present content in a visually appealing and structured manner. Cards typically feature a combination of text, icon, and buttons.
 
+<Snack name="Card" code={`import React from 'react';
+import {View} from 'react-native';
+import {BookMarked} from 'lucide-react-native';
+import {Card} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Card
+title="Card"
+icon={BookMarked}
+description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+buttons={[{text: 'Cancel', onPress: () => {}}, {text: 'Ok', onPress: () => {}}]}
+/>
+<Card
+title="Themed card"
+icon={BookMarked}
+description="With a theme: colors, sizes and shadow."
+buttons={[{text: 'Ok', onPress: () => {}}]}
+theme={{backgroundColor: '#EEE', themeColor: '#DB504A', titleColor: '#21295C', titleSize: 18, shadow: true}}
+/>
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

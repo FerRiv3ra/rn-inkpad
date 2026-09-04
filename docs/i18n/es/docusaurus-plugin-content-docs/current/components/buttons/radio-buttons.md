@@ -7,6 +7,28 @@ title: RadioButtons
 
 Los **RadioButtons** son elementos esenciales en nuestra biblioteca, ya que facilitan la entrada del usuario en escenarios de selección en los que los usuarios pueden elegir solo una opción de una lista. Cuando se selecciona un RadioButton, cualquier RadioButton seleccionado previamente en el mismo grupo se anula automáticamente, lo que garantiza la exclusividad mutua.
 
+<Snack name="RadioButtons" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {RadioButtons} from 'rn-inkpad';
+
+const values = [
+{text: 'Option 1', value: 1},
+{text: 'Option 2', value: 2},
+{text: 'Option 3', value: 3},
+];
+
+export default function App() {
+const [selected, setSelected] = useState('none');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<RadioButtons border values={values} onChange={setSelected} />
+<Text style={{textAlign: 'center'}}>Selected: {selected}</Text>
+<RadioButtons orientation="horizontal" iconPosition="bottom" defaultChecked={1} iconColor="#DB504A" values={values} />
+<RadioButtons iconPosition="right" fullWidth border iconColor="#22C55E" borderColor="#22C55E" defaultChecked={0} values={values} />
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico

@@ -7,6 +7,35 @@ title: ActionSheet
 
 Una **ActionSheet** es un componente dinámico de nuestra biblioteca que ofrece a los usuarios un menú de opciones o acciones dentro de una aplicación. Por lo general, aparece como un modal o una ventana emergente, que presenta una lista de opciones relevantes para el contexto actual o la interacción del usuario. Las hojas de acción permiten a los usuarios tomar decisiones o iniciar acciones específicas de manera conveniente, mejorando la usabilidad y la eficiencia. Con un estilo personalizable y configuraciones flexibles, nuestro componente ActionSheet se integra a la perfección en diversas interfaces, lo que permite a los usuarios una navegación e interacción intuitivas.
 
+<Snack name="ActionSheet" code={`import React, {useState} from 'react';
+import {View, Text} from 'react-native';
+import {Camera, Eye, Trash2} from 'lucide-react-native';
+import {ActionSheet, Button} from 'rn-inkpad';
+
+export default function App() {
+const [visible, setVisible] = useState(false);
+const [last, setLast] = useState('');
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 16}}>
+<Button text="Open action sheet" onPress={() => setVisible(true)} />
+<Text style={{textAlign: 'center'}}>{last}</Text>
+<ActionSheet
+visible={visible}
+setVisible={setVisible}
+title="Profile picture"
+description="Choose an action"
+showCancelButton
+showIconOnIos
+actions={[
+{text: 'Take photo', icon: Camera, onPress: () => setLast('Take photo')},
+{text: 'View photo', icon: Eye, onPress: () => setLast('View photo')},
+{text: 'Remove', icon: Trash2, onPress: () => setLast('Remove')},
+]}
+/>
+</View>
+);
+}`} />
+
 ## Uso
 
 ### Uso básico
