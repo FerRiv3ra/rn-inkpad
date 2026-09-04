@@ -34,3 +34,16 @@ Husky runs `lint-staged` on every commit: ESLint + Prettier on staged files.
 
 `npm pack --dry-run` shows exactly what will be published. Only `src/` and `lib/`
 are shipped; tests, fixtures and dotfiles are excluded through the `files` field.
+
+## Example app
+
+`example/` is a gallery: a list of every component, tapping one opens its demo screen.
+Navigation is plain React state, so there are no extra dependencies.
+
+To add or change a demo:
+
+1. Create `example/src/demos/<Name>Demo.tsx` exporting a component. Use `Section`
+   and `Result` from `example/src/ui/Section.tsx` to keep the layout consistent.
+2. Register it in `example/src/demos/registry.ts` (title, description, icon, category).
+
+Run it with `yarn example ios`, `yarn example android` or `yarn example web`.

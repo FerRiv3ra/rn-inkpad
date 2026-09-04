@@ -1,547 +1,216 @@
-import {View} from 'react-native';
+import {useMemo, useState} from 'react';
+import {
+  Pressable,
+  ScrollView,
+  SectionList,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
+import {Icon} from 'rn-inkpad';
 
-// import {SlideAction} from 'rn-inkpad';
-import {DotsLoading} from 'rn-inkpad';
+import type {Demo} from './demos/registry';
+import {demoCount, demoSections} from './demos/registry';
+import {palette} from './ui/theme';
 
-export const App = () => {
-  // const [confirmed, setConfirmed] = useState(false);
-  // const [visibleTop, setVisibleTop] = useState(false);
-  // const [visibleBottom, setVisibleBottom] = useState(false);
-  // const [value, setValue] = useState(0);
+/**
+ * Demo gallery: a list of every component; tapping one opens its demo screen.
+ * Navigation is plain state so the example has no extra dependencies.
+ */
+const Gallery = () => {
+  const insets = useSafeAreaInsets();
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+
+  const selected = useMemo(
+    () =>
+      demoSections
+        .flatMap(section => section.data)
+        .find(demo => demo.key === selectedKey) ?? null,
+    [selectedKey],
+  );
 
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#EFEFEF',
-        paddingHorizontal: 15,
-        // backgroundColor: '#eef2ff',
-        // backgroundColor: '#C3F3C0',
-      }}>
-      {/* <View style={{paddingHorizontal: 15}}> */}
-      {/* <Card
-        buttons={[
-          {text: 'Cancel', onPress: () => {}},
-          {text: 'Ok', onPress: () => {}},
-        ]}
-        description={
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.'
-        }
-        icon={'book-sharp'}
-        title={'Card'}
-        theme={{
-          backgroundColor: '#EEE',
-          iconSize: 30,
-          themeColor: '#DB504A',
-          titleColor: '#21295C',
-          titleSize: 18,
-          shadow: true,
-        }}
-      /> */}
-      {/* <CardImage
-        source={{
-          uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-        }}
-        text="Landscape"
-        loadTime={1500}
-        theme={{
-          backgroundColor: '#EEEEEE',
-          fontSize: 16,
-          fontColor: '#DB504A',
-          fontWeight: '700',
-          shadow: true,
-          radius: 0,
-        }}
-      /> */}
-      {/* <ScrollView>
-          <CardImage
-            source={{
-              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-            }}
-            text="Landscape"
-          />
-          <CardImage
-            source={{
-              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-            }}
-            text="Landscape"
-          />
-          <CardImage
-            source={{
-              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-            }}
-            text="Landscape"
-          />
-          <CardImage
-            source={{
-              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-            }}
-            text="Landscape"
-          />
-          <CardImage
-            source={{
-              uri: 'https://i0.wp.com/www.sweetlightphotos.com/wp-content/uploads/2022/08/2022-08-08_Maara-21333-Edit-1.jpg?fit=800%2C533&ssl=1',
-            }}
-            text="Landscape"
-          />
-        </ScrollView> */}
-
-      {/* <FloatingActionButton
-        icon="apps"
-        backgroundColor="#DB504A"
-        onPress={() => console.log('Hola mundo')}
-      />
-      <FloatingActionButton
-        align="bottom-left"
-        backgroundColor="#21295C"
-        actions={[
-          {
-            icon: 'alert',
-            text: 'Alert',
-            onPress: () => console.log('Alert'),
-          },
-          {
-            icon: 'warning',
-            onPress: () => console.log('Warning'),
-          },
-          {
-            icon: 'bag-add',
-            text: 'Shopping',
-            onPress: () => console.log('Shopping'),
-          },
-        ]}
-      />
-      <CircleAvatar size={80} defaultText="JHF" fontSize={28} />
-      <View style={{height: 30}} />
-      <CircleAvatar size={80} image={Avatar} /> */}
-      {/* <StarRating
-        defaultRating={3}
-        iconColor={value <= 2 ? '#FF0000' : value <= 4 ? '#FFD700' : '#7EE081'}
-        onChange={setValue}
-        reviews={['Terrible', 'Poor', 'Fair', 'Good', 'Excellent', 'Fabulous']}
-        size={40}
-        textColor={value <= 2 ? '#FF0000' : value <= 4 ? '#FFD700' : '#7EE081'}
-        textSize={35}
-      /> */}
-      {/* <Rating color="#FF0000" icon="heart" rating={4.5} /> */}
-      {/* <Button
-          text="Green solid button"
-          icon="alert-circle"
-          color="#000"
-          onPress={() => console.log('Press')}
-          buttonColor="#7EE081"
-          style={{marginBottom: 10}}
-        />
-        <Button
-          text="Clear right icon button"
-          icon="save"
-          onPress={() => console.log('Press')}
-          buttonType="clear"
-          iconPosition="right"
-          color="#576DEC"
-          style={{marginBottom: 10}}
-        />
-        <Button
-          text="Purple "
-          icon="save"
-          loading
-          onPress={() => console.log('Press')}
-          // buttonType="outline"
-          buttonColor="#C3F3C0"
-          style={{marginBottom: 10}}
-          // color="red"
-        />
-        <Button
-          text="Blue outline rounded button"
-          icon="airplane"
-          onPress={() => console.log('Press')}
-          buttonType="outline"
-          buttonColor="#576DEC"
-          rounded
-          style={{marginBottom: 10}}
-        /> */}
-      {/* <Button
-          text="Clear right icon button"
-          icon="save"
-          full
-          onPress={() => console.log('Press')}
-          iconPosition="right"
-          style={{marginBottom: 10}}
-        /> */}
-      {/* <LongPressButton
-        backgroundColor="#21295C"
-        text="Press and Hold"
-        borderRadius={10}
-        progressColor="#60a5fa"
-        icon="add-circle-outline"
-        onFinish={() => {
-          setIsExecuted(true);
-          setTimeout(() => {
-            setIsExecuted(false);
-          }, 1500);
-        }}
-      />
-      <LongPressButton
-        backgroundColor="#DB504A"
-        text="Press and Hold"
-        progressColor="rgba(0,0,0,0.5)"
-        iconPosition="right"
-        behavior="center-to-ends"
-        icon="add-circle-outline"
-        style={{marginTop: 10}}
-        onFinish={() => {
-          setIsExecuted(true);
-          setTimeout(() => {
-            setIsExecuted(false);
-          }, 1500);
-        }}
-      />
-      <LongPressButton
-        backgroundColor="#7EE081"
-        text="Press and Hold"
-        progressColor="#C3F3C0"
-        iconPosition="right"
-        textColor="#000"
-        borderRadius={0}
-        behavior="right-to-left"
-        icon="add-circle-outline"
-        style={{marginTop: 10}}
-        onFinish={() => {
-          setIsExecuted(true);
-          setTimeout(() => {
-            setIsExecuted(false);
-          }, 1500);
-        }}
-      />
-
-      <Text style={{marginTop: 15}}>
-        {isExecuted ? 'Executed' : 'Long press to execute!'}
-      </Text> */}
-      {/* <RadioButtons
-        // iconPosition="right"
-        // orientation="horizontal"
-        // defaultChecked={0}
-        // fullWidth
-        border
-        // disabled
-        // onChange={value => console.log(value)}
-        values={[
-          {text: 'Option 1', value: 1},
-          {text: 'Option 2', value: 2},
-        ]}
-      />
-      <RadioButtons
-        iconPosition="bottom"
-        orientation="horizontal"
-        defaultChecked={1}
-        gapHorizontal={80}
-        iconColor="#DB504A"
-        // disabled
-        // onChange={value => console.log(value)}
-        values={[
-          {text: 'Option 1', value: 1},
-          {text: 'Option 2', value: 2},
-        ]}
-      />
-      <RadioButtons
-        iconPosition="right"
-        // orientation="horizontal"
-        defaultChecked={0}
-        fullWidth
-        iconColor="#7EE081"
-        borderColor="#7EE081"
-        border
-        // disabled
-        // onChange={value => console.log(value)}
-        values={[
-          {text: 'Option 1', value: 1},
-          {text: 'Option 2', value: 2},
-        ]}
-      />
-      <RadioButtons
-        iconPosition="top"
-        orientation="horizontal"
-        defaultChecked={0}
-        border
-        borderColor="#DB504A"
-        iconColor="#DB504A"
-        // disabled
-        // onChange={value => console.log(value)}
-        values={[
-          {text: 'Option 1', value: 1},
-          {text: 'Option 2', value: 2},
-        ]}
-      />
-      <RadioButtons
-        disabled
-        border
-        iconSize={30}
-        // onChange={value => console.log(value)}
-        values={[
-          {text: 'Option 1', value: 1},
-          {text: 'Option 2', value: 2},
-        ]}
-      /> */}
-      {/* <CheckBox
-        checked={checked}
-        iconColor={'#DB504A'}
-        iconSize={25}
-        textStyle={{fontSize: 20}}
-        onChange={setIsChecked}
-        title={'Item 1'}
-      />
-
-      <Text style={{marginTop: 10, fontWeight: '700'}}>
-        {checked ? 'Checked' : 'Unchecked'}
-      </Text> */}
-      {/* <Input
-        borderColor="#DB504A"
-        search
-        label="Search"
-        icon="airplane"
-        // type="outlined"
-        // borderRadius={10}
-        iconColor="#DB504A"
-        // borderColor="green"
-        // onPress={() => console.log('Press')}
-        // onChangeText={value => console.log(value)}
-      />
-      <Input
-        borderColor="#21295C"
-        password
-        label="Password"
-        icon="key"
-        type="bordered"
-        borderRadius={10}
-        iconColor="#21295C"
-        rightIconColor="#21295C"
-        // onPress={() => console.log('Press')}
-        // onChangeText={value => console.log(value)}
-        style={{marginTop: 20}}
-      />
-      <Input
-        borderColor="#576DEC"
-        label="Email"
-        icon="at"
-        type="outlined"
-        labelColor="#576DEC"
-        borderRadius={10}
-        iconColor="#576DEC"
-        // onPress={() => console.log('Press')}
-        // onChangeText={value => console.log(value)}
-        style={{marginTop: 20}}
-      /> */}
-      {/* <ProgressBar
-        value={value}
-        rounded
-        progressColor="#DB504A"
-        textColor="#21295C"
-        showPercent
-      />
-      <Button
-        text={value === 100 ? 'Reset' : 'Add 25%'}
-        style={{marginTop: 20}}
-        rounded
-        buttonColor="#21295C"
-        onPress={() => {
-          if (value === 100) {
-            setValue(0);
-          } else setValue(value + 25);
-        }}
-      /> */}
-      {/* <SegmentedControl values={[{key: ''}]} onChange={()=>{}} /> */}
-      {/* <Switch
-        backgrounColor="#DB504A"
-        border
-        borderColor="#DB504A"
-        fullWidth
-        isOn={confirmed}
-        justifyContent="space-between"
-        onChange={setConfirmed}
-        text="Turn on notifications"
-        textStyle={{fontSize: 16, fontWeight: '600'}}
-      /> */}
-      <DotsLoading />
-      {/* <Text style={{fontSize: 20}}>
-        Information{' '}
-        <Tooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna arcu, vulputate ut pellentesque eget, fermentum ac tellus. Duis neque lorem, fermentum at suscipit ac, imperdiet vel sapien.">
-        <Icon name="information-circle" size={20} />
-        </Tooltip>
-      </Text> */}
-      {/* <Toast
-        visible={visibleTop}
-        text="Toast top information"
-        backgroundColor="#DB504A"
-        fontSize={16}
-        icon="information-circle-outline"
-        setVisible={setVisibleTop}
-      />
-      <Toast
-        visible={visibleBottom}
-        text="Toast bottom information"
-        backgroundColor="#21295C"
-        fontSize={16}
-        position="bottom"
-        icon="cafe"
-        setVisible={setVisibleBottom}
-      />
-      <Button
-        rounded
-        full
-        text="Show toast top"
-        onPress={() => setVisibleTop(true)}
-      />
-      <Button
-        full
-        rounded
-        style={{marginTop: 20}}
-        text="Show toast bottom"
-        onPress={() => setVisibleBottom(true)}
-      /> */}
-      {/* <SlideAction
-        icon="lock-open"
-        // textPosition=''
-        iconOnCompleted="lock-closed"
-        text="Slide to confirm"
-        textOnCompleted="Confirmed"
-        onCompleted={() => setConfirmed(true)}
-      /> */}
-      {/* <Slider
-        thumbStyles={{
-          icon: 'analytics',
-          iconColor: '#DB504A',
-        }}
-        trackStyles={{
-          height: 10,
-          borderRadius: 5,
-          trackCompletedColor: '#DB504A',
-        }}
-        value={value}
-        onChange={setValue}
-      />
-
-      <Text
-        style={{
-          textAlign: 'center',
-          marginTop: 20,
-          fontSize: 18,
-          fontWeight: '600',
-        }}>
-        {value}
-      </Text> */}
-      {/* <ActionSheet
-        actions={[
-          {
-            text: 'Change profile picture',
-            icon: 'ear',
-            onPress: () => console.log('Change profile picture'),
-          },
-          {
-            text: 'View profile picture',
-            icon: 'eye',
-            onPress: () => console.log('View profile picture'),
-          },
-          {
-            text: 'View status',
-            icon: 'bandage',
-            onPress: () => console.log('View status'),
-          },
-        ]}
-        // theme={{theme: 'material'}}
-        showIconOnIos
-        setVisible={setVisible}
-        showCancelButton
-        showCloseButton
-        description="Select any action below to proceed"
-        title="Select an action"
-        visible={visible}
-      /> */}
-      {/* <AlertContainer theme="android" /> */}
-      {/* <Button text="Show" onPress={() => setVisible(true)} /> */}
-      {/* </View> */}
-      {/* <Image
-        source={{
-          uri: visible
-            ? 'https://static.vecteezy.com/system/resources/previews/030/465/953/large_2x/idyllic-retreat-tropical-beach-palm-tree-crystal-sea-nature-s-paradise-on-an-island-vertical-mobile-wallpaper-ai-generated-free-photo.jpg'
-            : 'https://i.ebayimg.com/images/g/WzwAAOSwA39hFZ5W/s-l1200.webp',
-        }}
-        style={{width: '100%', height: '100%'}}
-      />
-      <FloatingActionCard
-        title="Maldives hotel"
-        icon="star"
-        description="Lorem ipsum dolor"
-        image={{
-          uri: 'https://st3.depositphotos.com/1875497/12876/i/950/depositphotos_128766962-stock-photo-beautiful-tropical-maldives-resort-hotel.jpg',
-        }}
-        rating={5}
-        onPress={() => setVisible(!visible)}
-      /> */}
-      {/* <BottomTabNavigation
-        selectedIndex={0}
-        highlightedIconColor="#FFF"
-        values={[
-          {icon: 'home', text: 'Home', onPress: () => console.log('Home')},
-          {
-            icon: 'search',
-            text: 'Search',
-            onPress: () => console.log('Search'),
-          },
-          {
-            icon: 'add',
-            text: 'Add',
-            highlighted: true,
-            onPress: () => console.log('Add'),
-          },
-          {
-            icon: 'notifications',
-            text: 'Alerts',
-            onPress: () => console.log('Alerts'),
-          },
-          {
-            icon: 'cog',
-            text: 'Settings',
-            onPress: () => console.log('Settings'),
-          },
-        ]}
-      /> */}
-
-      {/* <DrawerNavigation
-        backgroundColor="#BEF0F3"
-        image={Logo}
-        items={[
-          {icon: 'home', text: 'Home', onPress: () => console.log('Home')},
-          {
-            text: 'User',
-            icon: 'person',
-            items: [
-              {
-                icon: 'person',
-                text: 'Profile',
-                onPress: () => console.log('Profile'),
-              },
-              {
-                icon: 'time',
-                text: 'History',
-                onPress: () => console.log('History'),
-              },
-              {
-                icon: 'star',
-                text: 'Starred',
-                onPress: () => console.log('Starred'),
-              },
-            ],
-          },
-          {
-            icon: 'cog',
-            text: 'Settings',
-            onPress: () => console.log('Settings'),
-          },
-        ]}
-      /> */}
-      {/* <Icon name="airplane" size={28} /> */}
+    <View style={[styles.root, {paddingTop: insets.top}]}>
+      <StatusBar barStyle="dark-content" />
+      {selected ? (
+        <DemoScreen demo={selected} onBack={() => setSelectedKey(null)} />
+      ) : (
+        <DemoList onSelect={demo => setSelectedKey(demo.key)} />
+      )}
     </View>
   );
 };
+
+type ListProps = {onSelect: (demo: Demo) => void};
+
+const DemoList = ({onSelect}: ListProps) => (
+  <SectionList
+    sections={demoSections}
+    keyExtractor={item => item.key}
+    stickySectionHeadersEnabled={false}
+    contentContainerStyle={styles.listContent}
+    ListHeaderComponent={
+      <View style={styles.hero}>
+        <Text style={styles.heroTitle}>RN Inkpad</Text>
+        <Text style={styles.heroSubtitle}>{demoCount} components</Text>
+      </View>
+    }
+    renderSectionHeader={({section}) => (
+      <Text style={styles.sectionTitle}>{section.title}</Text>
+    )}
+    renderItem={({item}) => (
+      <Pressable
+        onPress={() => onSelect(item)}
+        style={({pressed}) => [styles.item, pressed && styles.itemPressed]}>
+        <View style={styles.itemIcon}>
+          <Icon name={item.icon} size={22} color={palette.navy} />
+        </View>
+        <View style={styles.itemText}>
+          <Text style={styles.itemTitle}>{item.title}</Text>
+          <Text style={styles.itemDescription}>{item.description}</Text>
+        </View>
+        <Icon name="chevron-forward" size={18} color={palette.muted} />
+      </Pressable>
+    )}
+  />
+);
+
+type ScreenProps = {demo: Demo; onBack: () => void};
+
+const DemoScreen = ({demo, onBack}: ScreenProps) => {
+  const insets = useSafeAreaInsets();
+  const {Component} = demo;
+
+  return (
+    <View style={styles.root}>
+      <View style={styles.header}>
+        <Pressable onPress={onBack} hitSlop={12} style={styles.back}>
+          <Icon name="chevron-back" size={24} color={palette.navy} />
+          <Text style={styles.backText}>Components</Text>
+        </Pressable>
+        <Text style={styles.headerTitle} numberOfLines={1}>
+          {demo.title}
+        </Text>
+      </View>
+      <ScrollView
+        contentContainerStyle={[
+          styles.screenContent,
+          {paddingBottom: insets.bottom + 24},
+        ]}
+        keyboardShouldPersistTaps="handled">
+        <Component />
+      </ScrollView>
+    </View>
+  );
+};
+
+export const App = () => (
+  <SafeAreaProvider>
+    <Gallery />
+  </SafeAreaProvider>
+);
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    backgroundColor: palette.background,
+  },
+  hero: {
+    paddingHorizontal: 4,
+    paddingTop: 16,
+    paddingBottom: 8,
+  },
+  heroTitle: {
+    fontSize: 32,
+    fontWeight: '800',
+    color: palette.navy,
+  },
+  heroSubtitle: {
+    marginTop: 2,
+    fontSize: 14,
+    color: palette.muted,
+  },
+  listContent: {
+    paddingHorizontal: 16,
+    paddingBottom: 32,
+  },
+  sectionTitle: {
+    marginTop: 20,
+    marginBottom: 8,
+    paddingHorizontal: 4,
+    fontSize: 13,
+    fontWeight: '700',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    color: palette.muted,
+  },
+  item: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: palette.card,
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: palette.border,
+  },
+  itemPressed: {
+    opacity: 0.7,
+  },
+  itemIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: palette.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  itemText: {
+    flex: 1,
+  },
+  itemTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: palette.text,
+  },
+  itemDescription: {
+    marginTop: 2,
+    fontSize: 13,
+    color: palette.muted,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    backgroundColor: palette.card,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: palette.border,
+  },
+  back: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    minWidth: 120,
+  },
+  backText: {
+    fontSize: 16,
+    color: palette.navy,
+  },
+  headerTitle: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 17,
+    fontWeight: '700',
+    color: palette.text,
+    marginRight: 120,
+  },
+  screenContent: {
+    padding: 16,
+  },
+});

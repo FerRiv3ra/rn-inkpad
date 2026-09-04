@@ -69,3 +69,4 @@ coverage/
 # personal / local only
 .npmignore
 .npmrc
+.claude/
