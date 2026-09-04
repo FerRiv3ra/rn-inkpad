@@ -167,7 +167,8 @@
     },
     "github": {
       "release": true,
-      "releaseName": "v${version}"
+      "releaseName": "v${version}",
+      "releaseNotes": "awk '/^## \\[${version}\\]/{f=1;next} /^## \\[/{f=0} f' CHANGELOG.md"
     },
     "hooks": {
       "before:init": [

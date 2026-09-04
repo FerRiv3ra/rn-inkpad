@@ -70,7 +70,9 @@ yarn release            # stable: bumps, tags vX.Y.Z, publishes to npm (latest),
 yarn release:beta       # prerelease: X.Y.Z-beta.N published under the `next` tag
 ```
 
-`before:init` runs typecheck, lint and tests; `after:bump` builds `lib/`. You need `npm login`
+`before:init` runs typecheck, lint and tests; `after:bump` builds `lib/`.
+The GitHub release body is taken from `CHANGELOG.md`: add a `## [X.Y.Z] - YYYY-MM-DD` section for the
+version you are about to release before running the command. You need `npm login`
 (or an `NPM_TOKEN`) and a `GITHUB_TOKEN` with repo scope for the GitHub release.
 Alternatively push the tag and let `.github/workflows/release.yml` publish (requires the
 `NPM_TOKEN` repository secret).
