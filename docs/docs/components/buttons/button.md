@@ -7,6 +7,23 @@ title: Button
 
 The **Button** component in our library is a fundamental element for user interaction within applications. Buttons serve as clickable elements that trigger actions or navigate users through different parts of the application. They are versatile and can be styled to match the visual theme of the application, providing consistency in user interface design. With customizable properties such as size, color, and shape, our Button component offers flexibility to suit various design requirements and enhance user experience.
 
+<Snack name="Button" code={`import React from 'react';
+import {View} from 'react-native';
+import {ArrowRight, Plane, Save} from 'lucide-react-native';
+import {Button} from 'rn-inkpad';
+
+export default function App() {
+return (
+<View style={{flex: 1, justifyContent: 'center', padding: 24, gap: 12}}>
+<Button text="Solid" icon={Plane} onPress={() => {}} />
+<Button text="Outline rounded" icon={ArrowRight} iconPosition="right" buttonType="outline" rounded onPress={() => {}} />
+<Button text="Clear" icon={Save} buttonType="clear" onPress={() => {}} />
+<Button text="Loading" loading />
+<Button text="Disabled" disabled />
+</View>
+);
+}`} />
+
 ## Usage
 
 ### Basic usage

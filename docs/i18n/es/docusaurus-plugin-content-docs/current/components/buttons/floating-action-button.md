@@ -131,3 +131,10 @@ const styles = StyleSheet.create({
 ### Ejemplo con props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/buttons/fab-props_nco2eu.png" />
+
+## Iconos de abrir / cerrar
+
+| Nombre    | Tipo       | Por defecto           | Descripción                |
+| --------- | ---------- | --------------------- | -------------------------- |
+| openIcon  | `IconProp` | `icon` o más interno  | Icono con el menú cerrado. |
+| closeIcon | `IconProp` | `icon` o cruz interna | Icono con el menú abierto. |

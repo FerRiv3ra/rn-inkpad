@@ -36,6 +36,7 @@ const MyComponent = () => {
 | text | `string` | | Switch text. |
 | textStyle | `StyleProp<TextStyle>` | | Custom styles for your switch. |
 | onChange | `(value: boolean) => void` | | Function that returns the boolean value of the switch. |
+| testID | `string` | | Identifier for tests. See [Accessibility & testing](../accessibility). |
 </div>
 
 ## Usage props

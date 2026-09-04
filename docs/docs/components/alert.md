@@ -261,3 +261,10 @@ const  MyComponent  = () => {
 
   <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1710435468/GitHub/Simulator_Screen_Shot_-_iPhone_13_-_2024-03-13_at_19.34.56_qxssok.png" /> 
   <img width="40%" src="https://res.cloudinary.com/fercloudinary/image/upload/v1710435468/GitHub/Simulator_Screen_Shot_-_iPhone_13_-_2024-03-13_at_19.35.15_hs7gk3.png" />
+
+## Return values
+
+- `Alert.alert(...)` resolves `true` when confirmed and `false` when cancelled. The optional
+  third argument `onPress` runs only on confirm.
+- `Alert.prompt(...)` resolves the typed text, or `undefined` when cancelled.
+- Opening a new alert while another one is visible cancels the first one.

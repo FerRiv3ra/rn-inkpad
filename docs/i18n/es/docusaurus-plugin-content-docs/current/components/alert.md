@@ -261,3 +261,10 @@ const  MyComponent  = () => {
 
   <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1710435468/GitHub/Simulator_Screen_Shot_-_iPhone_13_-_2024-03-13_at_19.34.56_qxssok.png" /> 
   <img width="40%" src="https://res.cloudinary.com/fercloudinary/image/upload/v1710435468/GitHub/Simulator_Screen_Shot_-_iPhone_13_-_2024-03-13_at_19.35.15_hs7gk3.png" />
+
+## Valores de retorno
+
+- `Alert.alert(...)` resuelve `true` al confirmar y `false` al cancelar. El tercer argumento
+  opcional `onPress` solo se ejecuta al confirmar.
+- `Alert.prompt(...)` resuelve el texto escrito, o `undefined` al cancelar.
+- Abrir una alerta nueva mientras otra está visible cancela la primera.

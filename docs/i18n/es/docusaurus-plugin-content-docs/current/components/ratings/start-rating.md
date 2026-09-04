@@ -71,3 +71,9 @@ const MyComponent = () => {
 ### Ejemplo con props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-props_cnv5d5.gif" />
+
+## Iconos personalizados
+
+| Nombre | Tipo                                | Por defecto        | Descripción            |
+| ------ | ----------------------------------- | ------------------ | ---------------------- |
+| icons  | `{full: IconProp; empty: IconProp}` | estrellas internas | Iconos personalizados. |

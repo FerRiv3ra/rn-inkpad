@@ -106,6 +106,13 @@ All notable changes to this project are documented here. The format is based on
   the runtime behaviour it always had.
 - Exported `Tooltip`, all public prop types and `useAnimation` from the package root.
 
+### Docs
+
+- Live Expo Snack embeds (`<Snack code=... />`) that work across Docusaurus client-side navigation.
+- New pages: Theming, Accessibility & testing, and one per new component; DotsLoading and Tooltip
+  pages added; Icons page rewritten for `IconProp`; Spanish translations for all of them.
+- Docusaurus 3.10.
+
 ### Internal
 
 - Migrated to `react-native-builder-bob`, Yarn 4 workspaces, an Expo example gallery

@@ -97,3 +97,13 @@ const MyComponent = () => {
 ### Example with props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/input/input-props_vofom0.png" />
+
+## Icons
+
+`icon` and `rightIcon` accept any [IconProp](./icon). The password toggle and the search icon have
+built-in glyphs that you can replace:
+
+| Name             | Type       | Default              | Description                                |
+| ---------------- | ---------- | -------------------- | ------------------------------------------ |
+| showPasswordIcon | `IconProp` | built-in eye         | Toggle icon while the password is hidden.  |
+| hidePasswordIcon | `IconProp` | built-in crossed eye | Toggle icon while the password is visible. |

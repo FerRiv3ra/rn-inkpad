@@ -17,21 +17,10 @@ RN Inkpad fue desarrollada con el objetivo de facilitar la creación de interfac
 npm install rn-inkpad
 ```
 
-- Esta librería tiene [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) como única dependencia, sin embargo solo se utiliza una fuente, específicamete `Ionicons`.
+- Eso es todo: **rn-inkpad no tiene dependencias**. Los iconos los pones tú (lucide, @expo/vector-icons, tus SVG…), mira la página de [Iconos](./components/icon).
 
-```bash npm2yarn
-npm install react-native-vector-icons
-```
-
-:::tip[Information]
-Si usas **EXPO**, no tienes que hacer más instalaciones ya que el framework ya tiene esta librería preinstalada, sin embargo asegurate de tener instalada la libreria @expo/vector-icons en tu package.json
-:::
-
-Esta librería tiene diferentes instruciones de instalación y configuración para cada plataforma, sigue los pasos de su [guía de instalación](https://github.com/oblador/react-native-vector-icons#installation) para instalarla de forma correcta y así evitar errores.
-
-Una vez instalada la librería y la dependencia ya estamos listos para utilizar cada uno de los componentes.
+- Opcional: envuelve tu app en un [ThemeProvider](./theming) para cambiar los colores por defecto una sola vez. Todos los componentes aceptan también `testID` y props de accesibilidad, mira [Accesibilidad y testing](./accessibility).
 
 ## Extra
 
-- Enlace a [Ionicons](https://ionic.io/ionicons) para ver y buscar el nombre del ícono a utilizar.
-- Si tienes problemas instalando react-native-vector-icons, aquí hay una [plantilla](https://github.com/FerRiv3ra/react-native-template) con el paquete previamente instalado y configurado para ambas plataformas.
+- App de ejemplo con todos los componentes: [example/](https://github.com/FerRiv3ra/rn-inkpad/tree/main/example).

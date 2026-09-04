@@ -19,6 +19,8 @@ npm install rn-inkpad
 
 - That is it: **rn-inkpad has zero dependencies**. Icons are provided by you (lucide, @expo/vector-icons, your own SVGs…), see the [Icons](./components/icon) page.
 
+- Optional: wrap your app in a [ThemeProvider](./theming) to change the default colors once. Every component also accepts `testID` and accessibility props, see [Accessibility & testing](./accessibility).
+
 ## Extra
 
 - Example app with every component: [example/](https://github.com/FerRiv3ra/rn-inkpad/tree/main/example).

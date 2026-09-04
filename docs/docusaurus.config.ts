@@ -4,7 +4,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 const config: Config = {
   title: 'React Native Inkpad',
-  tagline: 'Fresh and updated UI Library',
+  tagline: 'Zero-dependency UI components for React Native',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -19,7 +19,6 @@ const config: Config = {
   projectName: 'rn-inkpad', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   // deploymentBranch: 'gh-pages',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -31,9 +30,6 @@ const config: Config = {
     localeConfigs: {
       en: {
         htmlLang: 'en-GB',
-      },
-      fa: {
-        direction: 'rtl',
       },
     },
   },
@@ -118,7 +114,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © 2024 RN-Inkpad.`,
+      copyright: `Copyright © ${new Date().getFullYear()} RN-Inkpad.`,
     },
     prism: {
       theme: prismThemes.github,

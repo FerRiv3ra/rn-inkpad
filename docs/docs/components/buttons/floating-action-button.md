@@ -131,3 +131,10 @@ const styles = StyleSheet.create({
 ### Example with props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/buttons/fab-props_nco2eu.png" />
+
+## Open / close icons
+
+| Name      | Type       | Default                  | Description                            |
+| --------- | ---------- | ------------------------ | -------------------------------------- |
+| openIcon  | `IconProp` | `icon` or built-in plus  | Icon while the actions menu is closed. |
+| closeIcon | `IconProp` | `icon` or built-in cross | Icon while the actions menu is open.   |

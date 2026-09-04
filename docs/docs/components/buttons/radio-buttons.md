@@ -149,3 +149,10 @@ const styles = StyleSheet.create({
 ### Example with props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/buttons/radio-props_pmrlcx.png" />
+
+## Custom icons
+
+| Name          | Type       | Default                | Description                  |
+| ------------- | ---------- | ---------------------- | ---------------------------- |
+| checkedIcon   | `IconProp` | built-in filled circle | Icon of the selected option. |
+| unCheckedIcon | `IconProp` | built-in empty circle  | Icon of the other options.   |

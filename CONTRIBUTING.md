@@ -47,3 +47,16 @@ To add or change a demo:
 2. Register it in `example/src/demos/registry.ts` (title, description, icon, category).
 
 Run it with `yarn example ios`, `yarn example android` or `yarn example web`.
+
+## Docs
+
+`docs/` is a Docusaurus site (English + Spanish), deployed to Firebase.
+
+```sh
+cd docs && npm install
+npm start          # dev server
+npm run build      # validates both locales
+```
+
+Pages live in `docs/docs`; Spanish copies in `docs/i18n/es/docusaurus-plugin-content-docs/current`.
+`<Snack code={`...`} />` embeds a live Expo Snack (registered globally in `src/theme/MDXComponents.tsx`).

@@ -71,3 +71,15 @@ const MyComponent = () => {
 ### Example with props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306851/packages/ratings/star-props_cnv5d5.gif" />
+
+## Custom icons
+
+```jsx
+import {Star, StarOff} from 'lucide-react-native';
+
+<StarRating icons={{full: Star, empty: StarOff}} />;
+```
+
+| Name  | Type                                | Default        | Description   |
+| ----- | ----------------------------------- | -------------- | ------------- |
+| icons | `{full: IconProp; empty: IconProp}` | built-in stars | Custom icons. |

@@ -97,3 +97,13 @@ const MyComponent = () => {
 ### Ejemplo con props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306860/packages/input/input-props_vofom0.png" />
+
+## Iconos
+
+`icon` y `rightIcon` aceptan cualquier [IconProp](./icon). El toggle de contraseña y la lupa tienen
+glyphs internos que puedes reemplazar:
+
+| Nombre           | Tipo       | Por defecto         | Descripción                               |
+| ---------------- | ---------- | ------------------- | ----------------------------------------- |
+| showPasswordIcon | `IconProp` | ojo interno         | Icono mientras la contraseña está oculta. |
+| hidePasswordIcon | `IconProp` | ojo tachado interno | Icono mientras la contraseña es visible.  |

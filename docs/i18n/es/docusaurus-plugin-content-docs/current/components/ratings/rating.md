@@ -53,3 +53,21 @@ const MyComponent = () => {
 ### Ejemplo con props
 
 <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306850/packages/ratings/rating-props_nyrl3h.png" />
+
+## Iconos personalizados
+
+Pasa tus propios iconos para cada estado. `half` usa `empty` si se omite.
+
+```jsx
+import {Heart, HeartCrack} from 'lucide-react-native';
+
+<Rating
+  rating={3.5}
+  icons={{full: Heart, empty: HeartCrack}}
+  color="#DB504A"
+/>;
+```
+
+| Nombre | Tipo                                                 | Por defecto               | Descripción        |
+| ------ | ---------------------------------------------------- | ------------------------- | ------------------ |
+| icons  | `{full: IconProp; half?: IconProp; empty: IconProp}` | estrella/corazón internos | Iconos por estado. |

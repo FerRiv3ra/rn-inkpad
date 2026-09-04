@@ -119,3 +119,10 @@ const MyComponent = () => {
 
   <img width="40%"  src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-android-light_n34v0f.png" /> 
   <img width="40%" src="https://res.cloudinary.com/fercloudinary/image/upload/v1716306846/packages/action-sheet/actionsheet-android-dark_vere4h.png" />
+
+## Icons
+
+| Name       | Type       | Default        | Description                   |
+| ---------- | ---------- | -------------- | ----------------------------- |
+| closeIcon  | `IconProp` | built-in cross | Icon of the top close button. |
+| cancelIcon | `IconProp` | built-in cross | Icon of the cancel button.    |
