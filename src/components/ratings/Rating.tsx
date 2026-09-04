@@ -20,22 +20,20 @@ export const Rating = ({
   style,
   total = 5,
 }: Props) => {
-  if (rating > total) {
-    rating = total;
-  }
+  const clamped = Math.min(Math.max(rating, 0), total);
+  const full = Math.floor(clamped);
+  const hasHalf = clamped - full > 0;
 
   const icons: IconName[] = [];
 
   for (let index = 0; index < total; index++) {
-    if (index <= rating - 1) {
+    if (index < full) {
       icons.push(icon);
+    } else if (index === full && hasHalf) {
+      icons.push(`${icon}-half`);
     } else {
       icons.push(`${icon}-outline`);
     }
-  }
-
-  if (rating.toString().includes('.')) {
-    icons[icons.indexOf(`${icon}-outline`)] = `${icon}-half`;
   }
 
   return (

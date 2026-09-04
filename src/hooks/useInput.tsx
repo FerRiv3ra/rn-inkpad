@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useInputStyles} from '.';
 import type {IconName, inputProps} from '../types';
 
@@ -14,6 +14,10 @@ export const useInput = ({
 }: inputProps) => {
   const [passwordVisible, setPasswordVisible] = useState(!password);
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    setPasswordVisible(!password);
+  }, [password]);
 
   const {inputStyle, titleStyle} = useInputStyles(
     type,

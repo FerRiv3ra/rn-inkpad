@@ -36,8 +36,7 @@ export default defineConfig([
     rules: {
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': 'error',
-      // TODO(fase 2): volver a 'error' cuando se corrijan las deps de los hooks.
-      'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/exhaustive-deps': 'error',
     },
   },
   {

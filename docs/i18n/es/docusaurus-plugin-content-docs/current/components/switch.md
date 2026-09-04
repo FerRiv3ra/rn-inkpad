@@ -27,7 +27,7 @@ const MyComponent = () => {
 | Nombre | Tipo | Predeterminado | Descripción |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
 | isOn | `boolean` | false | Establecer encendido o apagado. |
-| backgrounColor | `string` | #1DFF56 | Color de fondo cuando esta activado. |
+| backgroundColor | `string` | #1DFF56 | Color de fondo cuando esta activado. |
 | border | `boolean` | false | Activar o desactivar el borde. |
 | borderColor | `string` | | Color del borde. |
 | borderWidth | `number` | 2 | Ancho del borde. |
@@ -51,7 +51,7 @@ const MyComponent = () => {
 
   return (
     <Switch
-      backgrounColor="#DB504A"
+      backgroundColor="#DB504A"
       border
       borderColor="#DB504A"
       fullWidth

@@ -1,4 +1,4 @@
-import {Modal, Pressable, SafeAreaView, Text, View} from 'react-native';
+import {Modal, Pressable, SafeAreaView, Text} from 'react-native';
 import {useActionSheet} from '../../hooks';
 import {actionSheetStyles} from '../../theme/actionSheetStyles';
 import type {ActionSheetProps} from '../../types/actionSheetTypes';
@@ -29,9 +29,16 @@ export const ActionSheet = ({
   } = useActionSheet(actions?.length ?? 0, userTheme);
 
   return (
-    <Modal visible={visible} transparent>
-      <View style={actionSheetStyles.container}>
-        <View
+    <Modal
+      visible={visible}
+      transparent
+      onRequestClose={() => setVisible(false)}>
+      <Pressable
+        style={actionSheetStyles.container}
+        onPress={() => setVisible(false)}
+        accessibilityLabel="Close action sheet">
+        <Pressable
+          onPress={() => {}}
           style={[
             theme === 'cupertino'
               ? actionSheetStyles.controlsCupertino
@@ -111,8 +118,8 @@ export const ActionSheet = ({
               />
             )}
           </SafeAreaView>
-        </View>
-      </View>
+        </Pressable>
+      </Pressable>
     </Modal>
   );
 };

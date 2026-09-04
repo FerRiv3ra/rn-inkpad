@@ -14,7 +14,7 @@ export const SwitchDemo = () => {
       </Section>
       <Section title="Full width with text and border">
         <Switch
-          backgrounColor={palette.red}
+          backgroundColor={palette.red}
           border
           borderColor={palette.red}
           fullWidth

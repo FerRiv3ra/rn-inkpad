@@ -16,6 +16,8 @@ type Props = {
   onChange?: (value: number) => void;
 };
 
+const DEFAULT_REVIEWS = ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
+
 export const StarRating = ({
   defaultRating = 3,
   iconColor = '#FFD700',
@@ -28,29 +30,19 @@ export const StarRating = ({
   textColor = '#FFD700',
   textSize = 30,
 }: Props) => {
-  const [review, setReview] = useState<string>();
-  const [rating, setRating] = useState<number>(0);
+  const [rating, setRating] = useState<number>(defaultRating - 1);
 
-  let reviewsArray: string[] = [];
-
-  if (reviews) {
-    reviewsArray = reviews;
-  } else {
-    reviewsArray = ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
-  }
+  const reviewsArray = reviews ?? DEFAULT_REVIEWS;
+  // Derived, so a parent re-render never resets the selection.
+  const review = reviewsArray[rating];
 
   useEffect(() => {
     setRating(defaultRating - 1);
-    setReview(reviewsArray[defaultRating - 1]);
   }, [defaultRating]);
 
-  const handleChange = (rating: number) => {
-    setRating(rating);
-    setReview(reviewsArray[rating]);
-
-    if (onChange) {
-      onChange(rating + 1);
-    }
+  const handleChange = (index: number) => {
+    setRating(index);
+    onChange?.(index + 1);
   };
 
   return (

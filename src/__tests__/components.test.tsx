@@ -19,7 +19,7 @@ describe('rn-inkpad smoke tests', () => {
   it('renders Button and fires onPress', async () => {
     const onPress = jest.fn();
     await render(<Button text="Press me" onPress={onPress} />);
-    fireEvent.press(screen.getByText('Press me'));
+    await fireEvent.press(screen.getByText('Press me'));
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 

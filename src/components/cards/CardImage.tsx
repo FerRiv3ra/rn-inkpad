@@ -17,7 +17,14 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
 
   const [blur, setBlur] = useState(10);
 
+  // Primitive key so an inline `source` object does not restart the effect.
+  const sourceKey =
+    typeof source === 'object' && !Array.isArray(source) && 'uri' in source
+      ? source.uri
+      : source;
+
   useEffect(() => {
+    setBlur(10);
     const interval = setInterval(() => {
       setBlur(prevBlur => {
         if (prevBlur === 0) {
@@ -29,7 +36,7 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
     }, loadTime / 10);
 
     return () => clearInterval(interval);
-  }, [loadTime]);
+  }, [loadTime, sourceKey]);
 
   return (
     <View

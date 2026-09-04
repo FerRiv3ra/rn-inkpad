@@ -2,6 +2,9 @@ import type {StyleProp, TextStyle} from 'react-native';
 
 export type SwitchProps = {
   isOn?: boolean;
+  /** Track (and Android thumb) color when the switch is on. */
+  backgroundColor?: string;
+  /** @deprecated Typo kept for backwards compatibility. Use `backgroundColor`. */
   backgrounColor?: string;
   border?: boolean;
   borderColor?: string;

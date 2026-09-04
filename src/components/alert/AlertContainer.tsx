@@ -28,7 +28,9 @@ export function AlertContainer({
     icon: !!(prompt as AlertData)?.icon,
   });
 
-  if (!prompt) return;
+  if (!prompt) {
+    return null;
+  }
 
   const {placeholderColor, backgroundColor} = personalTheme ?? {};
 
@@ -51,7 +53,8 @@ export function AlertContainer({
       style={{zIndex: 9999}}
       visible={!!prompt}
       transparent
-      animationType={animationType}>
+      animationType={animationType}
+      onRequestClose={() => handlePress(true)}>
       <View
         style={{
           ...styles.modalContainer,
@@ -80,7 +83,7 @@ export function AlertContainer({
           {!ios && !!label && <Text style={{...styles.label}}>{label}</Text>}
           {!isAlert && (
             <TextInput
-              placeholder={placeholder ?? prompt.title}
+              placeholder={placeholder}
               onChangeText={setTextInput}
               placeholderTextColor={
                 placeholderColor

@@ -27,15 +27,13 @@ export const RadioButtons = ({
 
   const {flexDirection, spacing} = useDirection(iconPosition, gap);
 
+  // Derive a primitive so inline `values` arrays do not re-run the effect.
+  const defaultValue =
+    defaultChecked !== undefined ? values[defaultChecked]?.value : undefined;
+
   useEffect(() => {
-    if (defaultChecked !== undefined) {
-      const {value} = values[defaultChecked];
-
-      setChecked(value);
-    }
-
-    return () => setChecked(undefined);
-  }, [defaultChecked]);
+    setChecked(defaultValue);
+  }, [defaultValue]);
 
   const handlePress = (value: string | number) => {
     setChecked(value);

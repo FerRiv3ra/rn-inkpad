@@ -26,13 +26,10 @@ export const FloatingActionButton = ({
   };
 
   const handlePress = () => {
-    if (!!actions && !onPress) {
+    if (actions?.length) {
       setShowActions(!showActions);
-    } else {
-      if (onPress) {
-        onPress();
-      }
     }
+    onPress?.();
   };
 
   return (

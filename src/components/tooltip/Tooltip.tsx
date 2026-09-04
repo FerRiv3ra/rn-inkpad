@@ -1,13 +1,13 @@
 import type {ComponentRef, ReactElement} from 'react';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import type {LayoutChangeEvent} from 'react-native';
 import {
   Animated,
-  Dimensions,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import {useAnimation} from '../../hooks';
 import {Triangle} from './Triangle';
@@ -29,10 +29,19 @@ export const Tooltip = ({text, children}: Props) => {
   }>({});
 
   const viewRef = useRef<ComponentRef<typeof View>>(null);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimer.current) {
+        clearTimeout(hideTimer.current);
+      }
+    };
+  }, []);
 
   const {opacity, fadeIn, fadeOut} = useAnimation();
 
-  const {width} = Dimensions.get('screen');
+  const {width} = useWindowDimensions();
 
   const handleLayout = (event: LayoutChangeEvent) => {
     const {width, height} = event.nativeEvent.layout;
@@ -70,7 +79,8 @@ export const Tooltip = ({text, children}: Props) => {
   const handleVisible = () => {
     if (tooltipVisible) {
       fadeOut(500);
-      setTimeout(() => {
+      hideTimer.current = setTimeout(() => {
+        hideTimer.current = null;
         setTooltipVisible(false);
       }, 500);
     } else {

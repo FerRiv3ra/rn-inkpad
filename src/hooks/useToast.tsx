@@ -11,32 +11,43 @@ export const useToast = (
   const translateY = useRef(
     new Animated.Value(position === 'bottom' ? 100 : -100),
   ).current;
+  // Keep the latest callback without restarting the timer on every render.
+  const onHideRef = useRef(onHide);
+  onHideRef.current = onHide;
 
   useEffect(() => {
     if (visible) {
       setShow(true);
-      Animated.timing(translateY, {
+      const animation = Animated.timing(translateY, {
         toValue: 0,
         duration: 500,
         useNativeDriver: true,
-      }).start();
+      });
+      animation.start();
 
       const timer = setTimeout(() => {
-        if (onHide) {
-          onHide(false);
-        }
+        onHideRef.current?.(false);
       }, duration);
 
-      return () => clearTimeout(timer);
-    } else {
-      Animated.timing(translateY, {
-        toValue: position === 'bottom' ? 100 : -100,
-        duration: 500,
-        useNativeDriver: true,
-      }).start(() => setShow(false));
+      return () => {
+        clearTimeout(timer);
+        animation.stop();
+      };
     }
-    return undefined;
-  }, [visible, translateY, duration, onHide, position]);
+
+    const animation = Animated.timing(translateY, {
+      toValue: position === 'bottom' ? 100 : -100,
+      duration: 500,
+      useNativeDriver: true,
+    });
+    animation.start(({finished}) => {
+      if (finished) {
+        setShow(false);
+      }
+    });
+
+    return () => animation.stop();
+  }, [visible, translateY, duration, position]);
 
   return {
     show,

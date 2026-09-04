@@ -1,39 +1,38 @@
+const HEX_6 = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+const HEX_3 = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+const RGB = /^rgb\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*\)$/i;
+
+const inRange = (n: number) => Number.isFinite(n) && n >= 0 && n <= 255;
+
+/**
+ * Converts `#rgb`, `#rrggbb` or `rgb(r, g, b)` to `rgba(r, g, b, alpha)`.
+ * `rgba(...)` values are returned untouched. Returns undefined for anything else.
+ */
 export const colorToRgba = (color: string, alpha = 0.2): string | undefined => {
-  const hexRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
-  const rgbRegex = /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/;
+  const value = color.trim();
 
-  let result;
-  let r, g, b;
-
-  if (color.startsWith('rgba')) {
-    return color;
+  if (value.toLowerCase().startsWith('rgba')) {
+    return value;
   }
 
-  if (hexRegex.test(color)) {
-    result = hexRegex.exec(color);
-    if (result) {
-      r = parseInt(result[1], 16);
-      g = parseInt(result[2], 16);
-      b = parseInt(result[3], 16);
-    }
-  } else if (rgbRegex.test(color)) {
-    result = rgbRegex.exec(color);
-    if (result) {
-      r = parseInt(result[1]);
-      g = parseInt(result[2]);
-      b = parseInt(result[3]);
-    }
-  } else {
+  let channels: number[] | undefined;
+
+  const hex6 = HEX_6.exec(value);
+  const hex3 = HEX_3.exec(value);
+  const rgb = RGB.exec(value);
+
+  if (hex6) {
+    channels = hex6.slice(1, 4).map(c => parseInt(c, 16));
+  } else if (hex3) {
+    channels = hex3.slice(1, 4).map(c => parseInt(c + c, 16));
+  } else if (rgb) {
+    channels = rgb.slice(1, 4).map(c => Math.round(parseFloat(c)));
+  }
+
+  if (!channels || !channels.every(inRange)) {
     return undefined;
   }
 
-  if (r !== undefined && g !== undefined && b !== undefined) {
-    if (r >= 0 && r <= 255 && g >= 0 && g <= 255 && b >= 0 && b <= 255) {
-      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-    } else {
-      return undefined;
-    }
-  } else {
-    return undefined;
-  }
+  const [r, g, b] = channels;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };

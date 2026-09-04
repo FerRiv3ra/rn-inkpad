@@ -14,14 +14,21 @@ export const SegmentedControl = ({
   selectedTextColor = '#000000',
   style,
 }: SegmentedControlProps) => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(selectedIndex ?? 0);
 
+  // Keep in sync when `selectedIndex` changes after mount.
   useEffect(() => {
-    setSelected(selectedIndex ? selectedIndex : 0);
-  }, []);
+    if (selectedIndex !== undefined) {
+      setSelected(selectedIndex);
+    }
+  }, [selectedIndex]);
 
   const handlePress = (idx: number) => {
-    onChange(values[idx].value);
+    const item = values[idx];
+    if (!item) {
+      return;
+    }
+    onChange(item.value);
     setSelected(idx);
   };
   return (

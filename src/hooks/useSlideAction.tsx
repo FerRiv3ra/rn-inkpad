@@ -9,55 +9,58 @@ export const useSlideAction = (
   onCompleted?: () => void,
 ) => {
   const [thumbLeft, setThumbLeft] = useState(padding);
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(isCompleted);
   const [showText, setShowText] = useState(true);
   const containerWidth = useRef(0);
+  const onCompletedRef = useRef(onCompleted);
+  onCompletedRef.current = onCompleted;
 
+  const endPosition = () =>
+    Math.max(containerWidth.current - (thumbWidth + padding), padding);
+
+  // Sync with the controlled `isCompleted` prop.
   useEffect(() => {
     setCompleted(isCompleted);
-  }, [isCompleted]);
-
-  useEffect(() => {
     if (isCompleted) {
       if (containerWidth.current > 0) {
-        setThumbLeft(containerWidth.current - (thumbWidth + padding));
+        setThumbLeft(endPosition());
       }
     } else {
       setThumbLeft(padding);
     }
-  }, [isCompleted, containerWidth.current]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCompleted, padding, thumbWidth]);
 
   const handlePanResponderMove = (
-    _: any,
+    _: unknown,
     gestureState: PanResponderGestureState,
   ) => {
     setShowText(false);
-    const newValue = thumbLeft + gestureState.dx;
     const boundedValue = Math.max(
       0,
-      Math.min(newValue, containerWidth.current - (thumbWidth + padding)),
+      Math.min(thumbLeft + gestureState.dx, endPosition()),
     );
     setThumbLeft(boundedValue);
   };
 
   const handlePanResponderRelease = () => {
-    if (thumbLeft < containerWidth.current - (thumbWidth + padding)) {
+    if (thumbLeft < endPosition()) {
       setThumbLeft(padding);
       setCompleted(false);
     } else {
       setCompleted(true);
-      if (onCompleted) {
-        onCompleted();
-      }
+      onCompletedRef.current?.();
     }
 
     setShowText(true);
   };
 
   const handleLayout = (event: LayoutChangeEvent) => {
-    const {width} = event.nativeEvent.layout;
-
-    containerWidth.current = width;
+    containerWidth.current = event.nativeEvent.layout.width;
+    // The layout arrives after the first render: place the thumb accordingly.
+    if (completed) {
+      setThumbLeft(endPosition());
+    }
   };
 
   const panResponder = PanResponder.create({

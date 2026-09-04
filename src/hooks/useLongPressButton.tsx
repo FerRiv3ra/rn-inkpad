@@ -1,15 +1,17 @@
-import {useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import type {ViewStyle} from 'react-native';
 import {useAnimation} from './useAnimation';
+
+const RELEASE_TICK_MS = 10;
 
 export const useLongPressButton = (
   longPressTime = 2000,
   onFinish?: () => void,
 ) => {
   const [number, setNumber] = useState<number>(0);
-  const [intervalId, setIntervalId] = useState<ReturnType<
-    typeof setInterval
-  > | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const onFinishRef = useRef(onFinish);
+  onFinishRef.current = onFinish;
 
   const {scale, scaleValue} = useAnimation();
 
@@ -19,52 +21,56 @@ export const useLongPressButton = (
     'center-to-ends': 'center',
   };
 
+  const clear = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  // Never leave an interval running after unmount.
+  useEffect(() => clear, [clear]);
+
+  // Completion is handled here, outside the state updater, so side effects
+  // run exactly once even in StrictMode.
+  useEffect(() => {
+    if (number >= 100) {
+      clear();
+      scale(0.9, 1);
+      setNumber(0);
+      onFinishRef.current?.();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [number, clear]);
+
+  const startCounting = () => {
+    clear();
+    intervalRef.current = setInterval(() => {
+      setNumber(prev => Math.min(prev + 1, 100));
+    }, longPressTime / 100);
+  };
+
+  const decreaseCount = () => {
+    clear();
+    intervalRef.current = setInterval(() => {
+      setNumber(prev => {
+        if (prev <= 1) {
+          clear();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, RELEASE_TICK_MS);
+  };
+
   const handlePressIn = () => {
     scale(1, 0.9);
-    clearInterval(intervalId!);
     startCounting();
   };
 
   const handlePressOut = () => {
     scale(0.9, 1);
-    clearInterval(intervalId!);
     decreaseCount();
-  };
-
-  const startCounting = () => {
-    const speed = 100 / (longPressTime / 1000);
-    const interval = 100 / speed;
-
-    const id = setInterval(() => {
-      setNumber(prevNumber => {
-        if (prevNumber < 100) {
-          return prevNumber + 1;
-        } else {
-          clearInterval(id);
-          scale(0.9, 1);
-          setNumber(0);
-          if (onFinish) {
-            onFinish();
-          }
-          return prevNumber;
-        }
-      });
-    }, interval);
-    setIntervalId(id);
-  };
-
-  const decreaseCount = () => {
-    const id = setInterval(() => {
-      setNumber(prevNumber => {
-        if (prevNumber > 0) {
-          return prevNumber - 1;
-        } else {
-          clearInterval(id);
-          return prevNumber;
-        }
-      });
-    }, 10);
-    setIntervalId(id);
   };
 
   return {

@@ -47,7 +47,7 @@ export const Button = ({
         style,
       ]}>
       {loading ? (
-        <ActivityIndicator color={color} size={spinnerSize} />
+        <ActivityIndicator color={textColor} size={spinnerSize} />
       ) : (
         <>
           {!!icon && <Icon name={icon} size={iconSize} color={textColor} />}

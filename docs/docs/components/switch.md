@@ -27,7 +27,7 @@ const MyComponent = () => {
 | Name | Type | Default | Description |
 | --------------- | ---------------------- | -------- |----------------------------------------------------- |
 | isOn | `boolean` | false | Set on or off. |
-| backgrounColor | `string` | #1DFF56 | Activated background color. |
+| backgroundColor | `string` | #1DFF56 | Activated background color. |
 | border | `boolean` | false | Turn the border on or off. |
 | borderColor | `string` | | Border color. |
 | borderWidth | `number` | 2 | Border width. |
@@ -51,7 +51,7 @@ const MyComponent = () => {
 
   return (
     <Switch
-      backgrounColor="#DB504A"
+      backgroundColor="#DB504A"
       border
       borderColor="#DB504A"
       fullWidth

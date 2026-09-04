@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Pressable, Text} from 'react-native';
 import {Icon} from '../';
 import type {CheckBoxProps} from '../../types';
@@ -16,6 +16,11 @@ export const CheckBox = ({
   onChange,
 }: CheckBoxProps) => {
   const [isChecked, setIsChecked] = useState(checked);
+
+  // Keep in sync when used as a controlled component.
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
 
   const toggleCheck = () => {
     if (onChange) {

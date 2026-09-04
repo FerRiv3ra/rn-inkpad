@@ -1,10 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import type {ComponentRef} from 'react';
 import type {TextInput} from 'react-native';
-import {
-  notifySubscribers,
-  subscribeToModalChange,
-} from '../helpers/subscribers';
+import {closeModal, subscribeToModalChange} from '../helpers/subscribers';
 import type {AlertData, PromptData} from '../types/alertTypes';
 
 export const useAlertContainer = () => {
@@ -15,35 +12,31 @@ export const useAlertContainer = () => {
   const inputRef = useRef<ComponentRef<typeof TextInput>>(null);
 
   useEffect(() => {
-    subscribeToModalChange((data, alert) => {
+    // Subscribe once; the returned function removes the listener on unmount.
+    return subscribeToModalChange((data, alert) => {
       setPrompt(data);
       setIsAlert(!!alert);
       setTextInput('');
     });
-  }, [prompt]);
+  }, []);
 
   useEffect(() => {
-    if (!isAlert) {
+    if (prompt && !isAlert) {
       inputRef.current?.focus();
     }
-  }, [prompt]);
+  }, [prompt, isAlert]);
 
   const handlePress = (cancel = false, callback?: () => void) => {
     if (!isAlert) {
-      notifySubscribers(
-        cancel
-          ? undefined
-          : {
-              title: textInput,
-            },
-      );
+      closeModal(cancel ? undefined : {title: textInput});
+      return;
+    }
+
+    if (callback) {
+      callback();
+      closeModal(undefined);
     } else {
-      if (callback) {
-        callback();
-        notifySubscribers(undefined);
-      } else {
-        notifySubscribers(cancel ? undefined : prompt);
-      }
+      closeModal(cancel ? undefined : prompt);
     }
   };
 

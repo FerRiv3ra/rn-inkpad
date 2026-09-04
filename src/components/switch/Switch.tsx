@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   Platform,
   Switch as RNSwitch,
@@ -7,14 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {warnDeprecated} from '../../helpers/deprecate';
 import type {SwitchProps} from '../../types';
 
 export const Switch = ({
-  backgrounColor = '#1DFF56',
+  backgroundColor,
+  backgrounColor,
   border,
   borderColor,
   borderWidth = 2,
-  isOn,
+  isOn = false,
   fullWidth,
   justifyContent,
   onChange,
@@ -24,36 +26,46 @@ export const Switch = ({
   const [isEnabled, setIsEnabled] = useState(isOn);
   const isWeb = Platform.OS === 'web';
 
+  if (backgrounColor !== undefined) {
+    warnDeprecated(
+      'Switch: `backgrounColor` is deprecated, use `backgroundColor` instead.',
+    );
+  }
+  const onColor = backgroundColor ?? backgrounColor ?? '#1DFF56';
+
+  // Keep the internal state in sync when used as a controlled component.
+  useEffect(() => {
+    setIsEnabled(isOn);
+  }, [isOn]);
+
   const toggleSwitch = () => {
-    setIsEnabled(!isEnabled);
-    if (onChange) {
-      onChange(!isEnabled);
-    }
+    const next = !isEnabled;
+    setIsEnabled(next);
+    onChange?.(next);
   };
 
   return (
     <View
-      style={{
-        width: fullWidth ? '100%' : 'auto',
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 5,
-        justifyContent,
-      }}>
-      {text && <Text style={textStyle}>{text}</Text>}
+      style={[
+        styles.row,
+        {width: fullWidth ? '100%' : 'auto', justifyContent},
+      ]}>
+      {!!text && <Text style={textStyle}>{text}</Text>}
 
       {isWeb ? (
         <TouchableOpacity
+          accessibilityRole="switch"
+          accessibilityState={{checked: isEnabled}}
           onPress={toggleSwitch}
           style={[
             styles.switchContainer,
             {borderWidth: border ? borderWidth : 0, borderColor},
-            {backgroundColor: isOn ? backgrounColor : '#D9D9DB'},
+            {backgroundColor: isEnabled ? onColor : '#D9D9DB'},
           ]}>
           <View
             style={[
               styles.thumb,
-              {alignSelf: isOn ? 'flex-end' : 'flex-start'},
+              {alignSelf: isEnabled ? 'flex-end' : 'flex-start'},
             ]}
           />
         </TouchableOpacity>
@@ -65,8 +77,8 @@ export const Switch = ({
             borderRadius: 16,
           }}>
           <RNSwitch
-            trackColor={{false: '#D9D9DB', true: backgrounColor}}
-            thumbColor={Platform.OS === 'android' ? backgrounColor : ''}
+            trackColor={{false: '#D9D9DB', true: onColor}}
+            thumbColor={Platform.OS === 'android' ? onColor : undefined}
             onValueChange={toggleSwitch}
             value={isEnabled}
           />
@@ -77,6 +89,11 @@ export const Switch = ({
 };
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
   switchContainer: {
     width: 50,
     height: 30,

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import type {TabControlProps} from '../../types';
 
@@ -16,11 +16,18 @@ export const TabControl = ({
 }: TabControlProps) => {
   const [selected, setSelected] = useState(selectedIndex);
 
+  // Keep in sync when `selectedIndex` changes after mount.
+  useEffect(() => {
+    setSelected(selectedIndex);
+  }, [selectedIndex]);
+
   const handlePress = (idx: number) => {
     setSelected(idx);
   };
 
-  const Component = values[selected].renderItem;
+  // Fall back to the first tab when the index is out of range.
+  const current = values[selected] ?? values[0];
+  const Component = current?.renderItem;
 
   return (
     <View style={style}>
@@ -62,7 +69,7 @@ export const TabControl = ({
         ))}
       </View>
       <View style={[{paddingBottom: 5}, containerStyle]}>
-        <Component />
+        {!!Component && <Component />}
       </View>
     </View>
   );

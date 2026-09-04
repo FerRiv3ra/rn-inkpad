@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react';
 import type {StyleProp, ViewStyle} from 'react-native';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import type {ActionSheet, ValidTheme} from '../../types/actionSheetTypes';
@@ -25,15 +24,11 @@ export const ActionSheetButton = ({
   textColor,
   theme,
 }: Props) => {
-  const [edges, setEdges] = useState<StyleProp<ViewStyle>>({});
   const isIos = theme === 'cupertino';
 
   const {text, icon, iconColor, textStyle, onPress} = action;
 
-  useEffect(() => {
-    setEdges(border());
-  }, [radius]);
-
+  // Derived directly so the first render already has rounded corners.
   const border = (): StyleProp<ViewStyle> => {
     if (!isIos) {
       return {};
@@ -61,6 +56,8 @@ export const ActionSheetButton = ({
 
     return {};
   };
+
+  const edges = border();
 
   return (
     <Pressable

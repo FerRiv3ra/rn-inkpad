@@ -1,62 +1,64 @@
 import type {AlertData, PromptData} from '../types/alertTypes';
-import {
-  notifySubscribers,
-  subscribeToModalChange,
-  subscribers,
-} from './subscribers';
+import {openModal} from './subscribers';
 
 export namespace Alert {
+  /**
+   * Shows an alert and resolves `true` when confirmed, `false` when cancelled.
+   * Requires an `<AlertContainer />` mounted somewhere in the tree.
+   */
   export function alert(params: AlertData): Promise<boolean>;
   export function alert(
     title: string,
-    description: string,
+    description?: string,
     onPress?: () => void,
   ): Promise<boolean>;
-  export function alert(
+  export async function alert(
     param1: AlertData | string,
     param2?: string,
+    onPress?: () => void,
   ): Promise<boolean> {
-    let data: AlertData;
-    if (typeof param1 === 'string') {
-      data = {title: param1, description: param2!};
-    } else {
-      data = param1;
-    }
-    notifySubscribers(data, true);
+    const data: AlertData =
+      typeof param1 === 'string'
+        ? {title: param1, description: param2}
+        : param1;
 
-    return new Promise(res => {
-      subscribeToModalChange(data => {
-        subscribers.shift();
-        res(!!data);
-        notifySubscribers(undefined);
-      });
-    });
+    const result = await openModal(data, true);
+    const confirmed = !!result;
+
+    if (confirmed && onPress) {
+      onPress();
+    }
+
+    return confirmed;
   }
 
-  export function prompt(params: PromptData): Promise<string>;
+  /**
+   * Shows a prompt and resolves with the typed text, or `undefined` when
+   * cancelled.
+   */
+  export function prompt(params: PromptData): Promise<string | undefined>;
   export function prompt(
     title: string,
     description?: string,
-    onPress?: () => void,
-  ): Promise<string>;
-  export function prompt(
+    onPress?: (value: string) => void,
+  ): Promise<string | undefined>;
+  export async function prompt(
     param1: PromptData | string,
     param2?: string,
-  ): Promise<string> {
-    let data: PromptData;
-    if (typeof param1 === 'string') {
-      data = {title: param1, description: param2};
-    } else {
-      data = param1;
-    }
-    notifySubscribers(data);
+    onPress?: (value: string) => void,
+  ): Promise<string | undefined> {
+    const data: PromptData =
+      typeof param1 === 'string'
+        ? {title: param1, description: param2}
+        : param1;
 
-    return new Promise(res => {
-      subscribeToModalChange(data => {
-        subscribers.shift();
-        res(data?.title!);
-        notifySubscribers(undefined);
-      });
-    });
+    const result = await openModal(data, false);
+    const value = result?.title;
+
+    if (value !== undefined && onPress) {
+      onPress(value);
+    }
+
+    return value;
   }
 }

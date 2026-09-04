@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useEffect, useMemo} from 'react';
 import type {ViewStyle} from 'react-native';
 import {Animated, StyleSheet, View} from 'react-native';
 
@@ -17,10 +17,11 @@ export const DotsLoading = ({
   speed = 600,
   style,
 }: Props) => {
-  // Create Animated.Value for each dot
-  const animatedValues = useRef<Animated.Value[]>(
-    Array.from({length: dotCount}, () => new Animated.Value(0)),
-  ).current;
+  // One Animated.Value per dot, recreated only when dotCount changes.
+  const animatedValues = useMemo(
+    () => Array.from({length: dotCount}, () => new Animated.Value(0)),
+    [dotCount],
+  );
 
   useEffect(() => {
     // Create looping animations with staggered delay
@@ -47,12 +48,13 @@ export const DotsLoading = ({
       Animated.sequence([Animated.delay((speed / dotCount) * i), anim]),
     );
 
-    // Execute all in parallel
-    Animated.parallel(staggered).start();
+    // Execute all in parallel and stop the loop on unmount or prop change.
+    const animation = Animated.parallel(staggered);
+    animation.start();
 
-    // Clean up on unmount
     return () => {
-      animatedValues.forEach(av => av.stopAnimation());
+      animation.stop();
+      animatedValues.forEach(av => av.setValue(0));
     };
   }, [animatedValues, speed, dotCount]);
 
