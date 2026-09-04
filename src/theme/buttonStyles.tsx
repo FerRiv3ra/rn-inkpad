@@ -33,6 +33,10 @@ export const buttonStyles = StyleSheet.create({
 });
 
 export const longPressButtonStyles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    alignItems: 'center',
+  },
   button: {
     overflow: 'hidden',
     justifyContent: 'center',

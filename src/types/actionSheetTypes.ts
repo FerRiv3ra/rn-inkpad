@@ -1,3 +1,4 @@
+import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle} from 'react-native';
 import type {IconName} from './iconType';
 
@@ -20,7 +21,7 @@ export type ActionSheetTheme = {
   theme?: ValidTheme;
 };
 
-export type ActionSheetProps = {
+export type ActionSheetProps = A11yProps & {
   actions?: ActionSheet[];
   cancelText?: string;
   description?: string;

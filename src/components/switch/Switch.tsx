@@ -11,6 +11,8 @@ import {warnDeprecated} from '../../helpers/deprecate';
 import type {SwitchProps} from '../../types';
 
 export const Switch = ({
+  accessibilityHint,
+  accessibilityLabel,
   backgroundColor,
   backgrounColor,
   border,
@@ -20,6 +22,7 @@ export const Switch = ({
   fullWidth,
   justifyContent,
   onChange,
+  testID,
   textStyle,
   text,
 }: SwitchProps) => {
@@ -55,7 +58,10 @@ export const Switch = ({
       {isWeb ? (
         <TouchableOpacity
           accessibilityRole="switch"
+          accessibilityLabel={accessibilityLabel ?? text}
+          accessibilityHint={accessibilityHint}
           accessibilityState={{checked: isEnabled}}
+          testID={testID}
           onPress={toggleSwitch}
           style={[
             styles.switchContainer,
@@ -77,6 +83,9 @@ export const Switch = ({
             borderRadius: 16,
           }}>
           <RNSwitch
+            accessibilityLabel={accessibilityLabel ?? text}
+            accessibilityHint={accessibilityHint}
+            testID={testID}
             trackColor={{false: '#D9D9DB', true: onColor}}
             thumbColor={Platform.OS === 'android' ? onColor : undefined}
             onValueChange={toggleSwitch}

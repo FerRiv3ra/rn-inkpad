@@ -8,9 +8,10 @@ type Props = {
   button: ButtonType;
   color?: ValidColor;
   style?: StyleProp<ViewStyle>;
+  testID?: string;
 };
 
-export const CardButton = ({button, color, style}: Props) => {
+export const CardButton = ({button, color, style, testID}: Props) => {
   const [isPressed, setIsPressed] = useState(false);
 
   let rgbaColor: string | undefined;
@@ -25,17 +26,17 @@ export const CardButton = ({button, color, style}: Props) => {
 
   const handlePressOut = () => {
     setIsPressed(false);
-
-    if (button.onPress) {
-      button.onPress();
-    }
   };
 
   return (
     <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={button.text}
+      testID={testID}
       style={[style, isPressed && {backgroundColor: rgbaColor}]}
       onPressIn={handlePressIn}
-      onPressOut={handlePressOut}>
+      onPressOut={handlePressOut}
+      onPress={button.onPress}>
       <Text style={{color, fontWeight: '600'}}>{button.text}</Text>
     </Pressable>
   );

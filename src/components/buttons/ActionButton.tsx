@@ -6,6 +6,10 @@ import {Icon} from '../icon/Icon';
 
 type Props = {
   icon: IconName;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+  accessibilityState?: {expanded?: boolean};
+  testID?: string;
   align?: 'left' | 'right';
   backgroundColor?: string;
   iconColor?: string;
@@ -17,6 +21,9 @@ type Props = {
 };
 
 export const ActionButton = ({
+  accessibilityHint,
+  accessibilityLabel,
+  accessibilityState,
   align,
   backgroundColor,
   icon,
@@ -25,6 +32,7 @@ export const ActionButton = ({
   onPress,
   margin = 0,
   size = 50,
+  testID,
   text,
 }: Props) => {
   return (
@@ -39,6 +47,11 @@ export const ActionButton = ({
         </View>
       )}
       <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel ?? text ?? icon}
+        accessibilityHint={accessibilityHint}
+        accessibilityState={accessibilityState}
+        testID={testID}
         onPress={onPress}
         activeOpacity={0.7}
         style={[

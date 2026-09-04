@@ -41,6 +41,32 @@ All notable changes to this project are documented here. The format is based on
   tapping the ActionSheet backdrop closes it.
 - **colorToRgba**: accepts 3-digit hex (`#fff`) and `rgb()` with spaces or decimals.
 
+### Performance
+
+- **Slider, SlideAction**: thumb position is now an `Animated.Value` driven by the native
+  driver; dragging no longer re-renders the component. The `PanResponder` is created once.
+- **ProgressBar**: width animates with `Animated.timing` instead of a 10 ms `setState` loop;
+  the percent label updates only when the integer changes.
+- **LongPressButton**: progress fill animates with `Animated.timing` instead of a 20 ms
+  `setState` loop.
+- **BottomTabNavigation, DrawerNavigation, RadioButtons, SegmentedControl, TabControl**:
+  list items are memoized with stable callbacks and stable keys.
+- Replaced `{...styleSheetObj}` spreads with style arrays so StyleSheet ids are preserved.
+
+### Accessibility
+
+- Every component accepts `testID`, `accessibilityLabel` and `accessibilityHint`
+  (see `A11yProps`). Sub elements derive ids from the root one, e.g. `${testID}-thumb`.
+- Roles and states: Button (button, disabled/busy), CheckBox (checkbox, checked), RadioButtons
+  (radiogroup / radio), Switch (switch), SegmentedControl and TabControl (tablist / tab, selected),
+  BottomTabNavigation (tablist / tab), DrawerNavigation (menu / menuitem, expanded),
+  Slider (adjustable with `accessibilityValue` and increment/decrement actions), SlideAction
+  (button with an `activate` action), ProgressBar and DotsLoading (progressbar), Rating (image with
+  "x of y" label), StarRating (radiogroup / radio), Toast (alert, live region), Tooltip, Input
+  (labelled field, "Show/Hide password" toggle), ActionSheet and Alert buttons, cards and avatar.
+- **Button**: pressing is disabled while `loading`.
+- **CardButton**: `onPress` fires on press instead of on press-out, so a cancelled touch no longer triggers it.
+
 ### Changed
 
 - **Switch**: `backgrounColor` (typo) is deprecated in favour of `backgroundColor`.

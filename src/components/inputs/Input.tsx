@@ -1,4 +1,11 @@
-import {Keyboard, Pressable, Text, TextInput, View} from 'react-native';
+import {
+  Keyboard,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {Icon} from '..';
 import {useInput} from '../../hooks';
 import {inputStyles} from '../../theme/inputStyles';
@@ -6,6 +13,8 @@ import type {inputProps} from '../../types';
 
 export const Input = (props: inputProps) => {
   const {
+    accessibilityHint,
+    accessibilityLabel,
     autoComplete,
     borderColor,
     borderRadius,
@@ -25,6 +34,7 @@ export const Input = (props: inputProps) => {
     rightIconSize,
     search = false,
     style,
+    testID,
     textColor,
     textContentType,
     textStyle,
@@ -64,7 +74,7 @@ export const Input = (props: inputProps) => {
               }}
             />
           )}
-          <Text style={[{...inputStyles.label, color: labelColor}, titleStyle]}>
+          <Text style={[inputStyles.label, {color: labelColor}, titleStyle]}>
             {label}
           </Text>
           {type === 'outlined' && (
@@ -82,14 +92,12 @@ export const Input = (props: inputProps) => {
         </View>
       )}
 
-      <View
-        style={{
-          ...inputStyles.input,
-          ...inputStyle,
-          flexDirection: 'row',
-        }}>
+      <View style={[inputStyles.input, inputStyle, styles.row]}>
         {icon && <Icon name={icon} color={iconColor} size={iconSize ?? 15} />}
         <TextInput
+          accessibilityLabel={accessibilityLabel ?? label ?? placeholder}
+          accessibilityHint={accessibilityHint}
+          testID={testID}
           style={[
             {
               flex: 1,
@@ -113,9 +121,18 @@ export const Input = (props: inputProps) => {
         />
         {(password || search || rightIcon) && (
           <Pressable
-            style={{
-              ...inputStyles.btnViewPass,
-            }}
+            accessibilityRole="button"
+            accessibilityLabel={
+              password
+                ? passwordVisible
+                  ? 'Hide password'
+                  : 'Show password'
+                : search
+                  ? 'Search'
+                  : 'Action'
+            }
+            testID={testID ? `${testID}-right-button` : undefined}
+            style={inputStyles.btnViewPass}
             onPress={handlePress}>
             <Icon
               style={inputStyles.icon}
@@ -129,3 +146,12 @@ export const Input = (props: inputProps) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+});

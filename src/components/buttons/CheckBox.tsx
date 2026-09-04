@@ -4,11 +4,14 @@ import {Icon} from '../';
 import type {CheckBoxProps} from '../../types';
 
 export const CheckBox = ({
+  accessibilityHint,
+  accessibilityLabel,
   checked = false,
   checkedIcon,
   iconColor = '#464EE5',
   iconSize = 20,
   style,
+  testID,
   textColor,
   textStyle,
   title = 'Item',
@@ -32,6 +35,11 @@ export const CheckBox = ({
 
   return (
     <Pressable
+      accessibilityRole="checkbox"
+      accessibilityLabel={accessibilityLabel ?? title}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{checked: isChecked}}
+      testID={testID}
       onPress={toggleCheck}
       style={[{flexDirection: 'row', alignItems: 'center', gap: 8}, style]}>
       <Icon

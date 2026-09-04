@@ -1,3 +1,4 @@
+import type {A11yProps} from './commonTypes';
 import type {
   KeyboardTypeOptions,
   StyleProp,
@@ -110,7 +111,7 @@ type textContentType =
   | 'birthdateYear'
   | undefined;
 
-export type inputProps = {
+export type inputProps = A11yProps & {
   autoComplete?: autoComplete;
   borderColor?: string;
   borderRadius?: number;

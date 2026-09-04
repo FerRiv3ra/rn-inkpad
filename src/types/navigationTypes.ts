@@ -1,3 +1,4 @@
+import type {A11yProps} from './commonTypes';
 import type {
   ImageSourcePropType,
   ImageStyle,
@@ -15,6 +16,8 @@ export type NavigationItemType = {
 
 export type NavigationItemProps = {
   item: NavigationItemType;
+  index: number;
+  testID?: string;
   highlightedBgColor?: string;
   iconColor?: string;
   iconSize?: number;
@@ -23,10 +26,10 @@ export type NavigationItemProps = {
   selectedheight?: number;
   textColor?: string;
   textStyle?: StyleProp<TextStyle>;
-  onPress?: () => void;
+  onPress?: (index: number) => void;
 };
 
-export type BottomTabNavigationProps = {
+export type BottomTabNavigationProps = A11yProps & {
   backgroundColor?: string;
   highlightedBgColor?: string;
   highlightedIconColor?: string;
@@ -54,7 +57,7 @@ export type GroupItem = {
 
 type Items = DrawerItemType | GroupItem;
 
-export type DrawerNavigationProps = {
+export type DrawerNavigationProps = A11yProps & {
   backgroundColor?: string;
   closeIcon?: IconName;
   collapseIcon?: IconName;

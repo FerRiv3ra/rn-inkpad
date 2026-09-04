@@ -24,6 +24,8 @@ export const Button = ({
 
   return (
     <TouchableOpacity
+      accessibilityRole="button"
+      accessibilityLabel={text}
       style={[
         styles.button,
         {borderLeftWidth: ios ? (isFirst ? 0 : buttons <= 2 ? 1 : 0) : 0},

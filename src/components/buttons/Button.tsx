@@ -5,6 +5,8 @@ import type {ButtonProps} from '../../types';
 import {Icon} from '../icon/Icon';
 
 export const Button = ({
+  accessibilityHint,
+  accessibilityLabel,
   activeOpacity = 0.6,
   buttonColor,
   buttonType,
@@ -19,6 +21,7 @@ export const Button = ({
   spinnerSize,
   style,
   text = 'Button',
+  testID,
   textStyle,
   onPress,
 }: ButtonProps) => {
@@ -31,9 +34,14 @@ export const Button = ({
 
   return (
     <TouchableOpacity
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel ?? text}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{disabled: !!disabled, busy: !!loading}}
+      testID={testID}
       activeOpacity={activeOpacity}
       onPress={onPress}
-      disabled={disabled}
+      disabled={disabled || loading}
       style={[
         buttonStyles.button,
         {

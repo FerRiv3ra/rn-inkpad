@@ -61,25 +61,21 @@ export const useAnimation = (props?: Props) => {
     }).start();
   };
 
-  const panResponder = PanResponder.create({
-    onStartShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event(
-      [
-        null,
-        {
-          dx: pan.x,
-          dy: pan.y,
-        },
-      ],
-      {useNativeDriver: false},
-    ),
-    onPanResponderRelease: () => {
-      Animated.spring(pan, {
-        toValue: {x: 0, y: 0},
+  // Created once: `pan` is a stable ref, so no need to rebuild per render.
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {
         useNativeDriver: false,
-      }).start();
-    },
-  });
+      }),
+      onPanResponderRelease: () => {
+        Animated.spring(pan, {
+          toValue: {x: 0, y: 0},
+          useNativeDriver: false,
+        }).start();
+      },
+    }),
+  ).current;
 
   const fadeIn = (duration = 300) => {
     Animated.timing(opacity, {

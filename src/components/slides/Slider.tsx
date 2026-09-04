@@ -1,12 +1,23 @@
-import {View} from 'react-native';
+import {Animated, StyleSheet, View} from 'react-native';
 
 import {Icon} from '../';
 import {useSlider} from '../../hooks';
 import {sliderStyles} from '../../theme';
 import type {SliderProps} from '../../types';
 
+const ACCESSIBILITY_ACTIONS = [{name: 'increment'}, {name: 'decrement'}];
+
 export const Slider = (props: SliderProps) => {
-  const {trackStyles, thumbStyles} = props;
+  const {
+    accessibilityHint,
+    accessibilityLabel,
+    maxValue = 100,
+    minValue = 0,
+    testID,
+    thumbStyles,
+    trackStyles,
+    value,
+  } = props;
 
   const {
     borderRadius: trackRadius = 0,
@@ -25,10 +36,24 @@ export const Slider = (props: SliderProps) => {
     width = 40,
   } = thumbStyles ?? {};
 
-  const {panResponder, handleLayout, thumbLeft} = useSlider(props, width!);
+  const {
+    completedTranslateX,
+    handleAccessibilityAction,
+    handleLayout,
+    panResponder,
+    thumbLeft,
+  } = useSlider(props, width);
 
   return (
     <View
+      accessible
+      accessibilityRole="adjustable"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityValue={{min: minValue, max: maxValue, now: value}}
+      accessibilityActions={ACCESSIBILITY_ACTIONS}
+      onAccessibilityAction={handleAccessibilityAction}
+      testID={testID}
       style={[
         sliderStyles.container,
         {
@@ -40,16 +65,25 @@ export const Slider = (props: SliderProps) => {
       {...panResponder.panHandlers}
       onLayout={handleLayout}>
       <View
+        pointerEvents="none"
         style={[
-          sliderStyles.track,
-          {
-            backgroundColor: trackCompletedColor,
-            width: thumbLeft + width! / 2,
-            borderRadius: trackRadius,
-          },
-        ]}
-      />
-      <View
+          StyleSheet.absoluteFill,
+          styles.clip,
+          {borderRadius: trackRadius},
+        ]}>
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              backgroundColor: trackCompletedColor,
+              borderRadius: trackRadius,
+              transform: [{translateX: completedTranslateX}],
+            },
+          ]}
+        />
+      </View>
+      <Animated.View
+        testID={testID ? `${testID}-thumb` : undefined}
         style={[
           sliderStyles.thumb,
           {
@@ -57,12 +91,18 @@ export const Slider = (props: SliderProps) => {
             width,
             height,
             borderRadius,
+            transform: [{translateX: thumbLeft}],
           },
-          {left: thumbLeft},
           shadow && sliderStyles.shadow,
         ]}>
         {icon && <Icon name={icon} color={iconColor} size={iconSize} />}
-      </View>
+      </Animated.View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  clip: {
+    overflow: 'hidden',
+  },
+});

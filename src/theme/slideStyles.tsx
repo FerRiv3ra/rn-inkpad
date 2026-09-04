@@ -13,6 +13,7 @@ export const slideStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
+    left: 0,
     borderRadius: 100,
     zIndex: 1,
   },
@@ -33,6 +34,7 @@ export const sliderStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
+    left: 0,
     zIndex: 1,
   },
   shadow: {

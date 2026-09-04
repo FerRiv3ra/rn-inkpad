@@ -1,7 +1,8 @@
+import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import type {IconName} from '.';
 
-export type SlideActionProps = {
+export type SlideActionProps = A11yProps & {
   height?: number;
   icon?: IconName;
   iconColor?: string;
@@ -44,7 +45,7 @@ type ThumbStyles = {
   width?: number;
 };
 
-export type SliderProps = {
+export type SliderProps = A11yProps & {
   maxValue?: number;
   minValue?: number;
   thumbStyles?: ThumbStyles;

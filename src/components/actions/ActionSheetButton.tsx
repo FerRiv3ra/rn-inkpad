@@ -12,6 +12,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   textColor?: string;
   theme: ValidTheme;
+  testID?: string;
 };
 
 export const ActionSheetButton = ({
@@ -21,6 +22,7 @@ export const ActionSheetButton = ({
   radius = 'none',
   showIconOnIos,
   style,
+  testID,
   textColor,
   theme,
 }: Props) => {
@@ -61,10 +63,13 @@ export const ActionSheetButton = ({
 
   return (
     <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={text}
+      testID={testID}
       onPress={onPress}
       style={[
+        styles.buttonContainer,
         {
-          ...styles.buttonContainer,
           justifyContent: theme === 'cupertino' ? 'center' : 'flex-start',
           backgroundColor,
           marginTop,

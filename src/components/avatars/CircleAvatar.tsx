@@ -1,7 +1,8 @@
+import type {A11yProps} from '../../types';
 import type {ImageSourcePropType} from 'react-native';
 import {Image, Pressable, Text} from 'react-native';
 
-type Props = {
+type Props = A11yProps & {
   backgroundColor?: string;
   defaultText?: string;
   fontSize?: number;
@@ -12,16 +13,24 @@ type Props = {
 };
 
 export const CircleAvatar = ({
+  accessibilityHint,
+  accessibilityLabel,
   backgroundColor = '#373099',
   defaultText = 'AA',
   fontSize = 26,
   image,
   onPress,
   size = 50,
+  testID,
   textColor = '#FFFFFF',
 }: Props) => {
   return (
     <Pressable
+      accessibilityRole={onPress ? 'button' : 'image'}
+      accessibilityLabel={accessibilityLabel ?? defaultText}
+      accessibilityHint={accessibilityHint}
+      testID={testID}
+      disabled={!onPress}
       onPress={onPress}
       style={{
         height: size,

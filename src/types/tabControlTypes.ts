@@ -1,6 +1,7 @@
+import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 
-export type TabControlProps = {
+export type TabControlProps = A11yProps & {
   values: value[];
   label?: string;
   labelStyle?: StyleProp<TextStyle>;

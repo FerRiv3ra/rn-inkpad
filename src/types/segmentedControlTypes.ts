@@ -1,6 +1,7 @@
+import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 
-export type SegmentedControlProps = {
+export type SegmentedControlProps = A11yProps & {
   values: value[];
   onChange: (value: string) => void;
   label?: string;

@@ -1,17 +1,25 @@
+import type {A11yProps} from '../../types';
 import {useEffect, useState} from 'react';
 import type {ImageSourcePropType} from 'react-native';
 import {ImageBackground, Text, View} from 'react-native';
 import {cardImageStyles, cardStyles} from '../../theme';
 import type {imageCardTheme} from '../../types';
 
-type Props = {
+type Props = A11yProps & {
   source: ImageSourcePropType;
   loadTime?: number;
   text?: string;
   theme?: imageCardTheme;
 };
 
-export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
+export const CardImage = ({
+  accessibilityLabel,
+  source,
+  loadTime = 1500,
+  testID,
+  text,
+  theme,
+}: Props) => {
   const {backgroundColor, fontColor, fontSize, fontWeight, shadow, radius} =
     theme || {};
 
@@ -40,6 +48,8 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
 
   return (
     <View
+      accessibilityLabel={accessibilityLabel ?? text}
+      testID={testID}
       style={[
         {
           borderRadius: radius ?? 15,
@@ -59,6 +69,7 @@ export const CardImage = ({source, loadTime = 1500, text, theme}: Props) => {
             borderBottomRightRadius: radius ?? 15,
           },
         ]}
+        accessibilityIgnoresInvertColors
         blurRadius={blur}
         source={source}
       />

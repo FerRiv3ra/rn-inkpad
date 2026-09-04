@@ -1,11 +1,15 @@
-import {Text, View} from 'react-native';
+import {Animated, Text, View} from 'react-native';
 
 import {Icon} from '../';
 import {useSlideAction} from '../../hooks';
 import {slideStyles} from '../../theme';
 import type {SlideActionProps} from '../../types';
 
+const ACCESSIBILITY_ACTIONS = [{name: 'activate'}];
+
 export const SlideAction = ({
+  accessibilityHint = 'Slide the thumb to the end to confirm',
+  accessibilityLabel,
   height = 56,
   icon,
   iconColor = '#F43F5D',
@@ -17,6 +21,7 @@ export const SlideAction = ({
   padding = 8,
   readonly,
   style,
+  testID,
   text,
   textOnCompleted,
   textPosition = 'center',
@@ -29,16 +34,31 @@ export const SlideAction = ({
   tintColor = '#F43F5D',
   tintCompletedColor = '#4ADE80',
 }: SlideActionProps) => {
-  const {completed, handleLayout, panResponder, showText, thumbLeft} =
-    useSlideAction(padding, thumbWidth, isCompleted, onCompleted);
+  const {
+    completed,
+    handleAccessibilityAction,
+    handleLayout,
+    panResponder,
+    showText,
+    thumbLeft,
+  } = useSlideAction(padding, thumbWidth, isCompleted, onCompleted);
 
-  const responders = readonly ? {} : {...panResponder.panHandlers};
+  const responders = readonly ? {} : panResponder.panHandlers;
+  const currentText = completed ? textOnCompleted : text;
 
   return (
     <View
+      accessible
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel ?? currentText}
+      accessibilityHint={readonly ? undefined : accessibilityHint}
+      accessibilityState={{disabled: readonly, checked: completed}}
+      accessibilityActions={readonly ? undefined : ACCESSIBILITY_ACTIONS}
+      onAccessibilityAction={readonly ? undefined : handleAccessibilityAction}
+      testID={testID}
       style={[
+        slideStyles.container,
         {
-          ...slideStyles.container,
           height,
           padding,
           backgroundColor: completed ? tintCompletedColor : tintColor,
@@ -55,10 +75,11 @@ export const SlideAction = ({
       onLayout={handleLayout}>
       {showText && (
         <Text style={[slideStyles.text, {color: thumbColor}, textStyle]}>
-          {completed ? textOnCompleted : text}
+          {currentText}
         </Text>
       )}
-      <View
+      <Animated.View
+        testID={testID ? `${testID}-thumb` : undefined}
         style={[
           slideStyles.thumb,
           {
@@ -66,8 +87,8 @@ export const SlideAction = ({
             borderWidth: thumbBorderWidth,
             borderColor: thumbBorderColor,
             width: thumbWidth,
+            transform: [{translateX: thumbLeft}],
           },
-          {left: thumbLeft},
         ]}>
         {icon && (
           <Icon
@@ -76,7 +97,7 @@ export const SlideAction = ({
             size={iconSize}
           />
         )}
-      </View>
+      </Animated.View>
     </View>
   );
 };

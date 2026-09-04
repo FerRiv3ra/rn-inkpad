@@ -1,3 +1,4 @@
+import type {A11yProps} from './commonTypes';
 import type {
   DimensionValue,
   StyleProp,
@@ -12,7 +13,7 @@ export type Action = {
   onPress: () => void;
 };
 
-export type FabProps = {
+export type FabProps = A11yProps & {
   actions?: Action[];
   align?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   backgroundColor?: string;
@@ -25,7 +26,7 @@ export type FabProps = {
   onPress?: () => void;
 };
 
-export type ButtonProps = {
+export type ButtonProps = A11yProps & {
   activeOpacity?: number;
   buttonColor?: string;
   buttonType?: 'solid' | 'outline' | 'clear';
@@ -49,7 +50,7 @@ type RadioValue = {
   value: string | number;
 };
 
-export type RadioProps = {
+export type RadioProps = A11yProps & {
   values: RadioValue[];
   border?: boolean;
   borderColor?: string;
@@ -69,7 +70,7 @@ export type RadioProps = {
   onChange?: (value: string | number) => void;
 };
 
-export type CheckBoxProps = {
+export type CheckBoxProps = A11yProps & {
   checkedIcon?: IconName;
   checked?: boolean;
   iconColor?: string;
@@ -82,7 +83,7 @@ export type CheckBoxProps = {
   onChange?: (value: boolean) => void;
 };
 
-export type LongPressButtonProps = {
+export type LongPressButtonProps = A11yProps & {
   backgroundColor?: string;
   behavior?: 'left-to-right' | 'right-to-left' | 'center-to-ends';
   borderRadius?: number;

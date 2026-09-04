@@ -1,3 +1,4 @@
+import type {A11yProps} from '../../types';
 import {Text, View} from 'react-native';
 
 import {cardStyles} from '../../theme';
@@ -5,7 +6,7 @@ import type {ButtonType, cardTheme, IconName} from '../../types';
 import {Icon} from '../icon/Icon';
 import {CardButton} from './CardButton';
 
-type Props = {
+type Props = A11yProps & {
   buttons: ButtonType[];
   description: string;
   icon: IconName;
@@ -13,22 +14,32 @@ type Props = {
   theme?: cardTheme;
 };
 
-export const Card = ({buttons, description, icon, title, theme}: Props) => {
+export const Card = ({
+  accessibilityLabel,
+  buttons,
+  description,
+  icon,
+  testID,
+  title,
+  theme,
+}: Props) => {
   const {backgroundColor, iconSize, themeColor, titleColor, titleSize, shadow} =
     theme || {};
 
   return (
     <View
+      accessibilityLabel={accessibilityLabel ?? title}
+      testID={testID}
       style={[
         cardStyles.cardContainer,
         !!backgroundColor && {backgroundColor},
         !!shadow && cardStyles.shadow,
       ]}>
-      <View style={{...cardStyles.cardContent}}>
+      <View style={cardStyles.cardContent}>
         <Icon
           name={icon}
           color={themeColor ?? '#000000'}
-          style={{...cardStyles.icon}}
+          style={cardStyles.icon}
           size={iconSize ?? 25}
         />
         <View>
@@ -40,16 +51,17 @@ export const Card = ({buttons, description, icon, title, theme}: Props) => {
             ]}>
             {title}
           </Text>
-          <Text style={{...cardStyles.description}}>{description}</Text>
+          <Text style={cardStyles.description}>{description}</Text>
         </View>
       </View>
-      <View style={{...cardStyles.buttonsContainer}}>
+      <View style={cardStyles.buttonsContainer}>
         {buttons.map((button, idx) => (
           <CardButton
-            style={{...cardStyles.button}}
+            style={cardStyles.button}
             color={themeColor}
             button={button}
-            key={idx}
+            key={button.text ?? idx}
+            testID={testID ? `${testID}-button-${idx}` : undefined}
           />
         ))}
       </View>

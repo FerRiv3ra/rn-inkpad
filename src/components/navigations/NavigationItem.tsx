@@ -1,17 +1,20 @@
+import {memo} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
 import {Icon} from '../';
 import type {NavigationItemProps} from '../../types';
 import {SelectedTab} from './SelectedTab';
 
-export const NavigationItem = ({
+const NavigationItemComponent = ({
   item,
+  index,
   highlightedBgColor,
   iconColor,
   iconSize = 25,
   selected,
   selectedColor = '#DB504A',
   selectedheight,
+  testID,
   textColor,
   textStyle,
   onPress,
@@ -19,16 +22,24 @@ export const NavigationItem = ({
   const {highlighted, icon, text} = item;
 
   return (
-    <Pressable onPress={onPress} style={styles.button}>
+    <Pressable
+      accessibilityRole="tab"
+      accessibilityLabel={text}
+      accessibilityState={{selected: !!selected}}
+      testID={testID}
+      onPress={() => onPress?.(index)}
+      style={styles.button}>
       <View
         style={[
           styles.button,
-          {paddingTop: 10},
-          highlighted && {
-            ...styles.highlighted,
-            top: -(iconSize * 2),
-            backgroundColor: highlightedBgColor ?? selectedColor,
-          },
+          styles.content,
+          highlighted && [
+            styles.highlighted,
+            {
+              top: -(iconSize * 2),
+              backgroundColor: highlightedBgColor ?? selectedColor,
+            },
+          ],
         ]}>
         {!highlighted && selected && (
           <SelectedTab height={selectedheight} color={selectedColor} />
@@ -42,10 +53,7 @@ export const NavigationItem = ({
         )}
         {!highlighted && (
           <Text
-            style={[
-              {color: textColor ?? iconColor, paddingHorizontal: 3},
-              textStyle,
-            ]}>
+            style={[styles.text, {color: textColor ?? iconColor}, textStyle]}>
             {text}
           </Text>
         )}
@@ -54,11 +62,19 @@ export const NavigationItem = ({
   );
 };
 
+export const NavigationItem = memo(NavigationItemComponent);
+
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+  },
+  content: {
+    paddingTop: 10,
+  },
+  text: {
+    paddingHorizontal: 3,
   },
   highlighted: {
     padding: 10,

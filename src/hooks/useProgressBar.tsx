@@ -1,39 +1,61 @@
 import {useEffect, useRef, useState} from 'react';
+import {Animated} from 'react-native';
 
-const STEP = 0.01;
-const TICK_MS = 10;
+/** Milliseconds needed to travel the whole bar (0% to 100%). */
+const FULL_DURATION_MS = 1000;
+
+const clamp = (n: number) => Math.min(Math.max(n, 0), 100);
 
 /**
- * Animates `progress` (0..1) towards `value` (0..100), up or down.
- * The interval stops once the target is reached and on unmount.
+ * Animates the bar width towards `value` (0..100) with `Animated.timing`.
+ * `percent` mirrors the animated value as an integer, only when requested,
+ * so the component re-renders at most 100 times per transition.
  */
-export const useProgressBar = (value: number) => {
-  const [progress, setProgress] = useState(0);
-  // Mirror of `progress` readable inside the interval without stale closures.
-  const progressRef = useRef(0);
+export const useProgressBar = (value: number, trackPercent = false) => {
+  const progress = useRef(new Animated.Value(0)).current;
+  const current = useRef(0);
+  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    const target = Math.min(Math.max(value, 0), 100) / 100;
+    const target = clamp(value);
+    const distance = Math.abs(target - current.current);
 
-    const interval = setInterval(() => {
-      const diff = target - progressRef.current;
-      let next: number;
-
-      if (Math.abs(diff) <= STEP) {
-        next = target;
-        clearInterval(interval);
-      } else {
-        next = progressRef.current + Math.sign(diff) * STEP;
+    const animation = Animated.timing(progress, {
+      toValue: target,
+      duration: (distance / 100) * FULL_DURATION_MS,
+      useNativeDriver: false,
+    });
+    animation.start(({finished}) => {
+      if (finished) {
+        current.current = target;
       }
+    });
 
-      progressRef.current = next;
-      setProgress(next);
-    }, TICK_MS);
+    return () => animation.stop();
+  }, [value, progress]);
 
-    return () => clearInterval(interval);
-  }, [value]);
+  useEffect(() => {
+    const id = progress.addListener(({value: v}) => {
+      current.current = v;
+      if (trackPercent) {
+        setPercent(prev => {
+          const next = Math.round(v);
+          return next === prev ? prev : next;
+        });
+      }
+    });
+
+    return () => progress.removeListener(id);
+  }, [progress, trackPercent]);
+
+  const width = progress.interpolate({
+    inputRange: [0, 100],
+    outputRange: ['0%', '100%'],
+  });
 
   return {
+    percent,
     progress,
+    width,
   };
 };

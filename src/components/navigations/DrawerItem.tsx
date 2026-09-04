@@ -1,10 +1,11 @@
+import {memo} from 'react';
 import {Pressable, Text} from 'react-native';
 
 import {Icon} from '..';
 import {drawerStyles} from '../../theme';
 import type {DrawerItemProps} from '../../types';
 
-export const DrawerItem = ({
+const DrawerItemComponent = ({
   icon,
   textColor,
   fontSize,
@@ -14,19 +15,22 @@ export const DrawerItem = ({
   onPress,
 }: DrawerItemProps) => {
   const handlePress = () => {
-    if (onPress) {
-      onPress();
-    }
-
+    onPress?.();
     handleDrawer();
   };
 
   return (
-    <Pressable style={drawerStyles.item} onPress={handlePress}>
+    <Pressable
+      accessibilityRole="menuitem"
+      accessibilityLabel={text}
+      style={drawerStyles.item}
+      onPress={handlePress}>
       <Icon name={icon} color={textColor} size={iconSize} />
-      <Text style={{...drawerStyles.itemText, color: textColor, fontSize}}>
+      <Text style={[drawerStyles.itemText, {color: textColor, fontSize}]}>
         {text}
       </Text>
     </Pressable>
   );
 };
+
+export const DrawerItem = memo(DrawerItemComponent);

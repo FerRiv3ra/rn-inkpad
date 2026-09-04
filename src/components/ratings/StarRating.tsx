@@ -1,9 +1,10 @@
+import type {A11yProps} from '../../types';
 import {useEffect, useState} from 'react';
 import type {StyleProp, ViewStyle} from 'react-native';
 import {Pressable, Text, View} from 'react-native';
 import {Icon} from '..';
 
-type Props = {
+type Props = A11yProps & {
   defaultRating?: number;
   iconColor?: string;
   justRating?: boolean;
@@ -19,6 +20,7 @@ type Props = {
 const DEFAULT_REVIEWS = ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
 
 export const StarRating = ({
+  accessibilityLabel,
   defaultRating = 3,
   iconColor = '#FFD700',
   justRating,
@@ -27,6 +29,7 @@ export const StarRating = ({
   reviews,
   size = 35,
   style,
+  testID,
   textColor = '#FFD700',
   textSize = 30,
 }: Props) => {
@@ -46,7 +49,11 @@ export const StarRating = ({
   };
 
   return (
-    <View style={style}>
+    <View
+      accessibilityRole="radiogroup"
+      accessibilityLabel={accessibilityLabel ?? 'Rating'}
+      testID={testID}
+      style={style}>
       {!justRating && (
         <Text
           style={{
@@ -68,6 +75,10 @@ export const StarRating = ({
         {reviewsArray.map((_, idx) => (
           <Pressable
             key={idx}
+            accessibilityRole="radio"
+            accessibilityLabel={`${idx + 1} of ${reviewsArray.length}`}
+            accessibilityState={{checked: rating === idx, disabled: !!readOnly}}
+            testID={testID ? `${testID}-star-${idx}` : undefined}
             disabled={readOnly}
             onPress={() => handleChange(idx)}>
             <Icon

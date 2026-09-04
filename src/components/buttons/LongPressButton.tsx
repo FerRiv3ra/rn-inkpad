@@ -1,4 +1,4 @@
-import {Animated, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {Animated, Pressable, Text, View} from 'react-native';
 
 import {Icon} from '../';
 import {useLongPressButton} from '../../hooks';
@@ -6,6 +6,8 @@ import {longPressButtonStyles} from '../../theme';
 import type {LongPressButtonProps} from '../../types';
 
 export const LongPressButton = ({
+  accessibilityHint = 'Press and hold to confirm',
+  accessibilityLabel,
   backgroundColor = '#464EE5',
   behavior = 'left-to-right',
   borderRadius = 20,
@@ -18,39 +20,44 @@ export const LongPressButton = ({
   onFinish,
   progressColor = 'rgba(255, 255, 255, 0.3)',
   style,
+  testID,
   text = 'Button',
   textColor = '#FFF',
   width = '50%',
 }: LongPressButtonProps) => {
-  const {alignSelf, handlePressIn, handlePressOut, number, scaleValue} =
+  const {alignSelf, handlePressIn, handlePressOut, progressWidth, scaleValue} =
     useLongPressButton(longPressTime, onFinish);
 
   return (
     <Animated.View
       style={[
-        {
-          width: '100%',
-          alignItems: 'center',
-          transform: [{scale: scaleValue}],
-        },
+        longPressButtonStyles.wrapper,
+        {transform: [{scale: scaleValue}]},
         style,
       ]}>
-      <TouchableWithoutFeedback
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel ?? text}
+        accessibilityHint={accessibilityHint}
+        testID={testID}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}>
         <View
-          style={{
-            ...longPressButtonStyles.button,
-            width: fullWidth ? '100%' : width,
-            height,
-            backgroundColor,
-            borderRadius,
-          }}>
-          <View
+          style={[
+            longPressButtonStyles.button,
+            {
+              width: fullWidth ? '100%' : width,
+              height,
+              backgroundColor,
+              borderRadius,
+            },
+          ]}>
+          <Animated.View
+            testID={testID ? `${testID}-progress` : undefined}
             style={[
               longPressButtonStyles.progress,
               {
-                width: `${number}%`,
+                width: progressWidth,
                 borderRadius,
                 backgroundColor: progressColor,
                 alignSelf: alignSelf[behavior],
@@ -58,17 +65,17 @@ export const LongPressButton = ({
             ]}
           />
           <View
-            style={{
-              ...longPressButtonStyles.buttonContent,
-              flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse',
-            }}>
+            style={[
+              longPressButtonStyles.buttonContent,
+              {flexDirection: iconPosition === 'left' ? 'row' : 'row-reverse'},
+            ]}>
             {!!icon && (
               <Icon name={icon} color={textColor} size={fontSize + 1} />
             )}
             <Text style={{color: textColor, fontSize}}>{text}</Text>
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </Pressable>
     </Animated.View>
   );
 };

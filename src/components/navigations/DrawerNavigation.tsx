@@ -17,7 +17,11 @@ import type {
 import {DrawerGroup} from './DrawerGroup';
 import {DrawerItem} from './DrawerItem';
 
+const isGroup = (item: DrawerItemType | GroupItem): item is GroupItem =>
+  Array.isArray((item as GroupItem).items);
+
 export const DrawerNavigation = ({
+  accessibilityLabel = 'Navigation menu',
   backgroundColor = '#464EE5',
   closeIcon = 'close',
   collapseIcon,
@@ -31,62 +35,58 @@ export const DrawerNavigation = ({
   imageStyles,
   itemIconSize = 19,
   items,
+  testID,
   textColor,
   widthPercent = 65,
 }: DrawerNavigationProps) => {
   const {height, translateX, width, handlePress, visible} =
     useDrawerNavigation(widthPercent);
+  const drawerWidth = width * (widthPercent / 100);
 
   return (
     <Animated.View
-      style={{...drawerStyles.container, height, transform: [{translateX}]}}>
+      testID={testID}
+      style={[drawerStyles.container, {height, transform: [{translateX}]}]}>
       <SafeAreaView style={{backgroundColor}}>
         <ScrollView
-          style={{
-            ...drawerStyles.drawer,
-            width: width * (widthPercent / 100),
-          }}>
+          accessibilityRole="menu"
+          style={[drawerStyles.drawer, {width: drawerWidth}]}>
           {image && (
             <Image source={image} style={[drawerStyles.logo, imageStyles]} />
           )}
-          {items?.map((item, idx) => {
-            if ((item as GroupItem).items) {
-              return (
-                <DrawerGroup
-                  collapseIcon={collapseIcon}
-                  expandIcon={expandIcon}
-                  fontSize={fontSize}
-                  handleDrawer={handlePress}
-                  iconSize={itemIconSize}
-                  item={item as GroupItem}
-                  key={idx}
-                  textColor={textColor}
-                />
-              );
-            } else {
-              item = item as DrawerItemType;
-              return (
-                <DrawerItem
-                  fontSize={fontSize}
-                  icon={item.icon}
-                  iconSize={itemIconSize}
-                  handleDrawer={handlePress}
-                  key={idx}
-                  onPress={item.onPress}
-                  text={item.text}
-                  textColor={textColor}
-                />
-              );
-            }
-          })}
+          {items?.map((item, idx) =>
+            isGroup(item) ? (
+              <DrawerGroup
+                collapseIcon={collapseIcon}
+                expandIcon={expandIcon}
+                fontSize={fontSize}
+                handleDrawer={handlePress}
+                iconSize={itemIconSize}
+                item={item}
+                key={item.text ?? idx}
+                textColor={textColor}
+              />
+            ) : (
+              <DrawerItem
+                fontSize={fontSize}
+                icon={item.icon}
+                iconSize={itemIconSize}
+                handleDrawer={handlePress}
+                key={item.text ?? idx}
+                onPress={item.onPress}
+                text={item.text}
+                textColor={textColor}
+              />
+            ),
+          )}
         </ScrollView>
         <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={accessibilityLabel}
+          accessibilityState={{expanded: visible}}
+          testID={testID ? `${testID}-toggle` : undefined}
           onPress={handlePress}
-          style={{
-            ...drawerStyles.button,
-            top: iconTop,
-            left: width * (widthPercent / 100) + 15,
-          }}>
+          style={[drawerStyles.button, {top: iconTop, left: drawerWidth + 15}]}>
           <Icon
             name={visible ? closeIcon : icon}
             color={iconColor}

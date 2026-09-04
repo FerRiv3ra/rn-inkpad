@@ -5,6 +5,8 @@ import type {FabProps} from '../../types';
 import {ActionButton} from './ActionButton';
 
 export const FloatingActionButton = ({
+  accessibilityHint,
+  accessibilityLabel,
   actions,
   backgroundColor,
   marginHorizontal = 20,
@@ -15,6 +17,7 @@ export const FloatingActionButton = ({
   onPress,
   align = 'bottom-right',
   size = 50,
+  testID,
 }: FabProps) => {
   const [showActions, setShowActions] = useState(false);
 
@@ -43,9 +46,7 @@ export const FloatingActionButton = ({
         position,
       ]}>
       {showActions &&
-        actions &&
-        !onPress &&
-        actions.map((action, index) => (
+        actions?.map((action, index) => (
           <ActionButton
             align={align.includes('left') ? 'left' : 'right'}
             backgroundColor={backgroundColor}
@@ -56,10 +57,17 @@ export const FloatingActionButton = ({
             onPress={action.onPress}
             size={size - 10}
             text={action.text}
-            key={index}
+            key={action.text ?? action.icon}
+            testID={testID ? `${testID}-action-${index}` : undefined}
           />
         ))}
       <ActionButton
+        accessibilityLabel={accessibilityLabel}
+        accessibilityHint={accessibilityHint}
+        accessibilityState={
+          actions?.length ? {expanded: showActions} : undefined
+        }
+        testID={testID}
         onPress={handlePress}
         backgroundColor={backgroundColor}
         icon={icon ? icon : showActions ? 'close' : 'add'}

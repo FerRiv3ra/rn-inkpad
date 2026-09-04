@@ -1,9 +1,10 @@
+import type {A11yProps} from '../../types';
 import type {StyleProp, ViewStyle} from 'react-native';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Icon} from '..';
 import type {IconName} from '../../types';
 
-type Props = {
+type Props = A11yProps & {
   color?: string;
   icon?: 'heart' | 'star';
   rating?: number;
@@ -13,11 +14,13 @@ type Props = {
 };
 
 export const Rating = ({
+  accessibilityLabel,
   color = '#FFD700',
   icon = 'star',
   rating = 3,
   size = 35,
   style,
+  testID,
   total = 5,
 }: Props) => {
   const clamped = Math.min(Math.max(rating, 0), total);
@@ -37,13 +40,13 @@ export const Rating = ({
   }
 
   return (
-    <View style={style}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: '100%',
-        }}>
+    <View
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={accessibilityLabel ?? `${clamped} of ${total}`}
+      testID={testID}
+      style={style}>
+      <View style={styles.row}>
         {icons.map((name, idx) => (
           <Icon name={name} size={size} color={color} key={idx} />
         ))}
@@ -51,3 +54,11 @@ export const Rating = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+});

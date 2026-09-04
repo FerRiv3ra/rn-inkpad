@@ -1,4 +1,5 @@
-export type ProgressBarProps = {
+import type {A11yProps} from './commonTypes';
+export type ProgressBarProps = A11yProps & {
   backgroundColor?: string;
   borderColor?: string;
   borderRadius?: number;

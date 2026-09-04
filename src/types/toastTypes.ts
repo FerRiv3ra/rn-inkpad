@@ -1,6 +1,7 @@
+import type {A11yProps} from './commonTypes';
 import type {IconName} from './iconType';
 
-export type ToastProps = {
+export type ToastProps = A11yProps & {
   backgroundColor?: string;
   bottom?: number;
   duration?: number;

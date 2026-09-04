@@ -6,6 +6,8 @@ import {ratingCardStyles} from '../../theme';
 import type {FloatingActionCardProps} from '../../types';
 
 export const FloatingActionCard = ({
+  accessibilityHint,
+  accessibilityLabel,
   backgroundColor: bgColor,
   bottom = 40,
   decimals = 1,
@@ -15,6 +17,7 @@ export const FloatingActionCard = ({
   image,
   onPress,
   rating,
+  testID,
   textColor = '#000000',
   title,
   width = '90%',
@@ -23,27 +26,29 @@ export const FloatingActionCard = ({
 
   return (
     <Pressable
+      accessibilityRole={onPress ? 'button' : undefined}
+      accessibilityLabel={accessibilityLabel ?? title}
+      accessibilityHint={accessibilityHint}
+      testID={testID}
+      disabled={!onPress}
       onPress={onPress}
-      style={{
-        ...ratingCardStyles.container,
-        padding: image ? 0 : 10,
-        bottom,
-        width,
-        backgroundColor,
-      }}>
+      style={[
+        ratingCardStyles.container,
+        {padding: image ? 0 : 10, bottom, width, backgroundColor},
+      ]}>
       {image && <Image style={{height: 75, width: 75}} source={image} />}
       <View style={ratingCardStyles.information}>
-        <Text style={{...ratingCardStyles.title, color: textColor}}>
+        <Text style={[ratingCardStyles.title, {color: textColor}]}>
           {title}
         </Text>
         {description && (
-          <Text style={{...ratingCardStyles.decription, color: textColor}}>
+          <Text style={[ratingCardStyles.decription, {color: textColor}]}>
             {description}
           </Text>
         )}
         <View style={ratingCardStyles.rating}>
           {icon && <Icon name={icon} color={iconColor} size={16} />}
-          {rating && (
+          {rating !== undefined && (
             <Text style={{color: textColor}}>
               {Number(rating).toFixed(decimals)}
             </Text>

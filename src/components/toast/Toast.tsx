@@ -5,6 +5,7 @@ import type {ToastProps} from '../../types';
 import {Icon} from '../icon/Icon';
 
 export const Toast = ({
+  accessibilityLabel,
   backgroundColor = 'rgba(0,0,0,0.7)',
   duration = 3000,
   bottom = 30,
@@ -13,6 +14,7 @@ export const Toast = ({
   icon,
   setVisible,
   position = 'top',
+  testID,
   text,
   textColor = '#FFF',
   visible,
@@ -23,6 +25,10 @@ export const Toast = ({
 
   return (
     <Animated.View
+      accessibilityRole="alert"
+      accessibilityLiveRegion="polite"
+      accessibilityLabel={accessibilityLabel ?? text}
+      testID={testID}
       style={[
         styles.container,
         {backgroundColor},

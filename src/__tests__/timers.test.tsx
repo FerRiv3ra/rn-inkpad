@@ -45,17 +45,21 @@ afterEach(() => {
 });
 
 describe('timers are cleaned up', () => {
-  it('ProgressBar stops ticking once the target is reached', async () => {
-    const setSpy = jest.spyOn(globalThis, 'setInterval');
-    const clearSpy = jest.spyOn(globalThis, 'clearInterval');
-
-    await render(<ProgressBar value={20} showPercent />);
+  it('ProgressBar animates to the target and reports it to screen readers', async () => {
+    const view = await render(
+      <ProgressBar value={20} showPercent testID="bar" />,
+    );
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
 
     expect(screen.getByText('20%')).toBeTruthy();
-    expectTimersCleared(setSpy, clearSpy, 10);
+    expect(screen.getByTestId('bar').props.accessibilityValue).toEqual({
+      min: 0,
+      max: 100,
+      now: 20,
+    });
+    await view.unmount();
   });
 
   it('ProgressBar can go down', async () => {
@@ -72,9 +76,7 @@ describe('timers are cleaned up', () => {
     expect(screen.getByText('10%')).toBeTruthy();
   });
 
-  it('LongPressButton fires onFinish once and clears intervals on unmount', async () => {
-    const setSpy = jest.spyOn(globalThis, 'setInterval');
-    const clearSpy = jest.spyOn(globalThis, 'clearInterval');
+  it('LongPressButton fires onFinish once and stops on unmount', async () => {
     const onFinish = jest.fn();
     const view = await render(
       <LongPressButton text="Hold" longPressTime={1000} onFinish={onFinish} />,
@@ -86,10 +88,13 @@ describe('timers are cleaned up', () => {
     });
     expect(onFinish).toHaveBeenCalledTimes(1);
 
-    // Press again and unmount while the interval is running.
+    // Press again and unmount while the animation is running.
     await fireEvent(screen.getByText('Hold'), 'pressIn');
     await view.unmount();
-    expectTimersCleared(setSpy, clearSpy, 10);
+    await act(async () => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(onFinish).toHaveBeenCalledTimes(1);
   });
 
   it('Toast hides after duration and clears the timer on unmount', async () => {

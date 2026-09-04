@@ -1,3 +1,4 @@
+import type {A11yProps} from '../../types';
 import type {ComponentRef, ReactElement} from 'react';
 import {useEffect, useRef, useState} from 'react';
 import type {LayoutChangeEvent} from 'react-native';
@@ -12,12 +13,18 @@ import {
 import {useAnimation} from '../../hooks';
 import {Triangle} from './Triangle';
 
-type Props = {
+type Props = A11yProps & {
   text?: string;
   children: ReactElement;
 };
 
-export const Tooltip = ({text, children}: Props) => {
+export const Tooltip = ({
+  accessibilityLabel,
+  accessibilityHint = 'Shows more information',
+  testID,
+  text,
+  children,
+}: Props) => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [layout, setLayout] = useState({x: 0, y: 0, width: 0, height: 0});
   const [translateX, setTranslateX] = useState(0);
@@ -91,24 +98,34 @@ export const Tooltip = ({text, children}: Props) => {
 
   return (
     <View style={styles.container} ref={viewRef} onLayout={handleLayout}>
-      <TouchableOpacity onPress={handleVisible} activeOpacity={0.8}>
+      <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel ?? text}
+        accessibilityHint={accessibilityHint}
+        accessibilityState={{expanded: tooltipVisible}}
+        testID={testID}
+        onPress={handleVisible}
+        activeOpacity={0.8}>
         {children}
       </TouchableOpacity>
       {tooltipVisible && (
         <Animated.View
+          testID={testID ? `${testID}-bubble` : undefined}
           onLayout={tooltipLayout}
-          style={{
-            ...styles.tooltipContainer,
-            maxWidth: width / 2,
-            width:
-              width / 2 > (text?.length ?? 0) * 5
-                ? (text?.length ?? 0) * 5 + 35
-                : width / 2,
-            opacity,
-            transform: [{translateX}],
-            left: position.left,
-            bottom: position.bottom,
-          }}>
+          style={[
+            styles.tooltipContainer,
+            {
+              maxWidth: width / 2,
+              width:
+                width / 2 > (text?.length ?? 0) * 5
+                  ? (text?.length ?? 0) * 5 + 35
+                  : width / 2,
+              opacity,
+              transform: [{translateX}],
+              left: position.left,
+              bottom: position.bottom,
+            },
+          ]}>
           <Text style={styles.tooltipText}>{text}</Text>
           <Triangle
             direction={isUp ? 'down' : 'up'}

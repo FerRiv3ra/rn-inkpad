@@ -1,8 +1,9 @@
+import type {A11yProps} from '../../types';
 import {useEffect, useMemo} from 'react';
 import type {ViewStyle} from 'react-native';
 import {Animated, StyleSheet, View} from 'react-native';
 
-type Props = {
+type Props = A11yProps & {
   size?: number; // Dots size in pixels
   color?: string; // Dots color
   dotCount?: number; // Number of dots
@@ -11,11 +12,13 @@ type Props = {
 };
 
 export const DotsLoading = ({
+  accessibilityLabel = 'Loading',
   size = 10,
   color = '#17B9D1',
   dotCount = 3,
   speed = 600,
   style,
+  testID,
 }: Props) => {
   // One Animated.Value per dot, recreated only when dotCount changes.
   const animatedValues = useMemo(
@@ -59,7 +62,12 @@ export const DotsLoading = ({
   }, [animatedValues, speed, dotCount]);
 
   return (
-    <View style={[styles.container, style]}>
+    <View
+      accessible
+      accessibilityRole="progressbar"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}
+      style={[styles.container, style]}>
       {animatedValues.map((av, i) => {
         // Animate opacity and scale
         const scale = av.interpolate({

@@ -6,6 +6,7 @@ import {Icon} from '../icon/Icon';
 import {ActionSheetButton} from './ActionSheetButton';
 
 export const ActionSheet = ({
+  accessibilityLabel,
   actions,
   cancelText,
   setVisible,
@@ -13,6 +14,7 @@ export const ActionSheet = ({
   showIconOnIos,
   showCloseButton,
   description,
+  testID,
   theme: userTheme,
   title,
   visible,
@@ -38,6 +40,9 @@ export const ActionSheet = ({
         onPress={() => setVisible(false)}
         accessibilityLabel="Close action sheet">
         <Pressable
+          accessibilityViewIsModal
+          accessibilityLabel={accessibilityLabel ?? title}
+          testID={testID}
           onPress={() => {}}
           style={[
             theme === 'cupertino'
@@ -47,10 +52,13 @@ export const ActionSheet = ({
           ]}>
           {showCloseButton && (
             <Pressable
-              style={{
-                ...actionSheetStyles.closeButton,
-                backgroundColor: closeBackgroundColor,
-              }}
+              accessibilityRole="button"
+              accessibilityLabel="Close"
+              testID={testID ? `${testID}-close` : undefined}
+              style={[
+                actionSheetStyles.closeButton,
+                {backgroundColor: closeBackgroundColor},
+              ]}
               onPress={() => setVisible(false)}>
               <Icon name="close" color={closeIconColor} size={18} />
             </Pressable>
@@ -58,11 +66,8 @@ export const ActionSheet = ({
           {title && (
             <Text
               style={[
-                {
-                  ...actionSheetStyles.title,
-                  color: textColor!,
-                  marginBottom: description ? 0 : 10,
-                },
+                actionSheetStyles.title,
+                {color: textColor, marginBottom: description ? 0 : 10},
                 theme === 'cupertino'
                   ? actionSheetStyles.textCenter
                   : actionSheetStyles.textLeft,
@@ -73,7 +78,8 @@ export const ActionSheet = ({
           {description && (
             <Text
               style={[
-                {...actionSheetStyles.subTitle, color: textColor!},
+                actionSheetStyles.subTitle,
+                {color: textColor},
                 theme === 'cupertino'
                   ? actionSheetStyles.textCenter
                   : actionSheetStyles.textLeft,
@@ -99,7 +105,8 @@ export const ActionSheet = ({
                         }
                       : undefined
                   }
-                  key={idx}
+                  key={action.text}
+                  testID={testID ? `${testID}-action-${idx}` : undefined}
                 />
               ))}
             {(!actions || showCancelButton) && (
@@ -112,6 +119,7 @@ export const ActionSheet = ({
                 backgroundColor={buttonColor!}
                 marginTop={theme === 'cupertino' ? 10 : 0}
                 radius="all"
+                testID={testID ? `${testID}-cancel` : undefined}
                 showIconOnIos={showIconOnIos}
                 textColor={textColor}
                 theme={theme!}

@@ -1,6 +1,7 @@
+import type {A11yProps} from './commonTypes';
 import type {StyleProp, TextStyle} from 'react-native';
 
-export type SwitchProps = {
+export type SwitchProps = A11yProps & {
   isOn?: boolean;
   /** Track (and Android thumb) color when the switch is on. */
   backgroundColor?: string;
