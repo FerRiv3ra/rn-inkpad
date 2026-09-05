@@ -1,6 +1,6 @@
 {
   "name": "rn-inkpad",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Lightweight, themeable UI components for React Native (iOS, Android and Web)",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
