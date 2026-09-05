@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project follows
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- Releases are published from CI through npm trusted publishing (OIDC). `yarn release`
+  no longer publishes locally; it bumps, tags and creates the GitHub release.
+
 ## [2.0.0] - 2026-09-04
 
 ### BREAKING: bring your own icons

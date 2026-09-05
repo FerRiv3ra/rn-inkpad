@@ -1,6 +1,8 @@
 name: Release
 # Publishes to npm when a version tag is pushed (e.g. by `yarn release`).
-# Needs an NPM_TOKEN repository secret (automation token).
+# Uses npm trusted publishing (OIDC): no npm token or secret is needed.
+# The package on npmjs.com must list this repository and workflow file
+# (release.yml) as a trusted publisher.
 on:
   push:
     tags: ['v*']
@@ -23,10 +25,8 @@ jobs:
       - name: Build
         run: yarn build
       - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          npm --version
           TAG=latest
           case "${GITHUB_REF_NAME}" in *-*) TAG=next;; esac
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish --provenance --access public --tag "$TAG"
