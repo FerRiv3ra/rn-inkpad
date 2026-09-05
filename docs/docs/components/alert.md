@@ -37,6 +37,7 @@ You can send some optional properties in order to customize your alerts.
 | **`appearance`**    | Choose between light and dark appearance for your alert. | `'light' \| 'dark'`                   | **NO**   | _Device appearance_      |
 | **`personalTheme`** | Completely customize how your alert will appear.         | [PersonalTheme](#personaltheme-props) | **NO**   | _PersonalTheme defaults_ |
 | **`theme`**         | Choose the theme between iOS and Android for your alert. | `'ios' \| 'android'`                  | **NO**   | _Auto detect OS_         |
+| **`dismissOnBackdropPress`** | Tapping the dimmed background cancels the alert or prompt. | `boolean` | **NO** | _false_ |
 </div>
 
 ### PersonalTheme Props
@@ -272,6 +273,12 @@ const  MyComponent  = () => {
 | **`confirmText`**      | Confirm button text.                          | `string` | _No_     |
 | **`label`**            | Label for input -Android only-.               | `string` | _No_     |
 | **`placeholder`**      | Input placeholder. **default:** _title value_ | `string` | _No_     |
+| **`defaultValue`**     | Initial value of the input.                   | `string` | _No_     |
+| **`keyboardType`**     | Keyboard for the input, same values as `TextInput`. | `KeyboardTypeOptions` | _No_ |
+| **`secureTextEntry`**  | Hide the typed text (passwords, PINs).        | `boolean` | _No_ |
+| **`autoCapitalize`**   | Same values as `TextInput`.                   | `'none' \| 'sentences' \| 'words' \| 'characters'` | _No_ |
+| **`maxLength`**        | Maximum number of characters.                 | `number` | _No_ |
+| **`inputProps`**       | Any other `TextInput` prop (`autoCorrect`, `returnKeyType`, `style`, ...). `value`, `onChangeText`, `placeholder` and `defaultValue` are managed by the prompt. | `TextInputProps` | _No_ |
 </div>
 
 ### Examples with props
@@ -292,3 +299,7 @@ const  MyComponent  = () => {
   third argument `onPress` runs only on confirm.
 - `Alert.prompt(...)` resolves the typed text, or `undefined` when cancelled.
 - Opening a new alert while another one is visible cancels the first one.
+- `Alert.prompt(title, description, onPress)` runs `onPress(value)` only on confirm. The
+  keyboard return key confirms the prompt.
+- `Alert.dismiss()` closes the alert or prompt currently shown; its promise resolves as
+  cancelled. The Android back button does the same.

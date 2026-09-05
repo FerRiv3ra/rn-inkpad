@@ -1,6 +1,12 @@
 export * from './actions/ActionSheet';
 export * from './alert/AlertContainer';
 export * from './alert/helpers/alert';
+export type {
+  AlertData,
+  Button as AlertButton,
+  PersonalTheme as AlertPersonalTheme,
+  PromptData,
+} from './alert/types/alertTypes';
 export * from './avatars/CircleAvatar';
 export * from './buttons/Button';
 export * from './buttons/CheckBox';

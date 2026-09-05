@@ -1,15 +1,29 @@
-import {Modal, Text, TextInput, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Modal,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 import {Button, Icon} from './components';
 import {useAlertContainer} from './hooks/useAlertContainer';
 import {useTheme} from './hooks/useTheme';
 import type {AlertData, PersonalTheme} from './types/alertTypes';
 
-type Props = {
+export type AlertContainerProps = {
   animationType?: 'none' | 'fade' | 'slide';
   appearance?: 'light' | 'dark';
   personalTheme?: PersonalTheme;
   theme?: 'ios' | 'android';
+  /**
+   * Tapping the dimmed background cancels the alert or prompt.
+   * Off by default, like the native dialogs.
+   */
+  dismissOnBackdropPress?: boolean;
 };
 
 export function AlertContainer({
@@ -17,8 +31,9 @@ export function AlertContainer({
   appearance,
   personalTheme,
   animationType,
-}: Props) {
-  const {prompt, isAlert, inputRef, setTextInput, handlePress} =
+  dismissOnBackdropPress = false,
+}: AlertContainerProps) {
+  const {prompt, isAlert, inputRef, setTextInput, handlePress, textInput} =
     useAlertContainer();
   const {styles, textButtonColor, cancelWeight, ios} = useTheme({
     appearance,
@@ -46,45 +61,58 @@ export function AlertContainer({
     description,
     label,
     placeholder,
+    keyboardType,
+    secureTextEntry,
+    autoCapitalize,
+    maxLength,
+    inputProps,
   } = prompt as AlertData;
 
   return (
     <Modal
-      style={{zIndex: 9999}}
+      style={local.modal}
       visible={!!prompt}
       transparent
       animationType={animationType}
       onRequestClose={() => handlePress(true)}>
-      <View
-        style={{
-          ...styles.modalContainer,
-          backgroundColor: backgroundColor
-            ? backgroundColor
-            : 'rgba(0,0,0,0.4)',
-        }}>
-        <View
-          style={{
-            ...styles.modalView,
-            marginBottom: isAlert ? 0 : '50%',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              marginHorizontal: 15,
-            }}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={[
+          styles.modalContainer,
+          {backgroundColor: backgroundColor ?? 'rgba(0,0,0,0.4)'},
+        ]}>
+        <Pressable
+          testID="alert-backdrop"
+          disabled={!dismissOnBackdropPress}
+          onPress={() => handlePress(true)}
+          style={StyleSheet.absoluteFill}
+        />
+        <View accessibilityViewIsModal style={styles.modalView}>
+          <View style={local.header}>
             {!!icon && <Icon icon={icon} iconColor={iconColor} ios={ios} />}
-            <View style={{flex: 1}}>
-              <Text style={{...styles.title}}>{title}</Text>
+            <View style={local.flex}>
+              <Text accessibilityRole="header" style={styles.title}>
+                {title}
+              </Text>
               {description && (
-                <Text style={{...styles.description}}>{description}</Text>
+                <Text style={styles.description}>{description}</Text>
               )}
             </View>
           </View>
-          {!ios && !!label && <Text style={{...styles.label}}>{label}</Text>}
+          {!ios && !!label && <Text style={styles.label}>{label}</Text>}
           {!isAlert && (
             <TextInput
-              placeholder={placeholder}
+              testID="prompt-input"
+              accessibilityLabel={label ?? placeholder ?? title}
+              {...inputProps}
+              keyboardType={keyboardType}
+              secureTextEntry={secureTextEntry}
+              autoCapitalize={autoCapitalize}
+              maxLength={maxLength}
+              placeholder={placeholder ?? title}
+              value={textInput}
               onChangeText={setTextInput}
+              onSubmitEditing={() => handlePress()}
               placeholderTextColor={
                 placeholderColor
                   ? placeholderColor
@@ -93,11 +121,11 @@ export function AlertContainer({
                     : '#C3C3C3'
               }
               ref={inputRef}
-              style={{...styles.textInput}}
+              style={[styles.textInput, inputProps?.style]}
             />
           )}
 
-          <View style={{...styles.buttonsContainer}}>
+          <View style={styles.buttonsContainer}>
             {buttons ? (
               buttons.map((button, index) => (
                 <Button
@@ -143,7 +171,13 @@ export function AlertContainer({
             )}
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }
+
+const local = StyleSheet.create({
+  modal: {zIndex: 9999},
+  header: {flexDirection: 'row', marginHorizontal: 15},
+  flex: {flex: 1},
+});

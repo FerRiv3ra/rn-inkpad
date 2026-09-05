@@ -6,6 +6,26 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+### Added
+
+- **Alert / prompt**: `defaultValue` pre-fills the prompt input. `keyboardType`,
+  `secureTextEntry`, `autoCapitalize`, `maxLength` and an `inputProps` escape hatch for any
+  other `TextInput` prop. The keyboard return key confirms the prompt.
+- `Alert.dismiss()` closes the alert or prompt currently shown; its promise resolves as
+  cancelled. `Alert.prompt(title, description, onPress)` runs `onPress(value)` on confirm.
+- `AlertContainer` `dismissOnBackdropPress`: tapping the dimmed background cancels the request.
+  Off by default.
+- Alert types are exported: `AlertData`, `PromptData`, `AlertButton`, `AlertPersonalTheme`,
+  `AlertContainerProps`.
+- Accessibility: alert title is a header, buttons expose role and label, the card is marked
+  as modal, the icon is hidden from screen readers.
+
+### Fixed
+
+- **Alert / prompt**: the prompt no longer shifts the card up by a fixed 50 % of the screen.
+  The card is centred and a `KeyboardAvoidingView` moves it only when the keyboard shows.
+  Fixes the card being cut off on tall screens and on Web.
+
 ### Changed
 
 - Releases are published from CI through npm trusted publishing (OIDC). `yarn release`

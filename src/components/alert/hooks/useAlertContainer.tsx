@@ -16,7 +16,7 @@ export const useAlertContainer = () => {
     return subscribeToModalChange((data, alert) => {
       setPrompt(data);
       setIsAlert(!!alert);
-      setTextInput('');
+      setTextInput(alert ? '' : (data?.defaultValue ?? ''));
     });
   }, []);
 
@@ -43,6 +43,7 @@ export const useAlertContainer = () => {
   return {
     prompt,
     isAlert,
+    textInput,
     setTextInput,
     handlePress,
     inputRef,

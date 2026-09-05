@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {renderIcon} from '../../../helpers/renderIcon';
 import type {IconProp} from '../../../types';
 
@@ -13,19 +13,28 @@ export const Icon = ({icon, iconColor, ios}: Props) => {
 
   return (
     <View
-      style={{
-        alignItems: 'center',
-        alignSelf: 'center',
-        borderColor: color,
-        borderRadius: 50,
-        borderWidth: 2,
-        height: 30,
-        marginLeft: ios ? 5 : 0,
-        justifyContent: 'center',
-        position: ios ? 'absolute' : 'relative',
-        width: 30,
-      }}>
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      style={[
+        styles.container,
+        ios ? styles.ios : styles.android,
+        {borderColor: color},
+      ]}>
       {renderIcon(icon, {size: 18, color})}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderRadius: 50,
+    borderWidth: 2,
+    height: 30,
+    justifyContent: 'center',
+    width: 30,
+  },
+  ios: {marginLeft: 5, position: 'absolute'},
+  android: {marginLeft: 0, position: 'relative'},
+});

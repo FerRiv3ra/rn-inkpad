@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '../hooks/useTheme';
 import type {Button as ButtonType, ValidPlatforms} from '../types/alertTypes';
 
@@ -21,6 +21,7 @@ export const Button = ({
 }: Props) => {
   const {text, onPress, textStyle} = button;
   const {styles, ios} = useTheme({theme, appearance});
+  const inline = ios && buttons <= 2;
 
   return (
     <TouchableOpacity
@@ -28,14 +29,19 @@ export const Button = ({
       accessibilityLabel={text}
       style={[
         styles.button,
-        {borderLeftWidth: ios ? (isFirst ? 0 : buttons <= 2 ? 1 : 0) : 0},
-        ios && buttons <= 2 ? styles.flex : null,
+        inline && !isFirst ? local.separator : local.noSeparator,
+        inline ? styles.flex : null,
       ]}
       activeOpacity={0.6}
       onPress={customPress ? customPress : onPress}>
-      <Text style={[{textAlign: ios ? 'center' : 'right'}, textStyle]}>
-        {text}
-      </Text>
+      <Text style={[ios ? local.center : local.right, textStyle]}>{text}</Text>
     </TouchableOpacity>
   );
 };
+
+const local = StyleSheet.create({
+  separator: {borderLeftWidth: 1},
+  noSeparator: {borderLeftWidth: 0},
+  center: {textAlign: 'center'},
+  right: {textAlign: 'right'},
+});

@@ -53,6 +53,51 @@ export const AlertDemo = () => {
             setResult(name ? `Hello, ${name}!` : 'Prompt cancelled');
           }}
         />
+        <Button
+          text="Edit an email (default value)"
+          buttonColor={palette.blue}
+          style={{marginTop: 12}}
+          onPress={async () => {
+            const email = await Alert.prompt({
+              title: 'Email',
+              label: 'Email',
+              defaultValue: 'pre-filled@example.com',
+              keyboardType: 'email-address',
+              autoCapitalize: 'none',
+            });
+            setResult(email ?? 'Prompt cancelled');
+          }}
+        />
+        <Button
+          text="PIN (secure, numeric, 4 digits)"
+          buttonColor={palette.blue}
+          style={{marginTop: 12}}
+          onPress={async () => {
+            const pin = await Alert.prompt({
+              title: 'PIN',
+              description: 'Numeric keyboard, hidden text, max 4 characters',
+              keyboardType: 'number-pad',
+              secureTextEntry: true,
+              maxLength: 4,
+            });
+            setResult(
+              pin ? `PIN has ${pin.length} digits` : 'Prompt cancelled',
+            );
+          }}
+        />
+        <Button
+          text="Auto dismiss after 2s"
+          buttonColor={palette.navy}
+          style={{marginTop: 12}}
+          onPress={async () => {
+            setTimeout(() => Alert.dismiss(), 2000);
+            const ok = await Alert.alert(
+              'Wait',
+              'Closes itself in two seconds',
+            );
+            setResult(`Dismissed, resolved ${ok}`);
+          }}
+        />
         <Result label={result} />
       </Section>
     </>

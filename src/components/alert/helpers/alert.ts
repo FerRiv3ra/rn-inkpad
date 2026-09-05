@@ -1,5 +1,5 @@
 import type {AlertData, PromptData} from '../types/alertTypes';
-import {openModal} from './subscribers';
+import {closeModal, hasPendingModal, openModal} from './subscribers';
 
 export namespace Alert {
   /**
@@ -60,5 +60,15 @@ export namespace Alert {
     }
 
     return value;
+  }
+
+  /**
+   * Closes the alert or prompt currently shown, if any.
+   * The pending promise resolves as cancelled (`false` / `undefined`).
+   */
+  export function dismiss() {
+    if (hasPendingModal()) {
+      closeModal(undefined);
+    }
   }
 }

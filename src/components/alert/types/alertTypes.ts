@@ -1,4 +1,4 @@
-import type {StyleProp, TextStyle} from 'react-native';
+import type {StyleProp, TextInputProps, TextStyle} from 'react-native';
 import type {IconProp} from '../../../types';
 
 export type Icon = 'error' | 'info' | 'success' | 'question';
@@ -18,6 +18,21 @@ export type PromptData = {
   description?: string;
   label?: string;
   placeholder?: string;
+  defaultValue?: string;
+  /** Keyboard shown for the input. Same values as `TextInput`. */
+  keyboardType?: TextInputProps['keyboardType'];
+  /** Hide the typed text (passwords, PINs). */
+  secureTextEntry?: boolean;
+  autoCapitalize?: TextInputProps['autoCapitalize'];
+  maxLength?: number;
+  /**
+   * Any other `TextInput` prop. `value`, `onChangeText`, `placeholder`
+   * and the props above are managed by the prompt and take precedence.
+   */
+  inputProps?: Omit<
+    TextInputProps,
+    'value' | 'onChangeText' | 'placeholder' | 'defaultValue'
+  >;
 };
 
 export interface AlertData extends PromptData {

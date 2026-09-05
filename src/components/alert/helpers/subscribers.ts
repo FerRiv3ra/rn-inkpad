@@ -50,6 +50,11 @@ export function closeModal(result?: ModalData) {
   resolve?.(result);
 }
 
+/** Whether a request is currently shown. */
+export function hasPendingModal() {
+  return pending !== null;
+}
+
 /** Number of active containers. Exposed for tests. */
 export function getListenerCount() {
   return listeners.size;

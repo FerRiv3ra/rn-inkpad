@@ -37,6 +37,7 @@ Puede enviar algunas propiedades opcionales para personalizar sus alertas.
 | **`appearance`**    | Elige la apariencia entre claro y oscuro para tu alerta. | `'light' \| 'dark'`                   | **NO**   | _Apariencia del dispositivo_      |
 | **`personalTheme`** | Personaliza completamente la apariencia de tu alerta.         | [PersonalTheme](#personaltheme-props) | **NO**   | _PersonalTheme predeterminado_ |
 | **`theme`**         | Elige el tema entre Android e iOS para tu alerta. | `'ios' \| 'android'`                  | **NO**   | _Determinado por el sistema_         |
+| **`dismissOnBackdropPress`** | Tocar el fondo oscurecido cancela la alerta o el prompt. | `boolean` | **NO** | _false_ |
 </div>
 
 ### PersonalTheme Props
@@ -272,6 +273,12 @@ const  MyComponent  = () => {
 | **`confirmText`**      | Texto del botón confirmar.                          | `string` | _No_     |
 | **`label`**            | Etiqueta para el input -Solo Android-.               | `string` | _No_     |
 | **`placeholder`**      | Texto de ayuda para el input. **predeterminado:** _texto del título_ | `string` | _No_     |
+| **`defaultValue`**     | Valor inicial del input.                           | `string` | _No_     |
+| **`keyboardType`**     | Teclado del input, mismos valores que `TextInput`. | `KeyboardTypeOptions` | _No_ |
+| **`secureTextEntry`**  | Oculta el texto escrito (contraseñas, PIN).        | `boolean` | _No_ |
+| **`autoCapitalize`**   | Mismos valores que `TextInput`.                    | `'none' \| 'sentences' \| 'words' \| 'characters'` | _No_ |
+| **`maxLength`**        | Máximo de caracteres.                              | `number` | _No_ |
+| **`inputProps`**       | Cualquier otra prop de `TextInput` (`autoCorrect`, `returnKeyType`, `style`, ...). `value`, `onChangeText`, `placeholder` y `defaultValue` los controla el prompt. | `TextInputProps` | _No_ |
 </div>
 
 ### Ejemplo con props
@@ -292,3 +299,7 @@ const  MyComponent  = () => {
   opcional `onPress` solo se ejecuta al confirmar.
 - `Alert.prompt(...)` resuelve el texto escrito, o `undefined` al cancelar.
 - Abrir una alerta nueva mientras otra está visible cancela la primera.
+- `Alert.prompt(title, description, onPress)` ejecuta `onPress(value)` solo al confirmar. La
+  tecla enter del teclado confirma el prompt.
+- `Alert.dismiss()` cierra la alerta o prompt visible; su promesa resuelve como cancelada.
+  El botón atrás de Android hace lo mismo.
