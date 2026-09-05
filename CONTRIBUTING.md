@@ -37,8 +37,10 @@ are shipped; tests, fixtures and dotfiles are excluded through the `files` field
 
 `yarn release` bumps the version, updates the tag and creates the GitHub release; it
 does not publish. Pushing the `v*` tag triggers the Release workflow, which verifies,
-builds and publishes to npm through **trusted publishing** (OIDC) with provenance.
-No npm token or repository secret is involved.
+builds and stages the version on npm through **trusted publishing** (OIDC) with
+provenance (`npm stage publish`). No npm token or repository secret is involved.
+The version goes live once a maintainer approves it with 2FA: npmjs.com → package →
+_Staged Packages_ → Approve, or `npm stage list <package>` then `npm stage approve <stage-id>`.
 
 One-time setup on npmjs.com (package → Settings → Trusted Publisher → GitHub Actions):
 owner `FerRiv3ra`, repository `rn-inkpad`, workflow `release.yml`, no environment.

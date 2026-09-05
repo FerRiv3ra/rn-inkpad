@@ -2,7 +2,9 @@ name: Release
 # Publishes to npm when a version tag is pushed (e.g. by `yarn release`).
 # Uses npm trusted publishing (OIDC): no npm token or secret is needed.
 # The package on npmjs.com must list this repository and workflow file
-# (release.yml) as a trusted publisher.
+# (release.yml) as a trusted publisher (stage-only). The version lands in
+# the staging area; a maintainer approves it with 2FA on npmjs.com or with
+# `npm stage approve <stage-id>`.
 on:
   push:
     tags: ['v*']
@@ -29,4 +31,4 @@ jobs:
           npm --version
           TAG=latest
           case "${GITHUB_REF_NAME}" in *-*) TAG=next;; esac
-          npm publish --provenance --access public --tag "$TAG"
+          npm stage publish . --provenance --access public --tag "$TAG"
