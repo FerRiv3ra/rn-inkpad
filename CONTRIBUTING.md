@@ -35,8 +35,8 @@ Husky runs `lint-staged` on every commit: ESLint + Prettier on staged files.
 `npm pack --dry-run` shows exactly what will be published. Only `src/` and `lib/`
 are shipped; tests, fixtures and dotfiles are excluded through the `files` field.
 
-`yarn release` bumps the version, updates the tag and creates the GitHub release; it
-does not publish. Pushing the `v*` tag triggers the Release workflow, which verifies,
+`yarn release` bumps the version, commits and pushes the `v*` tag; it does not publish
+and does not talk to GitHub, so no token is needed locally. Pushing the `v*` tag triggers the Release workflow, which verifies,
 builds and stages the version on npm through **trusted publishing** (OIDC) with
 provenance (`npm stage publish`). No npm token or repository secret is involved.
 The version goes live once a maintainer approves it with 2FA: npmjs.com → package →

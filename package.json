@@ -166,9 +166,7 @@
       "publish": false
     },
     "github": {
-      "release": true,
-      "releaseName": "v${version}",
-      "releaseNotes": "awk '/^## \\[${version}\\]/{f=1;next} /^## \\[/{f=0} f' CHANGELOG.md"
+      "release": false
     },
     "hooks": {
       "before:init": [

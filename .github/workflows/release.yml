@@ -1,21 +1,31 @@
 name: Release
-# Publishes to npm when a version tag is pushed (e.g. by `yarn release`).
-# Uses npm trusted publishing (OIDC): no npm token or secret is needed.
-# The package on npmjs.com must list this repository and workflow file
-# (release.yml) as a trusted publisher (stage-only). The version lands in
-# the staging area; a maintainer approves it with 2FA on npmjs.com or with
-# `npm stage approve <stage-id>`.
+# Runs when a version tag is pushed (what `yarn release` does):
+#   1. publish: stages the version on npm through trusted publishing (OIDC,
+#      stage-only, no token). A maintainer approves it with 2FA on npmjs.com.
+#   2. github-release: creates the GitHub Release for the tag with the notes
+#      taken from CHANGELOG.md (prerelease when the tag has a suffix).
+# Run it manually (workflow_dispatch) with an existing tag to create only the
+# GitHub Release, e.g. to backfill older tags.
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to create the GitHub Release for (e.g. v1.3.0)'
+        required: true
+        type: string
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   publish:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup
@@ -26,9 +36,46 @@ jobs:
           yarn test --ci
       - name: Build
         run: yarn build
-      - name: Publish
+      - name: Stage on npm
         run: |
           npm --version
           TAG=latest
           case "${GITHUB_REF_NAME}" in *-*) TAG=next;; esac
           npm stage publish . --provenance --access public --tag "$TAG"
+
+  github-release:
+    needs: publish
+    # Run after a successful publish, or on its own when dispatched manually.
+    if: always() && (needs.publish.result == 'success' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+      - name: Create GitHub Release
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists, nothing to do."
+            exit 0
+          fi
+          VERSION="${TAG#v}"
+          awk -v v="$VERSION" '
+            index($0, "## [" v "]") == 1 {found = 1; next}
+            /^## \[/ {found = 0}
+            found' CHANGELOG.md > notes.md
+          if [ ! -s notes.md ]; then
+            echo "See [CHANGELOG.md](https://github.com/$GITHUB_REPOSITORY/blob/main/CHANGELOG.md)." > notes.md
+          fi
+          PRERELEASE=""
+          case "$TAG" in *-*) PRERELEASE="--prerelease";; esac
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "$TAG" \
+            --notes-file notes.md \
+            --verify-tag \
+            $PRERELEASE
